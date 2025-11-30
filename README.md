@@ -39,3 +39,25 @@ App/
 - **DTO vs Entity**: DTO는 외부 포맷(API/DB)에 맞추고, Entity는 도메인 규칙에 맞춘 순수 모델로 유지합니다.
 - **테스트 위치**: Domain 유스케이스는 단위 테스트, Data 레이어는 통합 테스트, Features는 UI·스냅샷·상태 테스트로 분리합니다.
 - **이름 규칙**: Repository 인터페이스는 `XRepository`, 구현은 `XRepositoryImpl`; UseCase는 동사 형태(`FetchTodosUseCase`, `AddTodoUseCase`)로 통일합니다.
+
+## Tuist 모노레포 구성
+
+Tuist로 계층별 모듈을 독립 프로젝트로 분리하고 `Workspace.swift`로 하나의 워크스페이스에 묶었습니다.
+
+```
+Workspace.swift
+Projects/
+ ├─ App/                    # 실행 앱 (HyperFocus)
+ ├─ Core/                   # Domain/Data 공통 기반
+ │   ├─ Models/             # Entity 모델
+ │   ├─ Services/           # 데이터 접근/비즈니스 서비스
+ │   ├─ Common/             # 공용 타입, 유틸
+ │   └─ CoreKit/            # DI 환경 등 코어 인프라
+ ├─ DesignSystem/           # 공용 UI 컴포넌트/스타일
+ └─ Features/
+     ├─ Scene/              # 화면 단위(Main, KakaoLogin 등)
+     └─ Coordinator/        # 탭/네비게이션 조립
+```
+
+- **의존성 흐름**: `App → Coordinator → Scene → Core/DesignSystem` 순서로 일방향 의존을 유지합니다.
+- **생성 방법**: 루트에서 `tuist generate`로 워크스페이스를 생성하면 각 모듈이 포함된 Xcode 프로젝트가 만들어집니다.
