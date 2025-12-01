@@ -61,6 +61,7 @@ Projects/
 
 - **의존성 흐름**: `App → Coordinator → Scene → Core/DesignSystem` 순서로 일방향 의존을 유지합니다.
 - **생성 방법**: 루트에서 `tuist generate`로 워크스페이스를 생성하면 각 모듈이 포함된 Xcode 프로젝트가 만들어집니다.
+- **실행 진입점**: 워크스페이스의 루트 실행 대상은 `Projects/App`의 `HyperFocusApp`이며, 나머지 모듈은 모두 이 앱에서 조립되는 라이브러리 역할을 합니다.
 
 ## 빌드 가능한 기본 모듈
 - **App**: `Common`, `DesignSystem` 모듈을 의존성으로 추가한 정적 라이브러리입니다. `HyperFocusRootView`에서 두 모듈이 제공하는 기능을 사용하여 실제로 빌드가 가능한 상태입니다.
