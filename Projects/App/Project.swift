@@ -21,5 +21,20 @@ let project = Project.make(
         .project(target: .designSystem, projectPath: .shared),
       ]
     ),
+  ],
+  schemes: [
+    Scheme(
+      name: TargetName.app.rawValue,
+      shared: true,
+      buildAction: .buildAction(
+        targets: [
+          .target(name: TargetName.app.rawValue),
+        ]
+      ),
+      runAction: .runAction(
+        configuration: .debug,
+        executable: .target(name: TargetName.app.rawValue)
+      )
+    ),
   ]
 )
