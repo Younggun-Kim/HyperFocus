@@ -12,9 +12,31 @@ fileprivate let commonScripts: [TargetScript] = [
   .pre(
     script: """
     ROOT_DIR=\(ProcessInfo.processInfo.environment["TUIST_ROOT_DIR"] ?? "")
-    
-    ${ROOT_DIR}/swiftlint --config ${ROOT_DIR}/.swiftlint.yml
-    
+    DEFAULT_ROOT_DIR="$(pwd)/../.."
+    RESOLVED_ROOT_DIR="${ROOT_DIR:-$DEFAULT_ROOT_DIR}"
+
+    SWIFTLINT_PATH="${RESOLVED_ROOT_DIR}/swiftlint"
+
+    if ! [ -x "$SWIFTLINT_PATH" ]; then
+      SWIFTLINT_PATH="$(command -v swiftlint || true)"
+    fi
+
+    if [ -z "$SWIFTLINT_PATH" ]; then
+      echo "warning: SwiftLint not installed. Skipping lint." >&2
+      exit 0
+    fi
+
+    CONFIG_PATH="${RESOLVED_ROOT_DIR}/.swiftlint.yml"
+    CONFIG_ARGUMENT=""
+
+    if [ -f "$CONFIG_PATH" ]; then
+      CONFIG_ARGUMENT="--config ${CONFIG_PATH}"
+    else
+      echo "warning: .swiftlint.yml not found at ${CONFIG_PATH}. Running with default configuration." >&2
+    fi
+
+    "$SWIFTLINT_PATH" ${CONFIG_ARGUMENT}
+
     """,
     name: "SwiftLint",
     basedOnDependencyAnalysis: false
