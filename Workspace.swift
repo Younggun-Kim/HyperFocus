@@ -3,9 +3,8 @@ import ProjectDescription
 let workspace = Workspace(
   name: "HyperFocus",
   projects: [
+    "Projects/App",
     "Projects/Core",
-    "Projects/DesignSystem",
-    "Projects/Features/*",
-    "Projects/App"
+    "Projects/Shared/**",
   ]
 )

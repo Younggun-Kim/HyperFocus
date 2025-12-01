@@ -2,14 +2,14 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.make(
-  name: "DesignSystem",
+  name: "Shared",
   targets: [
     .make(
       name: TargetName.designSystem.rawValue,
       product: .staticLibrary,
-      bundleId: "com.conner.HyperFocus.DesignSystem",
-      sources: ["Sources/**"],
-      resources: ["Resources/**"]
+      bundleId: "com.conner.HyperFocus.Shared.DesignSystem",
+      sources: ["DesignSystem/Sources/**"],
+      resources: ["DesignSystem/Resources/**"]
     )
   ]
 )
