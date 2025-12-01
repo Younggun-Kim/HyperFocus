@@ -13,7 +13,7 @@ let project = Project.make(
   targets: [
     .make(
       name: TargetName.app.rawValue,
-      product: .staticLibrary,
+      product: .app,
       bundleId: "com.conner.HyperFocus.App",
       sources: ["Sources/**"],
       dependencies: [
