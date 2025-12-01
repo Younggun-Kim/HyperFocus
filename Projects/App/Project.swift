@@ -26,12 +26,12 @@ let project = Project.make(
     Scheme(
       name: TargetName.app.rawValue,
       shared: true,
-      buildAction: .buildAction(
+      buildAction: BuildAction(
         targets: [
-          .target(name: TargetName.app.rawValue),
+          TargetReference.target(name: TargetName.app.rawValue),
         ]
       ),
-      runAction: .runAction(
+      runAction: RunAction(
         configuration: .debug,
         executable: .target(name: TargetName.app.rawValue)
       )
