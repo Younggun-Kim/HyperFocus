@@ -61,3 +61,17 @@ Projects/
 
 - **의존성 흐름**: `App → Coordinator → Scene → Core/DesignSystem` 순서로 일방향 의존을 유지합니다.
 - **생성 방법**: 루트에서 `tuist generate`로 워크스페이스를 생성하면 각 모듈이 포함된 Xcode 프로젝트가 만들어집니다.
+
+## 빌드 가능한 기본 모듈
+- **App**: `Common`, `DesignSystem` 모듈을 의존성으로 추가한 정적 라이브러리입니다. `HyperFocusRootView`에서 두 모듈이 제공하는 기능을 사용하여 실제로 빌드가 가능한 상태입니다.
+- **Core/Common**: 공용 메시지를 제공하는 `CommonGreeting`을 포함합니다.
+- **Shared/DesignSystem**: SwiftUI `ButtonStyle` 샘플(`DesignSystemButtonStyle`)과 리소스 자릿수를 포함합니다.
+
+## Tuist 템플릿으로 새 모듈 추가하기
+루트에서 아래 명령으로 기본 정적 라이브러리 템플릿을 활용할 수 있습니다.
+
+```sh
+tuist scaffold Module --name NewFeature
+```
+
+생성 경로는 `Projects/NewFeature`이며, `Project.swift`, `Sources/NewFeature.swift`, `Resources/.gitkeep`가 자동으로 생성됩니다. `--bundle-id-prefix` 옵션으로 번들 ID 프리픽스를 원하는 값으로 덮어쓸 수 있습니다.
