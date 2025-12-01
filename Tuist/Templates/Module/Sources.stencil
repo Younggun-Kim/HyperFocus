@@ -1,0 +1,9 @@
+import Foundation
+
+public struct {{ name }} {
+  public init() {}
+
+  public func hello() -> String {
+    "{{ name }} module ready to use"
+  }
+}

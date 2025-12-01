@@ -1,0 +1,15 @@
+import ProjectDescription
+import ProjectDescriptionHelpers
+
+let project = Project.make(
+  name: "{{ name }}",
+  targets: [
+    .make(
+      name: "{{ name }}",
+      product: .staticLibrary,
+      bundleId: "{{ bundleIdPrefix }}.{{ name }}",
+      sources: ["Sources/**"],
+      resources: ["Resources/**"]
+    )
+  ]
+)
