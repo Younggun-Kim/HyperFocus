@@ -6,33 +6,85 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXFileReference section */
-		13A74D162EE5C77E00C3BB48 /* HyperFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
-/* End PBXFileReference section */
+/* Begin PBXBuildFile section */
+		135C5C7E2EE8701200D5F7A0 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C5C7D2EE8701200D5F7A0 /* AppFeature.swift */; };
+		135C5C802EE8702000D5F7A0 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C5C7F2EE8702000D5F7A0 /* AppView.swift */; };
+		135C5C832EE8749300D5F7A0 /* ContactsFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C5C822EE8749300D5F7A0 /* ContactsFeature.swift */; };
+		135C5C852EE8749A00D5F7A0 /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C5C842EE8749A00D5F7A0 /* ContactsView.swift */; };
+		135C5C872EE8763500D5F7A0 /* AddContactFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C5C862EE8763500D5F7A0 /* AddContactFeature.swift */; };
+		135C5C892EE876D300D5F7A0 /* AddContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135C5C882EE876D300D5F7A0 /* AddContactView.swift */; };
+		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
+		13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */; };
+		13A74D302EE5CC4C00C3BB48 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */; };
+		13A74D372EE5CCFC00C3BB48 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A74D362EE5CCFC00C3BB48 /* AppDelegate.swift */; };
+		13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A74D382EE5CD0E00C3BB48 /* SceneDelegate.swift */; };
+		13A74D3C2EE5CF0F00C3BB48 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A74D3B2EE5CF0F00C3BB48 /* CounterView.swift */; };
+		13A74D3E2EE5CF1700C3BB48 /* CounterFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A74D3D2EE5CF1700C3BB48 /* CounterFeature.swift */; };
+		13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F4E2EF6EB8200CEDC69 /* Typography.swift */; };
+		13AC3F522EF6EDBF00CEDC69 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F512EF6EDBF00CEDC69 /* OnboardingView.swift */; };
+		13AC3F542EF6EDC500CEDC69 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F532EF6EDC200CEDC69 /* OnboardingFeature.swift */; };
+		13AC3F562EF6F53900CEDC69 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13AC3F552EF6F53900CEDC69 /* Launch Screen.storyboard */; };
+		13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F582EF6F68B00CEDC69 /* SplashView.swift */; };
+/* End PBXBuildFile section */
 
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		13A74D182EE5C77E00C3BB48 /* HyperFocus */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = HyperFocus;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
+/* Begin PBXFileReference section */
+		135C5C7D2EE8701200D5F7A0 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
+		135C5C7F2EE8702000D5F7A0 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		135C5C822EE8749300D5F7A0 /* ContactsFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsFeature.swift; sourceTree = "<group>"; };
+		135C5C842EE8749A00D5F7A0 /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		135C5C862EE8763500D5F7A0 /* AddContactFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactFeature.swift; sourceTree = "<group>"; };
+		135C5C882EE876D300D5F7A0 /* AddContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContactView.swift; sourceTree = "<group>"; };
+		13A74D162EE5C77E00C3BB48 /* HyperFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13A74D252EE5CB8100C3BB48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperFocusApp.swift; sourceTree = "<group>"; };
+		13A74D362EE5CCFC00C3BB48 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		13A74D382EE5CD0E00C3BB48 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		13A74D3B2EE5CF0F00C3BB48 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		13A74D3D2EE5CF1700C3BB48 /* CounterFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterFeature.swift; sourceTree = "<group>"; };
+		13A74D3F2EE5D2D800C3BB48 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		13AC3F4E2EF6EB8200CEDC69 /* Typography.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typography.swift; sourceTree = "<group>"; };
+		13AC3F512EF6EDBF00CEDC69 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		13AC3F532EF6EDC200CEDC69 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
+		13AC3F552EF6F53900CEDC69 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		13AC3F582EF6F68B00CEDC69 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		13A74D132EE5C77E00C3BB48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13A74D302EE5CC4C00C3BB48 /* ComposableArchitecture in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		135C5C7C2EE8700300D5F7A0 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				135C5C7D2EE8701200D5F7A0 /* AppFeature.swift */,
+				135C5C7F2EE8702000D5F7A0 /* AppView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		135C5C812EE8748600D5F7A0 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				135C5C842EE8749A00D5F7A0 /* ContactsView.swift */,
+				135C5C822EE8749300D5F7A0 /* ContactsFeature.swift */,
+				135C5C882EE876D300D5F7A0 /* AddContactView.swift */,
+				135C5C862EE8763500D5F7A0 /* AddContactFeature.swift */,
+			);
+			path = Contact;
+			sourceTree = "<group>";
+		};
 		13A74D0D2EE5C77E00C3BB48 = {
 			isa = PBXGroup;
 			children = (
-				13A74D182EE5C77E00C3BB48 /* HyperFocus */,
+				13A74D282EE5CB8100C3BB48 /* HyperFocus */,
 				13A74D172EE5C77E00C3BB48 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +95,83 @@
 				13A74D162EE5C77E00C3BB48 /* HyperFocus.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		13A74D282EE5CB8100C3BB48 /* HyperFocus */ = {
+			isa = PBXGroup;
+			children = (
+				13A74D3F2EE5D2D800C3BB48 /* Info.plist */,
+				13A74D352EE5CCAE00C3BB48 /* Application */,
+				13AC3F4A2EF6EA5200CEDC69 /* Shared */,
+				13A74D2C2EE5CB8B00C3BB48 /* Features */,
+				13A74D252EE5CB8100C3BB48 /* Assets.xcassets */,
+			);
+			path = HyperFocus;
+			sourceTree = "<group>";
+		};
+		13A74D2C2EE5CB8B00C3BB48 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				13AC3F572EF6F65B00CEDC69 /* Splash */,
+				13AC3F502EF6EDB100CEDC69 /* Onboarding */,
+				135C5C812EE8748600D5F7A0 /* Contact */,
+				135C5C7C2EE8700300D5F7A0 /* App */,
+				13A74D3A2EE5CF0200C3BB48 /* Counter */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		13A74D352EE5CCAE00C3BB48 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */,
+				13A74D362EE5CCFC00C3BB48 /* AppDelegate.swift */,
+				13A74D382EE5CD0E00C3BB48 /* SceneDelegate.swift */,
+				13AC3F552EF6F53900CEDC69 /* Launch Screen.storyboard */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		13A74D3A2EE5CF0200C3BB48 /* Counter */ = {
+			isa = PBXGroup;
+			children = (
+				13A74D3B2EE5CF0F00C3BB48 /* CounterView.swift */,
+				13A74D3D2EE5CF1700C3BB48 /* CounterFeature.swift */,
+			);
+			path = Counter;
+			sourceTree = "<group>";
+		};
+		13AC3F4A2EF6EA5200CEDC69 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				13AC3F4B2EF6EA7000CEDC69 /* DesignSystem */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		13AC3F4B2EF6EA7000CEDC69 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				13AC3F4E2EF6EB8200CEDC69 /* Typography.swift */,
+			);
+			path = DesignSystem;
+			sourceTree = "<group>";
+		};
+		13AC3F502EF6EDB100CEDC69 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				13AC3F512EF6EDBF00CEDC69 /* OnboardingView.swift */,
+				13AC3F532EF6EDC200CEDC69 /* OnboardingFeature.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		13AC3F572EF6F65B00CEDC69 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				13AC3F582EF6F68B00CEDC69 /* SplashView.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,11 +189,9 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				13A74D182EE5C77E00C3BB48 /* HyperFocus */,
-			);
 			name = HyperFocus;
 			packageProductDependencies = (
+				13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */,
 			);
 			productName = HyperFocus;
 			productReference = 13A74D162EE5C77E00C3BB48 /* HyperFocus.app */;
@@ -94,6 +221,9 @@
 			);
 			mainGroup = 13A74D0D2EE5C77E00C3BB48;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 13A74D172EE5C77E00C3BB48 /* Products */;
 			projectDirPath = "";
@@ -109,6 +239,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13AC3F562EF6F53900CEDC69 /* Launch Screen.storyboard in Resources */,
+				13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +251,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13AC3F542EF6EDC500CEDC69 /* OnboardingFeature.swift in Sources */,
+				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
+				13A74D372EE5CCFC00C3BB48 /* AppDelegate.swift in Sources */,
+				13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */,
+				135C5C892EE876D300D5F7A0 /* AddContactView.swift in Sources */,
+				135C5C852EE8749A00D5F7A0 /* ContactsView.swift in Sources */,
+				13A74D3E2EE5CF1700C3BB48 /* CounterFeature.swift in Sources */,
+				135C5C872EE8763500D5F7A0 /* AddContactFeature.swift in Sources */,
+				135C5C802EE8702000D5F7A0 /* AppView.swift in Sources */,
+				135C5C7E2EE8701200D5F7A0 /* AppFeature.swift in Sources */,
+				13A74D3C2EE5CF0F00C3BB48 /* CounterView.swift in Sources */,
+				13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */,
+				135C5C832EE8749300D5F7A0 /* ContactsFeature.swift in Sources */,
+				13AC3F522EF6EDBF00CEDC69 /* OnboardingView.swift in Sources */,
+				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,9 +403,9 @@
 				DEVELOPMENT_TEAM = B2V8LG7269;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HyperFocus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -269,12 +416,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -288,9 +439,9 @@
 				DEVELOPMENT_TEAM = B2V8LG7269;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HyperFocus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -301,12 +452,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -332,6 +487,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.23.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
+			productName = ComposableArchitecture;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 13A74D0E2EE5C77E00C3BB48 /* Project object */;
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct HyperFocusApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            SplashView()
         }
     }
 }
