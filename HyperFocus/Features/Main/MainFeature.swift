@@ -20,6 +20,7 @@ struct MainFeature {
         var selectedTab: MainTab = .focus
         var focus: FocusHomeFeature.State
         var log: LogFeature.State
+        @Presents var focusDetail: FocusDetailFeature.State?
         
         init() {
             self.focus = FocusHomeFeature.State()
@@ -31,6 +32,7 @@ struct MainFeature {
         case tabChanged(MainTab)
         case focus(FocusHomeFeature.Action)
         case log(LogFeature.Action)
+        case focusDetail(PresentationAction<FocusDetailFeature.Action>)
     }
     
     var body: some Reducer<State, Action> {
@@ -39,9 +41,14 @@ struct MainFeature {
             case let .tabChanged(tab):
                 state.selectedTab = tab
                 return .none
+            case .focus(.delegate(.navigateToDetail(let goal, let time))):
+                state.focusDetail = FocusDetailFeature.State(focusGoal: goal, time: time)
+                return .none
             case .focus:
                 return .none
             case .log:
+                return .none
+            case .focusDetail:
                 return .none
             }
         }
@@ -50,6 +57,9 @@ struct MainFeature {
         }
         Scope(state: \.log, action: \.log) {
             LogFeature()
+        }
+        .ifLet(\.$focusDetail, action: \.focusDetail) {
+            FocusDetailFeature()
         }
     }
 }

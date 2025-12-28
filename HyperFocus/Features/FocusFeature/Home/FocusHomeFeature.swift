@@ -23,9 +23,14 @@ struct FocusHomeFeature {
     
     enum Action {
         case inputTextChanged(String)
-        case addBTapped
+        case addBtnTapped
         case exampleGoalTapped(String)
         case timeChanged(BasicTime)
+        case delegate(Delegate)
+        
+        enum Delegate: Equatable {
+            case navigateToDetail(FocusGoal, BasicTime?)
+        }
     }
     
     var body: some Reducer<State, Action> {
@@ -41,7 +46,7 @@ struct FocusHomeFeature {
                 state.errorMessage = nil
                 return .none
                 
-            case .addBTapped:
+            case .addBtnTapped:
                 guard let goal = FocusGoal(state.inputText) else {
                     // TODO: Toast
                     state.errorMessage = "목표는 최대 60자까지 입력 가능합니다."
@@ -49,6 +54,8 @@ struct FocusHomeFeature {
                 }
                 state.focusGoal = goal
                 state.errorMessage = nil
+                return .send(.delegate(.navigateToDetail(goal, state.time)))
+            case .delegate:
                 return .none
             case let .exampleGoalTapped(goal):
                 state.inputText = goal

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct FocusHomeView: View {
     @Bindable var store: StoreOf<FocusHomeFeature>
+    @FocusState private var isGoalFocused: Bool
     
     var body: some View {
         NavigationView {
@@ -23,6 +24,7 @@ struct FocusHomeView: View {
                     StartButton
                 }
             }
+            .ignoresSafeArea(.keyboard)
         }
     }
     
@@ -31,6 +33,7 @@ struct FocusHomeView: View {
         HStack(alignment: .top) {
             ZStack(alignment: .topLeading) {
                 TextEditor(text: $store.inputText.sending(\.inputTextChanged))
+                    .focused($isGoalFocused)
                     .autocorrectionDisabled(true)
                     .scrollContentBackground(.hidden)
                     .frame(maxHeight: .infinity)
@@ -49,7 +52,9 @@ struct FocusHomeView: View {
             }
             
             Button(action: {
-                store.send(.addBTapped)
+                self.isGoalFocused = false
+                HapticUtils.impact(style: .medium)
+                store.send(.addBtnTapped)
             }) {
                 Text(FocusText.add)
                     .font(.caption.bold())
@@ -112,7 +117,8 @@ struct FocusHomeView: View {
     var StartButton: some View {
         Image("ic_play_start")
             .gesture(TapGesture().onEnded{ _ in
-                store.send(.addBTapped)
+                HapticUtils.impact(style: .medium)
+                store.send(.addBtnTapped)
             })
             .padding(.top, 78)
             .padding(.bottom, 52)

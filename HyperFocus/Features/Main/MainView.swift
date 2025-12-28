@@ -16,11 +16,17 @@ struct MainView: View {
             get: { store.selectedTab },
             set: { store.send(.tabChanged($0)) }
         )) {
-            FocusHomeView(store: store.scope(state: \.focus, action: \.focus))
-                .tabItem {
-                    Label("Focus", systemImage: "timer")
-                }
-                .tag(MainTab.focus)
+            NavigationStack {
+                FocusHomeView(store: store.scope(state: \.focus, action: \.focus))
+                    .navigationDestination(
+                        item: $store.scope(state: \.focusDetail, action: \.focusDetail)) { detailStore in
+                            FocusDetailView(store: detailStore)
+                        }
+            }
+            .tabItem {
+                Label("Focus", systemImage: "timer")
+            }
+            .tag(MainTab.focus)
             
             LogView(store: store.scope(state: \.log, action: \.log))
                 .tabItem {

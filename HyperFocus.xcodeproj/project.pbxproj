@@ -27,6 +27,7 @@
 		134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFD52F01593500F1F444 /* CommonChipStyle.swift */; };
 		134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFDB2F01796800F1F444 /* FocusDetailView.swift */; };
 		134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFDF2F01796C00F1F444 /* FocusDetailFeature.swift */; };
+		134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE62F017E2B00F1F444 /* HapticUtils.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
 		13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */; };
 		13A74D302EE5CC4C00C3BB48 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */; };
@@ -69,6 +70,7 @@
 		134BFFD52F01593500F1F444 /* CommonChipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonChipStyle.swift; sourceTree = "<group>"; };
 		134BFFDB2F01796800F1F444 /* FocusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusDetailView.swift; sourceTree = "<group>"; };
 		134BFFDF2F01796C00F1F444 /* FocusDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusDetailFeature.swift; sourceTree = "<group>"; };
+		134BFFE62F017E2B00F1F444 /* HapticUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtils.swift; sourceTree = "<group>"; };
 		13A74D162EE5C77E00C3BB48 /* HyperFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A74D252EE5CB8100C3BB48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperFocusApp.swift; sourceTree = "<group>"; };
@@ -227,6 +229,22 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		134BFFE12F017E0F00F1F444 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				134BFFE52F017E2800F1F444 /* Haptic */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		134BFFE52F017E2800F1F444 /* Haptic */ = {
+			isa = PBXGroup;
+			children = (
+				134BFFE62F017E2B00F1F444 /* HapticUtils.swift */,
+			);
+			path = Haptic;
+			sourceTree = "<group>";
+		};
 		13A74D0D2EE5C77E00C3BB48 = {
 			isa = PBXGroup;
 			children = (
@@ -283,6 +301,7 @@
 		13AC3F4A2EF6EA5200CEDC69 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				134BFFE12F017E0F00F1F444 /* Utils */,
 				13AC3F4B2EF6EA7000CEDC69 /* DesignSystem */,
 			);
 			path = Shared;
@@ -448,6 +467,7 @@
 				134BFFCE2F014FD200F1F444 /* ExampleGoal.swift in Sources */,
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
+				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
 				13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */,
 				134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */,
