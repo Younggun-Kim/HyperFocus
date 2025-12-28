@@ -12,17 +12,35 @@ import Foundation
 struct FocusDetailFeature {
     @ObservableState
     struct State: Equatable {
+        var timer: TimerFeature.State
         var focusGoal: FocusGoal
-        var time: BasicTime?
+        var focusTime: BasicTime
+        var isSoundOn: Bool = true
     }
     
     enum Action {
-        // 추후 액션 추가
+        case timer(TimerFeature.Action)
+        case playToggled
+        case sounctToggled
     }
     
     var body: some Reducer<State, Action> {
+        Scope(state: \.timer, action: \.timer) {
+            TimerFeature()
+        }
+        
         Reduce { state, action in
             switch action {
+            case .timer:
+                return .none
+            case .playToggled:
+                if (state.timer.isRunning) {
+                    return .send(.timer(.pause))
+                }
+                return .send(.timer(.start))
+            case .sounctToggled:
+                state.isSoundOn = !state.isSoundOn
+                return .none
             }
         }
     }

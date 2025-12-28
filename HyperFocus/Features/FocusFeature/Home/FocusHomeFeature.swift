@@ -17,8 +17,8 @@ struct FocusHomeFeature {
         var recommendGoals: [String] = ExampleGoal.allCases.compactMap { goal in
             goal.title
         }
+        var goalTime: BasicTime = .twentyFive
         var errorMessage: String?
-        var time: BasicTime?
     }
     
     enum Action {
@@ -29,7 +29,7 @@ struct FocusHomeFeature {
         case delegate(Delegate)
         
         enum Delegate: Equatable {
-            case navigateToDetail(FocusGoal, BasicTime?)
+            case navigateToDetail(FocusGoal, BasicTime)
         }
     }
     
@@ -52,16 +52,17 @@ struct FocusHomeFeature {
                     state.errorMessage = "목표는 최대 60자까지 입력 가능합니다."
                     return .none
                 }
+                
                 state.focusGoal = goal
                 state.errorMessage = nil
-                return .send(.delegate(.navigateToDetail(goal, state.time)))
+                return .send(.delegate(.navigateToDetail(goal, state.goalTime)))
             case .delegate:
                 return .none
             case let .exampleGoalTapped(goal):
                 state.inputText = goal
                 return .none
             case let .timeChanged(time):
-                state.time = time
+                state.goalTime = time
                 return .none
             }
         }

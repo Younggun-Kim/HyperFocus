@@ -12,27 +12,50 @@ struct FocusDetailView: View {
     @Bindable var store: StoreOf<FocusDetailFeature>
     
     var body: some View {
-        AmbientZStack(style: .black) {
-            VStack {
-                Text("목표: \(store.focusGoal.value)")
-                    .foregroundColor(.white)
-                    .font(.title)
-                
-                if let time = store.time {
-                    Text("시간: \(time.title)")
-                        .foregroundColor(.white)
-                        .font(.body)
+        AmbientZStack(style: .blueDark) {
+            VStack(){
+                TimerView(
+                    store: store.scope(state: \.timer, action: \.timer)
+                )
+                .padding(.top, 86)
+                Spacer()
+                HStack(alignment: .bottom, spacing: 30) {
+                    Image("ic_check")
+                    if store.timer.isRunning {
+                        Image("ic_pause")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 96, height: 96)
+                            .onTapGesture {
+                                store.send(.playToggled)
+                            }
+                        
+                    } else {
+                        Image(Assets.icPlay.rawValue)
+                            .frame(width: 96, height: 96)
+                            .onTapGesture {
+                                store.send(.playToggled)
+                            }
+                    }
+                    Image(store.isSoundOn ? "ic_sound":"ic_sound_mute")
+                        .onTapGesture {
+                            store.send(.sounctToggled)
+                        }
                 }
+                .padding(.bottom, 113)
             }
         }
+        .navigationBarBackButtonHidden()
     }
 }
 
 #Preview {
     FocusDetailView(
         store: Store(initialState: FocusDetailFeature.State(
+            timer: TimerFeature.State(),
             focusGoal: FocusGoal("테스트 목표")!,
-            time: nil
+            focusTime: .oneHour,
+            
         )) {
             FocusDetailFeature()
         }

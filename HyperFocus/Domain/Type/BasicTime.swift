@@ -23,4 +23,13 @@ extension BasicTime {
         case .oneHour: return "60m"
         }
     }
+    
+    var seconds: Int {
+        switch self {
+        case .five: return 5 * 60
+        case .fifteen: return 15 * 60
+        case .twentyFive: return 25 * 60
+        case .oneHour: return 60 * 60
+        }
+    }
 }

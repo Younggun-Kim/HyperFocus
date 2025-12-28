@@ -25,7 +25,7 @@ struct OnboardingFinalView: View {
                 Text(BaseText.start)
                     .font(.title)
                     .foregroundStyle(.white)
-                Image("ic_play_start")
+                Image(Assets.icPlay.rawValue)
                     .gesture(TapGesture().onEnded{ _ in
                         store.send(.startTapped)
                     })

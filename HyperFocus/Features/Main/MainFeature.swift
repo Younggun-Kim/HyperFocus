@@ -36,22 +36,7 @@ struct MainFeature {
     }
     
     var body: some Reducer<State, Action> {
-        Reduce { state, action in
-            switch action {
-            case let .tabChanged(tab):
-                state.selectedTab = tab
-                return .none
-            case .focus(.delegate(.navigateToDetail(let goal, let time))):
-                state.focusDetail = FocusDetailFeature.State(focusGoal: goal, time: time)
-                return .none
-            case .focus:
-                return .none
-            case .log:
-                return .none
-            case .focusDetail:
-                return .none
-            }
-        }
+        
         Scope(state: \.focus, action: \.focus) {
             FocusHomeFeature()
         }
@@ -60,6 +45,27 @@ struct MainFeature {
         }
         .ifLet(\.$focusDetail, action: \.focusDetail) {
             FocusDetailFeature()
+        }
+        
+        Reduce { state, action in
+            switch action {
+            case let .tabChanged(tab):
+                state.selectedTab = tab
+                return .none
+            case .focus(.delegate(.navigateToDetail(let goal, let time))):
+                state.focusDetail = FocusDetailFeature.State(
+                    timer: TimerFeature.State(),
+                    focusGoal: goal,
+                    focusTime: time
+                )
+                return .none
+            case .focus:
+                return .none
+            case .log:
+                return .none
+            case .focusDetail:
+                return .none
+            }
         }
     }
 }

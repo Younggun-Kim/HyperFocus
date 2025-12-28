@@ -115,7 +115,7 @@ struct FocusHomeView: View {
     
     // MARK: 시작 버튼
     var StartButton: some View {
-        Image("ic_play_start")
+        Image(Assets.icPlay.rawValue)
             .gesture(TapGesture().onEnded{ _ in
                 HapticUtils.impact(style: .medium)
                 store.send(.addBtnTapped)
