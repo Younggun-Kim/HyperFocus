@@ -16,7 +16,7 @@ struct MainView: View {
             get: { store.selectedTab },
             set: { store.send(.tabChanged($0)) }
         )) {
-            FocusView(store: store.scope(state: \.focus, action: \.focus))
+            FocusHomeView(store: store.scope(state: \.focus, action: \.focus))
                 .tabItem {
                     Label("Focus", systemImage: "timer")
                 }

@@ -18,18 +18,18 @@ struct MainFeature {
     @ObservableState
     struct State: Equatable {
         var selectedTab: MainTab = .focus
-        var focus: FocusFeature.State
+        var focus: FocusHomeFeature.State
         var log: LogFeature.State
         
         init() {
-            self.focus = FocusFeature.State()
+            self.focus = FocusHomeFeature.State()
             self.log = LogFeature.State()
         }
     }
     
     enum Action {
         case tabChanged(MainTab)
-        case focus(FocusFeature.Action)
+        case focus(FocusHomeFeature.Action)
         case log(LogFeature.Action)
     }
     
@@ -46,7 +46,7 @@ struct MainFeature {
             }
         }
         Scope(state: \.focus, action: \.focus) {
-            FocusFeature()
+            FocusHomeFeature()
         }
         Scope(state: \.log, action: \.log) {
             LogFeature()

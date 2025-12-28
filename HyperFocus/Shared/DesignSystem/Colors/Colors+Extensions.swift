@@ -8,7 +8,9 @@
 import SwiftUI
 
 extension Color {
-    
+    static let systemGray: Color = .init(hex: "8E8E93")
+    static let systemLightGray: Color = .init(hex: "#767680")
+    static let systemBlue: Color = .init(hex: "#3CD3FE")
 }
 
 // Color extension for hex color
