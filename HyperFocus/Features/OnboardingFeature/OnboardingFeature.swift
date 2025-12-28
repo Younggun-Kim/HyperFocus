@@ -53,6 +53,10 @@ struct OnboardingFeature {
                 return .none
             case .skipBtnTapped:
                 state.page = OnboardingType.last
+                // 타이머가 실행 중이면 중지
+                if let timerState = state.timer, timerState.isRunning {
+                    return .send(.timer(.reset))
+                }
                 return .none
             case .todoCompleted:
                 state.page = .timer
@@ -68,7 +72,7 @@ struct OnboardingFeature {
             case .timer:
                 return .none
             case .startTapped:
-                return .none
+                return .send(.delegate(.onboardingCompleted))
             case .delegate:
                 return .none
             }

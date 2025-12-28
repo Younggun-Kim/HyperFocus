@@ -14,6 +14,7 @@ struct AppFeature {
     struct State: Equatable {
         var splash: SplashFeature.State?
         var onboarding: OnboardingFeature.State?
+        var main: MainFeature.State?
         
         init() {
             // 앱 시작 시 Splash 화면 표시
@@ -24,6 +25,7 @@ struct AppFeature {
     enum Action {
         case splash(SplashFeature.Action)
         case onboarding(OnboardingFeature.Action)
+        case main(MainFeature.Action)
     }
     
     var body: some Reducer<State, Action> {
@@ -36,12 +38,16 @@ struct AppFeature {
                 return .none
                 
             case .onboarding(.delegate(.onboardingCompleted)):
-                // Onboarding 완료 시 (추후 구현)
+                // Onboarding 완료 시 Main으로 이동
+                state.onboarding = nil
+                state.main = MainFeature.State()
                 return .none
                 
             case .splash:
                 return .none
             case .onboarding:
+                return .none
+            case .main:
                 return .none
             }
         }
@@ -50,6 +56,9 @@ struct AppFeature {
         }
         .ifLet(\.onboarding, action: \.onboarding) {
             OnboardingFeature()
+        }
+        .ifLet(\.main, action: \.main) {
+            MainFeature()
         }
     }
 }
