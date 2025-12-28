@@ -32,7 +32,7 @@
 		13AC3F662EF6FF4A00CEDC69 /* Font+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F652EF6FF3E00CEDC69 /* Font+Extensions.swift */; };
 		13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F682EF702D600CEDC69 /* AmbientZStack.swift */; };
 		13AC3F6B2EF7030000CEDC69 /* Colors+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F6A2EF702FB00CEDC69 /* Colors+Extensions.swift */; };
-		13AC3F6E2EF7048200CEDC69 /* AmbientStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F6D2EF7047E00CEDC69 /* AmbientStyle.swift */; };
+		13AC3F6E2EF7048200CEDC69 /* AmbientStyleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F6D2EF7047E00CEDC69 /* AmbientStyleType.swift */; };
 		13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F702EF707F800CEDC69 /* OnboardingView.swift */; };
 		13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F722EF7080500CEDC69 /* OnboardingFeature.swift */; };
 		13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F742EF7080A00CEDC69 /* SplashFeature.swift */; };
@@ -67,7 +67,7 @@
 		13AC3F652EF6FF3E00CEDC69 /* Font+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Extensions.swift"; sourceTree = "<group>"; };
 		13AC3F682EF702D600CEDC69 /* AmbientZStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientZStack.swift; sourceTree = "<group>"; };
 		13AC3F6A2EF702FB00CEDC69 /* Colors+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Colors+Extensions.swift"; sourceTree = "<group>"; };
-		13AC3F6D2EF7047E00CEDC69 /* AmbientStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientStyle.swift; sourceTree = "<group>"; };
+		13AC3F6D2EF7047E00CEDC69 /* AmbientStyleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmbientStyleType.swift; sourceTree = "<group>"; };
 		13AC3F702EF707F800CEDC69 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		13AC3F722EF7080500CEDC69 /* OnboardingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeature.swift; sourceTree = "<group>"; };
 		13AC3F742EF7080A00CEDC69 /* SplashFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFeature.swift; sourceTree = "<group>"; };
@@ -119,13 +119,6 @@
 				134BFFAD2EFEBB0A00F1F444 /* TimerView.swift */,
 			);
 			path = Timer;
-			sourceTree = "<group>";
-		};
-		134BFFB32F00F26200F1F444 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		134BFFB62F00F59800F1F444 /* FocusFeature */ = {
@@ -189,7 +182,6 @@
 			isa = PBXGroup;
 			children = (
 				134BFFBC2F00F59800F1F444 /* Main */,
-				134BFFB32F00F26200F1F444 /* Main */,
 				134BFFA12EFD628100F1F444 /* BaseFeature */,
 				13AC3F782EF7090400CEDC69 /* AppFeature */,
 				13AC3F6F2EF707E900CEDC69 /* OnboardingFeature */,
@@ -267,7 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				13AC3F682EF702D600CEDC69 /* AmbientZStack.swift */,
-				13AC3F6D2EF7047E00CEDC69 /* AmbientStyle.swift */,
+				13AC3F6D2EF7047E00CEDC69 /* AmbientStyleType.swift */,
 			);
 			path = Ambient;
 			sourceTree = "<group>";
@@ -385,7 +377,7 @@
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
 				13AC3F662EF6FF4A00CEDC69 /* Font+Extensions.swift in Sources */,
-				13AC3F6E2EF7048200CEDC69 /* AmbientStyle.swift in Sources */,
+				13AC3F6E2EF7048200CEDC69 /* AmbientStyleType.swift in Sources */,
 				13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */,
 				13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */,
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,

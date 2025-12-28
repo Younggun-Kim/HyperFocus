@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct AmbientZStack<Content: View>: View {
-    var style: AmbientStyle
+    var style: AmbientStyleType
     var alignment: Alignment = .center
     
     @ViewBuilder let content: () -> Content

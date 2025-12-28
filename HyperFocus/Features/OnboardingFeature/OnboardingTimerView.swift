@@ -11,7 +11,7 @@ import SwiftUI
 struct OnboardingTimerView: View {
     @Bindable var store: StoreOf<OnboardingFeature>
     
-    @State private var ambientStyle: AmbientStyle = .all282828
+    @State private var ambientStyle: AmbientStyleType = .all282828
     @State private var offset = CGSize(width: 0, height: 0)
     @State private var titleOffset: CGFloat = 0
     @State private var showText: Bool = false
@@ -44,7 +44,7 @@ struct OnboardingTimerView: View {
         .ignoresSafeArea()
         .gesture(TapGesture().onEnded({ _ in
             withAnimation(.easeInOut(duration: 1)) {
-                self.ambientStyle = .blueDark
+                self.ambientStyle = .black
                 self.showText = true
             }
             // Timer 초기화

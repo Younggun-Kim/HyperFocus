@@ -11,7 +11,7 @@ import ComposableArchitecture
 struct OnboardingTodoView: View {
     @Bindable var store: StoreOf<OnboardingFeature>
     
-    @State private var ambientStyle: AmbientStyle = .allBlack
+    @State private var ambientStyle: AmbientStyleType = .allBlack
     @State private var offset = CGSize(width: 0, height: 0)
     @State private var titleOffset: CGFloat = 0
     @State private var showText: Bool = false
@@ -40,7 +40,7 @@ struct OnboardingTodoView: View {
         .ignoresSafeArea()
         .onAppear {
             withAnimation(animation) {
-                self.ambientStyle = .blueDark
+                self.ambientStyle = .black
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                 withAnimation {
