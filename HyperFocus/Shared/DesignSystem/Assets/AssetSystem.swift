@@ -12,4 +12,5 @@ enum AssetSystem: String {
     case icSound = "ic_sound"
     case icSoundMute = "ic_sound_mute"
     case icCheck = "ic_check"
+    case arrowDown = "arrow_down"
 }

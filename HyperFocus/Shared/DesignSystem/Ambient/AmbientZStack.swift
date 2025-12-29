@@ -57,7 +57,7 @@ struct AmbientZStack<Content: View>: View {
 #Preview {
     AmbientZStack(style: .blueDark) {
         Text("HyperFocus")
-            .font(.commingSoon)
+            .font(Font.CommoingSoon.largeTitle)
             .foregroundStyle(.white)
     }
 }

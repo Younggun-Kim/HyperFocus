@@ -22,6 +22,10 @@ struct TimerFeature {
             let seconds = remainingSeconds % 60
             return String(format: "%02d:%02d", minutes, seconds)
         }
+        
+        var isThreeMinutesElapsed: Bool {
+            return (totalSeconds - remainingSeconds) > 3 * 60
+        }
     }
     
     enum Action {
@@ -29,7 +33,6 @@ struct TimerFeature {
         case pause
         case reset
         case timerTick
-        case setDuration(Int) // 초 단위
         case delegate(Delegate)
         
         enum Delegate: Equatable {
@@ -75,12 +78,6 @@ struct TimerFeature {
                 return .none
                 
             case .delegate:
-                return .none
-                
-            case let .setDuration(seconds):
-                state.totalSeconds = seconds
-                state.remainingSeconds = seconds
-                state.progress = 1.0
                 return .none
             }
         }

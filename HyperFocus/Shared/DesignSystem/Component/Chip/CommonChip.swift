@@ -16,7 +16,7 @@ struct CommonChip: View {
     var body: some View {
         Button(action: action) {
             Text(title)
-                .font(.title2.weight(selected ? .bold : .regular))
+                .font(.caption.weight(selected ? .bold : .regular))
                 .foregroundStyle(style.foregroundColor)
                 .padding(.horizontal, 10)
                 .padding(.vertical, 5)

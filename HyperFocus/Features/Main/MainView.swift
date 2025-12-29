@@ -19,16 +19,17 @@ struct MainView: View {
             NavigationStack {
                 FocusHomeView(store: store.scope(state: \.focus, action: \.focus))
                     .navigationDestination(
-                        item: $store.scope(state: \.focusDetail, action: \.focusDetail)) { detailStore in
-                            FocusDetailView(store: detailStore)
-                        }
+                        item: $store.scope(state: \.focusDetail, action: \.focusDetail)
+                    ) { detailStore in
+                        FocusDetailView(store: detailStore)
+                    }
             }
             .tabItem {
                 Label("Focus", systemImage: "timer")
             }
             .tag(MainTab.focus)
             
-            LogView(store: store.scope(state: \.log, action: \.log))
+            LogHomeView(store: store.scope(state: \.log, action: \.log))
                 .tabItem {
                     Label("Log", systemImage: "list.bullet")
                 }

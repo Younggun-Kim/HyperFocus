@@ -14,7 +14,7 @@ struct SplashView: View {
     var body: some View {
         AmbientZStack(style: .black) {
             Text("HyperFocus")
-                .font(.commingSoon)
+                .font(Font.CommoingSoon.largeTitle)
                 .foregroundStyle(.white)
         }
         .onAppear {

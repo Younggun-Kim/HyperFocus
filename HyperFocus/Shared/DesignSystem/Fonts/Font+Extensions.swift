@@ -9,5 +9,10 @@ import SwiftUI
 
 
 extension Font {
-    static let commingSoon: Font = .custom("ComingSoon-Regular", size: 48)
+    struct CommoingSoon: Hashable {
+        static let fontName = "ComingSoon-Regular"
+    
+        static let largeTitle: Font = .custom(fontName, size: 48)
+        static let title: Font = .custom(fontName, size: 25)
+    }
 }

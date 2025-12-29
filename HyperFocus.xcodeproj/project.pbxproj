@@ -14,6 +14,9 @@
 		133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3AC2F025D970081CDF8 /* Alert+Extensions.swift */; };
 		133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3AE2F025E700081CDF8 /* CustomAlertParams.swift */; };
 		133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B02F025E9B0081CDF8 /* CustomAlert.swift */; };
+		133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B32F02A1460081CDF8 /* FocusCompletedBottomSheet.swift */; };
+		133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B52F02A51E0081CDF8 /* FocusCompletedFeature.swift */; };
+		133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B82F02C5DE0081CDF8 /* LogHomeView.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -21,8 +24,7 @@
 		134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFAF2EFEBFA700F1F444 /* TimerFeature.swift */; };
 		134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB12F00EC6D00F1F444 /* OnboardingFinalView.swift */; };
 		134BFFBD2F00F59800F1F444 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFBB2F00F59800F1F444 /* MainView.swift */; };
-		134BFFBE2F00F59800F1F444 /* LogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB82F00F59800F1F444 /* LogView.swift */; };
-		134BFFBF2F00F59800F1F444 /* LogFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB72F00F59800F1F444 /* LogFeature.swift */; };
+		134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB72F00F59800F1F444 /* LogHomeFeature.swift */; };
 		134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB42F00F59800F1F444 /* FocusHomeFeature.swift */; };
 		134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB52F00F59800F1F444 /* FocusHomeView.swift */; };
 		134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFBA2F00F59800F1F444 /* MainFeature.swift */; };
@@ -65,6 +67,9 @@
 		133BD3AC2F025D970081CDF8 /* Alert+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extensions.swift"; sourceTree = "<group>"; };
 		133BD3AE2F025E700081CDF8 /* CustomAlertParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertParams.swift; sourceTree = "<group>"; };
 		133BD3B02F025E9B0081CDF8 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		133BD3B32F02A1460081CDF8 /* FocusCompletedBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCompletedBottomSheet.swift; sourceTree = "<group>"; };
+		133BD3B52F02A51E0081CDF8 /* FocusCompletedFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCompletedFeature.swift; sourceTree = "<group>"; };
+		133BD3B82F02C5DE0081CDF8 /* LogHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeView.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -73,8 +78,7 @@
 		134BFFB12F00EC6D00F1F444 /* OnboardingFinalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFinalView.swift; sourceTree = "<group>"; };
 		134BFFB42F00F59800F1F444 /* FocusHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusHomeFeature.swift; sourceTree = "<group>"; };
 		134BFFB52F00F59800F1F444 /* FocusHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusHomeView.swift; sourceTree = "<group>"; };
-		134BFFB72F00F59800F1F444 /* LogFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogFeature.swift; sourceTree = "<group>"; };
-		134BFFB82F00F59800F1F444 /* LogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogView.swift; sourceTree = "<group>"; };
+		134BFFB72F00F59800F1F444 /* LogHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeFeature.swift; sourceTree = "<group>"; };
 		134BFFBA2F00F59800F1F444 /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
 		134BFFBB2F00F59800F1F444 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		134BFFC52F01073300F1F444 /* FocusGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusGoal.swift; sourceTree = "<group>"; };
@@ -142,6 +146,24 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		133BD3B22F02A1320081CDF8 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3B32F02A1460081CDF8 /* FocusCompletedBottomSheet.swift */,
+				133BD3B52F02A51E0081CDF8 /* FocusCompletedFeature.swift */,
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		133BD3B72F02C5D50081CDF8 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				134BFFB72F00F59800F1F444 /* LogHomeFeature.swift */,
+				133BD3B82F02C5DE0081CDF8 /* LogHomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +202,7 @@
 		134BFFB62F00F59800F1F444 /* FocusFeature */ = {
 			isa = PBXGroup;
 			children = (
+				133BD3B22F02A1320081CDF8 /* Popup */,
 				134BFFD82F01795900F1F444 /* Detail */,
 				134BFFD72F01795300F1F444 /* Home */,
 			);
@@ -189,8 +212,7 @@
 		134BFFB92F00F59800F1F444 /* LogFeature */ = {
 			isa = PBXGroup;
 			children = (
-				134BFFB72F00F59800F1F444 /* LogFeature.swift */,
-				134BFFB82F00F59800F1F444 /* LogView.swift */,
+				133BD3B72F02C5D50081CDF8 /* Home */,
 			);
 			path = LogFeature;
 			sourceTree = "<group>";
@@ -198,7 +220,6 @@
 		134BFFBC2F00F59800F1F444 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				134BFFB92F00F59800F1F444 /* LogFeature */,
 				134BFFBA2F00F59800F1F444 /* MainFeature.swift */,
 				134BFFBB2F00F59800F1F444 /* MainView.swift */,
 			);
@@ -330,6 +351,7 @@
 				13AC3F6F2EF707E900CEDC69 /* OnboardingFeature */,
 				13AC3F572EF6F65B00CEDC69 /* SplashFeature */,
 				134BFFB62F00F59800F1F444 /* FocusFeature */,
+				134BFFB92F00F59800F1F444 /* LogFeature */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -536,6 +558,8 @@
 				134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
+				133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */,
+				133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */,
 				13AC3F662EF6FF4A00CEDC69 /* Font+Extensions.swift in Sources */,
 				13AC3F6E2EF7048200CEDC69 /* AmbientStyleType.swift in Sources */,
 				13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */,
@@ -546,13 +570,13 @@
 				134BFFBD2F00F59800F1F444 /* MainView.swift in Sources */,
 				133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */,
 				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
-				134BFFBE2F00F59800F1F444 /* LogView.swift in Sources */,
-				134BFFBF2F00F59800F1F444 /* LogFeature.swift in Sources */,
+				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
 				134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */,
 				134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */,
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,
+				133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */,
 				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,6 +16,10 @@ struct FocusDetailFeature {
         var focusGoal: FocusGoal
         var focusTime: BasicTime
         var isSoundOn: Bool = true
+        var showWrappingUpAlert: Bool = false
+        var showEarlyWrappingUpAlert: Bool = false
+        var showCompletedBottomSheet: Bool = false
+        var completed: FocusCompletedFeature.State = FocusCompletedFeature.State()
     }
     
     enum Action {
@@ -23,11 +27,22 @@ struct FocusDetailFeature {
         case playToggled
         case sounctToggled
         case checkTapped
+        case wrappingUpAlertDismissed
+        case earlyWrappingUpAlertDismissed
+        case saveAndComplete
+        case resumeTimer
+        case deleteProgress
+        case completedBottomSheetDismissed
+        case completed(FocusCompletedFeature.Action)
     }
     
     var body: some Reducer<State, Action> {
         Scope(state: \.timer, action: \.timer) {
             TimerFeature()
+        }
+        
+        Scope(state: \.completed, action: \.completed) {
+            FocusCompletedFeature()
         }
         
         Reduce { state, action in
@@ -43,9 +58,42 @@ struct FocusDetailFeature {
                 state.isSoundOn = !state.isSoundOn
                 return .none
             case .checkTapped:
-                
-                state.timer.
-                
+                // 3분 이상 경과했는지 확인
+                if state.timer.isThreeMinutesElapsed {
+                    state.showWrappingUpAlert = true
+                } else {
+                    state.showEarlyWrappingUpAlert = true
+                }
+            
+                return .send(.timer(.pause))
+            case .wrappingUpAlertDismissed:
+                state.showWrappingUpAlert = false
+                return .none
+            case .earlyWrappingUpAlertDismissed:
+                state.showEarlyWrappingUpAlert = false
+                return .none
+            case .saveAndComplete:
+                state.showWrappingUpAlert = false
+                state.showCompletedBottomSheet = true
+                return .none
+            case .resumeTimer:
+                state.showWrappingUpAlert = false
+                return .send(.timer(.start))
+            case .deleteProgress:
+                state.showWrappingUpAlert = false
+                return .none
+            case .completedBottomSheetDismissed:
+                state.showCompletedBottomSheet = false
+                return .none
+            case .completed(.finishSession):
+                state.showCompletedBottomSheet = false
+                // TODO: 세션 완료 처리 로직 추가
+                return .none
+            case .completed(.breakAction):
+                state.showCompletedBottomSheet = false
+                // TODO: 5분 휴식 처리 로직 추가
+                return .none
+            case .completed:
                 return .none
             }
         }

@@ -13,12 +13,27 @@ struct FocusText {
     static let running = "Running"
     static let add = "Add"
     
-    
     struct WrapUpAlert {
         static let title = "Wrapping up early?"
         static let description = "You focused for 21m!\nWant to save this progress?"
         static let save = "Save & Complete"
         static let resume = "Resume Timer"
         static let delete = "Delete"
+    }
+    
+    struct EarlyWrapUpAlert {
+        static let title = "Just warming up?"
+        static let description = "It's been under 3 mins.\nKeep going or discard?"
+        static let keep = "Keep Focusing"
+        static let delete = "Delete"
+    }
+    
+    struct CompletedBottomSheet {
+        static let title = "Dopamine Shower! \nFeels good, right? 🚿"
+        static let hyperFocus = "🔥 (Hyperfocus!)"
+        static let good = "🙂 (Good)"
+        static let distracted = "🤯 (Distracted)"
+        static let finishSession = "Finish Session"
+        static let fiveMinBreak = "Take a 5m Break"
     }
 }
