@@ -12,4 +12,13 @@ struct FocusText {
     static let homework = "HomeWork"
     static let running = "Running"
     static let add = "Add"
+    
+    
+    struct WrapUpAlert {
+        static let title = "Wrapping up early?"
+        static let description = "You focused for 21m!\nWant to save this progress?"
+        static let save = "Save & Complete"
+        static let resume = "Resume Timer"
+        static let delete = "Delete"
+    }
 }

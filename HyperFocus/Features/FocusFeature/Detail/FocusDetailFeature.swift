@@ -22,6 +22,7 @@ struct FocusDetailFeature {
         case timer(TimerFeature.Action)
         case playToggled
         case sounctToggled
+        case checkTapped
     }
     
     var body: some Reducer<State, Action> {
@@ -40,6 +41,11 @@ struct FocusDetailFeature {
                 return .send(.timer(.start))
             case .sounctToggled:
                 state.isSoundOn = !state.isSoundOn
+                return .none
+            case .checkTapped:
+                
+                state.timer.
+                
                 return .none
             }
         }

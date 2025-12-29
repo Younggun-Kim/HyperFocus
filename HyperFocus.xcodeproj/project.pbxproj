@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */; };
+		133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */; };
+		133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */; };
+		133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A92F025D310081CDF8 /* CustomAlertModifier.swift */; };
+		133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3AC2F025D970081CDF8 /* Alert+Extensions.swift */; };
+		133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3AE2F025E700081CDF8 /* CustomAlertParams.swift */; };
+		133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B02F025E9B0081CDF8 /* CustomAlert.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -28,7 +35,7 @@
 		134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFDB2F01796800F1F444 /* FocusDetailView.swift */; };
 		134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFDF2F01796C00F1F444 /* FocusDetailFeature.swift */; };
 		134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE62F017E2B00F1F444 /* HapticUtils.swift */; };
-		134BFFEA2F01974A00F1F444 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE92F01974500F1F444 /* Assets.swift */; };
+		134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE92F01974500F1F444 /* AssetSystem.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
 		13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */; };
 		13A74D302EE5CC4C00C3BB48 /* ComposableArchitecture in Frameworks */ = {isa = PBXBuildFile; productRef = 13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */; };
@@ -51,6 +58,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtn.swift; sourceTree = "<group>"; };
+		133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnStyle.swift; sourceTree = "<group>"; };
+		133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnModel.swift; sourceTree = "<group>"; };
+		133BD3A92F025D310081CDF8 /* CustomAlertModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertModifier.swift; sourceTree = "<group>"; };
+		133BD3AC2F025D970081CDF8 /* Alert+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alert+Extensions.swift"; sourceTree = "<group>"; };
+		133BD3AE2F025E700081CDF8 /* CustomAlertParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertParams.swift; sourceTree = "<group>"; };
+		133BD3B02F025E9B0081CDF8 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -72,7 +86,7 @@
 		134BFFDB2F01796800F1F444 /* FocusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusDetailView.swift; sourceTree = "<group>"; };
 		134BFFDF2F01796C00F1F444 /* FocusDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusDetailFeature.swift; sourceTree = "<group>"; };
 		134BFFE62F017E2B00F1F444 /* HapticUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtils.swift; sourceTree = "<group>"; };
-		134BFFE92F01974500F1F444 /* Assets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		134BFFE92F01974500F1F444 /* AssetSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSystem.swift; sourceTree = "<group>"; };
 		13A74D162EE5C77E00C3BB48 /* HyperFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A74D252EE5CB8100C3BB48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperFocusApp.swift; sourceTree = "<group>"; };
@@ -107,6 +121,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		133BD3A02F023A430081CDF8 /* CustomAlert */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3B02F025E9B0081CDF8 /* CustomAlert.swift */,
+				133BD3AE2F025E700081CDF8 /* CustomAlertParams.swift */,
+				133BD3A92F025D310081CDF8 /* CustomAlertModifier.swift */,
+				133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */,
+				133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */,
+				133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */,
+			);
+			path = CustomAlert;
+			sourceTree = "<group>";
+		};
+		133BD3AB2F025D8D0081CDF8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3AC2F025D970081CDF8 /* Alert+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,6 +234,7 @@
 		134BFFD12F0153DB00F1F444 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				133BD3A02F023A430081CDF8 /* CustomAlert */,
 				134BFFD22F0153E100F1F444 /* Chip */,
 			);
 			path = Component;
@@ -234,6 +270,7 @@
 		134BFFE12F017E0F00F1F444 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				133BD3AB2F025D8D0081CDF8 /* Extensions */,
 				134BFFE52F017E2800F1F444 /* Haptic */,
 			);
 			path = Utils;
@@ -250,7 +287,7 @@
 		134BFFE82F01973500F1F444 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				134BFFE92F01974500F1F444 /* Assets.swift */,
+				134BFFE92F01974500F1F444 /* AssetSystem.swift */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -478,15 +515,19 @@
 				134BFFCE2F014FD200F1F444 /* ExampleGoal.swift in Sources */,
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
+				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
+				133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */,
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
 				13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */,
 				134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */,
+				133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */,
+				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
 				134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */,
 				134BFFD02F01502200F1F444 /* BasicTime.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
-				134BFFEA2F01974A00F1F444 /* Assets.swift in Sources */,
+				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
 				134BFFC62F01074500F1F444 /* FocusGoal.swift in Sources */,
 				13A74D372EE5CCFC00C3BB48 /* AppDelegate.swift in Sources */,
 				134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */,
@@ -503,9 +544,12 @@
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
 				13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */,
 				134BFFBD2F00F59800F1F444 /* MainView.swift in Sources */,
+				133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */,
+				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
 				134BFFBE2F00F59800F1F444 /* LogView.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogFeature.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
+				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
 				134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */,
 				134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */,
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,

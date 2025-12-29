@@ -101,7 +101,7 @@ struct FocusHomeView: View {
                     CommonChip(
                         title: type.title,
                         style: .grayFill,
-                        selected: store.time == type,
+                        selected: store.goalTime == type,
                         action: {
                             store.send(.timeChanged(type))
                         }
@@ -115,7 +115,7 @@ struct FocusHomeView: View {
     
     // MARK: 시작 버튼
     var StartButton: some View {
-        Image(Assets.icPlay.rawValue)
+        Image(AssetSystem.icPlay.rawValue)
             .gesture(TapGesture().onEnded{ _ in
                 HapticUtils.impact(style: .medium)
                 store.send(.addBtnTapped)
