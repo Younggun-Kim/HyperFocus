@@ -22,6 +22,10 @@
 		133BD3C42F02D1400081CDF8 /* SettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */; };
 		133BD3C82F03A28E0081CDF8 /* AppConfigUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3C72F03A27F0081CDF8 /* AppConfigUseCase.swift */; };
 		133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3CA2F0403A00081CDF8 /* UserDefaults+Dependency.swift */; };
+		133BD3D32F0411B80081CDF8 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 133BD3D22F0411B80081CDF8 /* Alamofire */; };
+		133BD3D52F0411B80081CDF8 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 133BD3D42F0411B80081CDF8 /* AlamofireDynamic */; };
+		133BD3D82F0411E00081CDF8 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 133BD3D72F0411E00081CDF8 /* CombineMoya */; };
+		133BD3DA2F0411E00081CDF8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 133BD3D92F0411E00081CDF8 /* Moya */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -129,6 +133,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				13A74D302EE5CC4C00C3BB48 /* ComposableArchitecture in Frameworks */,
+				133BD3D52F0411B80081CDF8 /* AlamofireDynamic in Frameworks */,
+				133BD3D82F0411E00081CDF8 /* CombineMoya in Frameworks */,
+				133BD3DA2F0411E00081CDF8 /* Moya in Frameworks */,
+				133BD3D32F0411B80081CDF8 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +202,8 @@
 		133BD3C62F03A2580081CDF8 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				133BD3CF2F0410670081CDF8 /* DataSource */,
+				133BD3CE2F0410610081CDF8 /* Repository */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -204,6 +214,28 @@
 				133BD3CA2F0403A00081CDF8 /* UserDefaults+Dependency.swift */,
 			);
 			path = Dependency;
+			sourceTree = "<group>";
+		};
+		133BD3CE2F0410610081CDF8 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		133BD3CF2F0410670081CDF8 /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3D02F04107B0081CDF8 /* Network */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		133BD3D02F04107B0081CDF8 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
@@ -519,6 +551,10 @@
 			name = HyperFocus;
 			packageProductDependencies = (
 				13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */,
+				133BD3D22F0411B80081CDF8 /* Alamofire */,
+				133BD3D42F0411B80081CDF8 /* AlamofireDynamic */,
+				133BD3D72F0411E00081CDF8 /* CombineMoya */,
+				133BD3D92F0411E00081CDF8 /* Moya */,
 			);
 			productName = HyperFocus;
 			productReference = 13A74D162EE5C77E00C3BB48 /* HyperFocus.app */;
@@ -550,6 +586,8 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
+				133BD3D12F0411B80081CDF8 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				133BD3D62F0411E00081CDF8 /* XCRemoteSwiftPackageReference "Moya" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 13A74D172EE5C77E00C3BB48 /* Products */;
@@ -855,6 +893,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		133BD3D12F0411B80081CDF8 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.0;
+			};
+		};
+		133BD3D62F0411E00081CDF8 /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 15.0.3;
+			};
+		};
 		13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/pointfreeco/swift-composable-architecture";
@@ -866,6 +920,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		133BD3D22F0411B80081CDF8 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 133BD3D12F0411B80081CDF8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		133BD3D42F0411B80081CDF8 /* AlamofireDynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 133BD3D12F0411B80081CDF8 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = AlamofireDynamic;
+		};
+		133BD3D72F0411E00081CDF8 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 133BD3D62F0411E00081CDF8 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = CombineMoya;
+		};
+		133BD3D92F0411E00081CDF8 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 133BD3D62F0411E00081CDF8 /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
 		13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */;
