@@ -20,6 +20,8 @@
 		133BD3BD2F02CFBD0081CDF8 /* LogText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3BC2F02CFBA0081CDF8 /* LogText.swift */; };
 		133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3C12F02D12D0081CDF8 /* SettingView.swift */; };
 		133BD3C42F02D1400081CDF8 /* SettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */; };
+		133BD3C82F03A28E0081CDF8 /* AppConfigUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3C72F03A27F0081CDF8 /* AppConfigUseCase.swift */; };
+		133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3CA2F0403A00081CDF8 /* UserDefaults+Dependency.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -76,6 +78,8 @@
 		133BD3BC2F02CFBA0081CDF8 /* LogText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogText.swift; sourceTree = "<group>"; };
 		133BD3C12F02D12D0081CDF8 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFeature.swift; sourceTree = "<group>"; };
+		133BD3C72F03A27F0081CDF8 /* AppConfigUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigUseCase.swift; sourceTree = "<group>"; };
+		133BD3CA2F0403A00081CDF8 /* UserDefaults+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Dependency.swift"; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -179,6 +183,29 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		133BD3C52F03A2520081CDF8 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3C72F03A27F0081CDF8 /* AppConfigUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		133BD3C62F03A2580081CDF8 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		133BD3C92F0403970081CDF8 /* Dependency */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3CA2F0403A00081CDF8 /* UserDefaults+Dependency.swift */,
+			);
+			path = Dependency;
+			sourceTree = "<group>";
+		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +273,7 @@
 			isa = PBXGroup;
 			children = (
 				134BFFCC2F014FC400F1F444 /* Type */,
+				133BD3C52F03A2520081CDF8 /* UseCase */,
 				134BFFC42F01072900F1F444 /* ValueObject */,
 			);
 			path = Domain;
@@ -349,11 +377,12 @@
 			isa = PBXGroup;
 			children = (
 				13A74D3F2EE5D2D800C3BB48 /* Info.plist */,
-				13A74D352EE5CCAE00C3BB48 /* Application */,
-				134BFFC32F01071E00F1F444 /* Domain */,
-				13AC3F4A2EF6EA5200CEDC69 /* Shared */,
-				13A74D2C2EE5CB8B00C3BB48 /* Features */,
 				13A74D252EE5CB8100C3BB48 /* Assets.xcassets */,
+				13A74D352EE5CCAE00C3BB48 /* Application */,
+				133BD3C62F03A2580081CDF8 /* Data */,
+				134BFFC32F01071E00F1F444 /* Domain */,
+				13A74D2C2EE5CB8B00C3BB48 /* Features */,
+				13AC3F4A2EF6EA5200CEDC69 /* Shared */,
 			);
 			path = HyperFocus;
 			sourceTree = "<group>";
@@ -387,6 +416,7 @@
 		13AC3F4A2EF6EA5200CEDC69 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				133BD3C92F0403970081CDF8 /* Dependency */,
 				134BFFE12F017E0F00F1F444 /* Utils */,
 				13AC3F4B2EF6EA7000CEDC69 /* DesignSystem */,
 			);
@@ -565,8 +595,10 @@
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
 				134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */,
+				133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */,
 				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
 				134BFFD02F01502200F1F444 /* BasicTime.swift in Sources */,
+				133BD3C82F03A28E0081CDF8 /* AppConfigUseCase.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
 				134BFFC62F01074500F1F444 /* FocusGoal.swift in Sources */,

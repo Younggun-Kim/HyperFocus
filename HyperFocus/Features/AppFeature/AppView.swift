@@ -25,14 +25,38 @@ struct AppView: View {
             }
         }
         .animation(.easeInOut, value: store.currentScreen)
+        .onAppear {
+            store.send(.onAppear)
+        }
     }
 }
 
-#Preview {
+#Preview("업데이트 필요") {
     AppView(
-        store: Store(initialState: AppFeature.State()) {
+        store: Store(initialState: {
+            var state = AppFeature.State()
+            state.currentScreen = .splash
+            state.splash = SplashFeature.State()
+            return state
+        }()) {
             AppFeature()
+        } withDependencies: {
+            $0.appConfigUseCase = .preview(needUpdate: true)
         }
     )
 }
 
+#Preview("업데이트 불필요") {
+    AppView(
+        store: Store(initialState: {
+            var state = AppFeature.State()
+            state.currentScreen = .splash
+            state.splash = SplashFeature.State()
+            return state
+        }()) {
+            AppFeature()
+        } withDependencies: {
+            $0.appConfigUseCase = .preview(needUpdate: false)
+        }
+    )
+}

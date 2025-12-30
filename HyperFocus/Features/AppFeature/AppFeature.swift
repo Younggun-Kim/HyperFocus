@@ -16,30 +16,57 @@ enum AppScreen: Equatable {
 
 @Reducer
 struct AppFeature {
+    @Dependency(\.appConfigUseCase) var appConfigUseCase
+    
     @ObservableState
     struct State {
-        var currentScreen: AppScreen = .splash
+        var currentScreen: AppScreen?
         var splash: SplashFeature.State?
         var onboarding: OnboardingFeature.State?
         var main: MainFeature.State?
-        
-        init() {
-            // 앱 시작 시 Splash 화면 표시
-            self.splash = SplashFeature.State()
-        }
     }
     
     enum Action {
+        case onAppear
         case splash(SplashFeature.Action)
         case onboarding(OnboardingFeature.Action)
         case main(MainFeature.Action)
+        case needUpdateRseponse(Result<Bool, Error>)
     }
     
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .onAppear:
+                print("AppFeature.onAppear")
+                state.currentScreen = .splash
+                state.splash = SplashFeature.State()
+                return .none
+                
             case .splash(.delegate(.splashCompleted)):
-                // Splash 완료 시 Onboarding으로 이동
+                return .run { send in
+                    do {
+                        let needUpdate = try await appConfigUseCase.needAppUpdate()
+                        await send(.needUpdateRseponse(.success(needUpdate)))
+                    } catch {
+                        await send(.needUpdateRseponse(.failure(error)))
+                    }
+                }
+                
+            case let .needUpdateRseponse(.success(needUpdate)):
+                if needUpdate {
+                    // TODO: 앱 업데이트 필요 처리
+                    return .none
+                } else {
+                    // Onboarding으로 이동
+                    state.currentScreen = .onboarding
+                    state.splash = nil
+                    state.onboarding = OnboardingFeature.State()
+                    return .none
+                }
+                
+            case .needUpdateRseponse(.failure):
+                // 에러 발생 시 Onboarding으로 이동 (또는 에러 처리)
                 state.currentScreen = .onboarding
                 state.splash = nil
                 state.onboarding = OnboardingFeature.State()
