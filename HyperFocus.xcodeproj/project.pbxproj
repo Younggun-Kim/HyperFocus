@@ -26,6 +26,13 @@
 		133BD3D52F0411B80081CDF8 /* AlamofireDynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 133BD3D42F0411B80081CDF8 /* AlamofireDynamic */; };
 		133BD3D82F0411E00081CDF8 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = 133BD3D72F0411E00081CDF8 /* CombineMoya */; };
 		133BD3DA2F0411E00081CDF8 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 133BD3D92F0411E00081CDF8 /* Moya */; };
+		133BD3E62F04196C0081CDF8 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3DD2F04196C0081CDF8 /* APIError.swift */; };
+		133BD3E72F04196C0081CDF8 /* ExampleTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3E42F04196C0081CDF8 /* ExampleTarget.swift */; };
+		133BD3E82F04196C0081CDF8 /* BaseTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3E02F04196C0081CDF8 /* BaseTarget.swift */; };
+		133BD3E92F04196C0081CDF8 /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3DE2F04196C0081CDF8 /* APIResponse.swift */; };
+		133BD3EA2F04196C0081CDF8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3DF2F04196C0081CDF8 /* APIService.swift */; };
+		133BD3EB2F04196C0081CDF8 /* NetworkPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3E12F04196C0081CDF8 /* NetworkPlugin.swift */; };
+		133BD3EC2F04196C0081CDF8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 133BD3E32F04196C0081CDF8 /* README.md */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -84,6 +91,13 @@
 		133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFeature.swift; sourceTree = "<group>"; };
 		133BD3C72F03A27F0081CDF8 /* AppConfigUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigUseCase.swift; sourceTree = "<group>"; };
 		133BD3CA2F0403A00081CDF8 /* UserDefaults+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Dependency.swift"; sourceTree = "<group>"; };
+		133BD3DD2F04196C0081CDF8 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		133BD3DE2F04196C0081CDF8 /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		133BD3DF2F04196C0081CDF8 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		133BD3E02F04196C0081CDF8 /* BaseTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTarget.swift; sourceTree = "<group>"; };
+		133BD3E12F04196C0081CDF8 /* NetworkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPlugin.swift; sourceTree = "<group>"; };
+		133BD3E32F04196C0081CDF8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		133BD3E42F04196C0081CDF8 /* ExampleTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleTarget.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -234,8 +248,31 @@
 		133BD3D02F04107B0081CDF8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				133BD3E22F04196C0081CDF8 /* Core */,
+				133BD3E32F04196C0081CDF8 /* README.md */,
+				133BD3E52F04196C0081CDF8 /* API */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		133BD3E22F04196C0081CDF8 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3DD2F04196C0081CDF8 /* APIError.swift */,
+				133BD3DE2F04196C0081CDF8 /* APIResponse.swift */,
+				133BD3DF2F04196C0081CDF8 /* APIService.swift */,
+				133BD3E02F04196C0081CDF8 /* BaseTarget.swift */,
+				133BD3E12F04196C0081CDF8 /* NetworkPlugin.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		133BD3E52F04196C0081CDF8 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3E42F04196C0081CDF8 /* ExampleTarget.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
@@ -606,6 +643,7 @@
 			files = (
 				13AC3F632EF6FF1800CEDC69 /* ComingSoon-Regular.ttf in Resources */,
 				13AC3F642EF6FF1800CEDC69 /* LICENSE.txt in Resources */,
+				133BD3EC2F04196C0081CDF8 /* README.md in Resources */,
 				13AC3F5E2EF6FDC100CEDC69 /* Launch Screen.storyboard in Resources */,
 				13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */,
 			);
@@ -623,6 +661,12 @@
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
 				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
+				133BD3E62F04196C0081CDF8 /* APIError.swift in Sources */,
+				133BD3E72F04196C0081CDF8 /* ExampleTarget.swift in Sources */,
+				133BD3E82F04196C0081CDF8 /* BaseTarget.swift in Sources */,
+				133BD3E92F04196C0081CDF8 /* APIResponse.swift in Sources */,
+				133BD3EA2F04196C0081CDF8 /* APIService.swift in Sources */,
+				133BD3EB2F04196C0081CDF8 /* NetworkPlugin.swift in Sources */,
 				133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */,
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
