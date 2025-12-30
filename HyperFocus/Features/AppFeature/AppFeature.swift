@@ -8,10 +8,17 @@
 import ComposableArchitecture
 import Foundation
 
+enum AppScreen: Equatable {
+    case splash
+    case onboarding
+    case main
+}
+
 @Reducer
 struct AppFeature {
     @ObservableState
-    struct State: Equatable {
+    struct State {
+        var currentScreen: AppScreen = .splash
         var splash: SplashFeature.State?
         var onboarding: OnboardingFeature.State?
         var main: MainFeature.State?
@@ -33,12 +40,14 @@ struct AppFeature {
             switch action {
             case .splash(.delegate(.splashCompleted)):
                 // Splash 완료 시 Onboarding으로 이동
+                state.currentScreen = .onboarding
                 state.splash = nil
                 state.onboarding = OnboardingFeature.State()
                 return .none
                 
             case .onboarding(.delegate(.onboardingCompleted)):
                 // Onboarding 완료 시 Main으로 이동
+                state.currentScreen = .main
                 state.onboarding = nil
                 state.main = MainFeature.State()
                 return .none
@@ -60,5 +69,6 @@ struct AppFeature {
         .ifLet(\.main, action: \.main) {
             MainFeature()
         }
+        ._printChanges()
     }
 }

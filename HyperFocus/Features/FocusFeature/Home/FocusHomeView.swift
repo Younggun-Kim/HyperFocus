@@ -13,7 +13,7 @@ struct FocusHomeView: View {
     @FocusState private var isGoalFocused: Bool
     
     var body: some View {
-        NavigationView {
+        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             AmbientZStack(style: .black) {
                 
                 VStack {
@@ -25,6 +25,11 @@ struct FocusHomeView: View {
                 }
             }
             .ignoresSafeArea(.keyboard)
+        } destination: { store in
+            switch store.case {
+            case let .detail(detailStore):
+                FocusDetailView(store: detailStore)
+            }
         }
     }
     

@@ -17,6 +17,9 @@
 		133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B32F02A1460081CDF8 /* FocusCompletedBottomSheet.swift */; };
 		133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B52F02A51E0081CDF8 /* FocusCompletedFeature.swift */; };
 		133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3B82F02C5DE0081CDF8 /* LogHomeView.swift */; };
+		133BD3BD2F02CFBD0081CDF8 /* LogText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3BC2F02CFBA0081CDF8 /* LogText.swift */; };
+		133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3C12F02D12D0081CDF8 /* SettingView.swift */; };
+		133BD3C42F02D1400081CDF8 /* SettingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -70,6 +73,9 @@
 		133BD3B32F02A1460081CDF8 /* FocusCompletedBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCompletedBottomSheet.swift; sourceTree = "<group>"; };
 		133BD3B52F02A51E0081CDF8 /* FocusCompletedFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusCompletedFeature.swift; sourceTree = "<group>"; };
 		133BD3B82F02C5DE0081CDF8 /* LogHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeView.swift; sourceTree = "<group>"; };
+		133BD3BC2F02CFBA0081CDF8 /* LogText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogText.swift; sourceTree = "<group>"; };
+		133BD3C12F02D12D0081CDF8 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
+		133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFeature.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -164,6 +170,15 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		133BD3BF2F02D1190081CDF8 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3C12F02D12D0081CDF8 /* SettingView.swift */,
+				133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +191,7 @@
 		134BFFA22EFD628700F1F444 /* Text */ = {
 			isa = PBXGroup;
 			children = (
+				133BD3BC2F02CFBA0081CDF8 /* LogText.swift */,
 				134BFFA32EFD629100F1F444 /* BaseText.swift */,
 				134BFFCA2F01314200F1F444 /* FocusText.swift */,
 			);
@@ -345,13 +361,14 @@
 		13A74D2C2EE5CB8B00C3BB48 /* Features */ = {
 			isa = PBXGroup;
 			children = (
-				134BFFBC2F00F59800F1F444 /* Main */,
-				134BFFA12EFD628100F1F444 /* BaseFeature */,
 				13AC3F782EF7090400CEDC69 /* AppFeature */,
-				13AC3F6F2EF707E900CEDC69 /* OnboardingFeature */,
-				13AC3F572EF6F65B00CEDC69 /* SplashFeature */,
+				134BFFA12EFD628100F1F444 /* BaseFeature */,
 				134BFFB62F00F59800F1F444 /* FocusFeature */,
 				134BFFB92F00F59800F1F444 /* LogFeature */,
+				134BFFBC2F00F59800F1F444 /* Main */,
+				13AC3F6F2EF707E900CEDC69 /* OnboardingFeature */,
+				133BD3BF2F02D1190081CDF8 /* Setting */,
+				13AC3F572EF6F65B00CEDC69 /* SplashFeature */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -542,11 +559,13 @@
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
 				13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */,
+				133BD3C42F02D1400081CDF8 /* SettingFeature.swift in Sources */,
 				134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */,
 				133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */,
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
 				134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */,
+				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
 				134BFFD02F01502200F1F444 /* BasicTime.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
@@ -560,6 +579,7 @@
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
 				133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */,
 				133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */,
+				133BD3BD2F02CFBD0081CDF8 /* LogText.swift in Sources */,
 				13AC3F662EF6FF4A00CEDC69 /* Font+Extensions.swift in Sources */,
 				13AC3F6E2EF7048200CEDC69 /* AmbientStyleType.swift in Sources */,
 				13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */,

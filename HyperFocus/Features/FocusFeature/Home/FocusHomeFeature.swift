@@ -11,7 +11,7 @@ import Foundation
 @Reducer
 struct FocusHomeFeature {
     @ObservableState
-    struct State: Equatable {
+    struct State {
         var inputText: String = ""
         var focusGoal: FocusGoal?
         var recommendGoals: [String] = ExampleGoal.allCases.compactMap { goal in
@@ -19,18 +19,21 @@ struct FocusHomeFeature {
         }
         var goalTime: BasicTime = .twentyFive
         var errorMessage: String?
+        var path = StackState<Path.State>()
     }
     
+    @CasePathable
     enum Action {
         case inputTextChanged(String)
         case addBtnTapped
         case exampleGoalTapped(String)
         case timeChanged(BasicTime)
-        case delegate(Delegate)
-        
-        enum Delegate: Equatable {
-            case navigateToDetail(FocusGoal, BasicTime)
-        }
+        case path(StackActionOf<Path>)
+    }
+    
+    @Reducer()
+    enum Path {
+        case detail(FocusDetailFeature)
     }
     
     var body: some Reducer<State, Action> {
@@ -55,8 +58,11 @@ struct FocusHomeFeature {
                 
                 state.focusGoal = goal
                 state.errorMessage = nil
-                return .send(.delegate(.navigateToDetail(goal, state.goalTime)))
-            case .delegate:
+                state.path.append(.detail(FocusDetailFeature.State(
+                    timer: TimerFeature.State(),
+                    focusGoal: goal,
+                    focusTime: state.goalTime
+                )))
                 return .none
             case let .exampleGoalTapped(goal):
                 state.inputText = goal
@@ -64,8 +70,11 @@ struct FocusHomeFeature {
             case let .timeChanged(time):
                 state.goalTime = time
                 return .none
+            case .path:
+                return .none
             }
         }
+        .forEach(\.path, action: \.path)
     }
 }
 

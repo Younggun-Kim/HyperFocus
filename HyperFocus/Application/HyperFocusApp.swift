@@ -14,9 +14,6 @@ struct HyperFocusApp: App {
     
     var body: some Scene {
         WindowGroup {
-//            FocusHomeView(store: Store(initialState: FocusHomeFeature.State()) {
-//                FocusHomeFeature()
-//            })
             AppView(
                 store: Store(initialState: AppFeature.State()) {
                     AppFeature()

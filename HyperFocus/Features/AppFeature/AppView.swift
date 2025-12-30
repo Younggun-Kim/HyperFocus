@@ -24,7 +24,7 @@ struct AppView: View {
                     .transition(.opacity)
             }
         }
-        .animation(.easeInOut, value: store.splash != nil)
+        .animation(.easeInOut, value: store.currentScreen)
     }
 }
 

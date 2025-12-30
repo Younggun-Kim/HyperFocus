@@ -16,35 +16,31 @@ enum MainTab: Hashable {
 @Reducer
 struct MainFeature {
     @ObservableState
-    struct State: Equatable {
-        var selectedTab: MainTab = .focus
+    struct State {
+        var selectedTab: MainTab
         var focus: FocusHomeFeature.State
         var log: LogHomeFeature.State
-        @Presents var focusDetail: FocusDetailFeature.State?
         
         init() {
+            self.selectedTab = .focus
             self.focus = FocusHomeFeature.State()
             self.log = LogHomeFeature.State()
         }
     }
     
+    @CasePathable
     enum Action {
         case tabChanged(MainTab)
         case focus(FocusHomeFeature.Action)
         case log(LogHomeFeature.Action)
-        case focusDetail(PresentationAction<FocusDetailFeature.Action>)
     }
     
     var body: some Reducer<State, Action> {
-        
         Scope(state: \.focus, action: \.focus) {
             FocusHomeFeature()
         }
         Scope(state: \.log, action: \.log) {
             LogHomeFeature()
-        }
-        .ifLet(\.$focusDetail, action: \.focusDetail) {
-            FocusDetailFeature()
         }
         
         Reduce { state, action in
@@ -52,18 +48,9 @@ struct MainFeature {
             case let .tabChanged(tab):
                 state.selectedTab = tab
                 return .none
-            case .focus(.delegate(.navigateToDetail(let goal, let time))):
-                state.focusDetail = FocusDetailFeature.State(
-                    timer: TimerFeature.State(),
-                    focusGoal: goal,
-                    focusTime: time
-                )
-                return .none
             case .focus:
                 return .none
             case .log:
-                return .none
-            case .focusDetail:
                 return .none
             }
         }
