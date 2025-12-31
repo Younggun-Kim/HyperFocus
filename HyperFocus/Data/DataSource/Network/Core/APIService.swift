@@ -18,7 +18,7 @@ public protocol APIServiceProtocol {
     ) async throws -> D
     
     /// 요청 실행 (APIResponse 래핑)
-    func request<T: BaseTarget, D: Decodable>(
+    func requestWrapped<T: BaseTarget, D: Decodable>(
         _ target: T,
         responseType: D.Type
     ) async throws -> APIResponse<D>
@@ -49,48 +49,68 @@ public struct APIService: APIServiceProtocol {
         _ target: T,
         responseType: D.Type
     ) async throws -> D {
-        let response = try await provider.request(MultiTarget(target))
-        
-        // HTTP 상태 코드 검증
-        guard (200...299).contains(response.statusCode) else {
-            throw APIError.httpError(
-                statusCode: response.statusCode,
-                message: String(data: response.data, encoding: .utf8)
-            )
-        }
-        
-        // JSON 디코딩
-        do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            return try decoder.decode(D.self, from: response.data)
-        } catch {
-            throw APIError.decodingError("디코딩 실패: \(error.localizedDescription)")
+        return try await withCheckedThrowingContinuation { continuation in
+            provider.request(MultiTarget(target)) { result in
+                switch result {
+                case .success(let response):
+                    // HTTP 상태 코드 검증
+                    guard (200...299).contains(response.statusCode) else {
+                        continuation.resume(throwing: APIError.httpError(
+                            statusCode: response.statusCode,
+                            message: String(data: response.data, encoding: .utf8)
+                        ))
+                        return
+                    }
+                    
+                    // JSON 디코딩
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        let decoded = try decoder.decode(D.self, from: response.data)
+                        continuation.resume(returning: decoded)
+                    } catch {
+                        continuation.resume(throwing: APIError.decodingError("디코딩 실패: \(error.localizedDescription)"))
+                    }
+                    
+                case .failure(let error):
+                    continuation.resume(throwing: APIError.from(error))
+                }
+            }
         }
     }
     
     /// APIResponse로 래핑된 요청 실행
-    public func request<T: BaseTarget, D: Decodable>(
+    public func requestWrapped<T: BaseTarget, D: Decodable>(
         _ target: T,
         responseType: D.Type
     ) async throws -> APIResponse<D> {
-        let response = try await provider.request(MultiTarget(target))
-        
-        // HTTP 상태 코드 검증
-        guard (200...299).contains(response.statusCode) else {
-            throw APIError.httpError(
-                statusCode: response.statusCode,
-                message: String(data: response.data, encoding: .utf8)
-            )
-        }
-        
-        // JSON 디코딩
-        do {
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            return try decoder.decode(APIResponse<D>.self, from: response.data)
-        } catch {
-            throw APIError.decodingError("디코딩 실패: \(error.localizedDescription)")
+        return try await withCheckedThrowingContinuation { continuation in
+            provider.request(MultiTarget(target)) { result in
+                switch result {
+                case .success(let response):
+                    // HTTP 상태 코드 검증
+                    guard (200...299).contains(response.statusCode) else {
+                        continuation.resume(throwing: APIError.httpError(
+                            statusCode: response.statusCode,
+                            message: String(data: response.data, encoding: .utf8)
+                        ))
+                        return
+                    }
+                    
+                    // JSON 디코딩
+                    do {
+                        let decoder = JSONDecoder()
+                        decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        let decoded = try decoder.decode(APIResponse<D>.self, from: response.data)
+                        continuation.resume(returning: decoded)
+                    } catch {
+                        continuation.resume(throwing: APIError.decodingError("디코딩 실패: \(error.localizedDescription)"))
+                    }
+                    
+                case .failure(let error):
+                    continuation.resume(throwing: APIError.from(error))
+                }
+            }
         }
     }
 }

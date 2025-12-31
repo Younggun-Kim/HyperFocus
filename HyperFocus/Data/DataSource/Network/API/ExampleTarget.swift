@@ -7,6 +7,7 @@
 
 import Foundation
 import Moya
+import Alamofire
 
 /// 예시 API Target
 /// 실제 API를 추가할 때 이 파일을 참고하세요.
