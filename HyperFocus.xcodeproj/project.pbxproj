@@ -58,6 +58,12 @@
 		137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0922F09582F00EE44AA /* LoginUseCase.swift */; };
 		137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0952F095DEB00EE44AA /* LocalDataSource.swift */; };
 		137AE0992F095E5900EE44AA /* TokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0982F095E5300EE44AA /* TokenEntity.swift */; };
+		137AE09D2F09701400EE44AA /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 137AE09C2F09701400EE44AA /* AmplitudeSwift */; };
+		137AE09F2F09702A00EE44AA /* AmplitudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE09E2F09702600EE44AA /* AmplitudeService.swift */; };
+		137AE0A32F09717F00EE44AA /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 137AE0A22F09717F00EE44AA /* Production.xcconfig */; };
+		137AE0A52F09718700EE44AA /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 137AE0A42F09718700EE44AA /* Development.xcconfig */; };
+		137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AD2F0973A200EE44AA /* Environment.swift */; };
+		137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -146,6 +152,11 @@
 		137AE0922F09582F00EE44AA /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
 		137AE0952F095DEB00EE44AA /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
 		137AE0982F095E5300EE44AA /* TokenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEntity.swift; sourceTree = "<group>"; };
+		137AE09E2F09702600EE44AA /* AmplitudeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeService.swift; sourceTree = "<group>"; };
+		137AE0A22F09717F00EE44AA /* Production.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Production.xcconfig; sourceTree = "<group>"; };
+		137AE0A42F09718700EE44AA /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
+		137AE0AD2F0973A200EE44AA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Dependency.swift"; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -198,6 +209,7 @@
 				13A74D302EE5CC4C00C3BB48 /* ComposableArchitecture in Frameworks */,
 				13AB722B2F055D18006E3F70 /* Alamofire in Frameworks */,
 				133BD3D82F0411E00081CDF8 /* CombineMoya in Frameworks */,
+				137AE09D2F09701400EE44AA /* AmplitudeSwift in Frameworks */,
 				133BD3DA2F0411E00081CDF8 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -533,6 +545,23 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		137AE09A2F096FDA00EE44AA /* Amplitude */ = {
+			isa = PBXGroup;
+			children = (
+				137AE09E2F09702600EE44AA /* AmplitudeService.swift */,
+			);
+			path = Amplitude;
+			sourceTree = "<group>";
+		};
+		137AE0AC2F09739A00EE44AA /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0AD2F0973A200EE44AA /* Environment.swift */,
+				137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		13827A122F091596008FB39A /* Device */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +632,8 @@
 				13A74D362EE5CCFC00C3BB48 /* AppDelegate.swift */,
 				13A74D382EE5CD0E00C3BB48 /* SceneDelegate.swift */,
 				13AC3F5D2EF6FDC100CEDC69 /* Launch Screen.storyboard */,
+				137AE0A22F09717F00EE44AA /* Production.xcconfig */,
+				137AE0A42F09718700EE44AA /* Development.xcconfig */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -627,6 +658,8 @@
 		13AC3F4A2EF6EA5200CEDC69 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0AC2F09739A00EE44AA /* Environment */,
+				137AE09A2F096FDA00EE44AA /* Amplitude */,
 				133BD3C92F0403970081CDF8 /* Dependency */,
 				134BFFE12F017E0F00F1F444 /* Utils */,
 				13AC3F4B2EF6EA7000CEDC69 /* DesignSystem */,
@@ -756,6 +789,7 @@
 				133BD3D72F0411E00081CDF8 /* CombineMoya */,
 				133BD3D92F0411E00081CDF8 /* Moya */,
 				13AB722A2F055D18006E3F70 /* Alamofire */,
+				137AE09C2F09701400EE44AA /* AmplitudeSwift */,
 			);
 			productName = HyperFocus;
 			productReference = 13A74D162EE5C77E00C3BB48 /* HyperFocus.app */;
@@ -793,6 +827,7 @@
 				13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */,
 				133BD3D62F0411E00081CDF8 /* XCRemoteSwiftPackageReference "Moya" */,
 				13AB72292F055D18006E3F70 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				137AE09B2F09701400EE44AA /* XCRemoteSwiftPackageReference "Amplitude-Swift" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 13A74D172EE5C77E00C3BB48 /* Products */;
@@ -818,9 +853,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				13AC3F632EF6FF1800CEDC69 /* ComingSoon-Regular.ttf in Resources */,
+				137AE0A32F09717F00EE44AA /* Production.xcconfig in Resources */,
 				13AC3F642EF6FF1800CEDC69 /* LICENSE.txt in Resources */,
 				133BD3EC2F04196C0081CDF8 /* README.md in Resources */,
 				13AC3F5E2EF6FDC100CEDC69 /* Launch Screen.storyboard in Resources */,
+				137AE0A52F09718700EE44AA /* Development.xcconfig in Resources */,
 				13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -890,13 +927,16 @@
 				137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */,
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
+				137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
 				13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */,
 				134BFFBD2F00F59800F1F444 /* MainView.swift in Sources */,
+				137AE09F2F09702A00EE44AA /* AmplitudeService.swift in Sources */,
 				13827A162F09172E008FB39A /* AppRepository.swift in Sources */,
 				133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */,
 				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
 				137AE08E2F09551200EE44AA /* LoginResponse.swift in Sources */,
+				137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
@@ -921,58 +961,9 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		13827A2A2F092028008FB39A /* Debug */ = {
+		137AE0A62F09727A00EE44AA /* Production */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B2V8LG7269;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocusTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperFocus";
-			};
-			name = Debug;
-		};
-		13827A2B2F092028008FB39A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B2V8LG7269;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocusTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperFocus";
-			};
-			name = Release;
-		};
-		13A74D1F2EE5C78000C3BB48 /* Debug */ = {
-			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137AE0A22F09717F00EE44AA /* Production.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1033,10 +1024,75 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = Production;
 		};
-		13A74D202EE5C78000C3BB48 /* Release */ = {
+		137AE0A72F09727A00EE44AA /* Production */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137AE0A22F09717F00EE44AA /* Production.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B2V8LG7269;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HyperFocus/Application/Info.plist;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "${APP_BUNDLE_ID}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Production;
+		};
+		137AE0A82F09727A00EE44AA /* Production */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137AE0A22F09717F00EE44AA /* Production.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B2V8LG7269;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperFocus";
+			};
+			name = Production;
+		};
+		137AE0A92F09728000EE44AA /* Deveopment */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137AE0A42F09718700EE44AA /* Development.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1069,13 +1125,19 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = B2V8LG7269;
-				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -1084,16 +1146,18 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 26.1;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				VALIDATE_PRODUCT = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Release;
+			name = Deveopment;
 		};
-		13A74D222EE5C78000C3BB48 /* Debug */ = {
+		137AE0AA2F09728000EE44AA /* Deveopment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137AE0A42F09718700EE44AA /* Development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1113,7 +1177,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocus;
+				PRODUCT_BUNDLE_IDENTIFIER = "${APP_BUNDLE_ID}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -1127,44 +1191,33 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
-			name = Debug;
+			name = Deveopment;
 		};
-		13A74D232EE5C78000C3BB48 /* Release */ = {
+		137AE0AB2F09728000EE44AA /* Deveopment */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 137AE0A42F09718700EE44AA /* Development.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = B2V8LG7269;
-				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HyperFocus/Application/Info.plist;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocus;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocusTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = nonisolated;
-				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperFocus";
 			};
-			name = Release;
+			name = Deveopment;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1172,29 +1225,29 @@
 		13827A292F092028008FB39A /* Build configuration list for PBXNativeTarget "HyperFocusTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13827A2A2F092028008FB39A /* Debug */,
-				13827A2B2F092028008FB39A /* Release */,
+				137AE0AB2F09728000EE44AA /* Deveopment */,
+				137AE0A82F09727A00EE44AA /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Deveopment;
 		};
 		13A74D112EE5C77E00C3BB48 /* Build configuration list for PBXProject "HyperFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13A74D1F2EE5C78000C3BB48 /* Debug */,
-				13A74D202EE5C78000C3BB48 /* Release */,
+				137AE0A92F09728000EE44AA /* Deveopment */,
+				137AE0A62F09727A00EE44AA /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Deveopment;
 		};
 		13A74D212EE5C78000C3BB48 /* Build configuration list for PBXNativeTarget "HyperFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				13A74D222EE5C78000C3BB48 /* Debug */,
-				13A74D232EE5C78000C3BB48 /* Release */,
+				137AE0AA2F09728000EE44AA /* Deveopment */,
+				137AE0A72F09727A00EE44AA /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Deveopment;
 		};
 /* End XCConfigurationList section */
 
@@ -1205,6 +1258,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 15.0.3;
+			};
+		};
+		137AE09B2F09701400EE44AA /* XCRemoteSwiftPackageReference "Amplitude-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/Amplitude-Swift";
+			requirement = {
+				branch = main;
+				kind = branch;
 			};
 		};
 		13A74D2E2EE5CC4C00C3BB48 /* XCRemoteSwiftPackageReference "swift-composable-architecture" */ = {
@@ -1235,6 +1296,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 133BD3D62F0411E00081CDF8 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		137AE09C2F09701400EE44AA /* AmplitudeSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 137AE09B2F09701400EE44AA /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
+			productName = AmplitudeSwift;
 		};
 		13A74D2F2EE5CC4C00C3BB48 /* ComposableArchitecture */ = {
 			isa = XCSwiftPackageProductDependency;

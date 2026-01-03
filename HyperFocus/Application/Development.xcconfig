@@ -1,0 +1,15 @@
+//
+//  Development.xcconfig
+//  HyperFocus
+//
+//  Created by 김영건 on 1/4/26.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+APP_BUNDLE_ID=com.hyperfocus.timer.HyperFocus.dev
+API_BASE_URL=https:/$()/api-dev-hyperfocus.meetory.io
+APP_NAME=HyperFocus개발
+
+AMPLITUDE_API_KEY=4513a3fb6b65ee201eb61679896e6869
