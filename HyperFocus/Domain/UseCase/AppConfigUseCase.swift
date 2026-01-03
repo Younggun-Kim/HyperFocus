@@ -16,9 +16,9 @@ extension AppConfigUseCase: DependencyKey {
     public static var liveValue = AppConfigUseCase(
         needAppUpdate: {
             @Dependency(\.appRepository) var appRepository
-            @Dependency(\.userDefaults) var userDefaults
             
-            return false
+            let currentVersion = appRepository.getAppVersion()
+            return  try await appRepository.checkAppVersion(currentVersion).data?.forceUpdate == true
         }
     )
     

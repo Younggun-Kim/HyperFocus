@@ -47,6 +47,7 @@ struct AppFeature {
                 return .run { send in
                     do {
                         let needUpdate = try await appConfigUseCase.needAppUpdate()
+                        
                         await send(.needUpdateRseponse(.success(needUpdate)))
                     } catch {
                         await send(.needUpdateRseponse(.failure(error)))
@@ -67,9 +68,9 @@ struct AppFeature {
                 
             case .needUpdateRseponse(.failure):
                 // 에러 발생 시 Onboarding으로 이동 (또는 에러 처리)
-                state.currentScreen = .onboarding
-                state.splash = nil
-                state.onboarding = OnboardingFeature.State()
+//                state.currentScreen = .onboarding
+//                state.splash = nil
+//                state.onboarding = OnboardingFeature.State()
                 return .none
                 
             case .onboarding(.delegate(.onboardingCompleted)):

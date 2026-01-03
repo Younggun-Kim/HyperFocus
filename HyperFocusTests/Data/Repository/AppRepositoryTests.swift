@@ -83,6 +83,20 @@ struct AppRepositoryTests {
         #expect(buildNumber == "1")
     }
     
+    @Test("Test Value로 앱 버전 체크 - Mock 응답 반환 확인")
+    func testCheckAppVersion_WithTestValue_ReturnsMockResponse() async throws {
+        let repository = AppRepository.testValue
+        
+        let response = try await repository.checkAppVersion("1.0.0")
+        
+        #expect(response.success == true)
+        #expect(response.data != nil)
+        #expect(response.data?.currentVersion == "1.0.0")
+        #expect(response.data?.latestVersion == nil)
+        #expect(response.data?.updateRequired == false)
+        #expect(response.data?.forceUpdate == false)
+    }
+    
     // MARK: - Custom Repository Tests
     
     @Test("커스텀 AppRepository 생성 및 값 반환 확인")
@@ -92,7 +106,8 @@ struct AppRepositoryTests {
         
         let repository = AppRepository(
             getAppVersion: { customVersion },
-            getBuildNumber: { customBuildNumber }
+            getBuildNumber: { customBuildNumber },
+            checkAppVersion: { _ in AppVersionCheckResponse.mock }
         )
         
         #expect(repository.getAppVersion() == customVersion)
@@ -106,7 +121,8 @@ struct AppRepositoryTests {
         
         let repository1 = AppRepository(
             getAppVersion: { version1 },
-            getBuildNumber: { buildNumber1 }
+            getBuildNumber: { buildNumber1 },
+            checkAppVersion: { _ in AppVersionCheckResponse.mock }
         )
         
         let version2 = "4.0.0"
@@ -114,7 +130,8 @@ struct AppRepositoryTests {
         
         let repository2 = AppRepository(
             getAppVersion: { version2 },
-            getBuildNumber: { buildNumber2 }
+            getBuildNumber: { buildNumber2 },
+            checkAppVersion: { _ in AppVersionCheckResponse.mock }
         )
         
         // 각 Repository가 독립적으로 동작하는지 확인
@@ -142,7 +159,8 @@ struct AppRepositoryTests {
             },
             getBuildNumber: {
                 mockDataSource.getBuildNumber()
-            }
+            },
+            checkAppVersion: { _ in AppVersionCheckResponse.mock }
         )
         
         #expect(repository.getAppVersion() == mockVersion)
@@ -161,7 +179,8 @@ struct AppRepositoryTests {
         
         let repository1 = AppRepository(
             getAppVersion: { dataSource1.getAppVersion() },
-            getBuildNumber: { dataSource1.getBuildNumber() }
+            getBuildNumber: { dataSource1.getBuildNumber() },
+            checkAppVersion: { _ in AppVersionCheckResponse.mock }
         )
         
         let version2 = "7.0.0"
@@ -174,7 +193,8 @@ struct AppRepositoryTests {
         
         let repository2 = AppRepository(
             getAppVersion: { dataSource2.getAppVersion() },
-            getBuildNumber: { dataSource2.getBuildNumber() }
+            getBuildNumber: { dataSource2.getBuildNumber() },
+            checkAppVersion: { _ in AppVersionCheckResponse.mock }
         )
         
         #expect(repository1.getAppVersion() == version1)
@@ -183,16 +203,166 @@ struct AppRepositoryTests {
         #expect(repository2.getBuildNumber() == buildNumber2)
     }
     
+    // MARK: - CheckAppVersion Tests
+    
+    @Test("커스텀 AppRepository로 checkAppVersion 호출 - 커스텀 응답 반환 확인")
+    func testCheckAppVersion_WithCustomRepository_ReturnsCustomResponse() async throws {
+        let customResponse = AppVersionCheckResponse(
+            success: true,
+            data: AppVersionData(
+                platform: "IOS",
+                currentVersion: "1.0.0",
+                latestVersion: "2.0.0",
+                minimumVersion: "1.0.0",
+                recommendedVersion: "1.5.0",
+                updateType: "OPTIONAL",
+                updateRequired: true,
+                forceUpdate: false,
+                message: "새로운 기능이 추가되었습니다.",
+                storeUrl: "https://apps.apple.com/app/id123456789",
+                releaseNotes: "- 새로운 기능 추가"
+            ),
+            code: "A001",
+            message: nil
+        )
+        
+        let repository = AppRepository(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            checkAppVersion: { _ in customResponse }
+        )
+        
+        let response = try await repository.checkAppVersion("1.0.0")
+        
+        #expect(response.success == true)
+        #expect(response.data?.latestVersion == "2.0.0")
+        #expect(response.data?.updateRequired == true)
+        #expect(response.data?.forceUpdate == false)
+        #expect(response.data?.updateType == "OPTIONAL")
+    }
+    
+    @Test("checkAppVersion - 강제 업데이트 필요 케이스")
+    func testCheckAppVersion_ForceUpdateRequired() async throws {
+        let forceUpdateResponse = AppVersionCheckResponse(
+            success: true,
+            data: AppVersionData(
+                platform: "IOS",
+                currentVersion: "1.0.0",
+                latestVersion: "2.0.0",
+                minimumVersion: "1.5.0",
+                recommendedVersion: "2.0.0",
+                updateType: "REQUIRED",
+                updateRequired: true,
+                forceUpdate: true,
+                message: "강제 업데이트가 필요합니다.",
+                storeUrl: "https://apps.apple.com/app/id123456789",
+                releaseNotes: "- 보안 업데이트"
+            ),
+            code: "A001",
+            message: nil
+        )
+        
+        let repository = AppRepository(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            checkAppVersion: { _ in forceUpdateResponse }
+        )
+        
+        let response = try await repository.checkAppVersion("1.0.0")
+        
+        #expect(response.data?.forceUpdate == true)
+        #expect(response.data?.updateRequired == true)
+        #expect(response.data?.updateType == "REQUIRED")
+        #expect(response.data?.message == "강제 업데이트가 필요합니다.")
+    }
+    
+    @Test("checkAppVersion - 업데이트 불필요 케이스")
+    func testCheckAppVersion_NoUpdateRequired() async throws {
+        let noUpdateResponse = AppVersionCheckResponse(
+            success: true,
+            data: AppVersionData(
+                platform: "IOS",
+                currentVersion: "2.0.0",
+                latestVersion: "2.0.0",
+                minimumVersion: "1.0.0",
+                recommendedVersion: "2.0.0",
+                updateType: "NONE",
+                updateRequired: false,
+                forceUpdate: false,
+                message: nil,
+                storeUrl: nil,
+                releaseNotes: nil
+            ),
+            code: "A001",
+            message: nil
+        )
+        
+        let repository = AppRepository(
+            getAppVersion: { "2.0.0" },
+            getBuildNumber: { "1" },
+            checkAppVersion: { _ in noUpdateResponse }
+        )
+        
+        let response = try await repository.checkAppVersion("2.0.0")
+        
+        #expect(response.data?.updateRequired == false)
+        #expect(response.data?.forceUpdate == false)
+        #expect(response.data?.updateType == "NONE")
+        #expect(response.data?.currentVersion == "2.0.0")
+        #expect(response.data?.latestVersion == "2.0.0")
+    }
+    
+    @Test("checkAppVersion - 다양한 버전으로 호출 시 올바른 응답 반환")
+    func testCheckAppVersion_WithDifferentVersions() async throws {
+        let repository = AppRepository(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            checkAppVersion: { currentVersion in
+                AppVersionCheckResponse(
+                    success: true,
+                    data: AppVersionData(
+                        platform: "IOS",
+                        currentVersion: currentVersion,
+                        latestVersion: "2.0.0",
+                        minimumVersion: "1.0.0",
+                        recommendedVersion: "1.5.0",
+                        updateType: currentVersion == "1.0.0" ? "OPTIONAL" : "NONE",
+                        updateRequired: currentVersion != "2.0.0",
+                        forceUpdate: false,
+                        message: nil,
+                        storeUrl: nil,
+                        releaseNotes: nil
+                    ),
+                    code: "A001",
+                    message: nil
+                )
+            }
+        )
+        
+        let response1 = try await repository.checkAppVersion("1.0.0")
+        #expect(response1.data?.currentVersion == "1.0.0")
+        #expect(response1.data?.updateRequired == true)
+        
+        let response2 = try await repository.checkAppVersion("2.0.0")
+        #expect(response2.data?.currentVersion == "2.0.0")
+        #expect(response2.data?.updateRequired == false)
+    }
+    
     // MARK: - Preview Value Tests
     
     @Test("Preview Value가 Test Value와 동일한지 확인")
-    func testPreviewValue_ReturnsTestValue() {
+    func testPreviewValue_ReturnsTestValue() async throws {
         let previewRepository = AppRepository.previewValue
         let testRepository = AppRepository.testValue
         
         // previewValue는 testValue를 반환해야 함
         #expect(previewRepository.getAppVersion() == testRepository.getAppVersion())
         #expect(previewRepository.getBuildNumber() == testRepository.getBuildNumber())
+        
+        // checkAppVersion도 동일한지 확인
+        let previewResponse = try await previewRepository.checkAppVersion("1.0.0")
+        let testResponse = try await testRepository.checkAppVersion("1.0.0")
+        #expect(previewResponse == testResponse)
     }
     
     // MARK: - Edge Cases Tests
@@ -251,11 +421,44 @@ struct AppRepositoryTests {
     func testCustomRepository_VariousValues(version: String, buildNumber: String) async throws {
         let repository = AppRepository(
             getAppVersion: { version },
-            getBuildNumber: { buildNumber }
+            getBuildNumber: { buildNumber },
+            checkAppVersion: { _ in AppVersionCheckResponse.mock }
         )
         
         #expect(repository.getAppVersion() == version)
         #expect(repository.getBuildNumber() == buildNumber)
+    }
+    
+    @Test("다양한 버전으로 checkAppVersion 테스트", arguments: checkAppVersionTestCases)
+    func testCheckAppVersion_VariousVersions(currentVersion: String, expectedUpdateRequired: Bool) async throws {
+        let repository = AppRepository(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            checkAppVersion: { version in
+                AppVersionCheckResponse(
+                    success: true,
+                    data: AppVersionData(
+                        platform: "IOS",
+                        currentVersion: version,
+                        latestVersion: "2.0.0",
+                        minimumVersion: "1.0.0",
+                        recommendedVersion: "1.5.0",
+                        updateType: expectedUpdateRequired ? "OPTIONAL" : "NONE",
+                        updateRequired: expectedUpdateRequired,
+                        forceUpdate: false,
+                        message: expectedUpdateRequired ? "업데이트가 권장됩니다." : nil,
+                        storeUrl: expectedUpdateRequired ? "https://apps.apple.com/app/id123456789" : nil,
+                        releaseNotes: nil
+                    ),
+                    code: "A001",
+                    message: nil
+                )
+            }
+        )
+        
+        let response = try await repository.checkAppVersion(currentVersion)
+        #expect(response.data?.currentVersion == currentVersion)
+        #expect(response.data?.updateRequired == expectedUpdateRequired)
     }
     
     // MARK: - Arguments for Parameterized Test
@@ -267,6 +470,15 @@ struct AppRepositoryTests {
             ("10.0.0", "100"),
             ("0.1.0", "0"),
             ("99.99.99", "9999")
+        ]
+    }
+    
+    static var checkAppVersionTestCases: [(String, Bool)] {
+        [
+            ("1.0.0", true),   // 업데이트 필요
+            ("1.5.0", true),   // 업데이트 필요
+            ("2.0.0", false),  // 업데이트 불필요
+            ("2.1.0", false)   // 업데이트 불필요
         ]
     }
 }

@@ -11,15 +11,13 @@ import Moya
 /// 기본 TargetType 프로토콜
 /// 모든 API Target은 이 프로토콜을 준수해야 합니다.
 public protocol BaseTarget: TargetType {
-    /// API 버전 (선택사항)
-    var apiVersion: String? { get }
 }
 
 public extension BaseTarget {
     /// 기본 baseURL (환경에 따라 변경 가능)
     var baseURL: URL {
         // TODO: 환경별 baseURL 설정 (Development, Staging, Production)
-        guard let url = URL(string: "https://api.example.com") else {
+        guard let url = URL(string: "https://api-dev-hyperfocus.meetory.io/") else {
             fatalError("Invalid baseURL")
         }
         return url
@@ -31,12 +29,6 @@ public extension BaseTarget {
             "Content-Type": "application/json",
             "Accept": "application/json"
         ]
-        
-        // API 버전이 있으면 추가
-        if let apiVersion = apiVersion {
-            headers["API-Version"] = apiVersion
-        }
-        
         // TODO: 인증 토큰 추가
         // if let token = AuthManager.shared.token {
         //     headers["Authorization"] = "Bearer \(token)"

@@ -11,6 +11,7 @@ import ComposableArchitecture
 public struct AppRepository {
     public let getAppVersion: @Sendable () -> String
     public let getBuildNumber: @Sendable () -> String
+    public let checkAppVersion: @Sendable (_ currentVersion: String) async throws -> AppVersionCheckResponse
 }
 
 extension AppRepository: DependencyKey {
@@ -22,12 +23,20 @@ extension AppRepository: DependencyKey {
         getBuildNumber: {
             @Dependency(\.deviceDataSource) var deviceDataSource
             return deviceDataSource.getBuildNumber()
+        },
+        checkAppVersion: { currentVersion in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.request(
+                AppVersionAPI.checkAppVersion(currentVersion: currentVersion),
+                responseType: AppVersionCheckResponse.self
+            )
         }
     )
     
     public static var testValue: AppRepository = AppRepository(
         getAppVersion: { "1.0.0" },
-        getBuildNumber: { "1" }
+        getBuildNumber: { "1" },
+        checkAppVersion: { _ in AppVersionCheckResponse.mock }
     )
     
     public static var previewValue: AppRepository {
