@@ -10,6 +10,7 @@ import SwiftUI
 
 struct OnboardingView: View {
     @Bindable var store: StoreOf<OnboardingFeature>
+    @Dependency(\.amplitudeService) var amplitudeService
     
     
     var body: some View {
@@ -19,10 +20,19 @@ struct OnboardingView: View {
         )) {
             OnboardingTodoView(store: store)
                 .tag(OnboardingType.todo)
+                .onAppear {
+                    amplitudeService.track(.viewOnboardingIntro)
+                }
             OnboardingTimerView(store: store)
                 .tag(OnboardingType.timer)
+                .onAppear {
+                    amplitudeService.track(.viewOnboardingTimer)
+                }
             OnboardingFinalView(store: store)
                 .tag(OnboardingType.finally)
+                .onAppear {
+                    amplitudeService.track(.viewOnboardingStart)
+                }
         }
         .onAppear{
             UIScrollView.appearance().bounces = false

@@ -64,6 +64,7 @@
 		137AE0A52F09718700EE44AA /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 137AE0A42F09718700EE44AA /* Development.xcconfig */; };
 		137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AD2F0973A200EE44AA /* Environment.swift */; };
 		137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */; };
+		137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -157,6 +158,7 @@
 		137AE0A42F09718700EE44AA /* Development.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Development.xcconfig; sourceTree = "<group>"; };
 		137AE0AD2F0973A200EE44AA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Dependency.swift"; sourceTree = "<group>"; };
+		137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeEvent.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -549,6 +551,7 @@
 			isa = PBXGroup;
 			children = (
 				137AE09E2F09702600EE44AA /* AmplitudeService.swift */,
+				137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */,
 			);
 			path = Amplitude;
 			sourceTree = "<group>";
@@ -906,6 +909,7 @@
 				133BD3C82F03A28E0081CDF8 /* AppConfigUseCase.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
+				137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */,
 				134BFFC62F01074500F1F444 /* FocusGoal.swift in Sources */,
 				13A74D372EE5CCFC00C3BB48 /* AppDelegate.swift in Sources */,
 				134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */,

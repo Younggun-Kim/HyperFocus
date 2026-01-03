@@ -16,11 +16,7 @@ public protocol BaseTarget: TargetType {
 public extension BaseTarget {
     /// 기본 baseURL (환경에 따라 변경 가능)
     var baseURL: URL {
-        // TODO: 환경별 baseURL 설정 (Development, Staging, Production)
-        guard let url = URL(string: "https://api-dev-hyperfocus.meetory.io/") else {
-            fatalError("Invalid baseURL")
-        }
-        return url
+        return Environment.apiBaseURL
     }
     
     /// 기본 헤더

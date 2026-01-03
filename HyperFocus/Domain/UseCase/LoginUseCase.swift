@@ -18,6 +18,7 @@ extension LoginUseCase: DependencyKey {
         autoLogin: {
             @Dependency(\.appRepository) var appRepository
             @Dependency(\.authRepository) var authRepository
+            @Dependency(\.amplitudeService) var amplitudeService
             
             do {
                 // 저장된 토큰이 있다면 로그인 처리
@@ -29,6 +30,9 @@ extension LoginUseCase: DependencyKey {
                 
                 // 저장된 토큰이 없다면 익명 로그인 작업
                 if  let deviceUUID = try await appRepository.getDeviceUUID() {
+                    // Amplitude 디바이스ID 저장
+                    amplitudeService.setDeviceId(deviceUUID)
+                    
                     let loginResponse = try await authRepository.anonymousLogin(deviceUUID)
                     
                     if loginResponse.success,

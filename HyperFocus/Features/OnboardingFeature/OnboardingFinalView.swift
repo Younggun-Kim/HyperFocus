@@ -11,6 +11,7 @@ import ComposableArchitecture
 struct OnboardingFinalView: View {
     
     @Bindable var store: StoreOf<OnboardingFeature>
+    @Dependency(\.amplitudeService) var amplitudeService
     
     var body: some View {
         AmbientZStack(style: .black, alignment: .top) {
@@ -27,6 +28,7 @@ struct OnboardingFinalView: View {
                     .foregroundStyle(.white)
                 Image(AssetSystem.icPlay.rawValue)
                     .gesture(TapGesture().onEnded{ _ in
+                        amplitudeService.track(.clickOnboardingComplete)
                         store.send(.startTapped)
                     })
             }

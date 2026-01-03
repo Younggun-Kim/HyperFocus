@@ -10,6 +10,7 @@ import Foundation
 public struct Environment: Equatable {
     enum Keys: String {
         case apiBaseURL = "API_BASE_URL"
+        case amplitudeAPIKey = "AMPLITUDE_API_KEY"
     }
     // MARK: - Plist
     private static let infoDictionary: [String: Any] = {
@@ -28,5 +29,13 @@ public struct Environment: Equatable {
             fatalError("Root URL is invalid")
         }
         return url
+    }()
+    
+    static let amplitudeAPIKey: String? = {
+        guard let amplitudeAPIKey = Environment.infoDictionary[Keys.amplitudeAPIKey.rawValue] as? String else {
+            fatalError("Root URL not set in plist for this environment")
+        }
+        
+        return amplitudeAPIKey
     }()
 }
