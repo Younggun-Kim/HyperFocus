@@ -97,60 +97,110 @@ struct AppRepositoryTests {
         #expect(response.data?.forceUpdate == false)
     }
     
+    @Test("Test Value로 Device UUID 조회 - nil 반환 확인")
+    func testGetDeviceUUID_WithTestValue_ReturnsNil() async throws {
+        let repository = AppRepository.testValue
+        
+        let uuid = try await repository.getDeviceUUID()
+        
+        #expect(uuid == nil)
+    }
+    
+    @Test("Live Value로 Device UUID 조회 - DeviceDataSource를 통해 실제 UUID 반환 확인")
+    func testGetDeviceUUID_WithLiveValue_ReturnsUUID() async throws {
+        let repository = AppRepository.liveValue
+        
+        let uuid = try await repository.getDeviceUUID()
+        
+        // identifierForVendor는 nil일 수 있지만, 일반적으로는 UUID를 반환함
+        // UUID 형식 검증 (36자, 하이픈 포함)
+        if let uuid = uuid {
+            #expect(uuid.count == 36, "UUID는 36자여야 합니다")
+            #expect(uuid.split(separator: "-").count == 5, "UUID는 5개의 하이픈으로 구분된 섹션을 가져야 합니다")
+        }
+    }
+    
+    @Test("Live Value Device UUID가 DeviceDataSource와 일치하는지 확인")
+    func testGetDeviceUUID_WithLiveValue_MatchesDeviceDataSource() async throws {
+        let repository = AppRepository.liveValue
+        let deviceDataSource = DeviceDataSource.liveValue
+        
+        let repositoryUUID = try await repository.getDeviceUUID()
+        let dataSourceUUID = try await deviceDataSource.getDeviceUUID()
+        
+        #expect(repositoryUUID == dataSourceUUID,
+                "AppRepository가 반환한 UUID는 DeviceDataSource의 UUID와 일치해야 합니다")
+    }
+    
     // MARK: - Custom Repository Tests
     
     @Test("커스텀 AppRepository 생성 및 값 반환 확인")
-    func testCustomRepository_ReturnsCustomValues() {
+    func testCustomRepository_ReturnsCustomValues() async throws {
         let customVersion = "2.5.0"
         let customBuildNumber = "100"
+        let customUUID = "12345678-1234-1234-1234-123456789ABC"
         
         let repository = AppRepository(
             getAppVersion: { customVersion },
             getBuildNumber: { customBuildNumber },
-            checkAppVersion: { _ in AppVersionCheckResponse.mock }
+            checkAppVersion: { _ in AppVersionCheckResponse.mock },
+            getDeviceUUID: { customUUID }
         )
         
         #expect(repository.getAppVersion() == customVersion)
         #expect(repository.getBuildNumber() == customBuildNumber)
+        
+        let uuid = try await repository.getDeviceUUID()
+        #expect(uuid == customUUID)
     }
     
     @Test("여러 커스텀 AppRepository의 독립성 확인")
-    func testCustomRepository_WithDifferentValues() {
+    func testCustomRepository_WithDifferentValues() async throws {
         let version1 = "3.0.0"
         let buildNumber1 = "200"
+        let uuid1 = "11111111-1111-1111-1111-111111111111"
         
         let repository1 = AppRepository(
             getAppVersion: { version1 },
             getBuildNumber: { buildNumber1 },
-            checkAppVersion: { _ in AppVersionCheckResponse.mock }
+            checkAppVersion: { _ in AppVersionCheckResponse.mock },
+            getDeviceUUID: { uuid1 }
         )
         
         let version2 = "4.0.0"
         let buildNumber2 = "300"
+        let uuid2 = "22222222-2222-2222-2222-222222222222"
         
         let repository2 = AppRepository(
             getAppVersion: { version2 },
             getBuildNumber: { buildNumber2 },
-            checkAppVersion: { _ in AppVersionCheckResponse.mock }
+            checkAppVersion: { _ in AppVersionCheckResponse.mock },
+            getDeviceUUID: { uuid2 }
         )
         
         // 각 Repository가 독립적으로 동작하는지 확인
         #expect(repository1.getAppVersion() == version1)
         #expect(repository1.getBuildNumber() == buildNumber1)
+        let repo1UUID = try await repository1.getDeviceUUID()
+        #expect(repo1UUID == uuid1)
+        
         #expect(repository2.getAppVersion() == version2)
         #expect(repository2.getBuildNumber() == buildNumber2)
+        let repo2UUID = try await repository2.getDeviceUUID()
+        #expect(repo2UUID == uuid2)
     }
     
     // MARK: - DeviceDataSource Integration Tests
     
     @Test("Mock DeviceDataSource와 함께 사용 시 올바른 값 반환 확인")
-    func testAppRepository_WithMockDeviceDataSource() async {
+    func testAppRepository_WithMockDeviceDataSource() async throws {
         let mockVersion = "5.0.0"
         let mockBuildNumber = "500"
         
         let mockDataSource = DeviceDataSource(
             getAppVersion: { mockVersion },
-            getBuildNumber: { mockBuildNumber }
+            getBuildNumber: { mockBuildNumber },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         let repository = AppRepository(
@@ -160,27 +210,37 @@ struct AppRepositoryTests {
             getBuildNumber: {
                 mockDataSource.getBuildNumber()
             },
-            checkAppVersion: { _ in AppVersionCheckResponse.mock }
+            checkAppVersion: { _ in AppVersionCheckResponse.mock },
+            getDeviceUUID: {
+                try await mockDataSource.getDeviceUUID()
+            }
         )
         
         #expect(repository.getAppVersion() == mockVersion)
         #expect(repository.getBuildNumber() == mockBuildNumber)
+        
+        let uuid = try await repository.getDeviceUUID()
+        #expect(uuid == "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")
     }
     
     @Test("AppRepository가 DeviceDataSource 변경에 반응하는지 확인")
-    func testAppRepository_RespondsToDeviceDataSourceChanges() {
+    func testAppRepository_RespondsToDeviceDataSourceChanges() async throws {
         let version1 = "6.0.0"
         let buildNumber1 = "600"
         
         let dataSource1 = DeviceDataSource(
             getAppVersion: { version1 },
-            getBuildNumber: { buildNumber1 }
+            getBuildNumber: { buildNumber1 },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         let repository1 = AppRepository(
             getAppVersion: { dataSource1.getAppVersion() },
             getBuildNumber: { dataSource1.getBuildNumber() },
-            checkAppVersion: { _ in AppVersionCheckResponse.mock }
+            checkAppVersion: { _ in AppVersionCheckResponse.mock },
+            getDeviceUUID: {
+                try await dataSource1.getDeviceUUID()
+            }
         )
         
         let version2 = "7.0.0"
@@ -188,19 +248,28 @@ struct AppRepositoryTests {
         
         let dataSource2 = DeviceDataSource(
             getAppVersion: { version2 },
-            getBuildNumber: { buildNumber2 }
+            getBuildNumber: { buildNumber2 },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         let repository2 = AppRepository(
             getAppVersion: { dataSource2.getAppVersion() },
             getBuildNumber: { dataSource2.getBuildNumber() },
-            checkAppVersion: { _ in AppVersionCheckResponse.mock }
+            checkAppVersion: { _ in AppVersionCheckResponse.mock },
+            getDeviceUUID: {
+                try await dataSource2.getDeviceUUID()
+            }
         )
         
         #expect(repository1.getAppVersion() == version1)
         #expect(repository1.getBuildNumber() == buildNumber1)
+        let repo1UUID = try await repository1.getDeviceUUID()
+        #expect(repo1UUID == "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")
+        
         #expect(repository2.getAppVersion() == version2)
         #expect(repository2.getBuildNumber() == buildNumber2)
+        let repo2UUID = try await repository2.getDeviceUUID()
+        #expect(repo2UUID == "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")
     }
     
     // MARK: - CheckAppVersion Tests
@@ -229,7 +298,8 @@ struct AppRepositoryTests {
         let repository = AppRepository(
             getAppVersion: { "1.0.0" },
             getBuildNumber: { "1" },
-            checkAppVersion: { _ in customResponse }
+            checkAppVersion: { _ in customResponse },
+            getDeviceUUID: { nil }
         )
         
         let response = try await repository.checkAppVersion("1.0.0")
@@ -265,7 +335,8 @@ struct AppRepositoryTests {
         let repository = AppRepository(
             getAppVersion: { "1.0.0" },
             getBuildNumber: { "1" },
-            checkAppVersion: { _ in forceUpdateResponse }
+            checkAppVersion: { _ in forceUpdateResponse },
+            getDeviceUUID: { nil }
         )
         
         let response = try await repository.checkAppVersion("1.0.0")
@@ -300,7 +371,8 @@ struct AppRepositoryTests {
         let repository = AppRepository(
             getAppVersion: { "2.0.0" },
             getBuildNumber: { "1" },
-            checkAppVersion: { _ in noUpdateResponse }
+            checkAppVersion: { _ in noUpdateResponse },
+            getDeviceUUID: { nil }
         )
         
         let response = try await repository.checkAppVersion("2.0.0")
@@ -336,7 +408,8 @@ struct AppRepositoryTests {
                     code: "A001",
                     message: nil
                 )
-            }
+            },
+            getDeviceUUID: { nil }
         )
         
         let response1 = try await repository.checkAppVersion("1.0.0")
@@ -363,6 +436,11 @@ struct AppRepositoryTests {
         let previewResponse = try await previewRepository.checkAppVersion("1.0.0")
         let testResponse = try await testRepository.checkAppVersion("1.0.0")
         #expect(previewResponse == testResponse)
+        
+        // getDeviceUUID도 동일한지 확인
+        let previewUUID = try await previewRepository.getDeviceUUID()
+        let testUUID = try await testRepository.getDeviceUUID()
+        #expect(previewUUID == testUUID)
     }
     
     // MARK: - Edge Cases Tests
@@ -422,7 +500,8 @@ struct AppRepositoryTests {
         let repository = AppRepository(
             getAppVersion: { version },
             getBuildNumber: { buildNumber },
-            checkAppVersion: { _ in AppVersionCheckResponse.mock }
+            checkAppVersion: { _ in AppVersionCheckResponse.mock },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         #expect(repository.getAppVersion() == version)
@@ -453,7 +532,8 @@ struct AppRepositoryTests {
                     code: "A001",
                     message: nil
                 )
-            }
+            },
+            getDeviceUUID: { nil }
         )
         
         let response = try await repository.checkAppVersion(currentVersion)

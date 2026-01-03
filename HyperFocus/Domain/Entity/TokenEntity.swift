@@ -18,14 +18,6 @@ public struct TokenEntity: Codable, Equatable, Sendable {
         self.tokenType = tokenType
     }
     
-    init(from decoder: any Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.accessToken = try container.decode(String.self, forKey: .accessToken)
-        self.refreshToken = try container.decode(String.self, forKey: .refreshToken)
-        self.expiresIn = try container.decode(Int.self, forKey: .expiresIn)
-        self.tokenType = try container.decode(String.self, forKey: .tokenType)
-    }
-    
     enum CodingKeys: String, CodingKey {
         case accessToken, refreshToken, expiresIn, tokenType
     }

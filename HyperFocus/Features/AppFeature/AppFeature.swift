@@ -18,6 +18,7 @@ enum AppScreen: Equatable {
 @Reducer
 struct AppFeature {
     @Dependency(\.appConfigUseCase) var appConfigUseCase
+    @Dependency(\.loginUseCase) var loginUseCase
     
     @ObservableState
     struct State {
@@ -39,6 +40,8 @@ struct AppFeature {
         case forceUpdateAlertDismissed
         case recommendUpdateAlertDismissed
         case openAppStore
+        case login
+        case loginResponse(Result<Bool, Error>)
     }
     
     var body: some Reducer<State, Action> {
@@ -70,7 +73,7 @@ struct AppFeature {
                 switch(updateType) {
                 case .none:
                     return .run { send in
-                        await send(.moveOnboarding)
+                        await send(.login)
                     }
                 case .optional:
                     state.showRecommendUpdateAlert = true
@@ -92,7 +95,7 @@ struct AppFeature {
                 state.showRecommendUpdateAlert = false
                 
                 return .run { send in
-                    await send(.moveOnboarding)                    
+                    await send(.login)
                 }
                 
             case .openAppStore:
@@ -109,6 +112,27 @@ struct AppFeature {
                 state.currentScreen = .main
                 state.onboarding = nil
                 state.main = MainFeature.State()
+                return .none
+            case .login:
+                return .run { send in
+                    do {
+                        let result = try await loginUseCase.autoLogin()
+                        await send(.loginResponse(.success(result)))
+                    } catch {
+                        await send(.loginResponse(.failure(error)))
+                    }
+                }
+            case let .loginResponse(.success(login)):
+                if login {
+                    return .run { send in
+                        await send(.moveOnboarding)
+                    }
+                }
+                
+                // TODO: - Toast 로그인 실패 메시지
+                return .none
+            case .loginResponse(.failure):
+                // TODO: - Toast
                 return .none
                 
             case .splash:

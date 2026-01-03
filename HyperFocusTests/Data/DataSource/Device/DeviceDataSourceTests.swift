@@ -98,7 +98,8 @@ struct DeviceDataSourceTests {
         
         let dataSource = DeviceDataSource(
             getAppVersion: { customVersion },
-            getBuildNumber: { customBuildNumber }
+            getBuildNumber: { customBuildNumber },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         #expect(dataSource.getAppVersion() == customVersion)
@@ -112,7 +113,8 @@ struct DeviceDataSourceTests {
         
         let dataSource1 = DeviceDataSource(
             getAppVersion: { version1 },
-            getBuildNumber: { buildNumber1 }
+            getBuildNumber: { buildNumber1 },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         let version2 = "4.0.0"
@@ -120,7 +122,8 @@ struct DeviceDataSourceTests {
         
         let dataSource2 = DeviceDataSource(
             getAppVersion: { version2 },
-            getBuildNumber: { buildNumber2 }
+            getBuildNumber: { buildNumber2 },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         // 각 DataSource가 독립적으로 동작하는지 확인
@@ -140,6 +143,59 @@ struct DeviceDataSourceTests {
         // previewValue는 testValue를 반환해야 함
         #expect(previewDataSource.getAppVersion() == testDataSource.getAppVersion())
         #expect(previewDataSource.getBuildNumber() == testDataSource.getBuildNumber())
+    }
+    
+    // MARK: - GetDeviceUUID Tests
+    
+    @Test("Test Value로 Device UUID 조회 - Mock 값 반환 확인")
+    func testGetDeviceUUID_WithTestValue_ReturnsMockUUID() async throws {
+        let dataSource = DeviceDataSource.testValue
+        
+        let uuid = try await dataSource.getDeviceUUID()
+        
+        #expect(uuid == "E621E1F8-C36C-495A-93FC-0C247A3E6E5F")
+    }
+    
+    @Test("Live Value로 Device UUID 조회 - 실제 UUID 반환 확인")
+    func testGetDeviceUUID_WithLiveValue_ReturnsUUID() async throws {
+        let dataSource = DeviceDataSource.liveValue
+        
+        let uuid = try await dataSource.getDeviceUUID()
+        
+        // identifierForVendor는 nil일 수 있지만, 일반적으로는 UUID를 반환함
+        // UUID 형식 검증 (36자, 하이픈 포함)
+        if let uuid = uuid {
+            #expect(uuid.count == 36, "UUID는 36자여야 합니다")
+            #expect(uuid.split(separator: "-").count == 5, "UUID는 5개의 하이픈으로 구분된 섹션을 가져야 합니다")
+        }
+    }
+    
+    @Test("커스텀 DataSource로 Device UUID 조회 - 커스텀 값 반환 확인")
+    func testGetDeviceUUID_WithCustomDataSource_ReturnsCustomUUID() async throws {
+        let customUUID = "12345678-1234-1234-1234-123456789ABC"
+        
+        let dataSource = DeviceDataSource(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            getDeviceUUID: { customUUID }
+        )
+        
+        let uuid = try await dataSource.getDeviceUUID()
+        
+        #expect(uuid == customUUID)
+    }
+    
+    @Test("Device UUID가 nil을 반환할 수 있는지 확인")
+    func testGetDeviceUUID_CanReturnNil() async throws {
+        let dataSource = DeviceDataSource(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            getDeviceUUID: { nil }
+        )
+        
+        let uuid = try await dataSource.getDeviceUUID()
+        
+        #expect(uuid == nil)
     }
     
     // MARK: - Edge Cases Tests
@@ -175,7 +231,8 @@ struct DeviceDataSourceTests {
     func testCustomDataSource_VariousVersionFormats(version: String, buildNumber: String) async throws {
         let dataSource = DeviceDataSource(
             getAppVersion: { version },
-            getBuildNumber: { buildNumber }
+            getBuildNumber: { buildNumber },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
         )
         
         #expect(dataSource.getAppVersion() == version)
