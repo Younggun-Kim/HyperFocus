@@ -9,7 +9,7 @@ import Foundation
 import ComposableArchitecture
 
 public struct AppConfigUseCase {
-    public let needAppUpdate: @Sendable () async throws -> Bool
+    public let needAppUpdate: @Sendable () async throws -> VersionUpdateType
 }
 
 extension AppConfigUseCase: DependencyKey {
@@ -18,21 +18,27 @@ extension AppConfigUseCase: DependencyKey {
             @Dependency(\.appRepository) var appRepository
             
             let currentVersion = appRepository.getAppVersion()
-            return  try await appRepository.checkAppVersion(currentVersion).data?.forceUpdate == true
+            let response = try await appRepository.checkAppVersion(currentVersion)
+            
+            guard let updateTypeRaw = response.data?.updateType else {
+                return .none
+            }
+            
+            return VersionUpdateType(version: updateTypeRaw) ?? .none
         }
     )
     
     // Preview용 기본값
     public static var previewValue = AppConfigUseCase(
         needAppUpdate: {
-            return false
+            return .none
         }
     )
     
-    public static func preview(needUpdate: Bool) -> AppConfigUseCase {
+    public static func preview(updateType: VersionUpdateType) -> AppConfigUseCase {
         AppConfigUseCase(
             needAppUpdate: {
-                return needUpdate
+                return updateType
             }
         )
     }

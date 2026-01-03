@@ -51,6 +51,7 @@
 		134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFDF2F01796C00F1F444 /* FocusDetailFeature.swift */; };
 		134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE62F017E2B00F1F444 /* HapticUtils.swift */; };
 		134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE92F01974500F1F444 /* AssetSystem.swift */; };
+		137AE0872F09377400EE44AA /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0862F09376900EE44AA /* CommonError.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -132,6 +133,7 @@
 		134BFFDF2F01796C00F1F444 /* FocusDetailFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusDetailFeature.swift; sourceTree = "<group>"; };
 		134BFFE62F017E2B00F1F444 /* HapticUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtils.swift; sourceTree = "<group>"; };
 		134BFFE92F01974500F1F444 /* AssetSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSystem.swift; sourceTree = "<group>"; };
+		137AE0862F09376900EE44AA /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -378,6 +380,7 @@
 		134BFFC32F01071E00F1F444 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0852F09376200EE44AA /* Error */,
 				134BFFCC2F014FC400F1F444 /* Type */,
 				133BD3C52F03A2520081CDF8 /* UseCase */,
 				134BFFC42F01072900F1F444 /* ValueObject */,
@@ -462,6 +465,14 @@
 				134BFFE92F01974500F1F444 /* AssetSystem.swift */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		137AE0852F09376200EE44AA /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0862F09376900EE44AA /* CommonError.swift */,
+			);
+			path = Error;
 			sourceTree = "<group>";
 		};
 		13827A122F091596008FB39A /* Device */ = {
@@ -792,6 +803,7 @@
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
 				134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */,
+				137AE0872F09377400EE44AA /* CommonError.swift in Sources */,
 				133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */,
 				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
 				134BFFD02F01502200F1F444 /* BasicTime.swift in Sources */,

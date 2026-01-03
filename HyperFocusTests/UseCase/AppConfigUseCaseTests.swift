@@ -6,6 +6,13 @@
 //
 
 import Testing
+import ComposableArchitecture
+@testable import HyperFocus
+import Foundation
 
+@Suite("AppConfigUseCase 테스트")
 struct AppConfigUseCaseTests {
+   
+    // MARK: - Live Value Tests with Mock Dependencies
+  
 }

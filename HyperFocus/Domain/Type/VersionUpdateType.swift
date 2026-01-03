@@ -8,7 +8,7 @@
 /// 앱 버전 업데이트 타입
 import Foundation
 
-public enum VersionUpdateType: String, Decodable, Equatable {
+public enum VersionUpdateType: String, Decodable, Equatable, Sendable {
     case optional = "OPTIONAL"
     case required = "REQUIRED"
     case none = "NONE"

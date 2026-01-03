@@ -28,20 +28,65 @@ struct AppView: View {
         .onAppear {
             store.send(.onAppear)
         }
+        .alert("강제 업데이트", isPresented: Binding(
+            get: { store.showForceUpdateAlert },
+            set: { _ in store.send(.forceUpdateAlertDismissed) }
+        )) {
+            Button("업데이트") {
+                store.send(.openAppStore)
+            }
+        } message: {
+            Text("새로운 버전이 있습니다. 업데이트가 필요합니다.")
+        }
+        .alert(isPresented: Binding(
+            get: { store.showRecommendUpdateAlert },
+            set: { _ in store.send(.recommendUpdateAlertDismissed) }
+        )) {
+            Alert(
+                title: Text("업데이트 안내"),
+                message: Text("새로운 버전이 있습니다. 업데이트가 필요합니다."),
+                primaryButton: .default(
+                    Text("업데이트"),
+                    action: {
+                        store.send(.openAppStore)
+                    }
+                ) ,
+                secondaryButton: .destructive(
+                    Text("닫기")
+                )
+            )
+        }
     }
 }
 
-#Preview("업데이트 필요") {
+#Preview("강제 업데이트") {
     AppView(
         store: Store(initialState: {
             var state = AppFeature.State()
             state.currentScreen = .splash
             state.splash = SplashFeature.State()
+            state.showForceUpdateAlert = true
             return state
         }()) {
             AppFeature()
         } withDependencies: {
-            $0.appConfigUseCase = .preview(needUpdate: true)
+            $0.appConfigUseCase = .preview(updateType: .required)
+        }
+    )
+}
+
+#Preview("권장 업데이트") {
+    AppView(
+        store: Store(initialState: {
+            var state = AppFeature.State()
+            state.currentScreen = .splash
+            state.splash = SplashFeature.State()
+            state.showRecommendUpdateAlert = true
+            return state
+        }()) {
+            AppFeature()
+        } withDependencies: {
+            $0.appConfigUseCase = .preview(updateType: .optional)
         }
     )
 }
@@ -56,7 +101,7 @@ struct AppView: View {
         }()) {
             AppFeature()
         } withDependencies: {
-            $0.appConfigUseCase = .preview(needUpdate: false)
+            $0.appConfigUseCase = .preview(updateType: .none)
         }
     )
 }

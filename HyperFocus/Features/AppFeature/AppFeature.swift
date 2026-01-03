@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import Foundation
+import UIKit
 
 enum AppScreen: Equatable {
     case splash
@@ -24,6 +25,8 @@ struct AppFeature {
         var splash: SplashFeature.State?
         var onboarding: OnboardingFeature.State?
         var main: MainFeature.State?
+        var showForceUpdateAlert: Bool = false
+        var showRecommendUpdateAlert: Bool = false
     }
     
     enum Action {
@@ -31,7 +34,11 @@ struct AppFeature {
         case splash(SplashFeature.Action)
         case onboarding(OnboardingFeature.Action)
         case main(MainFeature.Action)
-        case needUpdateRseponse(Result<Bool, Error>)
+        case moveOnboarding
+        case needAppUpdateResponse(Result<VersionUpdateType, Error>)
+        case forceUpdateAlertDismissed
+        case recommendUpdateAlertDismissed
+        case openAppStore
     }
     
     var body: some Reducer<State, Action> {
@@ -46,31 +53,55 @@ struct AppFeature {
             case .splash(.delegate(.splashCompleted)):
                 return .run { send in
                     do {
-                        let needUpdate = try await appConfigUseCase.needAppUpdate()
-                        
-                        await send(.needUpdateRseponse(.success(needUpdate)))
+                        let response = try await appConfigUseCase.needAppUpdate()
+                        await send(.needAppUpdateResponse(.success(response)))
                     } catch {
-                        await send(.needUpdateRseponse(.failure(error)))
+                        await send(.needAppUpdateResponse(.failure(error)))
                     }
                 }
+            case .moveOnboarding:
+                state.currentScreen = .onboarding
+                state.splash = nil
+                state.onboarding = OnboardingFeature.State()
                 
-            case let .needUpdateRseponse(.success(needUpdate)):
-                if needUpdate {
-                    // TODO: 앱 업데이트 필요 처리
-                    return .none
-                } else {
-                    // Onboarding으로 이동
-                    state.currentScreen = .onboarding
-                    state.splash = nil
-                    state.onboarding = OnboardingFeature.State()
-                    return .none
+                return .none
+                
+            case let .needAppUpdateResponse(.success(updateType)):
+                switch(updateType) {
+                case .none:
+                    return .run { send in
+                        await send(.moveOnboarding)
+                    }
+                case .optional:
+                    state.showRecommendUpdateAlert = true
+                case .required:
+                    state.showForceUpdateAlert = true
                 }
                 
-            case .needUpdateRseponse(.failure):
-                // 에러 발생 시 Onboarding으로 이동 (또는 에러 처리)
-//                state.currentScreen = .onboarding
-//                state.splash = nil
-//                state.onboarding = OnboardingFeature.State()
+                return .none
+                
+            case .needAppUpdateResponse(.failure):
+                // TODO: - Toast 메시지
+                return .none
+                
+            case .forceUpdateAlertDismissed:
+                state.showForceUpdateAlert = false
+                return .none
+                
+            case .recommendUpdateAlertDismissed:
+                state.showRecommendUpdateAlert = false
+                
+                return .run { send in
+                    await send(.moveOnboarding)                    
+                }
+                
+            case .openAppStore:
+                // TODO: - 앱 스토어 URL 설정
+                if let url = URL(string: "https://apps.apple.com/kr/app/withu-%EC%9C%84%EB%93%9C%EC%9C%A0/id6739505809") {
+                    return .run { @MainActor send in
+                        await UIApplication.shared.open(url)
+                    }
+                }
                 return .none
                 
             case .onboarding(.delegate(.onboardingCompleted)):
