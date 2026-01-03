@@ -48,8 +48,6 @@ public enum APIError: Error, Equatable {
                 return .cancelled
             }
             return .networkError(error.localizedDescription)
-        case .requestMapping:
-            return .networkError("요청 매핑 실패")
         }
     }
     

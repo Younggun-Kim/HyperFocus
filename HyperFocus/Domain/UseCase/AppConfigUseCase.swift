@@ -15,6 +15,7 @@ public struct AppConfigUseCase {
 extension AppConfigUseCase: DependencyKey {
     public static var liveValue = AppConfigUseCase(
         needAppUpdate: {
+            @Dependency(\.AppRepository()) var appRepository)
             @Dependency(\.userDefaults) var userDefaults
             
             return false
