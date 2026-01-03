@@ -7,10 +7,12 @@
 
 import Foundation
 import ComposableArchitecture
+import UIKit
 
 public struct DeviceDataSource {
     public let getAppVersion: @Sendable () -> String
     public let getBuildNumber: @Sendable () -> String
+    public let getDeviceUUID: @Sendable () async throws -> String?
 }
 
 extension DeviceDataSource: DependencyKey {
@@ -26,17 +28,19 @@ extension DeviceDataSource: DependencyKey {
                 return "Unknown"
             }
             return buildNumber
+        },
+        getDeviceUUID: {
+            await MainActor.run {
+                UIDevice.current.identifierForVendor?.uuidString
+            }
         }
     )
     
     public static var testValue: DeviceDataSource = DeviceDataSource(
         getAppVersion: { "1.0.0" },
-        getBuildNumber: { "1" }
+        getBuildNumber: { "1" },
+        getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
     )
-    
-    public static var previewValue: DeviceDataSource {
-        testValue
-    }
 }
 
 extension DependencyValues {

@@ -12,6 +12,7 @@ public struct AppRepository {
     public let getAppVersion: @Sendable () -> String
     public let getBuildNumber: @Sendable () -> String
     public let checkAppVersion: @Sendable (_ currentVersion: String) async throws -> AppVersionCheckResponse
+    public let getDeviceUUID: @Sendable () async throws -> String?
 }
 
 extension AppRepository: DependencyKey {
@@ -30,18 +31,19 @@ extension AppRepository: DependencyKey {
                 AppVersionAPI.checkAppVersion(currentVersion: currentVersion),
                 responseType: AppVersionCheckResponse.self
             )
+        },
+        getDeviceUUID: {
+            @Dependency(\.deviceDataSource) var deviceDataSource
+            return try await deviceDataSource.getDeviceUUID()
         }
     )
     
     public static var testValue: AppRepository = AppRepository(
         getAppVersion: { "1.0.0" },
         getBuildNumber: { "1" },
-        checkAppVersion: { _ in AppVersionCheckResponse.mock }
+        checkAppVersion: { _ in AppVersionCheckResponse.mock },
+        getDeviceUUID: { nil as String?}
     )
-    
-    public static var previewValue: AppRepository {
-        testValue
-    }
 }
 
 extension DependencyValues {

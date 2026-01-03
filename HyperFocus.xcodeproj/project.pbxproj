@@ -52,6 +52,12 @@
 		134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE62F017E2B00F1F444 /* HapticUtils.swift */; };
 		134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFE92F01974500F1F444 /* AssetSystem.swift */; };
 		137AE0872F09377400EE44AA /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0862F09376900EE44AA /* CommonError.swift */; };
+		137AE08A2F09539D00EE44AA /* AuthAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0892F09539D00EE44AA /* AuthAPI.swift */; };
+		137AE08E2F09551200EE44AA /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE08D2F09551000EE44AA /* LoginResponse.swift */; };
+		137AE0912F09566F00EE44AA /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0902F09566C00EE44AA /* AuthRepository.swift */; };
+		137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0922F09582F00EE44AA /* LoginUseCase.swift */; };
+		137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0952F095DEB00EE44AA /* LocalDataSource.swift */; };
+		137AE0992F095E5900EE44AA /* TokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0982F095E5300EE44AA /* TokenEntity.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -134,6 +140,12 @@
 		134BFFE62F017E2B00F1F444 /* HapticUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticUtils.swift; sourceTree = "<group>"; };
 		134BFFE92F01974500F1F444 /* AssetSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSystem.swift; sourceTree = "<group>"; };
 		137AE0862F09376900EE44AA /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
+		137AE0892F09539D00EE44AA /* AuthAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthAPI.swift; sourceTree = "<group>"; };
+		137AE08D2F09551000EE44AA /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		137AE0902F09566C00EE44AA /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		137AE0922F09582F00EE44AA /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		137AE0952F095DEB00EE44AA /* LocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataSource.swift; sourceTree = "<group>"; };
+		137AE0982F095E5300EE44AA /* TokenEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenEntity.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				133BD3C72F03A27F0081CDF8 /* AppConfigUseCase.swift */,
+				137AE0922F09582F00EE44AA /* LoginUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -269,6 +282,7 @@
 		133BD3CE2F0410610081CDF8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				137AE08F2F09566200EE44AA /* Auth */,
 				13827A1B2F0919EE008FB39A /* App */,
 			);
 			path = Repository;
@@ -277,6 +291,7 @@
 		133BD3CF2F0410670081CDF8 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0942F095DDC00EE44AA /* Local */,
 				13827A122F091596008FB39A /* Device */,
 				133BD3D02F04107B0081CDF8 /* Network */,
 			);
@@ -309,6 +324,7 @@
 		133BD3E52F04196C0081CDF8 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0882F09539500EE44AA /* Auth */,
 				13AB6AD12F0929AB001F7608 /* AppVersion */,
 			);
 			path = API;
@@ -380,6 +396,7 @@
 		134BFFC32F01071E00F1F444 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0972F095E4D00EE44AA /* Entity */,
 				137AE0852F09376200EE44AA /* Error */,
 				134BFFCC2F014FC400F1F444 /* Type */,
 				133BD3C52F03A2520081CDF8 /* UseCase */,
@@ -473,6 +490,47 @@
 				137AE0862F09376900EE44AA /* CommonError.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		137AE0882F09539500EE44AA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				137AE08C2F0953C400EE44AA /* Model */,
+				137AE0892F09539D00EE44AA /* AuthAPI.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		137AE08C2F0953C400EE44AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				137AE08D2F09551000EE44AA /* LoginResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		137AE08F2F09566200EE44AA /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0902F09566C00EE44AA /* AuthRepository.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		137AE0942F095DDC00EE44AA /* Local */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0952F095DEB00EE44AA /* LocalDataSource.swift */,
+			);
+			path = Local;
+			sourceTree = "<group>";
+		};
+		137AE0972F095E4D00EE44AA /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0982F095E5300EE44AA /* TokenEntity.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		13827A122F091596008FB39A /* Device */ = {
@@ -807,6 +865,7 @@
 				133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */,
 				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
 				134BFFD02F01502200F1F444 /* BasicTime.swift in Sources */,
+				137AE0992F095E5900EE44AA /* TokenEntity.swift in Sources */,
 				133BD3C82F03A28E0081CDF8 /* AppConfigUseCase.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
@@ -815,9 +874,11 @@
 				134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */,
 				134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */,
 				134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */,
+				137AE08A2F09539D00EE44AA /* AuthAPI.swift in Sources */,
 				134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
+				137AE0912F09566F00EE44AA /* AuthRepository.swift in Sources */,
 				13AB6AD62F092BB7001F7608 /* BaseResponse.swift in Sources */,
 				133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */,
 				133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */,
@@ -826,6 +887,7 @@
 				13AC3F6E2EF7048200CEDC69 /* AmbientStyleType.swift in Sources */,
 				13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */,
 				13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */,
+				137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */,
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
@@ -834,6 +896,7 @@
 				13827A162F09172E008FB39A /* AppRepository.swift in Sources */,
 				133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */,
 				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
+				137AE08E2F09551200EE44AA /* LoginResponse.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
@@ -842,6 +905,7 @@
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,
 				13AB6AD42F092B27001F7608 /* AppVersionCheckResponse.swift in Sources */,
 				133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */,
+				137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */,
 				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
