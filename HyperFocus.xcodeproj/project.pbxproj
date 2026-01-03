@@ -76,6 +76,16 @@
 		13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F762EF7090400CEDC69 /* AppFeature.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		13827A272F092028008FB39A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 13A74D0E2EE5C77E00C3BB48 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 13A74D152EE5C77E00C3BB48;
+			remoteInfo = HyperFocus;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtn.swift; sourceTree = "<group>"; };
 		133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnStyle.swift; sourceTree = "<group>"; };
@@ -122,6 +132,7 @@
 		134BFFE92F01974500F1F444 /* AssetSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetSystem.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
+		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A74D162EE5C77E00C3BB48 /* HyperFocus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HyperFocus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A74D252EE5CB8100C3BB48 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HyperFocus/Application/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperFocusApp.swift; sourceTree = "<group>"; };
@@ -144,7 +155,22 @@
 		13AC3F772EF7090400CEDC69 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		13827A242F092028008FB39A /* HyperFocusTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = HyperFocusTests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
+		13827A202F092028008FB39A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13A74D132EE5C77E00C3BB48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -450,6 +476,7 @@
 			isa = PBXGroup;
 			children = (
 				13A74D282EE5CB8100C3BB48 /* HyperFocus */,
+				13827A242F092028008FB39A /* HyperFocusTests */,
 				13A74D172EE5C77E00C3BB48 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -458,6 +485,7 @@
 			isa = PBXGroup;
 			children = (
 				13A74D162EE5C77E00C3BB48 /* HyperFocus.app */,
+				13827A232F092028008FB39A /* HyperFocusTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -593,6 +621,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		13827A222F092028008FB39A /* HyperFocusTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13827A292F092028008FB39A /* Build configuration list for PBXNativeTarget "HyperFocusTests" */;
+			buildPhases = (
+				13827A1F2F092028008FB39A /* Sources */,
+				13827A202F092028008FB39A /* Frameworks */,
+				13827A212F092028008FB39A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13827A282F092028008FB39A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				13827A242F092028008FB39A /* HyperFocusTests */,
+			);
+			name = HyperFocusTests;
+			packageProductDependencies = (
+			);
+			productName = HyperFocusTests;
+			productReference = 13827A232F092028008FB39A /* HyperFocusTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		13A74D152EE5C77E00C3BB48 /* HyperFocus */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13A74D212EE5C78000C3BB48 /* Build configuration list for PBXNativeTarget "HyperFocus" */;
@@ -626,6 +677,10 @@
 				LastSwiftUpdateCheck = 2610;
 				LastUpgradeCheck = 2610;
 				TargetAttributes = {
+					13827A222F092028008FB39A = {
+						CreatedOnToolsVersion = 26.1.1;
+						TestTargetID = 13A74D152EE5C77E00C3BB48;
+					};
 					13A74D152EE5C77E00C3BB48 = {
 						CreatedOnToolsVersion = 26.1.1;
 					};
@@ -651,11 +706,19 @@
 			projectRoot = "";
 			targets = (
 				13A74D152EE5C77E00C3BB48 /* HyperFocus */,
+				13827A222F092028008FB39A /* HyperFocusTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		13827A212F092028008FB39A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13A74D142EE5C77E00C3BB48 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -671,6 +734,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		13827A1F2F092028008FB39A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		13A74D122EE5C77E00C3BB48 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -738,7 +808,65 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		13827A282F092028008FB39A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 13A74D152EE5C77E00C3BB48 /* HyperFocus */;
+			targetProxy = 13827A272F092028008FB39A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		13827A2A2F092028008FB39A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B2V8LG7269;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperFocus";
+			};
+			name = Debug;
+		};
+		13827A2B2F092028008FB39A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B2V8LG7269;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocusTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HyperFocus.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/HyperFocus";
+			};
+			name = Release;
+		};
 		13A74D1F2EE5C78000C3BB48 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -880,7 +1008,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -917,7 +1045,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.hyperfocus.timer.HyperFocus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
@@ -937,6 +1065,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		13827A292F092028008FB39A /* Build configuration list for PBXNativeTarget "HyperFocusTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13827A2A2F092028008FB39A /* Debug */,
+				13827A2B2F092028008FB39A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		13A74D112EE5C77E00C3BB48 /* Build configuration list for PBXProject "HyperFocus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
