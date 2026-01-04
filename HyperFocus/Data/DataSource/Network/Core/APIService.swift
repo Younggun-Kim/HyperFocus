@@ -103,13 +103,13 @@ public struct APIService: APIServiceProtocol {
                         
                         // ISO8601 Date 포맷 설정 (마이크로초 포함 지원)
                         if #available(iOS 10.0, *) {
-                            let iso8601Formatter = ISO8601DateFormatter()
-                            iso8601Formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
                             decoder.dateDecodingStrategy = .custom { decoder in
                                 let container = try decoder.singleValueContainer()
                                 let dateString = try container.decode(String.self)
                                 
                                 // ISO8601DateFormatter로 먼저 시도
+                                let iso8601Formatter = ISO8601DateFormatter()
+                                iso8601Formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
                                 if let date = iso8601Formatter.date(from: dateString) {
                                     return date
                                 }

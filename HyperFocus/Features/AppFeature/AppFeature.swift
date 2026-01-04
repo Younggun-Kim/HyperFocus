@@ -107,12 +107,6 @@ struct AppFeature {
                 }
                 return .none
                 
-            case .onboarding(.delegate(.onboardingCompleted)):
-                // Onboarding 완료 시 Main으로 이동
-                state.currentScreen = .main
-                state.onboarding = nil
-                state.main = MainFeature.State()
-                return .none
             case .login:
                 return .run { send in
                     do {
@@ -135,9 +129,18 @@ struct AppFeature {
                 // TODO: - Toast
                 return .none
                 
+            case .onboarding(.delegate(.onboardingCompleted)):
+                // Onboarding 완료 시 Main으로 이동
+                // delegate 액션은 ifLet 전에 처리되어야 함
+                state.currentScreen = .main
+                state.onboarding = nil
+                state.main = MainFeature.State()
+                return .none
+                
             case .splash:
                 return .none
             case .onboarding:
+                // delegate 액션은 위에서 처리되므로 여기서는 다른 액션만 처리
                 return .none
             case .main:
                 return .none

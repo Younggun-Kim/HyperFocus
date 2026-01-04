@@ -62,7 +62,8 @@ struct FocusHomeFeature {
                 
                 return .none
             case let .getSuggestionResponse(.failure(error)):
-                // TODO: - Toast
+                print("getSuggestionResponse error: \(error)")
+                state.suggestions = SuggestionEntity.defaultSuggesions
                 return .none
             case .inputTextChanged(let text):
                 if(text.count > 60) {
