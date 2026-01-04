@@ -125,6 +125,7 @@
 		13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */; };
 		13E320422F0AE76600B1F920 /* MileStoneModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320412F0AE76600B1F920 /* MileStoneModifier.swift */; };
 		13E320442F0AE7D500B1F920 /* MileStoneFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */; };
+		13E320462F0AF04200B1F920 /* ViewMotivationToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320452F0AF04200B1F920 /* ViewMotivationToast.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -254,6 +255,7 @@
 		13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneEntity.swift; sourceTree = "<group>"; };
 		13E320412F0AE76600B1F920 /* MileStoneModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneModifier.swift; sourceTree = "<group>"; };
 		13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneFeature.swift; sourceTree = "<group>"; };
+		13E320452F0AF04200B1F920 /* ViewMotivationToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMotivationToast.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -698,6 +700,7 @@
 				13800CA72F0A640C00056DD2 /* StartFocusSessionProperties.swift */,
 				13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */,
 				13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */,
+				13E320452F0AF04200B1F920 /* ViewMotivationToast.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -1102,6 +1105,7 @@
 				134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */,
 				13AB6AD02F0929A2001F7608 /* AppVersionAPI.swift in Sources */,
 				133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */,
+				13E320462F0AF04200B1F920 /* ViewMotivationToast.swift in Sources */,
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
 				13800CBA2F0A90F700056DD2 /* SessionStartParams.swift in Sources */,
