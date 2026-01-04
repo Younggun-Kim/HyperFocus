@@ -65,6 +65,14 @@ extension FocusUseCase: DependencyKey {
     public static var previewValue: FocusUseCase {
         testValue
     }
+
+    public static func preview(suggestions: [SuggestionEntity]) -> FocusUseCase {
+        FocusUseCase(
+            getSuggestions: {
+                return suggestions
+            }
+        )
+    }
 }
 
 extension DependencyValues {

@@ -20,13 +20,15 @@ struct MainView: View {
                 store: store.scope(state: \.focus, action: \.focus)
             )
             .tabItem {
-                Label("Focus", systemImage: "timer")
+                Label("Focus", systemImage: "play")
+                    .foregroundStyle(.white)
             }
             .tag(MainTab.focus)
             
             LogHomeView(store: store.scope(state: \.log, action: \.log))
                 .tabItem {
-                    Label("Log", systemImage: "list.bullet")
+                    Label("Log", systemImage: "watch.analog")
+                        .foregroundStyle(.white)
                 }
                 .tag(MainTab.log)
         }
