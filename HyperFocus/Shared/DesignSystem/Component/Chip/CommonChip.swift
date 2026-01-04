@@ -11,11 +11,12 @@ struct CommonChip: View {
     var title: String
     var style: CommonChipStyle
     var selected: Bool
+    var maxLength: Int? = nil
     var action: () -> Void
     
     var body: some View {
         Button(action: action) {
-            Text(title)
+            Text(displayTitle)
                 .font(.caption.weight(selected ? .bold : .regular))
                 .foregroundStyle(style.foregroundColor)
                 .padding(.horizontal, 10)
@@ -27,11 +28,21 @@ struct CommonChip: View {
                 )
         }
     }
+    
+    private var displayTitle: String {
+        guard let maxLength = maxLength, maxLength > 0 else {
+            return title
+        }
+        if title.count <= maxLength {
+            return title
+        }
+        return String(title.prefix(maxLength))
+    }
 }
 
 #Preview {
     ZStack {
         Color.red.opacity(0.3)
-        CommonChip(title: "Reading book", style: .grayFill, selected: true, action:{})
+        CommonChip(title: "Reading book", style: .grayFill, selected: true, maxLength: 10, action:{})
     }
 }

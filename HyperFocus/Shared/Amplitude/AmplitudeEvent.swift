@@ -22,7 +22,7 @@ public enum AmplitudeEvent{
     
     // MARK: - Focus Event
     case viewHome(ViewHomeProperties)
-    case startFocusSession
+    case startFocusSession(StartFocusSessionProperties)
     case viewStopAlert
     case clickSessionDiscard
     case viewMotivationToast

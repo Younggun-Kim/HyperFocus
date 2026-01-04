@@ -18,6 +18,7 @@ struct FocusHomeFeature {
         var inputText: String = ""
         var suggestions: [SuggestionEntity] = []
         var selectedDuration: DurationType? = .min25
+        var inputMethod: InputMethodType
         
         var path = StackState<Path.State>()
     }
@@ -62,6 +63,7 @@ struct FocusHomeFeature {
                     return .none
                 }
                 state.inputText = text
+                state.inputMethod = .manual
                 return .none
                 
             case .addBtnTapped:
@@ -85,6 +87,7 @@ struct FocusHomeFeature {
                 return .none
             case let .reasonChanged(reason):
                 state.inputText = reason.title
+                state.inputMethod = .chip
                 
                 if let duration = state.suggestions
                     .filter({$0.reason == reason})
@@ -95,7 +98,10 @@ struct FocusHomeFeature {
                 
                 return .none
             case let .durationChanged(duration):
-                state.selectedDuration = duration
+                if state.selectedDuration != duration {
+                    state.selectedDuration = duration
+                    state.inputMethod = .manual
+                }
                 return .none
             case .path:
                 return .none

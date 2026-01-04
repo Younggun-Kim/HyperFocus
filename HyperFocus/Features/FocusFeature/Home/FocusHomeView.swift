@@ -94,6 +94,7 @@ struct FocusHomeView: View {
                         title: reason.title,
                         style: .gray,
                         selected: false,
+                        maxLength: 12,
                         action: {
                             store.send(.reasonChanged(reason))
                         })
@@ -114,6 +115,7 @@ struct FocusHomeView: View {
                         title: duration.title,
                         style: .grayFill,
                         selected: store.selectedDuration == duration,
+                        maxLength: 12,
                         action: {
                             store.send(.durationChanged(duration))
                         }
