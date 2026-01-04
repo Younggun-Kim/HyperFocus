@@ -74,6 +74,7 @@
 		137AE0C82F0988EA00EE44AA /* SuggestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C72F0988EA00EE44AA /* SuggestionType.swift */; };
 		137AE0CA2F0989DD00EE44AA /* SuggestionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */; };
 		13800CA02F0A539100056DD2 /* ViewHomeProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */; };
+		13800CA42F0A5F6700056DD2 /* CharWrappingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CA32F0A5F6700056DD2 /* CharWrappingText.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -177,6 +178,7 @@
 		137AE0C72F0988EA00EE44AA /* SuggestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionType.swift; sourceTree = "<group>"; };
 		137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEntity.swift; sourceTree = "<group>"; };
 		13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHomeProperties.swift; sourceTree = "<group>"; };
+		13800CA32F0A5F6700056DD2 /* CharWrappingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharWrappingText.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -389,6 +391,7 @@
 		134BFFAB2EFEBAEA00F1F444 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				13800CA22F0A5F6100056DD2 /* CharWrappingText */,
 				134BFFAC2EFEBAF000F1F444 /* Timer */,
 			);
 			path = Components;
@@ -630,6 +633,14 @@
 				13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */,
 			);
 			path = Properties;
+			sourceTree = "<group>";
+		};
+		13800CA22F0A5F6100056DD2 /* CharWrappingText */ = {
+			isa = PBXGroup;
+			children = (
+				13800CA32F0A5F6700056DD2 /* CharWrappingText.swift */,
+			);
+			path = CharWrappingText;
 			sourceTree = "<group>";
 		};
 		13827A122F091596008FB39A /* Device */ = {
@@ -972,6 +983,7 @@
 				134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */,
 				137AE0872F09377400EE44AA /* CommonError.swift in Sources */,
 				133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */,
+				13800CA42F0A5F6700056DD2 /* CharWrappingText.swift in Sources */,
 				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
 				134BFFD02F01502200F1F444 /* DurationType.swift in Sources */,
 				137AE0992F095E5900EE44AA /* TokenEntity.swift in Sources */,

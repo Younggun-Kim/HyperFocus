@@ -8,6 +8,7 @@
 import ComposableArchitecture
 import SwiftUI
 
+
 struct FocusHomeView: View {
     @Bindable var store: StoreOf<FocusHomeFeature>
     @FocusState private var isGoalFocused: Bool
@@ -18,9 +19,9 @@ struct FocusHomeView: View {
                 
                 VStack {
                     Spacer()
-                    GoalEditor
-                    ExampleGoals
-                    BasicTimePicker
+                    ReasonEditor
+                    ReasonChips
+                    DurationChips
                     StartButton
                 }
             }
@@ -37,7 +38,7 @@ struct FocusHomeView: View {
     }
     
     // MARK: - 목표 입력
-    var GoalEditor: some View {
+    var ReasonEditor: some View {
         HStack(alignment: .top) {
             ZStack(alignment: .topLeading) {
                 TextEditor(text: $store.inputText.sending(\.inputTextChanged))
@@ -51,11 +52,14 @@ struct FocusHomeView: View {
                     .multilineTextAlignment(.leading)
                 
                 if store.inputText.isEmpty {
-                    Text(FocusText.goalPlaceholder)
-                        .font(.title)
-                        .foregroundStyle(.gray)
-                        .padding(18)
-                        .allowsHitTesting(false)
+                    CharWrappingText(
+                        text: FocusText.goalPlaceholder,
+                        font: .preferredFont(forTextStyle: .title1),
+                        color: .gray,
+                        alignment: .left
+                    )
+                    .padding(16)
+                    .allowsHitTesting(false)
                 }
             }
             
@@ -82,7 +86,7 @@ struct FocusHomeView: View {
     }
     
     // MARK: - 목표 예시
-    var ExampleGoals: some View {
+    var ReasonChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
                 ForEach(store.reasons, id: \.self) { reason in
@@ -101,7 +105,7 @@ struct FocusHomeView: View {
     }
     
     // MARK: - 타이머 시간
-    var BasicTimePicker: some View {
+    var DurationChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
                 Spacer()
