@@ -11,8 +11,8 @@ import Moya
 import Alamofire
 
 public enum FocusAPI {
-    /// 집중 시간 추천 조회
-    case getSuggestions
+    case getSuggestions // 집중 시간 추천 조회
+    case startSession(SessionStartRequest) // 집중 세션 시작
 }
 
 extension FocusAPI: BaseTarget {
@@ -20,6 +20,8 @@ extension FocusAPI: BaseTarget {
         switch self {
         case .getSuggestions:
             return "/api/v1/focus/suggestions"
+        case .startSession:
+            return "/api/v1/focus/start"
         }
     }
     
@@ -27,12 +29,16 @@ extension FocusAPI: BaseTarget {
         switch self {
         case .getSuggestions:
             return .get
+        case .startSession:
+            return .post
         }
     }
     
     public var headers: [String: String]? {
         switch self {
         case .getSuggestions:
+            return NetworkHeader.authorization
+        case .startSession:
             return NetworkHeader.authorization
         }
     }
@@ -41,6 +47,8 @@ extension FocusAPI: BaseTarget {
         switch self {
         case .getSuggestions:
             return .requestPlain
+        case .startSession(let request):
+            return .requestJSONEncodable(request)
         }
     }
 }

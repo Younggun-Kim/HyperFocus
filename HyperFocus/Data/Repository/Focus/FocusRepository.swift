@@ -10,6 +10,8 @@ import ComposableArchitecture
 
 public struct FocusRepository {
     public let getSuggestion: @Sendable () async throws -> APIResponse<FocusSuggestionsResponse>
+    public let startSession: @Sendable (_ request: SessionStartRequest) async throws -> APIResponse<SessionStartResponse>
+    
 }
 
 extension FocusRepository: DependencyKey {
@@ -19,6 +21,13 @@ extension FocusRepository: DependencyKey {
             return try await apiService.requestWrapped(
                 FocusAPI.getSuggestions,
                 responseType:FocusSuggestionsResponse.self
+            )
+        },
+        startSession: {  request in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                FocusAPI.startSession(request),
+                responseType:SessionStartResponse.self
             )
         }
     )
