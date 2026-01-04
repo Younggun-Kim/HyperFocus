@@ -85,8 +85,13 @@ extension FocusUseCase: DependencyKey {
             } catch let error as APIError {
                 // 409 에러인 경우 currentSession을 호출하여 반환
                 if case .httpError(let statusCode, _) = error, statusCode == 409 {
-                    let currentResponse = try await focusRepository.currentSession()
-                    return currentResponse.data?.toEntity()
+                    do {
+                        let currentResponse = try await focusRepository.currentSession()
+                        return currentResponse.data?.toEntity()
+                    } catch {
+                        // currentSession 호출 실패 시 원래 에러를 다시 throw
+                        throw error
+                    }
                 }
                 throw error
             }

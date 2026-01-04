@@ -120,7 +120,21 @@ struct FocusHomeFeature {
             case let .startSessionResponse(.failure(error)):
                 // TODO: - Toast 메시지
                 
-                print("startSessionResponse.failure: \(error.localizedDescription)")
+                if let apiError = error as? APIError {
+                    print("startSessionResponse.failure: \(apiError)")
+                    switch apiError {
+                    case .httpError(let statusCode, let message):
+                        print("HTTP Error: \(statusCode), message: \(message ?? "nil")")
+                    case .decodingError(let message):
+                        print("Decoding Error: \(message)")
+                    case .networkError(let message):
+                        print("Network Error: \(message)")
+                    default:
+                        print("Other Error: \(apiError)")
+                    }
+                } else {
+                    print("startSessionResponse.failure: \(error.localizedDescription)")
+                }
                 
                 return .none
             case let .reasonChanged(reason):

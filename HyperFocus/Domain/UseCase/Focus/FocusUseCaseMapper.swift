@@ -29,8 +29,8 @@ extension CurrentSessionResponse {
             targetDurationSeconds: self.targetDurationSeconds,
             actualDurationSeconds: self.actualDurationSeconds,
             startedAt: self.startedAt,
-            pausedAt: self.pausedAt ?? self.pausedAt,
-            completedAt: self.completedAt ?? self.completedAt
+            pausedAt: self.pausedAt,
+            completedAt: self.completedAt
         )
     }
 }

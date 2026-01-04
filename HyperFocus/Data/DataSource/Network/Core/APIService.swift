@@ -100,6 +100,52 @@ public struct APIService: APIServiceProtocol {
                     do {
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
+                        
+                        // ISO8601 Date 포맷 설정 (마이크로초 포함 지원)
+                        if #available(iOS 10.0, *) {
+                            let iso8601Formatter = ISO8601DateFormatter()
+                            iso8601Formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
+                            decoder.dateDecodingStrategy = .custom { decoder in
+                                let container = try decoder.singleValueContainer()
+                                let dateString = try container.decode(String.self)
+                                
+                                // ISO8601DateFormatter로 먼저 시도
+                                if let date = iso8601Formatter.date(from: dateString) {
+                                    return date
+                                }
+                                
+                                // 실패 시 커스텀 포맷 시도 (마이크로초 포함)
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS"
+                                dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+                                dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+                                
+                                if let date = dateFormatter.date(from: dateString) {
+                                    return date
+                                }
+                                
+                                // 밀리초만 있는 경우
+                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS"
+                                if let date = dateFormatter.date(from: dateString) {
+                                    return date
+                                }
+                                
+                                // 초만 있는 경우
+                                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                                if let date = dateFormatter.date(from: dateString) {
+                                    return date
+                                }
+                                
+                                throw DecodingError.dataCorruptedError(
+                                    in: container,
+                                    debugDescription: "날짜 형식이 올바르지 않습니다: \(dateString)"
+                                )
+                            }
+                        } else {
+                            // iOS 10 미만에서는 기본 ISO8601 사용
+                            decoder.dateDecodingStrategy = .iso8601
+                        }
+                        
                         let decoded = try decoder.decode(APIResponse<D>.self, from: response.data)
                         continuation.resume(returning: decoded)
                     } catch {
