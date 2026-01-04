@@ -20,6 +20,14 @@ public struct SessionEntity: Codable, Sendable, Equatable {
 
 
 extension SessionEntity {
+    var remainingDuration: Int {
+        max(0, targetDurationSeconds - actualDurationSeconds)
+    }
+    
+    var progress: Double {
+        Double(remainingDuration / targetDurationSeconds)
+    }
+    
     static var mock: SessionEntity {
         .init(
             id: UUID().uuidString,

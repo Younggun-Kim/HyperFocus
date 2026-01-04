@@ -48,7 +48,9 @@ struct OnboardingFeature {
                 state.page = newPage
                 // Timer 페이지로 이동 시 Timer 초기화
                 if newPage == .timer && state.timer == nil {
-                    state.timer = TimerFeature.State()
+                    return .run { send in
+                        await send(.initializeTimer)
+                    }
                 }
                 return .none
             case .skipBtnTapped:
@@ -63,7 +65,7 @@ struct OnboardingFeature {
                 return .none
             case .initializeTimer:
                 if state.timer == nil {
-                    state.timer = TimerFeature.State()
+                    state.timer = TimerFeature.State(playbackRate: 200)
                 }
                 return .none
             case .timer(.delegate(.timerCompleted)):

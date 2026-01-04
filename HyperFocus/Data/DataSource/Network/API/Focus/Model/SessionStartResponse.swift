@@ -14,6 +14,16 @@ public struct SessionStartResponse: Codable, Sendable, Equatable {
     var targetDurationSeconds: Int
     var actualDurationSeconds: Int
     var startedAt: Date
-    var pausedAt: Date
-    var completedAt: Date
+    var pausedAt: Date?
+    var completedAt: Date?
+    var status: String // SessionStatusType
+    var ambientSound: String?
+    var inputMethod: String?
+    var failReason: String?
+    var failReasonFeedback: String?
+    var satisfaction: String?
+    var satisfactionFeedback: String?
+    var discardReason: String?
+    var minimumDurationMet: Bool?
+    var targetAchieved: Bool?
 }

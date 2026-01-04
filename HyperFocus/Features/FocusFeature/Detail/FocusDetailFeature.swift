@@ -19,6 +19,16 @@ struct FocusDetailFeature {
         var showEarlyWrappingUpAlert: Bool = false
         var showCompletedBottomSheet: Bool = false
         var completed: FocusCompletedFeature.State = FocusCompletedFeature.State()
+        
+        init(session: SessionEntity) {
+            self.session = session
+            self.timer = TimerFeature.State(
+                playbackRate: 1,
+                totalSeconds: session.targetDurationSeconds,
+                remainingSeconds: session.remainingDuration,
+                progress: session.progress
+            )
+        }
     }
     
     enum Action {

@@ -12,6 +12,7 @@ import Foundation
 struct TimerFeature {
     @ObservableState
     struct State: Equatable {
+        var playbackRate: Double = 1
         var totalSeconds: Int = 25 * 60 // 25분 (기본값)
         var remainingSeconds: Int = 25 * 60
         var isRunning: Bool = false
@@ -46,9 +47,12 @@ struct TimerFeature {
         Reduce { state, action in
             switch action {
             case .start:
+                let interval: Duration = .milliseconds(1000 / state.playbackRate)
+                
                 state.isRunning = true
+                
                 return .run { send in
-                    for await _ in clock.timer(interval: .milliseconds(7)) {
+                    for await _ in clock.timer(interval: interval) {
                         await send(.timerTick)
                     }
                 }
