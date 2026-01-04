@@ -12,6 +12,9 @@ public struct FocusRepository {
     public let getSuggestion: @Sendable () async throws -> APIResponse<FocusSuggestionsResponse>
     public let startSession: @Sendable (_ request: SessionStartRequest) async throws -> APIResponse<SessionStartResponse>
     public let currentSession: @Sendable () async throws -> APIResponse<CurrentSessionResponse>
+    public let pauseSession: @Sendable (_ sessionId: String) async throws -> APIResponse<SessionResponse>
+    public let resumeSession: @Sendable (_ sessionId: String) async throws -> APIResponse<SessionResponse>
+    
 }
 
 extension FocusRepository: DependencyKey {
@@ -35,6 +38,20 @@ extension FocusRepository: DependencyKey {
             return try await apiService.requestWrapped(
                 FocusAPI.getCurrentSession,
                 responseType:CurrentSessionResponse.self
+            )
+        },
+        pauseSession: { sessionId in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                FocusAPI.pauseSession(sessionId),
+                responseType:SessionResponse.self
+            )
+        },
+        resumeSession: { sessionId in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                FocusAPI.resumeSession(sessionId),
+                responseType:SessionResponse.self
             )
         }
     )

@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum SessionStatusType: String  {
+enum SessionStatusType: String, Codable, Sendable  {
     case inProgress = "IN_PROGRESS"
     case paused = "PAUSED"
     case completed = "COMPLETED"

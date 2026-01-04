@@ -16,6 +16,7 @@ public struct SessionEntity: Codable, Sendable, Equatable {
     var startedAt: Date
     var pausedAt: Date?
     var completedAt: Date?
+    var status: SessionStatusType?
 }
 
 

@@ -11,6 +11,8 @@ import SwiftUI
 
 @Reducer
 struct FocusDetailFeature {
+    @Dependency(\.focusUseCase) var focusUseCase
+    
     @ObservableState
     struct State: Equatable {
         var session: SessionEntity
@@ -39,7 +41,9 @@ struct FocusDetailFeature {
     }
     
     enum Action {
-        case playToggled
+        case stop
+        case start
+        case updateSession(SessionEntity)
         case sounctToggled
         case checkTapped
         case wrappingUpAlertDismissed
@@ -63,15 +67,40 @@ struct FocusDetailFeature {
         
         Reduce { state, action in
             switch action {
-            case .playToggled:
+            case .stop:
+                let sessionId = state.session.id
                 
-                if (state.timer.isRunning) {
-                    state.playStatus = .paused
-                    return .send(.timer(.pause))
+                state.playStatus = .paused
+                return .run { send in
+                    do {
+                        if let session = try await focusUseCase.pauseSession(sessionId) {
+                            await send(.updateSession(session))
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    
+                    await send(.timer(.pause))
                 }
                 
+            case .start:
+                let sessionId = state.session.id
+                
                 state.playStatus = .inProgress
-                return .send(.timer(.start))
+                return .run { send in
+                    do {
+                        if let session = try await focusUseCase.resumeSession(sessionId) {
+                            await send(.updateSession(session))
+                        }
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    
+                    await send(.timer(.start))
+                }
+            case .updateSession(let session):
+                state.session = session
+                return .none
             case .sounctToggled:
                 state.isSoundOn = !state.isSoundOn
                 return .none
@@ -82,8 +111,8 @@ struct FocusDetailFeature {
                 } else {
                     state.showEarlyWrappingUpAlert = true
                 }
-            
-                return .send(.timer(.pause))
+                
+                return .send(.stop)
             case .wrappingUpAlertDismissed:
                 state.showWrappingUpAlert = false
                 return .none
@@ -96,7 +125,7 @@ struct FocusDetailFeature {
                 return .none
             case .resumeTimer:
                 state.showWrappingUpAlert = false
-                return .send(.timer(.start))
+                return .send(.start)
             case .deleteProgress:
                 state.showWrappingUpAlert = false
                 return .none

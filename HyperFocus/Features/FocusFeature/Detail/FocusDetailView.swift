@@ -31,14 +31,14 @@ struct FocusDetailView: View {
                             .scaledToFit()
                             .frame(width: 96, height: 96)
                             .onTapGesture {
-                                store.send(.playToggled)
+                                store.send(.stop)
                             }
                         
                     } else {
                         Image(AssetSystem.icPlay.rawValue)
                             .frame(width: 96, height: 96)
                             .onTapGesture {
-                                store.send(.playToggled)
+                                store.send(.start)
                             }
                     }
                     Image(store.isSoundOn
