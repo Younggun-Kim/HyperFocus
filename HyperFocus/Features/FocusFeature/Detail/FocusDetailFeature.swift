@@ -30,7 +30,7 @@ struct FocusDetailFeature {
         init(session: SessionEntity) {
             self.session = session
             self.timer = TimerFeature.State(
-                playbackRate: 1,
+                playbackRate: 100,
                 totalSeconds: session.targetDurationSeconds,
                 remainingSeconds: session.remainingDuration,
                 isRunning: false,
@@ -183,6 +183,11 @@ struct FocusDetailFeature {
             case let .failReasonResponse(.success(reason)):
                 // Bottom sheet 닫기
                 state.showFailReasonBottomSheet = false
+                
+                amplitudeService.track(
+                    .clickSessionDiscard(.init(isUnderThreeMinutes: state.timer.isThreeMinutesElapsed))
+                )
+                
                 // FocusHome으로 이동하기 위해 delegate 액션 전송
                 return .send(.delegate(.sessionAbandoned(reason)))
             case .delegate:

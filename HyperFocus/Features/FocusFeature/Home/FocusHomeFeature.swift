@@ -20,7 +20,7 @@ struct FocusHomeFeature {
         var suggestions: [SuggestionEntity] = []
         var selectedDuration: DurationType? = .min25
         var inputMethod: InputMethodType = .chip
-        var toastMessage: String?
+        var toast: ToastFeature.State = ToastFeature.State()
         
         var path = StackState<Path.State>()
     }
@@ -35,7 +35,7 @@ struct FocusHomeFeature {
         case startSessionResponse(Result<SessionEntity?, Error>)
         case reasonChanged(ReasonType)
         case durationChanged(DurationType)
-        case toastDismissed
+        case toast(ToastFeature.Action)
         case path(StackActionOf<Path>)
     }
     
@@ -45,6 +45,10 @@ struct FocusHomeFeature {
     }
     
     var body: some Reducer<State, Action> {
+        Scope(state: \.toast, action: \.toast) {
+            ToastFeature()
+        }
+        
         Reduce { state, action in
             switch action {
             case .viewDidAppear:
@@ -63,7 +67,7 @@ struct FocusHomeFeature {
                 state.suggestions = suggestions
                 
                 return .none
-            case let .getSuggestionResponse(.failure(_)):
+            case .getSuggestionResponse(.failure(_)):
                 state.suggestions = SuggestionEntity.defaultSuggesions
                 return .none
             case .inputTextChanged(let text):
@@ -161,10 +165,8 @@ struct FocusHomeFeature {
                 // FocusDetail에서 세션이 포기되었을 때 path를 pop하여 FocusHome으로 이동
                 state.path.removeAll()
                 // reason에 따른 토스트 메시지 설정
-                state.toastMessage = reason.title
-                return .none
-            case .toastDismissed:
-                state.toastMessage = nil
+                return .send(.toast(.show(reason.reason)))
+            case .toast:
                 return .none
             case .path:
                 return .none

@@ -119,6 +119,8 @@
 		13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F742EF7080A00CEDC69 /* SplashFeature.swift */; };
 		13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F772EF7090400CEDC69 /* AppView.swift */; };
 		13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F762EF7090400CEDC69 /* AppFeature.swift */; };
+		13E320392F0AE27700B1F920 /* ToastFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320382F0AE27700B1F920 /* ToastFeature.swift */; };
+		13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -242,6 +244,8 @@
 		13AC3F742EF7080A00CEDC69 /* SplashFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFeature.swift; sourceTree = "<group>"; };
 		13AC3F762EF7090400CEDC69 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		13AC3F772EF7090400CEDC69 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		13E320382F0AE27700B1F920 /* ToastFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastFeature.swift; sourceTree = "<group>"; };
+		13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickSessionDiscardProperties.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -682,6 +686,7 @@
 				13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */,
 				13800CA72F0A640C00056DD2 /* StartFocusSessionProperties.swift */,
 				13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */,
+				13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -732,6 +737,7 @@
 		13800CD02F0ADE3C00056DD2 /* Toast */ = {
 			isa = PBXGroup;
 			children = (
+				13E320382F0AE27700B1F920 /* ToastFeature.swift */,
 				13800CCF2F0ADE3C00056DD2 /* ToastModifier.swift */,
 			);
 			path = Toast;
@@ -1055,6 +1061,7 @@
 				134BFFCE2F014FD200F1F444 /* ReasonType.swift in Sources */,
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
 				137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */,
+				13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
 				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
 				13800CA62F0A630300056DD2 /* InputMethodType.swift in Sources */,
@@ -1149,6 +1156,7 @@
 				133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */,
 				13800CCA2F0AD32C00056DD2 /* SessionAbandonParams.swift in Sources */,
 				137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */,
+				13E320392F0AE27700B1F920 /* ToastFeature.swift in Sources */,
 				13800CC62F0ACFDE00056DD2 /* ViewStopAlertProperties.swift in Sources */,
 				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,
 			);

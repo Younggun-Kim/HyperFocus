@@ -35,8 +35,8 @@ struct FocusHomeView: View {
             store.send(.viewDidAppear)
         }
         .toast(message: Binding(
-            get: { store.toastMessage },
-            set: { _ in store.send(.toastDismissed) }
+            get: { store.toast.message },
+            set: { _ in store.send(.toast(.dismiss)) }
         ))
     }
     
