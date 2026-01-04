@@ -121,6 +121,8 @@
 		13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F762EF7090400CEDC69 /* AppFeature.swift */; };
 		13E320392F0AE27700B1F920 /* ToastFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320382F0AE27700B1F920 /* ToastFeature.swift */; };
 		13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */; };
+		13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */; };
+		13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -246,6 +248,8 @@
 		13AC3F772EF7090400CEDC69 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		13E320382F0AE27700B1F920 /* ToastFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastFeature.swift; sourceTree = "<group>"; };
 		13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickSessionDiscardProperties.swift; sourceTree = "<group>"; };
+		13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneResponse.swift; sourceTree = "<group>"; };
+		13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -618,6 +622,7 @@
 				137AE0982F095E5300EE44AA /* TokenEntity.swift */,
 				137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */,
 				13800CBB2F0A927300056DD2 /* SessionEntity.swift */,
+				13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 				13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */,
 				13800CC32F0ACB1400056DD2 /* SessionResponse.swift */,
 				13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */,
+				13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1062,6 +1068,7 @@
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
 				137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */,
 				13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */,
+				13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
 				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
 				13800CA62F0A630300056DD2 /* InputMethodType.swift in Sources */,
@@ -1124,6 +1131,7 @@
 				13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */,
 				137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */,
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
+				13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */,
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
 				137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */,
 				13800CD12F0ADE3C00056DD2 /* ToastModifier.swift in Sources */,

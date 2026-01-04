@@ -57,3 +57,16 @@ extension SessionAbandonParams {
         .init(actualDurationSeconds: actualDurationSeconds, failReason: failReason)
     }
 }
+
+
+extension MileStoneResponse {
+    func toEntity() -> MileStoneEntity {
+        .init(
+            milestoneMinute: milestoneMinute,
+            messageId: messageId,
+            message: message,
+            messageKo: messageKo,
+            emoji: emoji
+        )
+    }
+}
