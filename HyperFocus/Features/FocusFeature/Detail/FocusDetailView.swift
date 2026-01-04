@@ -126,9 +126,7 @@ struct FocusDetailView: View {
     FocusDetailView(
         store: Store(initialState: FocusDetailFeature.State(
             timer: TimerFeature.State(),
-            focusGoal: FocusGoal("테스트 목표")!,
-            focusTime: .oneHour,
-            
+            focusTime: .min60,
         )) {
             FocusDetailFeature()
         }

@@ -8,7 +8,7 @@
 import Foundation
 
 /// 공통 API 응답 모델
-public struct APIResponse<T: Decodable>: Decodable {
+public struct APIResponse<T: Decodable & Sendable>: Decodable, Sendable {
     /// 성공 여부
     public let success: Bool
     /// 응답 데이터

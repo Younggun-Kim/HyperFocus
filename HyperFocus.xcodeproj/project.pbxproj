@@ -41,10 +41,9 @@
 		134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB42F00F59800F1F444 /* FocusHomeFeature.swift */; };
 		134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFB52F00F59800F1F444 /* FocusHomeView.swift */; };
 		134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFBA2F00F59800F1F444 /* MainFeature.swift */; };
-		134BFFC62F01074500F1F444 /* FocusGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFC52F01073300F1F444 /* FocusGoal.swift */; };
 		134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFCA2F01314200F1F444 /* FocusText.swift */; };
-		134BFFCE2F014FD200F1F444 /* ExampleGoal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFCD2F014FCA00F1F444 /* ExampleGoal.swift */; };
-		134BFFD02F01502200F1F444 /* BasicTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFCF2F01501E00F1F444 /* BasicTime.swift */; };
+		134BFFCE2F014FD200F1F444 /* ReasonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFCD2F014FCA00F1F444 /* ReasonType.swift */; };
+		134BFFD02F01502200F1F444 /* DurationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFCF2F01501E00F1F444 /* DurationType.swift */; };
 		134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFD32F01545300F1F444 /* CommonChip.swift */; };
 		134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFD52F01593500F1F444 /* CommonChipStyle.swift */; };
 		134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFDB2F01796800F1F444 /* FocusDetailView.swift */; };
@@ -65,6 +64,15 @@
 		137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AD2F0973A200EE44AA /* Environment.swift */; };
 		137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */; };
 		137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */; };
+		137AE0B62F097A9F00EE44AA /* FocusAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0B52F097A9C00EE44AA /* FocusAPI.swift */; };
+		137AE0B82F097B0400EE44AA /* FocusSuggestionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0B72F097B0400EE44AA /* FocusSuggestionsResponse.swift */; };
+		137AE0BB2F097BD500EE44AA /* FocusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0BA2F097BD500EE44AA /* FocusRepository.swift */; };
+		137AE0C02F097E3000EE44AA /* NetworkAuthPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0BF2F097E3000EE44AA /* NetworkAuthPlugin.swift */; };
+		137AE0C22F097F1C00EE44AA /* NetworkHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C12F097F1C00EE44AA /* NetworkHeader.swift */; };
+		137AE0C42F097FFF00EE44AA /* TokenRefreshPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C32F097FFF00EE44AA /* TokenRefreshPlugin.swift */; };
+		137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C52F09888600EE44AA /* FocusUseCase.swift */; };
+		137AE0C82F0988EA00EE44AA /* SuggestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C72F0988EA00EE44AA /* SuggestionType.swift */; };
+		137AE0CA2F0989DD00EE44AA /* SuggestionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -136,10 +144,9 @@
 		134BFFB72F00F59800F1F444 /* LogHomeFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogHomeFeature.swift; sourceTree = "<group>"; };
 		134BFFBA2F00F59800F1F444 /* MainFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainFeature.swift; sourceTree = "<group>"; };
 		134BFFBB2F00F59800F1F444 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		134BFFC52F01073300F1F444 /* FocusGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusGoal.swift; sourceTree = "<group>"; };
 		134BFFCA2F01314200F1F444 /* FocusText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusText.swift; sourceTree = "<group>"; };
-		134BFFCD2F014FCA00F1F444 /* ExampleGoal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleGoal.swift; sourceTree = "<group>"; };
-		134BFFCF2F01501E00F1F444 /* BasicTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicTime.swift; sourceTree = "<group>"; };
+		134BFFCD2F014FCA00F1F444 /* ReasonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReasonType.swift; sourceTree = "<group>"; };
+		134BFFCF2F01501E00F1F444 /* DurationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationType.swift; sourceTree = "<group>"; };
 		134BFFD32F01545300F1F444 /* CommonChip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonChip.swift; sourceTree = "<group>"; };
 		134BFFD52F01593500F1F444 /* CommonChipStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonChipStyle.swift; sourceTree = "<group>"; };
 		134BFFDB2F01796800F1F444 /* FocusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusDetailView.swift; sourceTree = "<group>"; };
@@ -159,6 +166,15 @@
 		137AE0AD2F0973A200EE44AA /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Dependency.swift"; sourceTree = "<group>"; };
 		137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmplitudeEvent.swift; sourceTree = "<group>"; };
+		137AE0B52F097A9C00EE44AA /* FocusAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusAPI.swift; sourceTree = "<group>"; };
+		137AE0B72F097B0400EE44AA /* FocusSuggestionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSuggestionsResponse.swift; sourceTree = "<group>"; };
+		137AE0BA2F097BD500EE44AA /* FocusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRepository.swift; sourceTree = "<group>"; };
+		137AE0BF2F097E3000EE44AA /* NetworkAuthPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkAuthPlugin.swift; sourceTree = "<group>"; };
+		137AE0C12F097F1C00EE44AA /* NetworkHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHeader.swift; sourceTree = "<group>"; };
+		137AE0C32F097FFF00EE44AA /* TokenRefreshPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenRefreshPlugin.swift; sourceTree = "<group>"; };
+		137AE0C52F09888600EE44AA /* FocusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusUseCase.swift; sourceTree = "<group>"; };
+		137AE0C72F0988EA00EE44AA /* SuggestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionType.swift; sourceTree = "<group>"; };
+		137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEntity.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -272,6 +288,7 @@
 			children = (
 				133BD3C72F03A27F0081CDF8 /* AppConfigUseCase.swift */,
 				137AE0922F09582F00EE44AA /* LoginUseCase.swift */,
+				137AE0C52F09888600EE44AA /* FocusUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -296,6 +313,7 @@
 		133BD3CE2F0410610081CDF8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0B92F097BCF00EE44AA /* Focus */,
 				137AE08F2F09566200EE44AA /* Auth */,
 				13827A1B2F0919EE008FB39A /* App */,
 			);
@@ -315,6 +333,7 @@
 		133BD3D02F04107B0081CDF8 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0BC2F097C9F00EE44AA /* Plugin */,
 				133BD3E22F04196C0081CDF8 /* Core */,
 				133BD3E52F04196C0081CDF8 /* API */,
 				133BD3E32F04196C0081CDF8 /* README.md */,
@@ -326,11 +345,11 @@
 			isa = PBXGroup;
 			children = (
 				13AB6AD52F092BB4001F7608 /* BaseResponse.swift */,
+				137AE0C12F097F1C00EE44AA /* NetworkHeader.swift */,
 				133BD3DD2F04196C0081CDF8 /* APIError.swift */,
 				133BD3DE2F04196C0081CDF8 /* APIResponse.swift */,
 				133BD3DF2F04196C0081CDF8 /* APIService.swift */,
 				133BD3E02F04196C0081CDF8 /* BaseTarget.swift */,
-				133BD3E12F04196C0081CDF8 /* NetworkPlugin.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -338,6 +357,8 @@
 		133BD3E52F04196C0081CDF8 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				137AE0B32F097A9100EE44AA /* Focus */,
+				137AE0B52F097A9C00EE44AA /* FocusAPI.swift */,
 				137AE0882F09539500EE44AA /* Auth */,
 				13AB6AD12F0929AB001F7608 /* AppVersion */,
 			);
@@ -422,7 +443,6 @@
 		134BFFC42F01072900F1F444 /* ValueObject */ = {
 			isa = PBXGroup;
 			children = (
-				134BFFC52F01073300F1F444 /* FocusGoal.swift */,
 			);
 			path = ValueObject;
 			sourceTree = "<group>";
@@ -431,8 +451,9 @@
 			isa = PBXGroup;
 			children = (
 				13AB6AD72F092C23001F7608 /* VersionUpdateType.swift */,
-				134BFFCD2F014FCA00F1F444 /* ExampleGoal.swift */,
-				134BFFCF2F01501E00F1F444 /* BasicTime.swift */,
+				134BFFCD2F014FCA00F1F444 /* ReasonType.swift */,
+				134BFFCF2F01501E00F1F444 /* DurationType.swift */,
+				137AE0C72F0988EA00EE44AA /* SuggestionType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -543,6 +564,7 @@
 			isa = PBXGroup;
 			children = (
 				137AE0982F095E5300EE44AA /* TokenEntity.swift */,
+				137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -563,6 +585,40 @@
 				137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */,
 			);
 			path = Environment;
+			sourceTree = "<group>";
+		};
+		137AE0B32F097A9100EE44AA /* Focus */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0B42F097A9800EE44AA /* Model */,
+			);
+			path = Focus;
+			sourceTree = "<group>";
+		};
+		137AE0B42F097A9800EE44AA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0B72F097B0400EE44AA /* FocusSuggestionsResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		137AE0B92F097BCF00EE44AA /* Focus */ = {
+			isa = PBXGroup;
+			children = (
+				137AE0BA2F097BD500EE44AA /* FocusRepository.swift */,
+			);
+			path = Focus;
+			sourceTree = "<group>";
+		};
+		137AE0BC2F097C9F00EE44AA /* Plugin */ = {
+			isa = PBXGroup;
+			children = (
+				133BD3E12F04196C0081CDF8 /* NetworkPlugin.swift */,
+				137AE0BF2F097E3000EE44AA /* NetworkAuthPlugin.swift */,
+				137AE0C32F097FFF00EE44AA /* TokenRefreshPlugin.swift */,
+			);
+			path = Plugin;
 			sourceTree = "<group>";
 		};
 		13827A122F091596008FB39A /* Device */ = {
@@ -880,13 +936,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				13AC3F6B2EF7030000CEDC69 /* Colors+Extensions.swift in Sources */,
-				134BFFCE2F014FD200F1F444 /* ExampleGoal.swift in Sources */,
+				134BFFCE2F014FD200F1F444 /* ReasonType.swift in Sources */,
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
+				137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
 				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
 				13AB6AD82F092C27001F7608 /* VersionUpdateType.swift in Sources */,
 				133BD3E62F04196C0081CDF8 /* APIError.swift in Sources */,
 				133BD3E82F04196C0081CDF8 /* BaseTarget.swift in Sources */,
+				137AE0C82F0988EA00EE44AA /* SuggestionType.swift in Sources */,
 				133BD3E92F04196C0081CDF8 /* APIResponse.swift in Sources */,
 				133BD3EA2F04196C0081CDF8 /* APIService.swift in Sources */,
 				133BD3EB2F04196C0081CDF8 /* NetworkPlugin.swift in Sources */,
@@ -904,19 +962,19 @@
 				137AE0872F09377400EE44AA /* CommonError.swift in Sources */,
 				133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */,
 				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
-				134BFFD02F01502200F1F444 /* BasicTime.swift in Sources */,
+				134BFFD02F01502200F1F444 /* DurationType.swift in Sources */,
 				137AE0992F095E5900EE44AA /* TokenEntity.swift in Sources */,
 				133BD3C82F03A28E0081CDF8 /* AppConfigUseCase.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
 				137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */,
-				134BFFC62F01074500F1F444 /* FocusGoal.swift in Sources */,
 				13A74D372EE5CCFC00C3BB48 /* AppDelegate.swift in Sources */,
 				134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */,
 				134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */,
 				134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */,
 				137AE08A2F09539D00EE44AA /* AuthAPI.swift in Sources */,
 				134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */,
+				137AE0C42F097FFF00EE44AA /* TokenRefreshPlugin.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
 				137AE0912F09566F00EE44AA /* AuthRepository.swift in Sources */,
@@ -924,7 +982,9 @@
 				133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */,
 				133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */,
 				133BD3BD2F02CFBD0081CDF8 /* LogText.swift in Sources */,
+				137AE0BB2F097BD500EE44AA /* FocusRepository.swift in Sources */,
 				13AC3F662EF6FF4A00CEDC69 /* Font+Extensions.swift in Sources */,
+				137AE0C02F097E3000EE44AA /* NetworkAuthPlugin.swift in Sources */,
 				13AC3F6E2EF7048200CEDC69 /* AmbientStyleType.swift in Sources */,
 				13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */,
 				13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */,
@@ -933,11 +993,14 @@
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
 				137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
+				137AE0C22F097F1C00EE44AA /* NetworkHeader.swift in Sources */,
 				13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */,
+				137AE0CA2F0989DD00EE44AA /* SuggestionEntity.swift in Sources */,
 				134BFFBD2F00F59800F1F444 /* MainView.swift in Sources */,
 				137AE09F2F09702A00EE44AA /* AmplitudeService.swift in Sources */,
 				13827A162F09172E008FB39A /* AppRepository.swift in Sources */,
 				133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */,
+				137AE0B82F097B0400EE44AA /* FocusSuggestionsResponse.swift in Sources */,
 				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
 				137AE08E2F09551200EE44AA /* LoginResponse.swift in Sources */,
 				137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */,
@@ -948,6 +1011,7 @@
 				134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */,
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,
 				13AB6AD42F092B27001F7608 /* AppVersionCheckResponse.swift in Sources */,
+				137AE0B62F097A9F00EE44AA /* FocusAPI.swift in Sources */,
 				133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */,
 				137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */,
 				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,

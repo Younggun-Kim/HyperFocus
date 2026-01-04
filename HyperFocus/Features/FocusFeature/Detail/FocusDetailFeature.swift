@@ -13,8 +13,7 @@ struct FocusDetailFeature {
     @ObservableState
     struct State: Equatable {
         var timer: TimerFeature.State
-        var focusGoal: FocusGoal
-        var focusTime: BasicTime
+        var focusTime: DurationType
         var isSoundOn: Bool = true
         var showWrappingUpAlert: Bool = false
         var showEarlyWrappingUpAlert: Bool = false

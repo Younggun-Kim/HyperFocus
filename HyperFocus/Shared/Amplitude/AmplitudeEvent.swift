@@ -7,45 +7,37 @@
 
 import Foundation
 
-public enum AmplitudeEvent {
-    public enum Onboarding {
-        case viewOnboardingIntro
-        case viewOnboardingTimer
-        case viewOnboardingStart
-        case clickOnboardingComplete
-    }
-    
-    public enum FocusTab {
-        case viewHome
-        case startFocusSession
-        case viewStopAlert
-        case clickSessionDiscard
-        case viewMotivationToast
-        case completeFocusSession
-        case clickSessionFeedback
-        case startRestTimer
-    }
+
+public protocol AmplitudeEventProtocol {
+    var key: String { get }
+    var properties: [String: Any] { get }
 }
 
-public extension AmplitudeEvent.Onboarding {
-    var rawValue: String {
+public enum AmplitudeEvent{
+    // MARK: - Onboarding Event
+    case viewOnboardingIntro
+    case viewOnboardingTimer
+    case viewOnboardingStart
+    case clickOnboardingComplete
+    
+    // MARK: - Focus Event
+    case viewHome
+    case startFocusSession
+    case viewStopAlert
+    case clickSessionDiscard
+    case viewMotivationToast
+    case completeFocusSession
+    case clickSessionFeedback
+    case startRestTimer
+}
+
+extension AmplitudeEvent: AmplitudeEventProtocol {
+    public var key: String {
         switch self {
         case .viewOnboardingIntro: return "view_onboarding_intro"
         case .viewOnboardingTimer: return "view_onboarding_timer"
         case .viewOnboardingStart: return "view_onboarding_start"
         case .clickOnboardingComplete: return "click_onboarding_complete"
-        }
-    }
-    
-    var properties: [String: Any] {
-        [:]
-    }
-}
-
-
-public extension AmplitudeEvent.FocusTab {
-    var rawValue: String {
-        switch self {
         case .viewHome: return "view_home"
         case .startFocusSession: return "start_focus_session"
         case .viewStopAlert: return "view_stop_alert"
@@ -57,7 +49,7 @@ public extension AmplitudeEvent.FocusTab {
         }
     }
     
-    var properties: [String: Any] {
+    public var properties: [String: Any] {
         [:]
     }
 }

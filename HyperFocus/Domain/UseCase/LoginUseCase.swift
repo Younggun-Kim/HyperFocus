@@ -24,8 +24,14 @@ extension LoginUseCase: DependencyKey {
                 // 저장된 토큰이 있다면 로그인 처리
                 // 토큰 갱신은 Api Interceptor에서 처리
                 if let storedToken = authRepository.getToken() {
-                    // TODO: - Push 토큰 저장 추가
-                    return true
+                    let loginResponse = try await authRepository.refreshToken(storedToken.refreshToken)
+                    
+                    if loginResponse.success,
+                       let newToken = loginResponse.data?.toTokenEntity(){
+                        authRepository.setToken(newToken)
+                        
+                        return true
+                    }
                 }
                 
                 // 저장된 토큰이 없다면 익명 로그인 작업

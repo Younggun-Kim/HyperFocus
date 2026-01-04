@@ -13,6 +13,7 @@ public struct AuthRepository {
     public let setToken: @Sendable (_ token: TokenEntity) -> Void
     public let deleteToken: @Sendable () -> Void
     public let anonymousLogin: @Sendable (_ deviceUUID: String) async throws -> LoginResponse
+    public let refreshToken: @Sendable (_ refreshToken: String) async throws -> LoginResponse
 }
 
 extension AuthRepository: DependencyKey {
@@ -35,6 +36,13 @@ extension AuthRepository: DependencyKey {
                 AuthAPI.anonymous(deviceUUID: deviceUUID),
                 responseType: LoginResponse.self
             )
+        },
+        refreshToken: { refreshToken in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.request(
+                AuthAPI.refresh(refreshToken: refreshToken),
+                responseType: LoginResponse.self
+            )
         }
     )
     
@@ -42,7 +50,8 @@ extension AuthRepository: DependencyKey {
         getToken: { nil },
         setToken: { _ in },
         deleteToken: {},
-        anonymousLogin: { _ in .mock }
+        anonymousLogin: { _ in .mock },
+        refreshToken: { _ in .mock }
     )
     
     public static var previewValue: AuthRepository {

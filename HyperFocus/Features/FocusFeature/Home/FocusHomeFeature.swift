@@ -10,24 +10,25 @@ import Foundation
 
 @Reducer
 struct FocusHomeFeature {
+    @Dependency(\.focusUseCase) var focusUseCase
+    
     @ObservableState
     struct State {
         var inputText: String = ""
-        var focusGoal: FocusGoal?
-        var recommendGoals: [String] = ExampleGoal.allCases.compactMap { goal in
-            goal.title
-        }
-        var goalTime: BasicTime = .twentyFive
-        var errorMessage: String?
+        var suggestions: [SuggestionEntity] = []
+        var selectedDuration: DurationType?
+        
         var path = StackState<Path.State>()
     }
     
     @CasePathable
     enum Action {
+        case viewDidAppear
+        case getSuggestionResponse(Result<[SuggestionEntity], Error>)
         case inputTextChanged(String)
         case addBtnTapped
-        case exampleGoalTapped(String)
-        case timeChanged(BasicTime)
+        case reasonChanged(ReasonType)
+        case durationChanged(DurationType)
         case path(StackActionOf<Path>)
     }
     
@@ -39,36 +40,62 @@ struct FocusHomeFeature {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
+            case .viewDidAppear:
+                return .run { send in
+                    do {
+                        let response = try await focusUseCase.getSuggestions()
+                        await send(.getSuggestionResponse(.success(response)))
+                    } catch {
+                        await send(.getSuggestionResponse(.failure(error)))
+                    }
+                }
+            case let .getSuggestionResponse(.success(suggestions)):
+                state.suggestions = suggestions
+                return .none
+            case let .getSuggestionResponse(.failure(error)):
+                // MARK: - Toast
+                print("🔥 \(error.localizedDescription)")
+                return .none
             case .inputTextChanged(let text):
-                if(text.count > FocusGoal.maxLength) {
-                    // TODO: Toast
-                    state.errorMessage = "목표는 최대 60자까지 입력 가능합니다."
+                if(text.count > 60) {
+                    // TODO: Toast - "목표는 최대 60자까지 입력 가능합니다."
                     return .none
                 }
                 state.inputText = text
-                state.errorMessage = nil
                 return .none
                 
             case .addBtnTapped:
-                guard let goal = FocusGoal(state.inputText) else {
-                    // TODO: Toast
-                    state.errorMessage = "목표는 최대 60자까지 입력 가능합니다."
+                let reason = ReasonType(rawValue: state.inputText)
+                
+                guard reason.isValid else {
+                    // TODO: - Toast "목표는 최대 60자까지 입력 가능합니다."
                     return .none
                 }
                 
-                state.focusGoal = goal
-                state.errorMessage = nil
+                guard let duration = state.selectedDuration else {
+                    // TODO: - Toast "집중 시간을 선택해주세요."
+                    return .none
+                }
+                
+                // TODO: Detail로 Reason, Duration 전달하기
                 state.path.append(.detail(FocusDetailFeature.State(
                     timer: TimerFeature.State(),
-                    focusGoal: goal,
-                    focusTime: state.goalTime
+                    focusTime: duration
                 )))
                 return .none
-            case let .exampleGoalTapped(goal):
-                state.inputText = goal
+            case let .reasonChanged(reason):
+                state.inputText = reason.title
+                
+                if let duration = state.suggestions
+                    .filter({$0.reason == reason})
+                    .first?.duration {
+                    print(duration)
+                    state.selectedDuration = duration
+                }
+                
                 return .none
-            case let .timeChanged(time):
-                state.goalTime = time
+            case let .durationChanged(duration):
+                state.selectedDuration = duration
                 return .none
             case .path:
                 return .none
@@ -78,3 +105,17 @@ struct FocusHomeFeature {
     }
 }
 
+
+extension FocusHomeFeature.State {
+    var reasons: [ReasonType] {
+        return suggestions.compactMap{
+            $0.reason
+        }
+    }
+    
+    var durations: [DurationType] {
+        return suggestions.compactMap {
+            $0.duration
+        }
+    }
+}

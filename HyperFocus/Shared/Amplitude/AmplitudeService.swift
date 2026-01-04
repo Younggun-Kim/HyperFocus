@@ -34,7 +34,7 @@ extension AmplitudeService: DependencyKey {
         return AmplitudeService(
             track: { event in
                 amplitude.track(
-                    eventType: event.rawValue,
+                    eventType: event.key,
                     eventProperties: event.properties
                 )
             },

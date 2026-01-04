@@ -31,6 +31,9 @@ struct FocusHomeView: View {
                 FocusDetailView(store: detailStore)
             }
         }
+        .onAppear {
+            store.send(.viewDidAppear)
+        }
     }
     
     // MARK: - 목표 입력
@@ -82,13 +85,13 @@ struct FocusHomeView: View {
     var ExampleGoals: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach(store.recommendGoals, id: \.self) { goal in
+                ForEach(store.reasons, id: \.self) { reason in
                     CommonChip(
-                        title: goal,
+                        title: reason.title,
                         style: .gray,
                         selected: false,
                         action: {
-                            store.send(.exampleGoalTapped(goal))
+                            store.send(.reasonChanged(reason))
                         })
                 }
             }
@@ -102,13 +105,13 @@ struct FocusHomeView: View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 20) {
                 Spacer()
-                ForEach(BasicTime.allCases, id: \.self) { type in
+                ForEach(store.durations, id: \.self) { duration in
                     CommonChip(
-                        title: type.title,
+                        title: duration.title,
                         style: .grayFill,
-                        selected: store.goalTime == type,
+                        selected: store.selectedDuration == duration,
                         action: {
-                            store.send(.timeChanged(type))
+                            store.send(.durationChanged(duration))
                         }
                     )
                 }
@@ -132,7 +135,7 @@ struct FocusHomeView: View {
 
 #Preview {
     FocusHomeView(
-        store: Store(initialState: FocusHomeFeature.State()) {
+        store: Store(initialState: FocusHomeFeature.State( suggestions: SuggestionEntity.defaultSuggesions)) {
             FocusHomeFeature()
         }
     )

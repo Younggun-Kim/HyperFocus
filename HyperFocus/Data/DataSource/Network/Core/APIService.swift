@@ -34,8 +34,7 @@ public struct APIService: APIServiceProtocol {
         } else {
             // 기본 플러그인 설정
             let plugins: [PluginType] = [
-                NetworkLoggingPlugin(verbose: true)
-                // NetworkAuthPlugin { AuthManager.shared.token } // 필요시 활성화
+                NetworkLoggingPlugin(verbose: true),
             ]
             
             self.provider = MoyaProvider<MultiTarget>(
@@ -119,7 +118,38 @@ public struct APIService: APIServiceProtocol {
 
 extension APIService: DependencyKey {
     public static var liveValue: APIService {
-        APIService()
+        @Dependency(\.localDataSource) var localDataSource
+        
+        // 매 요청마다 최신 토큰을 가져오는 클로저
+        let tokenProvider: () -> String? = {
+            return localDataSource.getToken()?.accessToken
+        }
+        
+        // 토큰 갱신 전용 Provider (플러그인 없이, 순환 참조 방지)
+        let refreshProvider = MoyaProvider<MultiTarget>(
+            plugins: [NetworkLoggingPlugin(verbose: false)] // 로깅만, 인증 플러그인 없음
+        )
+        
+        // 토큰 갱신 플러그인 설정
+        let tokenRefreshPlugin = TokenRefreshPlugin(
+            tokenProvider: {
+                localDataSource.getToken()
+            },
+            tokenSetter: { token in
+                localDataSource.setToken(token)
+            },
+            refreshProvider: refreshProvider
+        )
+        
+        let plugins: [PluginType] = [
+            NetworkAuthPlugin(tokenProvider: tokenProvider),
+            tokenRefreshPlugin,
+            NetworkLoggingPlugin(verbose: true),
+        ]
+        
+        let provider = MoyaProvider<MultiTarget>(plugins: plugins)
+
+        return APIService(provider: provider)
     }
     
     public static var testValue: APIService {

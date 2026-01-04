@@ -21,16 +21,7 @@ public extension BaseTarget {
     
     /// 기본 헤더
     var headers: [String: String]? {
-        var headers: [String: String] = [
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        ]
-        // TODO: 인증 토큰 추가
-        // if let token = AuthManager.shared.token {
-        //     headers["Authorization"] = "Bearer \(token)"
-        // }
-        
-        return headers
+        return NetworkHeader.basic
     }
     
     /// 기본 샘플 데이터 (테스트용)
