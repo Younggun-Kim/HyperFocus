@@ -10,6 +10,7 @@ import ComposableArchitecture
 
 public struct FocusUseCase {
     public let getSuggestions: @Sendable () async throws -> [SuggestionEntity]
+    public let startSession: @Sendable (_ params: SessionStartParams) async throws -> SessionEntity?
 }
 
 extension FocusUseCase: DependencyKey {
@@ -55,22 +56,34 @@ extension FocusUseCase: DependencyKey {
                 amplitudeService.track(.viewHome(.init(loadStatus: false, hasHistory: false)))
                 return SuggestionEntity.defaultSuggesions
             }
+        },
+        startSession: {  params in
+            @Dependency(\.focusRepository) var focusRepository
+            var response = try await focusRepository.startSession(
+                SessionStartRequest(
+                    name: params.name,
+                    targetDurationSeconds: params.duration.seconds,
+                    inputMethod: params.inputMethod?.rawValue
+                )
+            )
+            
+            return response.data?.toEntity()
         }
     )
     
     public static var testValue = FocusUseCase(
-        getSuggestions: { [] }
+        getSuggestions: { [] },
+        startSession: { _ in  SessionEntity.mock },
     )
     
     public static var previewValue: FocusUseCase {
         testValue
     }
-
+    
     public static func preview(suggestions: [SuggestionEntity]) -> FocusUseCase {
         FocusUseCase(
-            getSuggestions: {
-                return suggestions
-            }
+            getSuggestions: { suggestions },
+            startSession: { _ in  SessionEntity.mock },
         )
     }
 }

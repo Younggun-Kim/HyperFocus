@@ -13,6 +13,7 @@ import Alamofire
 public enum FocusAPI {
     case getSuggestions // 집중 시간 추천 조회
     case startSession(SessionStartRequest) // 집중 세션 시작
+    case getCurrentSession
 }
 
 extension FocusAPI: BaseTarget {
@@ -22,6 +23,8 @@ extension FocusAPI: BaseTarget {
             return "/api/v1/focus/suggestions"
         case .startSession:
             return "/api/v1/focus/start"
+        case .getCurrentSession:
+            return "/api/v1/focus/current"
         }
     }
     
@@ -31,6 +34,8 @@ extension FocusAPI: BaseTarget {
             return .get
         case .startSession:
             return .post
+        case .getCurrentSession:
+            return .get
         }
     }
     
@@ -39,6 +44,8 @@ extension FocusAPI: BaseTarget {
         case .getSuggestions:
             return NetworkHeader.authorization
         case .startSession:
+            return NetworkHeader.authorization
+        case .getCurrentSession:
             return NetworkHeader.authorization
         }
     }
@@ -49,6 +56,9 @@ extension FocusAPI: BaseTarget {
             return .requestPlain
         case .startSession(let request):
             return .requestJSONEncodable(request)
+        case .getCurrentSession:
+            return .requestPlain
+            
         }
     }
 }

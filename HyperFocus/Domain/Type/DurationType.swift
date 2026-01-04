@@ -6,7 +6,7 @@
 //
 
 
-public enum DurationType: CaseIterable, Equatable, Hashable {
+public enum DurationType: CaseIterable, Equatable, Hashable, Sendable {
     case min15
     case min25
     case min45

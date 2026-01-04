@@ -15,10 +15,11 @@ struct FocusHomeFeature {
     
     @ObservableState
     struct State {
+        var isLoading: Bool = false
         var inputText: String = ""
         var suggestions: [SuggestionEntity] = []
         var selectedDuration: DurationType? = .min25
-        var inputMethod: InputMethodType
+        var inputMethod: InputMethodType = .chip
         
         var path = StackState<Path.State>()
     }
@@ -26,9 +27,11 @@ struct FocusHomeFeature {
     @CasePathable
     enum Action {
         case viewDidAppear
+        case setLoading(Bool)
         case getSuggestionResponse(Result<[SuggestionEntity], Error>)
         case inputTextChanged(String)
         case addBtnTapped
+        case startSessionResponse(Result<SessionEntity, Error>)
         case reasonChanged(ReasonType)
         case durationChanged(DurationType)
         case path(StackActionOf<Path>)
@@ -51,6 +54,9 @@ struct FocusHomeFeature {
                         await send(.getSuggestionResponse(.failure(error)))
                     }
                 }
+            case .setLoading(let isLoadaing):
+                state.isLoading = isLoadaing
+                return .none
             case let .getSuggestionResponse(.success(suggestions)):
                 state.suggestions = suggestions
                 
@@ -67,6 +73,7 @@ struct FocusHomeFeature {
                 return .none
                 
             case .addBtnTapped:
+                let inputMethod = state.inputMethod
                 let reason = ReasonType(rawValue: state.inputText)
                 
                 guard reason.isValid else {
@@ -79,11 +86,36 @@ struct FocusHomeFeature {
                     return .none
                 }
                 
-                // TODO: Detail로 Reason, Duration 전달하기
-                state.path.append(.detail(FocusDetailFeature.State(
-                    timer: TimerFeature.State(),
-                    focusTime: duration
-                )))
+                return .run { send in
+                    
+                    await send(.setLoading(true))
+                    
+                    do {
+                        if let response = try await focusUseCase.startSession(
+                            .init(
+                                name: reason.title,
+                                duration: duration,
+                                inputMethod: inputMethod,
+                            )
+                        ) {
+                            await send(.startSessionResponse(.success(response)))
+                        }
+                    } catch {
+                        await send(.startSessionResponse(.failure(error)))
+                    }
+                    
+                    await send(.setLoading(false))
+                }
+            case let .startSessionResponse(.success(response)):
+                // TODO: - 상세 화면으로 이동
+//                state.path.append(.detail(FocusDetailFeature.State(
+//                    timer: TimerFeature.State(),
+//                    focusTime: response.ta
+//                )))
+                return .none
+            case let .startSessionResponse(.failure(error)):
+                // TODO: - Toast 메시지가 필요한가?
+                
                 return .none
             case let .reasonChanged(reason):
                 state.inputText = reason.title

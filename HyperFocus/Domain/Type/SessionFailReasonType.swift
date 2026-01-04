@@ -9,14 +9,14 @@ import Foundation
 
 
 enum SessionFailReasonType: String  {
-    case internal = "INTERNAL"
-    case external = "EXTERNAL"
+    case internally = "INTERNAL"
+    case externally = "EXTERNAL"
     case none = "NONE"
     
     init?(rawValue: String) {
         switch rawValue {
-        case "INTERNAL": self = .internal
-        case "EXTERNAL": self = .external
+        case "INTERNAL": self = .internally
+        case "EXTERNAL": self = .externally
         case "NONE": self = .none
         default: return nil
         }
@@ -27,16 +27,16 @@ enum SessionFailReasonType: String  {
 extension SessionFailReasonType {
     var title: String {
         switch self {
-        case .internal: return "딴생각"
-        case .external: return "외부 방해"
+        case .internally: return "딴생각"
+        case .externally: return "외부 방해"
         case .none: return "단순 삭제"
         }
     }
     
     var icon: String {
         switch self {
-        case .internal: return "🧠"
-        case .external: return "📢"
+        case .internally: return "🧠"
+        case .externally: return "📢"
         case .none: return "🗑️"
         }
     }

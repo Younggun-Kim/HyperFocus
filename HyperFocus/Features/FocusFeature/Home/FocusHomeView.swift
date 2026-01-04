@@ -16,7 +16,6 @@ struct FocusHomeView: View {
     var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
             AmbientZStack(style: .black) {
-                
                 VStack {
                     Spacer()
                     ReasonEditor
@@ -141,10 +140,16 @@ struct FocusHomeView: View {
 
 #Preview {
     FocusHomeView(
-        store: Store(initialState: FocusHomeFeature.State(suggestions: SuggestionEntity.defaultSuggesions)) {
+        store: Store(
+            initialState: FocusHomeFeature.State(
+                suggestions: SuggestionEntity.defaultSuggesions,
+            )
+        ) {
             FocusHomeFeature()
         } withDependencies: {
-            $0.focusUseCase = .preview(suggestions: SuggestionEntity.defaultSuggesions)
+            $0.focusUseCase = .preview(
+                suggestions: SuggestionEntity.defaultSuggesions
+            )
         }
     )
 }

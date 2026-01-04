@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct SessionStartResponse: Codable, Sendable, Equatable {
+public struct SessionStartResponse: Codable, Sendable, Equatable {
     var id: String
     var name: String
     var targetDurationSeconds: Int
