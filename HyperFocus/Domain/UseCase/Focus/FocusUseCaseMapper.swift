@@ -20,3 +20,17 @@ extension SessionStartResponse {
         )
     }
 }
+
+extension CurrentSessionResponse {
+    func toEntity() -> SessionEntity {
+        return SessionEntity(
+            id: self.id,
+            name: self.name,
+            targetDurationSeconds: self.targetDurationSeconds,
+            actualDurationSeconds: self.actualDurationSeconds,
+            startedAt: self.startedAt,
+            pausedAt: self.pausedAt ?? self.pausedAt,
+            completedAt: self.completedAt ?? self.completedAt
+        )
+    }
+}

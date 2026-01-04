@@ -31,7 +31,7 @@ struct FocusHomeFeature {
         case getSuggestionResponse(Result<[SuggestionEntity], Error>)
         case inputTextChanged(String)
         case addBtnTapped
-        case startSessionResponse(Result<SessionEntity, Error>)
+        case startSessionResponse(Result<SessionEntity?, Error>)
         case reasonChanged(ReasonType)
         case durationChanged(DurationType)
         case path(StackActionOf<Path>)
@@ -62,10 +62,11 @@ struct FocusHomeFeature {
                 
                 return .none
             case let .getSuggestionResponse(.failure(error)):
+                // TODO: - Toast
                 return .none
             case .inputTextChanged(let text):
                 if(text.count > 60) {
-                    // TODO: Toast - "목표는 최대 60자까지 입력 가능합니다."
+                    // TODO: - Toast "목표는 최대 60자까지 입력 가능합니다."
                     return .none
                 }
                 state.inputText = text
@@ -91,15 +92,15 @@ struct FocusHomeFeature {
                     await send(.setLoading(true))
                     
                     do {
-                        if let response = try await focusUseCase.startSession(
+                        let response = try await focusUseCase.startSession(
                             .init(
                                 name: reason.title,
                                 duration: duration,
                                 inputMethod: inputMethod,
                             )
-                        ) {
-                            await send(.startSessionResponse(.success(response)))
-                        }
+                        )
+                        
+                        await send(.startSessionResponse(.success(response)))
                     } catch {
                         await send(.startSessionResponse(.failure(error)))
                     }
@@ -108,13 +109,18 @@ struct FocusHomeFeature {
                 }
             case let .startSessionResponse(.success(response)):
                 // TODO: - 상세 화면으로 이동
-//                state.path.append(.detail(FocusDetailFeature.State(
-//                    timer: TimerFeature.State(),
-//                    focusTime: response.ta
-//                )))
+                
+                if let session = response {
+                    state.path.append(.detail(FocusDetailFeature.State(
+                        session: session
+                    )))
+                }
+                
                 return .none
             case let .startSessionResponse(.failure(error)):
-                // TODO: - Toast 메시지가 필요한가?
+                // TODO: - Toast 메시지
+                
+                print("startSessionResponse.failure: \(error.localizedDescription)")
                 
                 return .none
             case let .reasonChanged(reason):

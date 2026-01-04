@@ -16,20 +16,20 @@ public struct APIResponse<T: Decodable & Sendable>: Decodable, Sendable {
     /// 에러 메시지
     public let message: String?
     /// 에러 코드
-    public let errorCode: String?
+    public let code: String?
     
     enum CodingKeys: String, CodingKey {
         case success
         case data
         case message
-        case errorCode = "error_code"
+        case code
     }
     
-    public init(success: Bool, data: T?, message: String? = nil, errorCode: String? = nil) {
+    public init(success: Bool, data: T?, message: String? = nil, code: String? = nil) {
         self.success = success
         self.data = data
         self.message = message
-        self.errorCode = errorCode
+        self.code = code
     }
 }
 

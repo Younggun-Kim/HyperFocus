@@ -125,8 +125,7 @@ struct FocusDetailView: View {
 #Preview {
     FocusDetailView(
         store: Store(initialState: FocusDetailFeature.State(
-            timer: TimerFeature.State(),
-            focusTime: .min60,
+            session: SessionEntity.mock,
         )) {
             FocusDetailFeature()
         }

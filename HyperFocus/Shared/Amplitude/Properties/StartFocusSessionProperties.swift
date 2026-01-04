@@ -10,8 +10,8 @@ import Foundation
 
 public struct StartFocusSessionProperties: Codable {
     let targetDuration: Int // Seconds
-    let inputMethod: InputMethodType
-    let setssionTitle: String
+    let inputMethod: InputMethodType?
+    let setssionTitle: String?
     
     enum CodingKeys: String, CodingKey {
         case targetDuration = "target_duration"

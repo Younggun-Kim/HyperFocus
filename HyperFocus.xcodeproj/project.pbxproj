@@ -522,8 +522,8 @@
 		134BFFD82F01795900F1F444 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
-				134BFFDB2F01796800F1F444 /* FocusDetailView.swift */,
 				134BFFDF2F01796C00F1F444 /* FocusDetailFeature.swift */,
+				134BFFDB2F01796800F1F444 /* FocusDetailView.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";

@@ -59,15 +59,37 @@ extension FocusUseCase: DependencyKey {
         },
         startSession: {  params in
             @Dependency(\.focusRepository) var focusRepository
-            var response = try await focusRepository.startSession(
-                SessionStartRequest(
-                    name: params.name,
-                    targetDurationSeconds: params.duration.seconds,
-                    inputMethod: params.inputMethod?.rawValue
+            @Dependency(\.amplitudeService) var amplitudeService
+            do {
+                let response = try await focusRepository.startSession(
+                    SessionStartRequest(
+                        name: params.name,
+                        targetDurationSeconds: params.duration.seconds,
+                        inputMethod: params.inputMethod?.rawValue
+                    )
                 )
-            )
-            
-            return response.data?.toEntity()
+                
+                if let session = response.data {
+                    amplitudeService.track(
+                        .startFocusSession(
+                            .init(
+                                targetDuration: session.targetDurationSeconds,
+                                inputMethod: params.inputMethod,
+                                setssionTitle: params.name
+                            )
+                        )
+                    )
+                }
+                
+                return response.data?.toEntity()
+            } catch let error as APIError {
+                // 409 에러인 경우 currentSession을 호출하여 반환
+                if case .httpError(let statusCode, _) = error, statusCode == 409 {
+                    let currentResponse = try await focusRepository.currentSession()
+                    return currentResponse.data?.toEntity()
+                }
+                throw error
+            }
         }
     )
     

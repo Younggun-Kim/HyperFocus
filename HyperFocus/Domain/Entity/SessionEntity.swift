@@ -14,8 +14,8 @@ public struct SessionEntity: Codable, Sendable, Equatable {
     var targetDurationSeconds: Int
     var actualDurationSeconds: Int
     var startedAt: Date
-    var pausedAt: Date
-    var completedAt: Date
+    var pausedAt: Date?
+    var completedAt: Date?
 }
 
 

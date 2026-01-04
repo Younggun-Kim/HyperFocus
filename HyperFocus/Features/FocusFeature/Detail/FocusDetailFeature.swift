@@ -12,8 +12,8 @@ import Foundation
 struct FocusDetailFeature {
     @ObservableState
     struct State: Equatable {
-        var timer: TimerFeature.State
-        var focusTime: DurationType
+        var session: SessionEntity
+        var timer: TimerFeature.State = TimerFeature.State()
         var isSoundOn: Bool = true
         var showWrappingUpAlert: Bool = false
         var showEarlyWrappingUpAlert: Bool = false
