@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum SessionFailReasonType: String  {
+enum SessionFailReasonType: String, CaseIterable  {
     case internally = "INTERNAL"
     case externally = "EXTERNAL"
     case none = "NONE"
@@ -30,6 +30,14 @@ extension SessionFailReasonType {
         case .internally: return "딴생각"
         case .externally: return "외부 방해"
         case .none: return "단순 삭제"
+        }
+    }
+    
+    var reason: String {
+        switch self {
+        case .internally: return "My mind wandered 🦋"
+        case .externally: return "I got interrupted 🔔"
+        case .none: return "Just discard it 🗑️"
         }
     }
     

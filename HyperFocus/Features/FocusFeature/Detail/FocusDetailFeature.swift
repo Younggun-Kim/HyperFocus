@@ -17,12 +17,14 @@ struct FocusDetailFeature {
     @ObservableState
     struct State: Equatable {
         var session: SessionEntity
-        var timer: TimerFeature.State = TimerFeature.State()
         var playStatus: SessionStatusType?
         var isSoundOn: Bool = true
         var showWrappingUpAlert: Bool = false
         var showEarlyWrappingUpAlert: Bool = false
         var showCompletedBottomSheet: Bool = false
+        var showFailReasonBottomSheet: Bool = false
+        
+        var timer: TimerFeature.State = TimerFeature.State()
         var completed: FocusCompletedFeature.State = FocusCompletedFeature.State()
         
         init(session: SessionEntity) {
@@ -53,8 +55,17 @@ struct FocusDetailFeature {
         case resumeTimer
         case deleteProgress
         case completedBottomSheetDismissed
+        case failReasonBottomSheetDismissed
+        case failReasonSelected(SessionFailReasonType)
+        case failReasonResponse(Result<SessionFailReasonType, Error>)
+        case delegate(Delegate)
+        
         case timer(TimerFeature.Action)
         case completed(FocusCompletedFeature.Action)
+        
+        enum Delegate: Equatable {
+            case sessionAbandoned(SessionFailReasonType)
+        }
     }
     
     var body: some Reducer<State, Action> {
@@ -138,9 +149,49 @@ struct FocusDetailFeature {
                 return .send(.start)
             case .deleteProgress:
                 state.showWrappingUpAlert = false
+                state.showEarlyWrappingUpAlert = false
+                state.showFailReasonBottomSheet = true
+                
                 return .none
             case .completedBottomSheetDismissed:
                 state.showCompletedBottomSheet = false
+                return .none
+            case .failReasonBottomSheetDismissed:
+                state.showFailReasonBottomSheet = false
+                return .none
+            case .failReasonSelected(let reason):
+                state.showFailReasonBottomSheet = false
+                
+                let sessionId = state.session.id
+                let actualDurationSeconds = state.session.targetDurationSeconds - state.timer.remainingSeconds
+                let params = SessionAbandonParams(
+                    actualDurationSeconds: actualDurationSeconds,
+                    failReason: reason.rawValue
+                )
+                
+                return .run { send in
+                    do {
+                        _ = try await focusUseCase.abandonSession(
+                            sessionId,
+                            params
+                        )
+                        await send(.failReasonResponse(.success(reason)))
+                    } catch {
+                        await send(.failReasonResponse(.failure(error)))
+                    }
+                }
+            case let .failReasonResponse(.success(reason)):
+                // Bottom sheet 닫기
+                state.showFailReasonBottomSheet = false
+                // FocusHome으로 이동하기 위해 delegate 액션 전송
+                return .send(.delegate(.sessionAbandoned(reason)))
+            case .delegate:
+                return .none
+                
+            case let .failReasonResponse(.failure(error)):
+                // TODO: - Toast
+                print(error.localizedDescription)
+                
                 return .none
             case .completed(.finishSession):
                 state.showCompletedBottomSheet = false

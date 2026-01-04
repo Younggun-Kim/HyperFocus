@@ -91,6 +91,8 @@
 		13800CC62F0ACFDE00056DD2 /* ViewStopAlertProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */; };
 		13800CC82F0AD27100056DD2 /* SessionAbandonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */; };
 		13800CCA2F0AD32C00056DD2 /* SessionAbandonParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */; };
+		13800CCC2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CCB2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift */; };
+		13800CD12F0ADE3C00056DD2 /* ToastModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CCF2F0ADE3C00056DD2 /* ToastModifier.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -211,6 +213,8 @@
 		13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStopAlertProperties.swift; sourceTree = "<group>"; };
 		13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAbandonRequest.swift; sourceTree = "<group>"; };
 		13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAbandonParams.swift; sourceTree = "<group>"; };
+		13800CCB2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusFailReasonBottomSheet.swift; sourceTree = "<group>"; };
+		13800CCF2F0ADE3C00056DD2 /* ToastModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastModifier.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -297,6 +301,7 @@
 			children = (
 				133BD3B32F02A1460081CDF8 /* FocusCompletedBottomSheet.swift */,
 				133BD3B52F02A51E0081CDF8 /* FocusCompletedFeature.swift */,
+				13800CCB2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -503,6 +508,7 @@
 		134BFFD12F0153DB00F1F444 /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				13800CD02F0ADE3C00056DD2 /* Toast */,
 				133BD3A02F023A430081CDF8 /* CustomAlert */,
 				134BFFD22F0153E100F1F444 /* Chip */,
 			);
@@ -721,6 +727,14 @@
 				13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */,
 			);
 			path = Parameters;
+			sourceTree = "<group>";
+		};
+		13800CD02F0ADE3C00056DD2 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				13800CCF2F0ADE3C00056DD2 /* ToastModifier.swift */,
+			);
+			path = Toast;
 			sourceTree = "<group>";
 		};
 		13827A122F091596008FB39A /* Device */ = {
@@ -1075,6 +1089,7 @@
 				13800CAA2F0A652A00056DD2 /* SessionStartRequest.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
+				13800CCC2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift in Sources */,
 				137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */,
 				13A74D372EE5CCFC00C3BB48 /* AppDelegate.swift in Sources */,
 				13800CAC2F0A672100056DD2 /* SessionStartResponse.swift in Sources */,
@@ -1104,6 +1119,7 @@
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
 				137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */,
+				13800CD12F0ADE3C00056DD2 /* ToastModifier.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
 				137AE0C22F097F1C00EE44AA /* NetworkHeader.swift in Sources */,
 				13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */,

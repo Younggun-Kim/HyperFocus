@@ -34,6 +34,10 @@ struct FocusHomeView: View {
         .onAppear {
             store.send(.viewDidAppear)
         }
+        .toast(message: Binding(
+            get: { store.toastMessage },
+            set: { _ in store.send(.toastDismissed) }
+        ))
     }
     
     // MARK: - 목표 입력

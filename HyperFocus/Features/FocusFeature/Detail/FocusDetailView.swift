@@ -123,6 +123,24 @@ struct FocusDetailView: View {
             .presentationDragIndicator(.visible)
             .presentationDetents([.medium])
         }
+        .sheet(isPresented: Binding(
+            get: { store.showFailReasonBottomSheet },
+            set: { newValue in
+                // sheet가 닫힐 때만 액션을 보내고, 이미 닫혀있는 경우는 무시
+                if !newValue && store.showFailReasonBottomSheet {
+                    store.send(.failReasonBottomSheetDismissed)
+                }
+            }
+        )) {
+            FocusFailReasonBottomSheet(
+                onReasonSelected: { reason in
+                    store.send(.failReasonSelected(reason))
+                }
+            )
+            .presentationDragIndicator(.visible)
+            .presentationDetents([.medium])
+        }
+        
     }
 }
 

@@ -36,4 +36,8 @@ struct FocusText {
         static let finishSession = "Finish Session"
         static let fiveMinBreak = "Take a 5m Break"
     }
+    
+    struct FailReationBottomSheet {
+        static let title = "What broke the flow?"
+    }
 }
