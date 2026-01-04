@@ -11,12 +11,13 @@ import Foundation
 @Reducer
 struct FocusHomeFeature {
     @Dependency(\.focusUseCase) var focusUseCase
+    @Dependency(\.amplitudeService) var amplitudeService
     
     @ObservableState
     struct State {
         var inputText: String = ""
         var suggestions: [SuggestionEntity] = []
-        var selectedDuration: DurationType?
+        var selectedDuration: DurationType? = .min25
         
         var path = StackState<Path.State>()
     }
@@ -51,10 +52,9 @@ struct FocusHomeFeature {
                 }
             case let .getSuggestionResponse(.success(suggestions)):
                 state.suggestions = suggestions
+                
                 return .none
             case let .getSuggestionResponse(.failure(error)):
-                // MARK: - Toast
-                print("🔥 \(error.localizedDescription)")
                 return .none
             case .inputTextChanged(let text):
                 if(text.count > 60) {

@@ -73,6 +73,7 @@
 		137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C52F09888600EE44AA /* FocusUseCase.swift */; };
 		137AE0C82F0988EA00EE44AA /* SuggestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C72F0988EA00EE44AA /* SuggestionType.swift */; };
 		137AE0CA2F0989DD00EE44AA /* SuggestionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */; };
+		13800CA02F0A539100056DD2 /* ViewHomeProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -175,6 +176,7 @@
 		137AE0C52F09888600EE44AA /* FocusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusUseCase.swift; sourceTree = "<group>"; };
 		137AE0C72F0988EA00EE44AA /* SuggestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionType.swift; sourceTree = "<group>"; };
 		137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEntity.swift; sourceTree = "<group>"; };
+		13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHomeProperties.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -572,6 +574,7 @@
 		137AE09A2F096FDA00EE44AA /* Amplitude */ = {
 			isa = PBXGroup;
 			children = (
+				13800CA12F0A570900056DD2 /* Properties */,
 				137AE09E2F09702600EE44AA /* AmplitudeService.swift */,
 				137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */,
 			);
@@ -619,6 +622,14 @@
 				137AE0C32F097FFF00EE44AA /* TokenRefreshPlugin.swift */,
 			);
 			path = Plugin;
+			sourceTree = "<group>";
+		};
+		13800CA12F0A570900056DD2 /* Properties */ = {
+			isa = PBXGroup;
+			children = (
+				13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */,
+			);
+			path = Properties;
 			sourceTree = "<group>";
 		};
 		13827A122F091596008FB39A /* Device */ = {
@@ -1004,6 +1015,7 @@
 				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
 				137AE08E2F09551200EE44AA /* LoginResponse.swift in Sources */,
 				137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */,
+				13800CA02F0A539100056DD2 /* ViewHomeProperties.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,

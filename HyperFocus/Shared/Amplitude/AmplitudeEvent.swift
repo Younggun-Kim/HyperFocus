@@ -21,7 +21,7 @@ public enum AmplitudeEvent{
     case clickOnboardingComplete
     
     // MARK: - Focus Event
-    case viewHome
+    case viewHome(ViewHomeProperties)
     case startFocusSession
     case viewStopAlert
     case clickSessionDiscard
@@ -50,6 +50,9 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
     }
     
     public var properties: [String: Any] {
-        [:]
+        switch self {
+        case .viewHome(let properties): return properties.toDictionary()
+        default: return [:]
+        }
     }
 }

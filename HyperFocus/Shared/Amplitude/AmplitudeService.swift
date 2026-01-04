@@ -33,6 +33,7 @@ extension AmplitudeService: DependencyKey {
         
         return AmplitudeService(
             track: { event in
+                print("AmplitudeService.track() \(event.key)")
                 amplitude.track(
                     eventType: event.key,
                     eventProperties: event.properties
