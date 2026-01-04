@@ -35,8 +35,8 @@ extension FocusAPI: BaseTarget {
             return "/api/v1/focus/\(sessionId)/resume"
         case .abandonSession(let sessionId, _):
             return "/api/v1/focus/\(sessionId)/abandon"
-        case .getMileStone(let sessionId, let minute):
-            return "/api/v1/focus/\(sessionId)/milestone?milestoneMinute=\(minute)"
+        case .getMileStone(let sessionId, _):
+            return "/api/v1/focus/\(sessionId)/milestone"
         }
     }
     
@@ -92,8 +92,11 @@ extension FocusAPI: BaseTarget {
             return .requestPlain
         case .abandonSession(_, let request):
             return .requestJSONEncodable(request)
-        case .getMileStone(_, _):
-            return .requestPlain            
+        case .getMileStone(_, let minute):
+            return .requestParameters(
+                parameters: ["milestoneMinute": minute],
+                encoding: URLEncoding.queryString
+            )
         }
     }
 }

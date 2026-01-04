@@ -57,6 +57,14 @@ struct FocusDetailView: View {
         }
         .navigationBarBackButtonHidden()
         .toolbar(store.tabBarVisibility, for: .tabBar)
+        .toast(message: Binding(
+            get: { store.toast.message },
+            set: { _ in store.send(.toast(.dismiss)) }
+        ))
+        .mileStone(message: Binding(
+            get: { store.mileStone.message },
+            set: { _ in store.send(.mileStone(.dismiss)) }
+        ))
         .customAlert(
             isPresented: Binding(
                 get: { store.showWrappingUpAlert },

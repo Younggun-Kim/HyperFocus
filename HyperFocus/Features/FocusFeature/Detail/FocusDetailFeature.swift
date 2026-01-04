@@ -26,11 +26,14 @@ struct FocusDetailFeature {
         
         var timer: TimerFeature.State = TimerFeature.State()
         var completed: FocusCompletedFeature.State = FocusCompletedFeature.State()
+        var toast: ToastFeature.State = ToastFeature.State()
+        var mileStone: MileStoneFeature.State = MileStoneFeature.State()
+        var shownMilestones: Set<Int> = [] // 이미 표시한 milestone (분 단위)
         
         init(session: SessionEntity) {
             self.session = session
             self.timer = TimerFeature.State(
-                playbackRate: 100,
+                playbackRate: 50,
                 totalSeconds: session.targetDurationSeconds,
                 remainingSeconds: session.remainingDuration,
                 isRunning: false,
@@ -62,6 +65,8 @@ struct FocusDetailFeature {
         
         case timer(TimerFeature.Action)
         case completed(FocusCompletedFeature.Action)
+        case toast(ToastFeature.Action)
+        case mileStone(MileStoneFeature.Action)
         
         enum Delegate: Equatable {
             case sessionAbandoned(SessionFailReasonType)
@@ -72,9 +77,14 @@ struct FocusDetailFeature {
         Scope(state: \.timer, action: \.timer) {
             TimerFeature()
         }
-        
         Scope(state: \.completed, action: \.completed) {
             FocusCompletedFeature()
+        }
+        Scope(state: \.toast, action: \.toast) {
+            ToastFeature()
+        }
+        Scope(state: \.mileStone, action: \.mileStone) {
+            MileStoneFeature()
         }
         
         Reduce { state, action in
@@ -190,8 +200,6 @@ struct FocusDetailFeature {
                 
                 // FocusHome으로 이동하기 위해 delegate 액션 전송
                 return .send(.delegate(.sessionAbandoned(reason)))
-            case .delegate:
-                return .none
                 
             case let .failReasonResponse(.failure(error)):
                 // TODO: - Toast
@@ -206,9 +214,28 @@ struct FocusDetailFeature {
                 state.showCompletedBottomSheet = false
                 // TODO: 5분 휴식 처리 로직 추가
                 return .none
+            case .delegate:
+                return .none
+            case .timer(.timerTick):
+                // 경과 시간 계산 (초 단위)
+                // milestone 체크할 시간들 (분 단위)
+                let milestones = [5, 15, 25, 40, 60]
+                let elapsedMinutes = (state.timer.remainingSeconds / 60) + 1
+                
+                if milestones.contains(elapsedMinutes),
+                   !state.shownMilestones.contains(elapsedMinutes) {
+                    state.shownMilestones.insert(elapsedMinutes)
+                    return .send(.mileStone(.show(state.session.id, elapsedMinutes)))
+                }
+                
+                return .none
             case .timer:
                 return .none
             case .completed:
+                return .none
+            case .toast:
+                return .none
+            case .mileStone:
                 return .none
             }
         }

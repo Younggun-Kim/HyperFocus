@@ -18,6 +18,6 @@ public struct MileStoneResponse: Codable, Sendable, Equatable {
 
 extension MileStoneResponse {
     static var mock: Self {
-        Self(milestoneMinute: 5, messageId: "1", message: "5분 마쳤습니다.", messageKo: "5분 마쳤습니다.", emoji: "🕒")
+        MileStoneResponse(milestoneMinute: 5, messageId: "15m_flow", message: "5분 마쳤습니다.", messageKo: "5분 마쳤습니다.", emoji: "🕒")
     }
 }

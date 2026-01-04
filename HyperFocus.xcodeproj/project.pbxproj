@@ -123,6 +123,8 @@
 		13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */; };
 		13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */; };
 		13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */; };
+		13E320422F0AE76600B1F920 /* MileStoneModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320412F0AE76600B1F920 /* MileStoneModifier.swift */; };
+		13E320442F0AE7D500B1F920 /* MileStoneFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -250,6 +252,8 @@
 		13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickSessionDiscardProperties.swift; sourceTree = "<group>"; };
 		13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneResponse.swift; sourceTree = "<group>"; };
 		13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneEntity.swift; sourceTree = "<group>"; };
+		13E320412F0AE76600B1F920 /* MileStoneModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneModifier.swift; sourceTree = "<group>"; };
+		13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneFeature.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -454,6 +458,7 @@
 		134BFFB62F00F59800F1F444 /* FocusFeature */ = {
 			isa = PBXGroup;
 			children = (
+				13E320402F0AE75F00B1F920 /* MileStone */,
 				133BD3B22F02A1320081CDF8 /* Popup */,
 				134BFFD82F01795900F1F444 /* Detail */,
 				134BFFD72F01795300F1F444 /* Home */,
@@ -932,6 +937,15 @@
 			path = AppFeature;
 			sourceTree = "<group>";
 		};
+		13E320402F0AE75F00B1F920 /* MileStone */ = {
+			isa = PBXGroup;
+			children = (
+				13E320412F0AE76600B1F920 /* MileStoneModifier.swift */,
+				13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */,
+			);
+			path = MileStone;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1091,6 +1105,7 @@
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
 				13800CBA2F0A90F700056DD2 /* SessionStartParams.swift in Sources */,
+				13E320422F0AE76600B1F920 /* MileStoneModifier.swift in Sources */,
 				134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */,
 				137AE0872F09377400EE44AA /* CommonError.swift in Sources */,
 				13800CC02F0A935800056DD2 /* FocusUseCaseMapper.swift in Sources */,
@@ -1151,6 +1166,7 @@
 				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
 				137AE08E2F09551200EE44AA /* LoginResponse.swift in Sources */,
 				137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */,
+				13E320442F0AE7D500B1F920 /* MileStoneFeature.swift in Sources */,
 				13800CA02F0A539100056DD2 /* ViewHomeProperties.swift in Sources */,
 				13800CB42F0A68C500056DD2 /* SatisfactionType.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
