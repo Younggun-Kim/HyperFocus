@@ -53,6 +53,7 @@ struct FocusDetailView: View {
             }
         }
         .navigationBarBackButtonHidden()
+        .toolbar(store.tabBarVisibility, for: .tabBar)
         .customAlert(
             isPresented: Binding(
                 get: { store.showWrappingUpAlert },

@@ -35,6 +35,9 @@ struct OnboardingTimerView: View {
                     Spacer()
                     if let timerStore = store.scope(state: \.timer, action: \.timer) {
                         TimerView(store: timerStore)
+                            .onAppear {
+                                store.scope(state: \.timer, action: \.timer).send(.start)
+                            }
                     }
                     Spacer()
                 }

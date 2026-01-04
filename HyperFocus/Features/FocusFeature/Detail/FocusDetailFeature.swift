@@ -7,6 +7,7 @@
 
 import ComposableArchitecture
 import Foundation
+import SwiftUI
 
 @Reducer
 struct FocusDetailFeature {
@@ -14,6 +15,7 @@ struct FocusDetailFeature {
     struct State: Equatable {
         var session: SessionEntity
         var timer: TimerFeature.State = TimerFeature.State()
+        var playStatus: SessionStatusType?
         var isSoundOn: Bool = true
         var showWrappingUpAlert: Bool = false
         var showEarlyWrappingUpAlert: Bool = false
@@ -26,13 +28,17 @@ struct FocusDetailFeature {
                 playbackRate: 1,
                 totalSeconds: session.targetDurationSeconds,
                 remainingSeconds: session.remainingDuration,
-                progress: session.progress
+                isRunning: false,
+                progress: session.progress,
             )
+        }
+        
+        var tabBarVisibility: Visibility {
+            return playStatus?.isPlaying == true ? .hidden : .automatic
         }
     }
     
     enum Action {
-        case timer(TimerFeature.Action)
         case playToggled
         case sounctToggled
         case checkTapped
@@ -42,6 +48,7 @@ struct FocusDetailFeature {
         case resumeTimer
         case deleteProgress
         case completedBottomSheetDismissed
+        case timer(TimerFeature.Action)
         case completed(FocusCompletedFeature.Action)
     }
     
@@ -56,12 +63,14 @@ struct FocusDetailFeature {
         
         Reduce { state, action in
             switch action {
-            case .timer:
-                return .none
             case .playToggled:
+                
                 if (state.timer.isRunning) {
+                    state.playStatus = .paused
                     return .send(.timer(.pause))
                 }
+                
+                state.playStatus = .inProgress
                 return .send(.timer(.start))
             case .sounctToggled:
                 state.isSoundOn = !state.isSoundOn
@@ -101,6 +110,8 @@ struct FocusDetailFeature {
             case .completed(.breakAction):
                 state.showCompletedBottomSheet = false
                 // TODO: 5분 휴식 처리 로직 추가
+                return .none
+            case .timer:
                 return .none
             case .completed:
                 return .none

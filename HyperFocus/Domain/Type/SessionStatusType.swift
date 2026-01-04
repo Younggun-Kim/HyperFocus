@@ -24,3 +24,11 @@ enum SessionStatusType: String  {
         }
     }
 }
+extension SessionStatusType {
+    var isPlaying: Bool {
+        switch self {
+        case .inProgress, .paused: return true
+        case .completed, .abandoned: return false
+        }
+    }
+}

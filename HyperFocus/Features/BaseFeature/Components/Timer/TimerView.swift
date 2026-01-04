@@ -47,9 +47,6 @@ struct TimerView: View {
                 .foregroundColor(.white)
         }
         .frame(width: 300, height: 300)
-        .onAppear {
-            store.send(.start)
-        }
     }
 }
 

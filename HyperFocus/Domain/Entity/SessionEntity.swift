@@ -10,7 +10,7 @@ import Foundation
 
 public struct SessionEntity: Codable, Sendable, Equatable {
     var id: String
-    var name: String
+    var name: String?
     var targetDurationSeconds: Int
     var actualDurationSeconds: Int
     var startedAt: Date
