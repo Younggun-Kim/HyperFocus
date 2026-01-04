@@ -11,6 +11,7 @@ import ComposableArchitecture
 public struct FocusUseCase {
     public let getSuggestions: @Sendable () async throws -> [SuggestionEntity]
     public let startSession: @Sendable (_ params: SessionStartParams) async throws -> SessionEntity?
+    public let getCurrentSession: @Sendable () async throws -> SessionEntity?
 }
 
 extension FocusUseCase: DependencyKey {
@@ -95,12 +96,23 @@ extension FocusUseCase: DependencyKey {
                 }
                 throw error
             }
+        },
+        getCurrentSession: {
+            @Dependency(\.focusRepository) var focusRepository
+            
+            do {
+                let response = try await focusRepository.currentSession()
+                return response.data?.toEntity()
+            } catch let error as APIError {
+                throw error
+            }
         }
     )
     
     public static var testValue = FocusUseCase(
         getSuggestions: { [] },
         startSession: { _ in  SessionEntity.mock },
+        getCurrentSession: { nil }
     )
     
     public static var previewValue: FocusUseCase {
@@ -111,6 +123,7 @@ extension FocusUseCase: DependencyKey {
         FocusUseCase(
             getSuggestions: { suggestions },
             startSession: { _ in  SessionEntity.mock },
+            getCurrentSession: { nil }
         )
     }
 }

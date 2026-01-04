@@ -19,6 +19,7 @@ enum AppScreen: Equatable {
 struct AppFeature {
     @Dependency(\.appConfigUseCase) var appConfigUseCase
     @Dependency(\.loginUseCase) var loginUseCase
+    @Dependency(\.focusUseCase) var focusUseCase
     
     @ObservableState
     struct State {
@@ -32,6 +33,7 @@ struct AppFeature {
     
     enum Action {
         case onAppear
+        case currentSessionResponse(Result<SessionEntity, Error>)
         case splash(SplashFeature.Action)
         case onboarding(OnboardingFeature.Action)
         case main(MainFeature.Action)
@@ -48,11 +50,9 @@ struct AppFeature {
         Reduce { state, action in
             switch action {
             case .onAppear:
-                print("AppFeature.onAppear")
                 state.currentScreen = .splash
                 state.splash = SplashFeature.State()
                 return .none
-                
             case .splash(.delegate(.splashCompleted)):
                 return .run { send in
                     do {
@@ -73,7 +73,19 @@ struct AppFeature {
                 switch(updateType) {
                 case .none:
                     return .run { send in
-                        await send(.login)
+                        do {
+                            print("🔍 [AppFeature] getCurrentSession 호출 시작")
+                            if let session = try await focusUseCase.getCurrentSession() {
+                                print("✅ [AppFeature] getCurrentSession 성공: \(session.id)")
+                                await send(.currentSessionResponse(.success(session)))
+                            } else {
+                                print("⚠️ [AppFeature] getCurrentSession: 세션이 nil")
+                                await send(.currentSessionResponse(.failure(APIError.unknown("세션이 없습니다"))))
+                            }
+                        } catch {
+                            print("❌ [AppFeature] getCurrentSession 에러: \(error)")
+                            await send(.currentSessionResponse(.failure(error)))
+                        }
                     }
                 case .optional:
                     state.showRecommendUpdateAlert = true
@@ -82,11 +94,25 @@ struct AppFeature {
                 }
                 
                 return .none
-                
             case .needAppUpdateResponse(.failure):
                 // TODO: - Toast 메시지
                 return .none
-                
+            case let .currentSessionResponse(.success(session)):
+                print("✅ [AppFeature] currentSessionResponse success: \(session.id)")
+                // Main > FocusHome > FocusDetail로 이동
+                state.splash = nil
+                state.currentScreen = .main
+                var mainState = MainFeature.State()
+                // FocusHome의 path에 FocusDetail 추가
+                mainState.focus.path.append(.detail(FocusDetailFeature.State(session: session)))
+                state.main = mainState
+                print("✅ [AppFeature] Main 화면으로 이동 완료, path count: \(mainState.focus.path.count)")
+                return .none
+            case let .currentSessionResponse(.failure(error)):
+                print("❌ [AppFeature] currentSessionResponse failure: \(error)")
+                return .run { send in
+                    await send(.login)
+                }
             case .forceUpdateAlertDismissed:
                 state.showForceUpdateAlert = false
                 return .none
