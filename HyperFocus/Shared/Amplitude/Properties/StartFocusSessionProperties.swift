@@ -18,4 +18,12 @@ public struct StartFocusSessionProperties: Codable {
         case inputMethod = "input_method"
         case setssionTitle = "session_title"
     }
+    
+    func toDictionary() -> [String: Any] {
+        [
+            "target_duration": self.targetDuration,
+            "input_method": self.inputMethod?.rawValue ?? "",
+            "session_title": self.inputMethod ?? "",
+        ]
+    }
 }

@@ -11,6 +11,7 @@ import SwiftUI
 
 @Reducer
 struct FocusDetailFeature {
+    @Dependency(\.amplitudeService) var amplitudeService
     @Dependency(\.focusUseCase) var focusUseCase
     
     @ObservableState
@@ -111,6 +112,15 @@ struct FocusDetailFeature {
                 } else {
                     state.showEarlyWrappingUpAlert = true
                 }
+                
+                amplitudeService.track(
+                    .viewStopAlert(
+                        .init(
+                            isUnderThreeMinutes: state.timer.isThreeMinutesElapsed,
+                            elapsedTime: state.timer.remainingSeconds
+                        )
+                    )
+                )
                 
                 return .send(.stop)
             case .wrappingUpAlertDismissed:

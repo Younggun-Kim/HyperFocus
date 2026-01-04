@@ -88,6 +88,9 @@
 		13800CC02F0A935800056DD2 /* FocusUseCaseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CBF2F0A935800056DD2 /* FocusUseCaseMapper.swift */; };
 		13800CC22F0A95FA00056DD2 /* CurrentSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */; };
 		13800CC42F0ACB1400056DD2 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC32F0ACB1400056DD2 /* SessionResponse.swift */; };
+		13800CC62F0ACFDE00056DD2 /* ViewStopAlertProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */; };
+		13800CC82F0AD27100056DD2 /* SessionAbandonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */; };
+		13800CCA2F0AD32C00056DD2 /* SessionAbandonParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */; };
 		13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A132F091684008FB39A /* DeviceDataSource.swift */; };
 		13827A162F09172E008FB39A /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13827A152F09172A008FB39A /* AppRepository.swift */; };
 		13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13A74D252EE5CB8100C3BB48 /* Assets.xcassets */; };
@@ -205,6 +208,9 @@
 		13800CBF2F0A935800056DD2 /* FocusUseCaseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusUseCaseMapper.swift; sourceTree = "<group>"; };
 		13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSessionResponse.swift; sourceTree = "<group>"; };
 		13800CC32F0ACB1400056DD2 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
+		13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStopAlertProperties.swift; sourceTree = "<group>"; };
+		13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAbandonRequest.swift; sourceTree = "<group>"; };
+		13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAbandonParams.swift; sourceTree = "<group>"; };
 		13827A132F091684008FB39A /* DeviceDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSource.swift; sourceTree = "<group>"; };
 		13827A152F09172A008FB39A /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		13827A232F092028008FB39A /* HyperFocusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HyperFocusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -641,6 +647,7 @@
 				13800CAB2F0A672100056DD2 /* SessionStartResponse.swift */,
 				13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */,
 				13800CC32F0ACB1400056DD2 /* SessionResponse.swift */,
+				13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -668,6 +675,7 @@
 			children = (
 				13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */,
 				13800CA72F0A640C00056DD2 /* StartFocusSessionProperties.swift */,
+				13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -710,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				13800CB92F0A90F700056DD2 /* SessionStartParams.swift */,
+				13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */,
 			);
 			path = Parameters;
 			sourceTree = "<group>";
@@ -1089,6 +1098,7 @@
 				137AE0C02F097E3000EE44AA /* NetworkAuthPlugin.swift in Sources */,
 				13AC3F6E2EF7048200CEDC69 /* AmbientStyleType.swift in Sources */,
 				13A74D2B2EE5CB8100C3BB48 /* HyperFocusApp.swift in Sources */,
+				13800CC82F0AD27100056DD2 /* SessionAbandonRequest.swift in Sources */,
 				13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */,
 				137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */,
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
@@ -1121,7 +1131,9 @@
 				13AB6AD42F092B27001F7608 /* AppVersionCheckResponse.swift in Sources */,
 				137AE0B62F097A9F00EE44AA /* FocusAPI.swift in Sources */,
 				133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */,
+				13800CCA2F0AD32C00056DD2 /* SessionAbandonParams.swift in Sources */,
 				137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */,
+				13800CC62F0ACFDE00056DD2 /* ViewStopAlertProperties.swift in Sources */,
 				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

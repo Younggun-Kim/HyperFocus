@@ -53,7 +53,7 @@ struct FocusDetailView: View {
             }
         }
         .onAppear {
-            store.send(.playToggled)
+            store.send(.start)
         }
         .navigationBarBackButtonHidden()
         .toolbar(store.tabBarVisibility, for: .tabBar)

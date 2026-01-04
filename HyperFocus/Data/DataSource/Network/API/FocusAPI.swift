@@ -16,6 +16,7 @@ public enum FocusAPI {
     case getCurrentSession // 현재 세션 조회
     case pauseSession(String) // 세션 일시 정지
     case resumeSession(String) // 세션 재시작
+    case abandonSession(String, SessionAbandonRequest) // 세션 포기
 }
 
 extension FocusAPI: BaseTarget {
@@ -31,6 +32,8 @@ extension FocusAPI: BaseTarget {
             return "/api/v1/focus/\(sessionId)/pause"
         case .resumeSession(let sessionId):
             return "/api/v1/focus/\(sessionId)/resume"
+        case .abandonSession(let sessionId, _):
+            return "/api/v1/focus/\(sessionId)/abandon"
         }
     }
     
@@ -45,6 +48,8 @@ extension FocusAPI: BaseTarget {
         case .pauseSession:
             return .post
         case .resumeSession:
+            return .post
+        case .abandonSession:
             return .post
         }
     }
@@ -61,6 +66,8 @@ extension FocusAPI: BaseTarget {
             return NetworkHeader.authorization
         case .resumeSession:
             return NetworkHeader.authorization
+        case .abandonSession:
+            return NetworkHeader.authorization
         }
     }
     
@@ -76,6 +83,8 @@ extension FocusAPI: BaseTarget {
             return .requestPlain
         case .resumeSession:
             return .requestPlain
+        case .abandonSession(_, let request):
+            return .requestJSONEncodable(request)
         }
     }
 }

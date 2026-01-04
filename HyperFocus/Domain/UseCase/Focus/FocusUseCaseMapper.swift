@@ -50,3 +50,10 @@ extension SessionResponse {
     }
     
 }
+
+
+extension SessionAbandonParams {
+    func toRequest() -> SessionAbandonRequest {
+        .init(actualDurationSeconds: actualDurationSeconds, failReason: failReason)
+    }
+}

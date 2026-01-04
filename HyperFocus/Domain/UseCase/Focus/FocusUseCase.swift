@@ -14,6 +14,7 @@ public struct FocusUseCase {
     public let getCurrentSession: @Sendable () async throws -> SessionEntity?
     public let pauseSession: @Sendable (_ sessionId: String) async throws -> SessionEntity?
     public let resumeSession: @Sendable (_ sessionId: String) async throws -> SessionEntity?
+    public let abandonSession: @Sendable (_ sessionId: String, _ params: SessionAbandonParams) async throws -> SessionEntity?
 }
 
 extension FocusUseCase: DependencyKey {
@@ -128,7 +129,17 @@ extension FocusUseCase: DependencyKey {
             } catch let error as APIError {
                 throw error
             }
-        }
+        },
+        abandonSession:  {sessionId, params in
+            @Dependency(\.focusRepository) var focusRepository
+            
+            do {
+                let response = try await focusRepository.abandonSession(sessionId, params.toRequest())
+                return response.data?.toEntity()
+            } catch let error as APIError {
+                throw error
+            }
+        },
     )
     
     public static var testValue = FocusUseCase(
@@ -136,7 +147,8 @@ extension FocusUseCase: DependencyKey {
         startSession: { _ in  SessionEntity.mock },
         getCurrentSession: { nil },
         pauseSession: {_ in  SessionEntity.mock },
-        resumeSession: { _ in  SessionEntity.mock }
+        resumeSession: { _ in  SessionEntity.mock },
+        abandonSession: { _, _ in  SessionEntity.mock }
     )
     
     public static var previewValue: FocusUseCase {
@@ -149,7 +161,8 @@ extension FocusUseCase: DependencyKey {
             startSession: { _ in  SessionEntity.mock },
             getCurrentSession: { nil },
             pauseSession: {_ in  SessionEntity.mock },
-            resumeSession: { _ in  SessionEntity.mock }
+            resumeSession: { _ in  SessionEntity.mock },
+            abandonSession: { _, _ in  SessionEntity.mock }
         )
     }
 }
