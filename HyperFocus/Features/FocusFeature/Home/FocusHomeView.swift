@@ -92,14 +92,15 @@ struct FocusHomeView: View {
     var ReasonChips: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 12) {
-                ForEach(store.reasons, id: \.self) { reason in
+                ForEach(store.suggestions.indices, id: \.self) { index in
+                    let suggestion = store.suggestions[index]
                     CommonChip(
-                        title: reason.title,
+                        title: suggestion.reason.title,
                         style: .gray,
                         selected: false,
                         maxLength: 12,
                         action: {
-                            store.send(.reasonChanged(reason))
+                            store.send(.reasonChanged(index))
                         })
                 }
             }

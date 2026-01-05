@@ -33,7 +33,7 @@ struct FocusHomeFeature {
         case inputTextChanged(String)
         case addBtnTapped
         case startSessionResponse(Result<SessionEntity?, Error>)
-        case reasonChanged(ReasonType)
+        case reasonChanged(Int) // suggestions의 index
         case durationChanged(DurationType)
         case toast(ToastFeature.Action)
         case path(StackActionOf<Path>)
@@ -152,16 +152,14 @@ struct FocusHomeFeature {
                 }
                 
                 return .none
-            case let .reasonChanged(reason):
-                state.inputText = reason.title
-                state.inputMethod = .chip
-                
-                if let duration = state.suggestions
-                    .filter({$0.reason == reason})
-                    .first?.duration {
-                    print(duration)
-                    state.selectedDuration = duration
+            case let .reasonChanged(index):
+                guard index >= 0 && index < state.suggestions.count else {
+                    return .none
                 }
+                let suggestion = state.suggestions[index]
+                state.inputText = suggestion.reason.title
+                state.inputMethod = .chip
+                state.selectedDuration = suggestion.duration
                 
                 return .none
             case let .durationChanged(duration):

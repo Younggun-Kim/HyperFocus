@@ -33,10 +33,11 @@ struct CommonChip: View {
         guard let maxLength = maxLength, maxLength > 0 else {
             return title
         }
-        if title.count <= maxLength {
-            return title
+        if title.count > maxLength {
+            return String(title.prefix(maxLength)) + "..."
         }
-        return String(title.prefix(maxLength))
+        
+        return title
     }
 }
 
