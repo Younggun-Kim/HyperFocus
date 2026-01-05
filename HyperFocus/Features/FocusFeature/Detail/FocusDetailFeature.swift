@@ -88,12 +88,14 @@ struct FocusDetailFeature {
             MileStoneFeature()
         }
         
-        toastReducer
-        timerReducer
-        completedReducer
-        
         Reduce { state, action in
             switch action {
+            case .toast(let action):
+                return toastAction(&state, action: action)
+            case .timer(let action):
+                return timerAction(&state, action: action)
+            case .completed(let action):
+                return completedAction(&state, action: action)
             case .stop:
                 let sessionId = state.session.id
                 
@@ -221,80 +223,63 @@ struct FocusDetailFeature {
         }
     }
     
-    var toastReducer: some Reducer<State, Action> {
-        Reduce { state, action in
+    func toastAction(_ state: inout State, action: ToastFeature.Action) -> Effect<Action> {
+        return .none
+    }
+    
+    func timerAction(_ state: inout State, action: TimerFeature.Action) -> Effect<Action> {
+        switch action {
+        case .timerTick:
+            // 경과 시간 계산 (초 단위)
+            // milestone 체크할 시간들 (분 단위)
+            let milestones = [5, 15, 25, 40, 60]
+            let elapsedMinutes = (state.timer.remainingSeconds / 60) + 1
             
-            switch action {
-            case .toast:
-                return .none
-            default:
-                return .none
+            if milestones.contains(elapsedMinutes),
+               !state.shownMilestones.contains(elapsedMinutes) {
+                state.shownMilestones.insert(elapsedMinutes)
+                return .send(.mileStone(.show(state.session.id, elapsedMinutes)))
             }
+            
+            return .none
+        case .delegate(.timerCompleted):
+            return .send(.completed(.delegate(.finishSession(.auto))))
+        default:
+            return .none
         }
     }
     
-    var timerReducer: some Reducer<State, Action> {
-        Reduce { state, action in
+    func completedAction(_ state: inout State, action: FocusCompletedFeature.Action) -> Effect<Action> {
+        switch action {
+        case .delegate(.finishSession(let completionType)):
+            state.showCompletedBottomSheet = false
+            let sessionId = state.session.id
+            let actualSeconds = state.timer.actualSeconds
+            let saveToLog = state.timer.isThreeMinutesElapsed
             
-            switch action {
-            case .timer(.timerTick):
-                // 경과 시간 계산 (초 단위)
-                // milestone 체크할 시간들 (분 단위)
-                let milestones = [5, 15, 25, 40, 60]
-                let elapsedMinutes = (state.timer.remainingSeconds / 60) + 1
-                
-                if milestones.contains(elapsedMinutes),
-                   !state.shownMilestones.contains(elapsedMinutes) {
-                    state.shownMilestones.insert(elapsedMinutes)
-                    return .send(.mileStone(.show(state.session.id, elapsedMinutes)))
-                }
-                
-                return .none
-            case .timer(.delegate(.timerCompleted)):
-                return .send(.completed(.delegate(.finishSession(.auto))))
-            case .timer:
-                return .none
-            default:
-                return .none
-            }
-        }
-    }
-    
-    var completedReducer: some Reducer<State, Action> {
-        Reduce { state, action in
-            switch action {
-        case let .completed(.delegate(.finishSession(completionType))):
-                state.showCompletedBottomSheet = false
-                let sessionId = state.session.id
-                let actualSeconds = state.timer.actualSeconds
-                let saveToLog = state.timer.isThreeMinutesElapsed
-                
-                state.playStatus = .completed
-                
-                return .run { send in
-                    do {
-                        let _ = try await focusUseCase.completeSession(
-                            sessionId,
-                            .init(
-                                actualDurationSeconds: actualSeconds,
-                                completionType: completionType,
-                                saveToLog: saveToLog
-                            )
+            state.playStatus = .completed
+            
+            return .run { send in
+                do {
+                    let _ = try await focusUseCase.completeSession(
+                        sessionId,
+                        .init(
+                            actualDurationSeconds: actualSeconds,
+                            completionType: completionType,
+                            saveToLog: saveToLog
                         )
-                        await send(.delegate(.sessionCompleted))
-                    } catch {
-                        await send(.toast(.show(error.localizedDescription)))
-                    }
+                    )
+                    await send(.delegate(.sessionCompleted))
+                } catch {
+                    await send(.toast(.show(error.localizedDescription)))
                 }
-        case .completed(.delegate(.breakAction)):
-                state.showCompletedBottomSheet = false
-                // TODO: 5분 휴식 처리 로직 추가
-                return .none
-            case .completed:
-                return .none
-            default:
-                return .none
             }
+        case .delegate(.breakAction):
+            state.showCompletedBottomSheet = false
+            // TODO: 5분 휴식 처리 로직 추가
+            return .none
+        default:
+            return .none
         }
     }
 }

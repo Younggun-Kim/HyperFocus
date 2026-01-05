@@ -56,8 +56,6 @@ struct FocusHomeFeature {
             ToastFeature()
         }
         
-        focusDetailReducer
-        
         Reduce { state, action in
             switch action {
             case .viewDidAppear:
@@ -170,37 +168,28 @@ struct FocusHomeFeature {
                 return .none
             case .toast:
                 return .none
-            case .path:
-                return .none
             case .pathRemoved:
                 // path 제거 (sessionAbandoned 후 처리)
                 state.path.removeAll()
                 return .none
             case .delegate(.sessionCompleted):
                 return .send(.pathRemoved)
+            case .path(.element(id: _, action: .detail(.delegate(.sessionAbandoned(let reason))))):
+                // FocusDetail에서 세션이 포기되었을 때 toast 전송 후 path 제거
+                return .run { send in
+                    await send(.toast(.show(reason.reason)))
+                    // toast 전송 후 path 제거 (다음 액션에서 처리되도록)
+                    try await Task.sleep(for: .milliseconds(100))
+                    await send(.pathRemoved)
+                }
+            case .path(.element(id: _, action: .detail(.delegate(.sessionCompleted)))):
+                // 세션 완료 시 delegate만 전달 (path 제거는 메인 reducer에서 처리)
+                return .send(.delegate(.sessionCompleted))
+            case .path:
+                return .none
             }
         }
         .forEach(\.path, action: \.path)
-    }
-    
-    var focusDetailReducer: some Reducer<State, Action> {
-        Reduce { state, action in
-             switch action {
-             case let .path(.element(id: _, action: .detail(.delegate(.sessionAbandoned(reason))))):
-                 // FocusDetail에서 세션이 포기되었을 때 toast 전송 후 path 제거
-                 return .run { send in
-                     await send(.toast(.show(reason.reason)))
-                     // toast 전송 후 path 제거 (다음 액션에서 처리되도록)
-                     try await Task.sleep(for: .milliseconds(100))
-                     await send(.pathRemoved)
-                 }
-             case .path(.element(id: _, action: .detail(.delegate(.sessionCompleted)))):
-                 // 세션 완료 시 delegate만 전달 (path 제거는 메인 reducer에서 처리)
-                 return .send(.delegate(.sessionCompleted))
-             default:
-                 return .none
-             }
-         }
     }
 }
 

@@ -18,7 +18,11 @@ struct FocusCompletedFeature {
     }
     
     enum Action {
+        case inner(InnerAction)
         case delegate(Delegate)
+        
+        enum InnerAction {
+        }
         
         enum Delegate {
             case finishSession(SessionCompletionType)
@@ -29,9 +33,25 @@ struct FocusCompletedFeature {
     var body: some Reducer<State, Action> {
         Reduce { state, action in
             switch action {
-            case .delegate:
-                return .none
+            case .delegate(let action):
+                return delegateAction(&state, action: action)
+            case .inner(let action):
+                return innerAction(&state, action: action)
             }
         }
     }
+    
+    
+    func delegateAction(_ state: inout State, action: Action.Delegate) -> Effect<Action> {
+        return .none
+    }
+    
+    func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
+        switch action {
+        default:
+            return .none
+        }
+    }
 }
+
+
