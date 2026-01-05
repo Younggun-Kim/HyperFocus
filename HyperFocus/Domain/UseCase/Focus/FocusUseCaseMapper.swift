@@ -82,7 +82,7 @@ extension SessionCompletionParams {
 extension SessionCompletionResponse {
     func toEntity()throws -> SessionCompletionEntity {
         guard let status = SessionStatusType(rawValue: self.status),
-              let completionType = SessinCompletionType(rawValue: self.completionType) else {
+              let completionType = SessionCompletionType(rawValue: self.completionType) else {
             throw CommonError.invalidFormat
         }
         
@@ -108,7 +108,7 @@ extension SessionFeedbackResponse {
         
         return FeedbackEntity(
             id: id,
-            satisfaction: satisfactionType,
+            satisfaction: satisfaction,
             message: satisfactionFeedback
         )
     }

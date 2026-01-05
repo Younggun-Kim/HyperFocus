@@ -25,12 +25,14 @@ struct MainView: View {
             }
             .tag(MainTab.focus)
             
-            LogHomeView(store: store.scope(state: \.log, action: \.log))
-                .tabItem {
-                    Label("Log", systemImage: "watch.analog")
-                        .foregroundStyle(.white)
-                }
-                .tag(MainTab.log)
+            LogHomeView(
+                store: store.scope(state: \.log, action: \.log)
+            )
+            .tabItem {
+                Label("Log", systemImage: "watch.analog")
+                .foregroundStyle(.white)
+            }
+            .tag(MainTab.log)
         }
     }
 }

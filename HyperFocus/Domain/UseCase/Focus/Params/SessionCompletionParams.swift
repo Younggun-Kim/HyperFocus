@@ -10,6 +10,6 @@ import Foundation
 
 public struct SessionCompletionParams: Sendable {
     var actualDurationSeconds: Int // 1500
-    var completionType: SessinCompletionType
+    var completionType: SessionCompletionType
     var saveToLog:Bool // 기록 저장 여부 (3분 미만은 false)
 }

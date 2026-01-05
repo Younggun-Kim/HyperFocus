@@ -12,7 +12,7 @@ public struct SessionCompletionEntity: Sendable, Equatable {
     var id: String // UUID
     var status: SessionStatusType // SessionStatusType
     var actualDurationSeconds: Int // 1500
-    var completionType: SessinCompletionType // AUTO(00:00 도달) | MANUAL(Save 클릭)
+    var completionType: SessionCompletionType // AUTO(00:00 도달) | MANUAL(Save 클릭)
     var completedAt: Date // 2025-12-26T10:25:00
     var minimumDurationMet: Bool // 3분 이상 집중 여부
     var targetAchieved: Bool  // 목표 시간 달성 여부

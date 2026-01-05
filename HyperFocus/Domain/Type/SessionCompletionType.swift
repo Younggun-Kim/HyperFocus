@@ -1,5 +1,5 @@
 //
-//  SessinCompletionType.swift
+//  SessionCompletionType.swift
 //  HyperFocus
 //
 //  Created by 김영건 on 1/4/26.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum SessinCompletionType: String  {
+enum SessionCompletionType: String  {
     case auto = "AUTO"
     case manual = "MANUAL"
     case abandoned = "ABANDONED"

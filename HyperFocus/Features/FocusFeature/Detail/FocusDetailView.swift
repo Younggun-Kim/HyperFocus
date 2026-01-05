@@ -123,7 +123,12 @@ struct FocusDetailView: View {
         )
         .sheet(isPresented: Binding(
             get: { store.showCompletedBottomSheet },
-            set: { _ in store.send(.completedBottomSheetDismissed) }
+            set: { newValue in
+                // sheet가 닫힐 때만 액션을 보내고, 이미 닫혀있는 경우는 무시
+                if !newValue && store.showCompletedBottomSheet {
+                    store.send(.completedBottomSheetDismissed)
+                }
+            }
         )) {
             FocusCompletedBottomSheet(
                 store: store.scope(state: \.completed, action: \.completed)

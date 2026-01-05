@@ -187,7 +187,7 @@ extension FocusUseCase: DependencyKey {
         abandonSession: { _, _ in  SessionEntity.mock },
         getMileStone: { _, _ in  MileStoneEntity.mock },
         completeSession: { _, _ in SessionCompletionEntity.mock },
-        feedbackSession: { _, _ in FeedbackEntity.mock }
+        feedbackSession: { _, _ in FeedbackEntity.mock },
     )
     
     public static var previewValue: FocusUseCase {
@@ -202,9 +202,9 @@ extension FocusUseCase: DependencyKey {
             pauseSession: {_ in  SessionEntity.mock },
             resumeSession: { _ in  SessionEntity.mock },
             abandonSession: { _, _ in  SessionEntity.mock },
-            getMileStone: { _, _ in  MileStoneEntity.mock },,
+            getMileStone: { _, _ in  MileStoneEntity.mock },
             completeSession: { _, _ in SessionCompletionEntity.mock },
-            feedbackSession: { _, _ in FeedbackEntity.mock }
+            feedbackSession: { _, _ in FeedbackEntity.mock },
         )
     }
 }

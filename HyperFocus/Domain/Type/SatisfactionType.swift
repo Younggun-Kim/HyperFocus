@@ -8,12 +8,12 @@
 import Foundation
 
 
-enum SatisfactionType: String, Codable  {
+public enum SatisfactionType: String, Codable  {
     case hyperFocus = "HYPERFOCUS"
     case good = "GOOD"
     case distracted = "DISTRACTED"
     
-    init?(rawValue: String) {
+    public init?(rawValue: String) {
         switch rawValue {
         case "HYPERFOCUS": self = .hyperFocus
         case "GOOD": self = .good

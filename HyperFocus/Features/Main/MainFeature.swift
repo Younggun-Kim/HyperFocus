@@ -35,6 +35,7 @@ struct MainFeature {
         case log(LogHomeFeature.Action)
     }
     
+    
     var body: some Reducer<State, Action> {
         Scope(state: \.focus, action: \.focus) {
             FocusHomeFeature()
@@ -42,6 +43,8 @@ struct MainFeature {
         Scope(state: \.log, action: \.log) {
             LogHomeFeature()
         }
+
+        focusHomeReducer
         
         Reduce { state, action in
             switch action {
@@ -51,6 +54,19 @@ struct MainFeature {
             case .focus:
                 return .none
             case .log:
+                return .none
+            }
+        }
+    }
+        
+    var focusHomeReducer: some Reducer<State, Action> {
+        Reduce { state, action in
+            switch action {
+            case .focus(.delegate(.sessionCompleted)):
+                // 세션 완료 시 Log 탭으로 전환
+                state.selectedTab = .log
+                return .none
+            default:
                 return .none
             }
         }

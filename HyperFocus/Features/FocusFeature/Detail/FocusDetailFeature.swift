@@ -69,6 +69,7 @@ struct FocusDetailFeature {
         case mileStone(MileStoneFeature.Action)
         
         enum Delegate: Equatable {
+            case sessionCompleted
             case sessionAbandoned(SessionFailReasonType)
         }
     }
@@ -86,6 +87,10 @@ struct FocusDetailFeature {
         Scope(state: \.mileStone, action: \.mileStone) {
             MileStoneFeature()
         }
+        
+        toastReducer
+        timerReducer
+        completedReducer
         
         Reduce { state, action in
             switch action {
@@ -206,16 +211,32 @@ struct FocusDetailFeature {
                 print(error.localizedDescription)
                 
                 return .none
-            case .completed(.finishSession):
-                state.showCompletedBottomSheet = false
-                // TODO: 세션 완료 처리 로직 추가
-                return .none
-            case .completed(.breakAction):
-                state.showCompletedBottomSheet = false
-                // TODO: 5분 휴식 처리 로직 추가
-                return .none
             case .delegate:
                 return .none
+            case .mileStone:
+                return .none
+            default:
+                return .none
+            }
+        }
+    }
+    
+    var toastReducer: some Reducer<State, Action> {
+        Reduce { state, action in
+            
+            switch action {
+            case .toast:
+                return .none
+            default:
+                return .none
+            }
+        }
+    }
+    
+    var timerReducer: some Reducer<State, Action> {
+        Reduce { state, action in
+            
+            switch action {
             case .timer(.timerTick):
                 // 경과 시간 계산 (초 단위)
                 // milestone 체크할 시간들 (분 단위)
@@ -229,13 +250,49 @@ struct FocusDetailFeature {
                 }
                 
                 return .none
+            case .timer(.delegate(.timerCompleted)):
+                return .send(.completed(.delegate(.finishSession(.auto))))
             case .timer:
+                return .none
+            default:
+                return .none
+            }
+        }
+    }
+    
+    var completedReducer: some Reducer<State, Action> {
+        Reduce { state, action in
+            switch action {
+        case let .completed(.delegate(.finishSession(completionType))):
+                state.showCompletedBottomSheet = false
+                let sessionId = state.session.id
+                let actualSeconds = state.timer.actualSeconds
+                let saveToLog = state.timer.isThreeMinutesElapsed
+                
+                state.playStatus = .completed
+                
+                return .run { send in
+                    do {
+                        let _ = try await focusUseCase.completeSession(
+                            sessionId,
+                            .init(
+                                actualDurationSeconds: actualSeconds,
+                                completionType: completionType,
+                                saveToLog: saveToLog
+                            )
+                        )
+                        await send(.delegate(.sessionCompleted))
+                    } catch {
+                        await send(.toast(.show(error.localizedDescription)))
+                    }
+                }
+        case .completed(.delegate(.breakAction)):
+                state.showCompletedBottomSheet = false
+                // TODO: 5분 휴식 처리 로직 추가
                 return .none
             case .completed:
                 return .none
-            case .toast:
-                return .none
-            case .mileStone:
+            default:
                 return .none
             }
         }

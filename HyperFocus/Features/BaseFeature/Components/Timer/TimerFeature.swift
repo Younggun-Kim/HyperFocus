@@ -27,6 +27,10 @@ struct TimerFeature {
         var isThreeMinutesElapsed: Bool {
             return (totalSeconds - remainingSeconds) > 3 * 60
         }
+        
+        var actualSeconds: Int {
+            return totalSeconds - remainingSeconds
+        }
     }
     
     enum Action {

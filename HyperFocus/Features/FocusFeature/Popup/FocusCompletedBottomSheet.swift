@@ -46,7 +46,7 @@ struct FocusCompletedBottomSheet: View {
             .padding(.top, 24)
             .padding(.bottom, 40)
             Button(action: {
-                store.send(.finishSession)
+                store.send(.delegate(.finishSession(.manual)))
             }) {
                 Text(FocusText.CompletedBottomSheet.finishSession)
                     .frame(maxWidth: .infinity)
@@ -57,7 +57,7 @@ struct FocusCompletedBottomSheet: View {
                     .cornerRadius(40)
             }
             Button(action: {
-                store.send(.breakAction)
+                store.send(.delegate(.breakAction))
             }) {
                 Text(FocusText.CompletedBottomSheet.fiveMinBreak)
                     .frame(maxWidth: .infinity)
