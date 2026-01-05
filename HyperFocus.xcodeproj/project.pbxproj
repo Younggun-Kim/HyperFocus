@@ -119,6 +119,13 @@
 		13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F742EF7080A00CEDC69 /* SplashFeature.swift */; };
 		13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F772EF7090400CEDC69 /* AppView.swift */; };
 		13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AC3F762EF7090400CEDC69 /* AppFeature.swift */; };
+		13B1E6842F0BF75A008419F2 /* SessionCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6832F0BF75A008419F2 /* SessionCompletionRequest.swift */; };
+		13B1E6862F0BF93A008419F2 /* SessionCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6852F0BF93A008419F2 /* SessionCompletionResponse.swift */; };
+		13B1E6882F0BFB28008419F2 /* SessionFeedbackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6872F0BFB28008419F2 /* SessionFeedbackRequest.swift */; };
+		13B1E68C2F0BFB55008419F2 /* SessionFeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E68B2F0BFB55008419F2 /* SessionFeedbackResponse.swift */; };
+		13B1E68E2F0BFC40008419F2 /* SessionCompletionParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E68D2F0BFC40008419F2 /* SessionCompletionParams.swift */; };
+		13B1E6922F0BFCF7008419F2 /* FeedbackEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */; };
+		13B1E6942F0BFD3D008419F2 /* SessionCompletionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */; };
 		13E320392F0AE27700B1F920 /* ToastFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320382F0AE27700B1F920 /* ToastFeature.swift */; };
 		13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */; };
 		13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */; };
@@ -249,6 +256,13 @@
 		13AC3F742EF7080A00CEDC69 /* SplashFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashFeature.swift; sourceTree = "<group>"; };
 		13AC3F762EF7090400CEDC69 /* AppFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFeature.swift; sourceTree = "<group>"; };
 		13AC3F772EF7090400CEDC69 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		13B1E6832F0BF75A008419F2 /* SessionCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionRequest.swift; sourceTree = "<group>"; };
+		13B1E6852F0BF93A008419F2 /* SessionCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionResponse.swift; sourceTree = "<group>"; };
+		13B1E6872F0BFB28008419F2 /* SessionFeedbackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFeedbackRequest.swift; sourceTree = "<group>"; };
+		13B1E68B2F0BFB55008419F2 /* SessionFeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionFeedbackResponse.swift; sourceTree = "<group>"; };
+		13B1E68D2F0BFC40008419F2 /* SessionCompletionParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionParams.swift; sourceTree = "<group>"; };
+		13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackEntity.swift; sourceTree = "<group>"; };
+		13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionEntity.swift; sourceTree = "<group>"; };
 		13E320382F0AE27700B1F920 /* ToastFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastFeature.swift; sourceTree = "<group>"; };
 		13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickSessionDiscardProperties.swift; sourceTree = "<group>"; };
 		13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneResponse.swift; sourceTree = "<group>"; };
@@ -629,7 +643,9 @@
 				137AE0982F095E5300EE44AA /* TokenEntity.swift */,
 				137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */,
 				13800CBB2F0A927300056DD2 /* SessionEntity.swift */,
+				13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */,
 				13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */,
+				13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -664,13 +680,17 @@
 		137AE0B42F097A9800EE44AA /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */,
 				137AE0B72F097B0400EE44AA /* FocusSuggestionsResponse.swift */,
+				13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */,
+				13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */,
+				13B1E6832F0BF75A008419F2 /* SessionCompletionRequest.swift */,
+				13B1E6852F0BF93A008419F2 /* SessionCompletionResponse.swift */,
+				13B1E6872F0BFB28008419F2 /* SessionFeedbackRequest.swift */,
+				13B1E68B2F0BFB55008419F2 /* SessionFeedbackResponse.swift */,
+				13800CC32F0ACB1400056DD2 /* SessionResponse.swift */,
 				13800CA92F0A652A00056DD2 /* SessionStartRequest.swift */,
 				13800CAB2F0A672100056DD2 /* SessionStartResponse.swift */,
-				13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */,
-				13800CC32F0ACB1400056DD2 /* SessionResponse.swift */,
-				13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */,
-				13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -716,7 +736,7 @@
 		13800CB52F0A90CF00056DD2 /* Focus */ = {
 			isa = PBXGroup;
 			children = (
-				13800CB82F0A90E500056DD2 /* Parameters */,
+				13800CB82F0A90E500056DD2 /* Params */,
 				137AE0C52F09888600EE44AA /* FocusUseCase.swift */,
 				13800CBF2F0A935800056DD2 /* FocusUseCaseMapper.swift */,
 			);
@@ -739,13 +759,14 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		13800CB82F0A90E500056DD2 /* Parameters */ = {
+		13800CB82F0A90E500056DD2 /* Params */ = {
 			isa = PBXGroup;
 			children = (
-				13800CB92F0A90F700056DD2 /* SessionStartParams.swift */,
 				13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */,
+				13B1E68D2F0BFC40008419F2 /* SessionCompletionParams.swift */,
+				13800CB92F0A90F700056DD2 /* SessionStartParams.swift */,
 			);
-			path = Parameters;
+			path = Params;
 			sourceTree = "<group>";
 		};
 		13800CD02F0ADE3C00056DD2 /* Toast */ = {
@@ -1090,12 +1111,14 @@
 				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
 				13800CA62F0A630300056DD2 /* InputMethodType.swift in Sources */,
 				13800CAE2F0A675F00056DD2 /* SessionStatusType.swift in Sources */,
+				13B1E68E2F0BFC40008419F2 /* SessionCompletionParams.swift in Sources */,
 				13AB6AD82F092C27001F7608 /* VersionUpdateType.swift in Sources */,
 				133BD3E62F04196C0081CDF8 /* APIError.swift in Sources */,
 				133BD3E82F04196C0081CDF8 /* BaseTarget.swift in Sources */,
 				137AE0C82F0988EA00EE44AA /* SuggestionType.swift in Sources */,
 				133BD3E92F04196C0081CDF8 /* APIResponse.swift in Sources */,
 				133BD3EA2F04196C0081CDF8 /* APIService.swift in Sources */,
+				13B1E68C2F0BFB55008419F2 /* SessionFeedbackResponse.swift in Sources */,
 				133BD3EB2F04196C0081CDF8 /* NetworkPlugin.swift in Sources */,
 				133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */,
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
@@ -1106,6 +1129,8 @@
 				13AB6AD02F0929A2001F7608 /* AppVersionAPI.swift in Sources */,
 				133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */,
 				13E320462F0AF04200B1F920 /* ViewMotivationToast.swift in Sources */,
+				13B1E6842F0BF75A008419F2 /* SessionCompletionRequest.swift in Sources */,
+				13B1E6942F0BFD3D008419F2 /* SessionCompletionEntity.swift in Sources */,
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
 				13800CBA2F0A90F700056DD2 /* SessionStartParams.swift in Sources */,
@@ -1121,6 +1146,7 @@
 				133BD3C82F03A28E0081CDF8 /* AppConfigUseCase.swift in Sources */,
 				13800CAA2F0A652A00056DD2 /* SessionStartRequest.swift in Sources */,
 				134BFFB02EFEBFAA00F1F444 /* TimerFeature.swift in Sources */,
+				13B1E6862F0BF93A008419F2 /* SessionCompletionResponse.swift in Sources */,
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
 				13800CCC2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift in Sources */,
 				137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */,
@@ -1136,6 +1162,7 @@
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
 				137AE0912F09566F00EE44AA /* AuthRepository.swift in Sources */,
+				13B1E6922F0BFCF7008419F2 /* FeedbackEntity.swift in Sources */,
 				13AB6AD62F092BB7001F7608 /* BaseResponse.swift in Sources */,
 				133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */,
 				133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */,
@@ -1152,6 +1179,7 @@
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
 				13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */,
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
+				13B1E6882F0BFB28008419F2 /* SessionFeedbackRequest.swift in Sources */,
 				137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */,
 				13800CD12F0ADE3C00056DD2 /* ToastModifier.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,

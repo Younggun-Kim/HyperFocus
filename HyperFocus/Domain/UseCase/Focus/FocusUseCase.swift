@@ -16,6 +16,8 @@ public struct FocusUseCase {
     public let resumeSession: @Sendable (_ sessionId: String) async throws -> SessionEntity?
     public let abandonSession: @Sendable (_ sessionId: String, _ params: SessionAbandonParams) async throws -> SessionEntity?
     public let getMileStone: @Sendable (_ sessionId: String, _ minute: Int) async throws -> MileStoneEntity?
+    public let completeSession: @Sendable (_ sessionId: String, _ params: SessionCompletionParams) async throws -> SessionCompletionEntity?
+    public let feedbackSession: @Sendable (_ sessionId: String, _ satisfaction: SatisfactionType) async throws -> FeedbackEntity?
 }
 
 extension FocusUseCase: DependencyKey {
@@ -150,7 +152,30 @@ extension FocusUseCase: DependencyKey {
             } catch let error as APIError {
                 throw error
             }
-        }
+        },
+        completeSession:  {sessionId, params in
+            @Dependency(\.focusRepository) var focusRepository
+            
+            do {
+                let response = try await focusRepository.completeSession(sessionId, params.toRequest())
+                return try response.data?.toEntity()
+            } catch let error as APIError {
+                throw error
+            }
+        },
+        feedbackSession:  {sessionId, satisfaction in
+            @Dependency(\.focusRepository) var focusRepository
+            
+            do {
+                let response = try await focusRepository.feedbackSession(
+                    sessionId,
+                    SessionFeedbackRequest(satisfaction: satisfaction.rawValue)
+                )
+                return try response.data?.toEntity()
+            } catch let error as APIError {
+                throw error
+            }
+        },
     )
     
     public static var testValue = FocusUseCase(
@@ -161,6 +186,8 @@ extension FocusUseCase: DependencyKey {
         resumeSession: { _ in  SessionEntity.mock },
         abandonSession: { _, _ in  SessionEntity.mock },
         getMileStone: { _, _ in  MileStoneEntity.mock },
+        completeSession: { _, _ in SessionCompletionEntity.mock },
+        feedbackSession: { _, _ in FeedbackEntity.mock }
     )
     
     public static var previewValue: FocusUseCase {
@@ -175,7 +202,9 @@ extension FocusUseCase: DependencyKey {
             pauseSession: {_ in  SessionEntity.mock },
             resumeSession: { _ in  SessionEntity.mock },
             abandonSession: { _, _ in  SessionEntity.mock },
-            getMileStone: { _, _ in  MileStoneEntity.mock },
+            getMileStone: { _, _ in  MileStoneEntity.mock },,
+            completeSession: { _, _ in SessionCompletionEntity.mock },
+            feedbackSession: { _, _ in FeedbackEntity.mock }
         )
     }
 }

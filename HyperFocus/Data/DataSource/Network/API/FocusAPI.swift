@@ -18,6 +18,8 @@ public enum FocusAPI {
     case resumeSession(String) // 세션 재시작
     case abandonSession(String, SessionAbandonRequest) // 세션 포기
     case getMileStone(String, Int) // 세션 진행 중 마일스톤 조회
+    case complete(String, SessionCompletionRequest) // 세션 종료 및 저장 완료
+    case feedback(String, SessionFeedbackRequest) // 피드백 제출
 }
 
 extension FocusAPI: BaseTarget {
@@ -37,6 +39,10 @@ extension FocusAPI: BaseTarget {
             return "/api/v1/focus/\(sessionId)/abandon"
         case .getMileStone(let sessionId, _):
             return "/api/v1/focus/\(sessionId)/milestone"
+        case .complete(let sessionId, _):
+            return "/api/v1/focus/\(sessionId)/complete"
+        case .feedback(let sessionId, _):
+            return "/api/v1/focus/\(sessionId)/feedback"
         }
     }
     
@@ -56,6 +62,10 @@ extension FocusAPI: BaseTarget {
             return .post
         case .getMileStone:
             return .get
+        case .complete:
+            return .post
+        case .feedback:
+            return .post
         }
     }
     
@@ -74,6 +84,10 @@ extension FocusAPI: BaseTarget {
         case .abandonSession:
             return NetworkHeader.authorization
         case .getMileStone:
+            return NetworkHeader.authorization
+        case .complete:
+            return NetworkHeader.authorization
+        case .feedback:
             return NetworkHeader.authorization
         }
     }
@@ -97,6 +111,10 @@ extension FocusAPI: BaseTarget {
                 parameters: ["milestoneMinute": minute],
                 encoding: URLEncoding.queryString
             )
+        case .complete(_, let request):
+            return .requestJSONEncodable(request)
+        case .feedback(_, let request):
+            return .requestJSONEncodable(request)
         }
     }
 }

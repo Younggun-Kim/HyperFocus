@@ -16,6 +16,8 @@ public struct FocusRepository {
     public let resumeSession: @Sendable (_ sessionId: String) async throws -> APIResponse<SessionResponse>
     public let abandonSession: @Sendable (_ sessionId: String, _ request: SessionAbandonRequest) async throws -> APIResponse<SessionResponse>
     public let getMileStone: @Sendable (_ sessionId: String, _ minute: Int) async throws -> APIResponse<MileStoneResponse>
+    public let completeSession: @Sendable (_ sessionId: String, _ request: SessionCompletionRequest) async throws -> APIResponse<SessionCompletionResponse>
+    public let feedbackSession: @Sendable (_ sessionId: String, _ request: SessionFeedbackRequest) async throws -> APIResponse<SessionFeedbackResponse>
 }
 
 extension FocusRepository: DependencyKey {
@@ -68,7 +70,21 @@ extension FocusRepository: DependencyKey {
                 FocusAPI.getMileStone(sessionId, minute),
                 responseType:MileStoneResponse.self
             )
-        }
+        },
+        completeSession: {sessionId, request in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                FocusAPI.complete(sessionId, request),
+                responseType:SessionCompletionResponse.self
+            )
+        },
+        feedbackSession: {sessionId, request in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                FocusAPI.feedback(sessionId, request),
+                responseType:SessionFeedbackResponse.self
+            )
+        },
     )
 }
 

@@ -70,3 +70,46 @@ extension MileStoneResponse {
         )
     }
 }
+
+
+extension SessionCompletionParams {
+    func toRequest() -> SessionCompletionRequest {
+        .init(actualDurationSeconds: actualDurationSeconds, completionType: completionType.rawValue, saveToLog: saveToLog)
+    }
+}
+
+
+extension SessionCompletionResponse {
+    func toEntity()throws -> SessionCompletionEntity {
+        guard let status = SessionStatusType(rawValue: self.status),
+              let completionType = SessinCompletionType(rawValue: self.completionType) else {
+            throw CommonError.invalidFormat
+        }
+        
+        
+        return SessionCompletionEntity(
+            id: id,
+            status: status,
+            actualDurationSeconds: 1500,
+            completionType: completionType,
+            completedAt: completedAt,
+            minimumDurationMet: minimumDurationMet,
+            targetAchieved: targetAchieved,
+        )
+    }
+}
+
+
+extension SessionFeedbackResponse {
+    func toEntity() throws -> FeedbackEntity? {
+        guard let satisfaction = SatisfactionType(rawValue: self.satisfaction) else {
+            throw CommonError.invalidFormat
+        }
+        
+        return FeedbackEntity(
+            id: id,
+            satisfaction: satisfactionType,
+            message: satisfactionFeedback
+        )
+    }
+}

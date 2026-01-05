@@ -16,7 +16,7 @@ enum SessinCompletionType: String  {
     init?(rawValue: String) {
         switch rawValue {
         case "AUTO": self = .auto
-        case "MANUAL": self = .abandoned
+        case "MANUAL": self = .manual
         case "ABANDONED": self = .abandoned
         default: return nil
         }
