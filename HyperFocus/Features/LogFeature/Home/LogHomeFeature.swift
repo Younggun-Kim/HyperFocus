@@ -31,7 +31,7 @@ struct LogHomeFeature {
         Reduce { state, action in
             switch action {
             case .settingTapped:
-                state.path.append(.setting(SettingFeature.State()))
+                // state.path.append(.setting(SettingFeature.State()))
                 return .none
             case .path:
                 return .none

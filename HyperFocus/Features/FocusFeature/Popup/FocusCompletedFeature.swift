@@ -14,7 +14,8 @@ struct FocusCompletedFeature {
     
     @ObservableState
     struct State: Equatable {
-        // 필요한 상태가 있다면 여기에 추가
+        var sessionId: String
+        var selectedSatisfaction: SatisfactionType?
     }
     
     enum Action {
@@ -22,6 +23,7 @@ struct FocusCompletedFeature {
         case delegate(Delegate)
         
         enum InnerAction {
+            case satisfactionTapped(SatisfactionType)
         }
         
         enum Delegate {
@@ -48,8 +50,18 @@ struct FocusCompletedFeature {
     
     func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
         switch action {
-        default:
-            return .none
+        case .satisfactionTapped(let satisfaction):
+            state.selectedSatisfaction = satisfaction
+            
+            let sessionId = state.sessionId
+            
+            return .run { _ in
+                do {
+                    let _ = try await focusUseCase.feedbackSession(sessionId, satisfaction)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
         }
     }
 }

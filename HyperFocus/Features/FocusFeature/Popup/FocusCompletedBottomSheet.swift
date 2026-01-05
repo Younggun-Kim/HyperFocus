@@ -24,23 +24,29 @@ struct FocusCompletedBottomSheet: View {
             HStack {
                 CommonChip(
                     title: FocusText.CompletedBottomSheet.hyperFocus,
-                    style: .gray,
-                    selected: false,
-                    action: {}
+                    style: .grayFill,
+                    selected: store.selectedSatisfaction == .hyperFocus,
+                    action: {
+                        store.send(.inner(.satisfactionTapped(.hyperFocus)))
+                    }
                 )
                 Spacer()
                 CommonChip(
                     title: FocusText.CompletedBottomSheet.good,
-                    style: .gray,
-                    selected: false,
-                    action: {}
+                    style: .grayFill,
+                    selected: store.selectedSatisfaction == .good,
+                    action: {
+                        
+                        store.send(.inner(.satisfactionTapped(.good)))}
                 )
                 Spacer()
                 CommonChip(
                     title: FocusText.CompletedBottomSheet.distracted,
-                    style: .gray,
-                    selected: false,
-                    action: {}
+                    style: .grayFill,
+                    selected: store.selectedSatisfaction == .distracted,
+                    action: {
+                        store.send(.inner(.satisfactionTapped(.distracted)))
+                    }
                 )
             }
             .padding(.top, 24)
@@ -75,7 +81,9 @@ struct FocusCompletedBottomSheet: View {
 
 #Preview {
     FocusCompletedBottomSheet(
-        store: Store(initialState: FocusCompletedFeature.State()) {
+        store: Store(initialState: FocusCompletedFeature.State(
+            sessionId: "uuid"
+        )) {
             FocusCompletedFeature()
         }
     )

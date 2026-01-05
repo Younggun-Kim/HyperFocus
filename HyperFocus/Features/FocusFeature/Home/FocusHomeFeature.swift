@@ -173,6 +173,8 @@ struct FocusHomeFeature {
                 state.path.removeAll()
                 return .none
             case .delegate(.sessionCompleted):
+                state.inputText = ""
+                state.selectedDuration = nil
                 return .send(.pathRemoved)
             case .path(.element(id: _, action: .detail(.delegate(.sessionAbandoned(let reason))))):
                 // FocusDetail에서 세션이 포기되었을 때 toast 전송 후 path 제거

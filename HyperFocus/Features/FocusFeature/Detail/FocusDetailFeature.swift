@@ -24,8 +24,8 @@ struct FocusDetailFeature {
         var showCompletedBottomSheet: Bool = false
         var showFailReasonBottomSheet: Bool = false
         
+        var completed: FocusCompletedFeature.State
         var timer: TimerFeature.State = TimerFeature.State()
-        var completed: FocusCompletedFeature.State = FocusCompletedFeature.State()
         var toast: ToastFeature.State = ToastFeature.State()
         var mileStone: MileStoneFeature.State = MileStoneFeature.State()
         var shownMilestones: Set<Int> = [] // 이미 표시한 milestone (분 단위)
@@ -39,6 +39,7 @@ struct FocusDetailFeature {
                 isRunning: false,
                 progress: session.progress,
             )
+            self.completed = .init(sessionId: session.id)
         }
         
         var tabBarVisibility: Visibility {
@@ -243,7 +244,8 @@ struct FocusDetailFeature {
             
             return .none
         case .delegate(.timerCompleted):
-            return .send(.completed(.delegate(.finishSession(.auto))))
+            state.showCompletedBottomSheet = true
+            return .none
         default:
             return .none
         }

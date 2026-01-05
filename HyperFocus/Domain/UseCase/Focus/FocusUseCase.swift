@@ -169,7 +169,7 @@ extension FocusUseCase: DependencyKey {
             do {
                 let response = try await focusRepository.feedbackSession(
                     sessionId,
-                    SessionFeedbackRequest(satisfaction: satisfaction.rawValue)
+                    SessionFeedbackRequest(satisfaction: satisfaction.rawValue.lowercased())
                 )
                 return try response.data?.toEntity()
             } catch let error as APIError {
