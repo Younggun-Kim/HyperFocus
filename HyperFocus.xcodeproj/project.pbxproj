@@ -73,10 +73,10 @@
 		137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C52F09888600EE44AA /* FocusUseCase.swift */; };
 		137AE0C82F0988EA00EE44AA /* SuggestionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C72F0988EA00EE44AA /* SuggestionType.swift */; };
 		137AE0CA2F0989DD00EE44AA /* SuggestionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */; };
-		13800CA02F0A539100056DD2 /* ViewHomeProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */; };
+		13800CA02F0A539100056DD2 /* ViewHomeProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800C9F2F0A539100056DD2 /* ViewHomeProps.swift */; };
 		13800CA42F0A5F6700056DD2 /* CharWrappingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CA32F0A5F6700056DD2 /* CharWrappingText.swift */; };
 		13800CA62F0A630300056DD2 /* InputMethodType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CA52F0A630300056DD2 /* InputMethodType.swift */; };
-		13800CA82F0A640C00056DD2 /* StartFocusSessionProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CA72F0A640C00056DD2 /* StartFocusSessionProperties.swift */; };
+		13800CA82F0A640C00056DD2 /* StartFocusSessionProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CA72F0A640C00056DD2 /* StartFocusSessionProps.swift */; };
 		13800CAA2F0A652A00056DD2 /* SessionStartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CA92F0A652A00056DD2 /* SessionStartRequest.swift */; };
 		13800CAC2F0A672100056DD2 /* SessionStartResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CAB2F0A672100056DD2 /* SessionStartResponse.swift */; };
 		13800CAE2F0A675F00056DD2 /* SessionStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CAD2F0A675F00056DD2 /* SessionStatusType.swift */; };
@@ -88,7 +88,7 @@
 		13800CC02F0A935800056DD2 /* FocusUseCaseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CBF2F0A935800056DD2 /* FocusUseCaseMapper.swift */; };
 		13800CC22F0A95FA00056DD2 /* CurrentSessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */; };
 		13800CC42F0ACB1400056DD2 /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC32F0ACB1400056DD2 /* SessionResponse.swift */; };
-		13800CC62F0ACFDE00056DD2 /* ViewStopAlertProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */; };
+		13800CC62F0ACFDE00056DD2 /* ViewStopAlertProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC52F0ACFDE00056DD2 /* ViewStopAlertProps.swift */; };
 		13800CC82F0AD27100056DD2 /* SessionAbandonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */; };
 		13800CCA2F0AD32C00056DD2 /* SessionAbandonParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */; };
 		13800CCC2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13800CCB2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift */; };
@@ -126,13 +126,15 @@
 		13B1E68E2F0BFC40008419F2 /* SessionCompletionParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E68D2F0BFC40008419F2 /* SessionCompletionParams.swift */; };
 		13B1E6922F0BFCF7008419F2 /* FeedbackEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */; };
 		13B1E6942F0BFD3D008419F2 /* SessionCompletionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */; };
+		13B1E6962F0C1BA6008419F2 /* CompleteFocusSessionProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6952F0C1BA6008419F2 /* CompleteFocusSessionProps.swift */; };
+		13B1E6982F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1E6972F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift */; };
 		13E320392F0AE27700B1F920 /* ToastFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320382F0AE27700B1F920 /* ToastFeature.swift */; };
-		13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */; };
+		13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift */; };
 		13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */; };
 		13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */; };
 		13E320422F0AE76600B1F920 /* MileStoneModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320412F0AE76600B1F920 /* MileStoneModifier.swift */; };
 		13E320442F0AE7D500B1F920 /* MileStoneFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */; };
-		13E320462F0AF04200B1F920 /* ViewMotivationToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320452F0AF04200B1F920 /* ViewMotivationToast.swift */; };
+		13E320462F0AF04200B1F920 /* ViewMotivationToastProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E320452F0AF04200B1F920 /* ViewMotivationToastProps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,10 +211,10 @@
 		137AE0C52F09888600EE44AA /* FocusUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusUseCase.swift; sourceTree = "<group>"; };
 		137AE0C72F0988EA00EE44AA /* SuggestionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionType.swift; sourceTree = "<group>"; };
 		137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionEntity.swift; sourceTree = "<group>"; };
-		13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHomeProperties.swift; sourceTree = "<group>"; };
+		13800C9F2F0A539100056DD2 /* ViewHomeProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewHomeProps.swift; sourceTree = "<group>"; };
 		13800CA32F0A5F6700056DD2 /* CharWrappingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharWrappingText.swift; sourceTree = "<group>"; };
 		13800CA52F0A630300056DD2 /* InputMethodType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMethodType.swift; sourceTree = "<group>"; };
-		13800CA72F0A640C00056DD2 /* StartFocusSessionProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFocusSessionProperties.swift; sourceTree = "<group>"; };
+		13800CA72F0A640C00056DD2 /* StartFocusSessionProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartFocusSessionProps.swift; sourceTree = "<group>"; };
 		13800CA92F0A652A00056DD2 /* SessionStartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStartRequest.swift; sourceTree = "<group>"; };
 		13800CAB2F0A672100056DD2 /* SessionStartResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStartResponse.swift; sourceTree = "<group>"; };
 		13800CAD2F0A675F00056DD2 /* SessionStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStatusType.swift; sourceTree = "<group>"; };
@@ -224,7 +226,7 @@
 		13800CBF2F0A935800056DD2 /* FocusUseCaseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusUseCaseMapper.swift; sourceTree = "<group>"; };
 		13800CC12F0A95FA00056DD2 /* CurrentSessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentSessionResponse.swift; sourceTree = "<group>"; };
 		13800CC32F0ACB1400056DD2 /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
-		13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStopAlertProperties.swift; sourceTree = "<group>"; };
+		13800CC52F0ACFDE00056DD2 /* ViewStopAlertProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStopAlertProps.swift; sourceTree = "<group>"; };
 		13800CC72F0AD27100056DD2 /* SessionAbandonRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAbandonRequest.swift; sourceTree = "<group>"; };
 		13800CC92F0AD32C00056DD2 /* SessionAbandonParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionAbandonParams.swift; sourceTree = "<group>"; };
 		13800CCB2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusFailReasonBottomSheet.swift; sourceTree = "<group>"; };
@@ -263,13 +265,15 @@
 		13B1E68D2F0BFC40008419F2 /* SessionCompletionParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionParams.swift; sourceTree = "<group>"; };
 		13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackEntity.swift; sourceTree = "<group>"; };
 		13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionCompletionEntity.swift; sourceTree = "<group>"; };
+		13B1E6952F0C1BA6008419F2 /* CompleteFocusSessionProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompleteFocusSessionProps.swift; sourceTree = "<group>"; };
+		13B1E6972F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickSessionFeedbackProps.swift; sourceTree = "<group>"; };
 		13E320382F0AE27700B1F920 /* ToastFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastFeature.swift; sourceTree = "<group>"; };
-		13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickSessionDiscardProperties.swift; sourceTree = "<group>"; };
+		13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickSessionDiscardProps.swift; sourceTree = "<group>"; };
 		13E3203C2F0AE54C00B1F920 /* MileStoneResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneResponse.swift; sourceTree = "<group>"; };
 		13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneEntity.swift; sourceTree = "<group>"; };
 		13E320412F0AE76600B1F920 /* MileStoneModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneModifier.swift; sourceTree = "<group>"; };
 		13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneFeature.swift; sourceTree = "<group>"; };
-		13E320452F0AF04200B1F920 /* ViewMotivationToast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMotivationToast.swift; sourceTree = "<group>"; };
+		13E320452F0AF04200B1F920 /* ViewMotivationToastProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMotivationToastProps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -474,10 +478,10 @@
 		134BFFB62F00F59800F1F444 /* FocusFeature */ = {
 			isa = PBXGroup;
 			children = (
-				13E320402F0AE75F00B1F920 /* MileStone */,
-				133BD3B22F02A1320081CDF8 /* Popup */,
 				134BFFD82F01795900F1F444 /* Detail */,
 				134BFFD72F01795300F1F444 /* Home */,
+				13E320402F0AE75F00B1F920 /* MileStone */,
+				133BD3B22F02A1320081CDF8 /* Popup */,
 			);
 			path = FocusFeature;
 			sourceTree = "<group>";
@@ -653,7 +657,7 @@
 		137AE09A2F096FDA00EE44AA /* Amplitude */ = {
 			isa = PBXGroup;
 			children = (
-				13800CA12F0A570900056DD2 /* Properties */,
+				13800CA12F0A570900056DD2 /* Props */,
 				137AE09E2F09702600EE44AA /* AmplitudeService.swift */,
 				137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */,
 			);
@@ -713,16 +717,18 @@
 			path = Plugin;
 			sourceTree = "<group>";
 		};
-		13800CA12F0A570900056DD2 /* Properties */ = {
+		13800CA12F0A570900056DD2 /* Props */ = {
 			isa = PBXGroup;
 			children = (
-				13800C9F2F0A539100056DD2 /* ViewHomeProperties.swift */,
-				13800CA72F0A640C00056DD2 /* StartFocusSessionProperties.swift */,
-				13800CC52F0ACFDE00056DD2 /* ViewStopAlertProperties.swift */,
-				13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift */,
-				13E320452F0AF04200B1F920 /* ViewMotivationToast.swift */,
+				13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift */,
+				13B1E6972F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift */,
+				13B1E6952F0C1BA6008419F2 /* CompleteFocusSessionProps.swift */,
+				13800CA72F0A640C00056DD2 /* StartFocusSessionProps.swift */,
+				13800C9F2F0A539100056DD2 /* ViewHomeProps.swift */,
+				13E320452F0AF04200B1F920 /* ViewMotivationToastProps.swift */,
+				13800CC52F0ACFDE00056DD2 /* ViewStopAlertProps.swift */,
 			);
-			path = Properties;
+			path = Props;
 			sourceTree = "<group>";
 		};
 		13800CA22F0A5F6100056DD2 /* CharWrappingText */ = {
@@ -843,13 +849,13 @@
 			isa = PBXGroup;
 			children = (
 				13A74D3F2EE5D2D800C3BB48 /* Info.plist */,
-				13A74D252EE5CB8100C3BB48 /* Assets.xcassets */,
-				13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */,
-				13A74D362EE5CCFC00C3BB48 /* AppDelegate.swift */,
-				13A74D382EE5CD0E00C3BB48 /* SceneDelegate.swift */,
 				13AC3F5D2EF6FDC100CEDC69 /* Launch Screen.storyboard */,
-				137AE0A22F09717F00EE44AA /* Production.xcconfig */,
+				13A74D362EE5CCFC00C3BB48 /* AppDelegate.swift */,
+				13A74D272EE5CB8100C3BB48 /* HyperFocusApp.swift */,
+				13A74D382EE5CD0E00C3BB48 /* SceneDelegate.swift */,
+				13A74D252EE5CB8100C3BB48 /* Assets.xcassets */,
 				137AE0A42F09718700EE44AA /* Development.xcconfig */,
+				137AE0A22F09717F00EE44AA /* Production.xcconfig */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -874,11 +880,11 @@
 		13AC3F4A2EF6EA5200CEDC69 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				137AE0AC2F09739A00EE44AA /* Environment */,
 				137AE09A2F096FDA00EE44AA /* Amplitude */,
 				133BD3C92F0403970081CDF8 /* Dependency */,
-				134BFFE12F017E0F00F1F444 /* Utils */,
 				13AC3F4B2EF6EA7000CEDC69 /* DesignSystem */,
+				137AE0AC2F09739A00EE44AA /* Environment */,
+				134BFFE12F017E0F00F1F444 /* Utils */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -1105,7 +1111,7 @@
 				134BFFCE2F014FD200F1F444 /* ReasonType.swift in Sources */,
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
 				137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */,
-				13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProperties.swift in Sources */,
+				13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift in Sources */,
 				13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
 				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
@@ -1128,7 +1134,7 @@
 				134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */,
 				13AB6AD02F0929A2001F7608 /* AppVersionAPI.swift in Sources */,
 				133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */,
-				13E320462F0AF04200B1F920 /* ViewMotivationToast.swift in Sources */,
+				13E320462F0AF04200B1F920 /* ViewMotivationToastProps.swift in Sources */,
 				13B1E6842F0BF75A008419F2 /* SessionCompletionRequest.swift in Sources */,
 				13B1E6942F0BFD3D008419F2 /* SessionCompletionEntity.swift in Sources */,
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
@@ -1155,9 +1161,10 @@
 				134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */,
 				134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */,
 				134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */,
+				13B1E6962F0C1BA6008419F2 /* CompleteFocusSessionProps.swift in Sources */,
 				137AE08A2F09539D00EE44AA /* AuthAPI.swift in Sources */,
 				134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */,
-				13800CA82F0A640C00056DD2 /* StartFocusSessionProperties.swift in Sources */,
+				13800CA82F0A640C00056DD2 /* StartFocusSessionProps.swift in Sources */,
 				137AE0C42F097FFF00EE44AA /* TokenRefreshPlugin.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
@@ -1185,6 +1192,7 @@
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
 				137AE0C22F097F1C00EE44AA /* NetworkHeader.swift in Sources */,
 				13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */,
+				13B1E6982F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift in Sources */,
 				13800CBC2F0A927300056DD2 /* SessionEntity.swift in Sources */,
 				137AE0CA2F0989DD00EE44AA /* SuggestionEntity.swift in Sources */,
 				13800CC42F0ACB1400056DD2 /* SessionResponse.swift in Sources */,
@@ -1199,7 +1207,7 @@
 				137AE08E2F09551200EE44AA /* LoginResponse.swift in Sources */,
 				137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */,
 				13E320442F0AE7D500B1F920 /* MileStoneFeature.swift in Sources */,
-				13800CA02F0A539100056DD2 /* ViewHomeProperties.swift in Sources */,
+				13800CA02F0A539100056DD2 /* ViewHomeProps.swift in Sources */,
 				13800CB42F0A68C500056DD2 /* SatisfactionType.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
@@ -1213,7 +1221,7 @@
 				13800CCA2F0AD32C00056DD2 /* SessionAbandonParams.swift in Sources */,
 				137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */,
 				13E320392F0AE27700B1F920 /* ToastFeature.swift in Sources */,
-				13800CC62F0ACFDE00056DD2 /* ViewStopAlertProperties.swift in Sources */,
+				13800CC62F0ACFDE00056DD2 /* ViewStopAlertProps.swift in Sources */,
 				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

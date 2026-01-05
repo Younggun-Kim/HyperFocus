@@ -1,5 +1,5 @@
 //
-//  ViewHomeProperties.swift
+//  ViewHomeProps.swift
 //  HyperFocus
 //
 //  Created by 김영건 on 1/4/26.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-public struct ViewHomeProperties: Codable {
+public struct ViewHomeProps: Codable {
     let loadStatus: Bool
     let hasHistory: Bool
     

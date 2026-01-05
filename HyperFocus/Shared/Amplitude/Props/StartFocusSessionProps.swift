@@ -1,5 +1,5 @@
 //
-//  StartFocusSessionProperties.swift
+//  StartFocusSessionProps.swift
 //  HyperFocus
 //
 //  Created by 김영건 on 1/4/26.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-public struct StartFocusSessionProperties: Codable {
+public struct StartFocusSessionProps: Codable {
     let targetDuration: Int // Seconds
     let inputMethod: InputMethodType?
     let setssionTitle: String?

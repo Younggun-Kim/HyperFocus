@@ -21,13 +21,13 @@ public enum AmplitudeEvent{
     case clickOnboardingComplete
     
     // MARK: - Focus Event
-    case viewHome(ViewHomeProperties)
-    case startFocusSession(StartFocusSessionProperties)
-    case viewStopAlert(ViewStopAlertProperties)
-    case clickSessionDiscard(ClickSessionDiscardProperties)
-    case viewMotivationToast(ViewMotivationToast)
-    case completeFocusSession
-    case clickSessionFeedback
+    case viewHome(ViewHomeProps)
+    case startFocusSession(StartFocusSessionProps)
+    case viewStopAlert(ViewStopAlertProps)
+    case clickSessionDiscard(ClickSessionDiscardProps)
+    case viewMotivationToast(ViewMotivationToastProps)
+    case completeFocusSession(CompleteFocusSessionProps)
+    case clickSessionFeedback(ClickSessionFeedbackProps)
     case startRestTimer
 }
 
@@ -56,6 +56,8 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .viewStopAlert(let properties): return properties.toDictionary()
         case .clickSessionDiscard(let properties): return properties.toDictionary()
         case .viewMotivationToast(let properties): return properties.toDictionary()
+        case .completeFocusSession(let properties): return properties.toDictionary()
+        case .clickSessionFeedback(let properties): return properties.toDictionary()
             
         default: return [:]
         }

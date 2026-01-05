@@ -11,6 +11,7 @@ import Foundation
 @Reducer
 struct FocusCompletedFeature {
     @Dependency(\.focusUseCase) var focusUseCase
+    @Dependency(\.amplitudeService) var amplitudeService
     
     @ObservableState
     struct State: Equatable {
@@ -54,6 +55,15 @@ struct FocusCompletedFeature {
             state.selectedSatisfaction = satisfaction
             
             let sessionId = state.sessionId
+            
+            amplitudeService.track(
+                .clickSessionFeedback(
+                    .init(
+                        satisfaction: satisfaction.rawValue,
+                        sessionId: sessionId
+                    )
+                )
+            )
             
             return .run { _ in
                 do {

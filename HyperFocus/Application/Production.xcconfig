@@ -12,4 +12,4 @@ APP_BUNDLE_ID=com.hyperfocus.timer.HyperFocus
 API_BASE_URL=https:/$()/api-hyperfocus.meetory.io
 APP_NAME=HyperFocus
 
-AMPLITUDE_API_KEY=4513a3fb6b65ee201eb61679896e6869
+AMPLITUDE_API_KEY=b3df0eb3538453019955ad5a9f641997

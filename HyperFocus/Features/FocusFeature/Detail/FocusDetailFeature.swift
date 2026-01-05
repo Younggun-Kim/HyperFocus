@@ -261,6 +261,16 @@ struct FocusDetailFeature {
             
             state.playStatus = .completed
             
+            
+            amplitudeService.track(
+                .completeFocusSession(
+                    .init(
+                        isAutoFinish: completionType == .auto,
+                        duration: actualSeconds
+                    )
+                )
+            )
+            
             return .run { send in
                 do {
                     let _ = try await focusUseCase.completeSession(

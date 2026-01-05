@@ -1,5 +1,5 @@
 //
-//  ViewStopAlertProperties.swift
+//  ViewStopAlertProps.swift
 //  HyperFocus
 //
 //  Created by 김영건 on 1/5/26.
@@ -7,7 +7,7 @@
 import Foundation
 
 
-public struct ViewStopAlertProperties: Codable {
+public struct ViewStopAlertProps: Codable {
     let isUnderThreeMinutes: Bool
     let elapsedTime: Int
     
