@@ -197,6 +197,8 @@ struct FocusHomeFeature {
                 return .send(.moveFocusRest(session))
             case .path(.element(id: _, action: .rest(.delegate(.skipRest)))):
                 return .send(.pathRemoved)
+            case .path(.element(id: _, action: .rest(.delegate(.startNextTask)))):
+                return .send(.pathRemoved)
             case .path:
                 return .none
             }

@@ -23,6 +23,7 @@ struct FocusRestFeature: Reducer {
         var session: SessionEntity
         var restSession: RestEntity?
         var playStatus: SessionStatusType?
+        var showCompletionPopup: Bool = false
         
         init(session: SessionEntity) {
             self.session = session
@@ -55,13 +56,17 @@ struct FocusRestFeature: Reducer {
             case start
             case stop
             case skip
+            case completionPopupDismissed
+            case startNextTaskTapped
         }
         enum EffectAction {
             case startResponse(Result<RestEntity?, Error>)
             case skipResponse(Result<RestSkipEntity?, Error>)
+            case completeResponse(Result<Bool, Error>)
         }
         enum Delegate: Equatable {
             case skipRest
+            case startNextTask
         }
     }
     
@@ -99,7 +104,7 @@ struct FocusRestFeature: Reducer {
         case .timerTick:
             return .none
         case .delegate(.timerCompleted):
-            return .none
+            return .send(.inner(.checkTapped))
         default:
             return .none
         }
@@ -124,6 +129,7 @@ struct FocusRestFeature: Reducer {
                 }
             }
         case .checkTapped:
+            state.showCompletionPopup = true
             return .none
         case .start:
             if !state.initialized || state.playStatus == .inProgress {
@@ -153,7 +159,27 @@ struct FocusRestFeature: Reducer {
                     await send(.effect(.skipResponse(.failure(error))))
                 }
             }
+        case .completionPopupDismissed:
+            state.showCompletionPopup = false
+            return .none
+        case .startNextTaskTapped:
+            guard let restSessionId = state.restSession?.id else {
+                return .none
+            }
+            
+            let actualSeconds = state.timer.actualSeconds
+            return .run { send in
+                do {
+                    let response = try await restUseCase.complete(restSessionId, actualSeconds)
+                    
+                    await send(.effect(.completeResponse(.success(response))))
+
+                } catch {
+                    await send(.effect(.completeResponse(.failure(error))))
+                }
+            }
         }
+    
     }
     
     func effectAction(_ state: inout State, action: Action.EffectAction) -> Effect<Action> {
@@ -174,6 +200,10 @@ struct FocusRestFeature: Reducer {
         case  .skipResponse(.success(_)):
             return .send(.delegate(.skipRest))
         case let .skipResponse(.failure(error)):
+            return .send(.toast(.show(error.localizedDescription)))
+        case .completeResponse(.success(_)):
+            return .send(.delegate(.startNextTask))
+        case let .completeResponse(.failure(error)):
             return .send(.toast(.show(error.localizedDescription)))
         }
     }

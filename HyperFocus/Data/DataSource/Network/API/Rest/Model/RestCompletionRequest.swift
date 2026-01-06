@@ -9,5 +9,5 @@ import Foundation
 
 
 public struct RestCompletionRequest: Codable, Sendable, Equatable {
-    var acturalDurationSeconds: Int
+    var actualDurationSeconds: Int
 }

@@ -54,6 +54,33 @@ struct FocusRestView: View {
         }
         .navigationBarBackButtonHidden()
         .toolbar(store.tabBarVisibility, for: .tabBar)
+        .customAlert(
+            isPresented: Binding(
+                get: { store.showCompletionPopup },
+                set: { _ in store.send(.inner(.completionPopupDismissed)) }
+            ),
+            params: CustomAlertParams(
+                title: String(format: FocusText.RestCompletion.title, store.session.name ?? ""),
+                btns: [
+                    CustomAlertBtnModel(
+                        title: FocusText.RestCompletion.resumeFlow,
+                        style: .blue,
+                        action: {
+                        }),
+                    CustomAlertBtnModel(
+                        title: FocusText.RestCompletion.startNextTask,
+                        style: .gray,
+                        action: {
+                            store.send(.inner(.startNextTaskTapped))
+                        }),
+                    CustomAlertBtnModel(
+                        title: FocusText.RestCompletion.fiveMinuteBreak,
+                        style: .gray,
+                        action: {
+                        })
+                ]
+            )
+        )
         .toast(message: Binding(
             get: { store.toast.message },
             set: { _ in store.send(.toast(.dismiss)) }

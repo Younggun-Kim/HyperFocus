@@ -73,7 +73,7 @@ extension RestUseCase: DependencyKey {
             @Dependency(\.amplitudeService) var amplitudeService
             
             do {
-                let response = try await restRepository.complete(restId, .init(acturalDurationSeconds: seconds))
+                let response = try await restRepository.complete(restId, .init(actualDurationSeconds: seconds))
                 
                 return response.data?.status == RestStatusType.completed.rawValue
             } catch {

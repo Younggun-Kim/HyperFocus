@@ -219,8 +219,6 @@ struct FocusDetailFeature {
                 return .none
             case .mileStone:
                 return .none
-            default:
-                return .none
             }
         }
     }

@@ -40,4 +40,11 @@ struct FocusText {
     struct FailReationBottomSheet {
         static let title = "What broke the flow?"
     }
+    
+    struct RestCompletion {
+        static let title = "Rest Complete!\n\nContinue focusing on\n\"%@\"?"
+        static let resumeFlow = "Resume Flow"
+        static let startNextTask = "Start Next Task"
+        static let fiveMinuteBreak = "☕️ 5m more break"
+    }
 }
