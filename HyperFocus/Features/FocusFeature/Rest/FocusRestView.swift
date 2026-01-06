@@ -13,8 +13,47 @@ struct FocusRestView: View {
     
     var body: some View {
         AmbientZStack(style: .calmDark) {
-            Text("fef")
+            VStack(){
+                TimerView(
+                    store: store.scope(state: \.timer, action: \.timer)
+                )
+                .padding(.top, 86)
+                Spacer()
+                HStack(alignment: .bottom, spacing: 30) {
+                    Image(AssetSystem.icCheck.rawValue)
+                        .onTapGesture {
+                            store.send(.inner(.checkTapped))
+                        }
+                    
+                    if store.timer.isRunning {
+                        Image(AssetSystem.icPause.rawValue)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 96, height: 96)
+                            .onTapGesture {
+                                store.send(.inner(.stop))
+                            }
+                        
+                    } else {
+                        Image(AssetSystem.icPlay.rawValue)
+                            .frame(width: 96, height: 96)
+                            .onTapGesture {
+                                store.send(.inner(.start))
+                            }
+                    }
+                    Image(AssetSystem.icSoundMute.rawValue)
+                    .onTapGesture {
+                        store.send(.inner(.skip))
+                    }
+                }
+                .padding(.bottom, 113)
+            }
         }
+        .onAppear {
+            store.send(.inner(.onAppear))
+        }
+        .navigationBarBackButtonHidden()
+        .toolbar(store.tabBarVisibility, for: .tabBar)
         .toast(message: Binding(
             get: { store.toast.message },
             set: { _ in store.send(.toast(.dismiss)) }
@@ -24,7 +63,9 @@ struct FocusRestView: View {
 
 #Preview {
     FocusRestView(
-        store: Store(initialState: FocusRestFeature.State()) {
+        store: Store(initialState: FocusRestFeature.State(
+            session: SessionEntity.mock
+        )) {
             FocusRestFeature()
         }
     )

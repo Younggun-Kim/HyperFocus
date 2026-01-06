@@ -38,7 +38,8 @@ struct FocusHomeFeature {
         case toast(ToastFeature.Action)
         case path(StackActionOf<Path>)
         case pathRemoved
-
+        case moveFocusRest(SessionEntity)
+        
         case delegate(Delegate)
         
         enum Delegate: Equatable {
@@ -49,6 +50,7 @@ struct FocusHomeFeature {
     @Reducer()
     enum Path {
         case detail(FocusDetailFeature)
+        case rest(FocusRestFeature)
     }
     
     var body: some Reducer<State, Action> {
@@ -172,6 +174,10 @@ struct FocusHomeFeature {
                 // path 제거 (sessionAbandoned 후 처리)
                 state.path.removeAll()
                 return .none
+            case .moveFocusRest(let session):
+                state.path.removeAll()
+                state.path.append(.rest(FocusRestFeature.State(session: session)))
+                return .none
             case .delegate(.sessionCompleted):
                 state.inputText = ""
                 state.selectedDuration = nil
@@ -187,6 +193,8 @@ struct FocusHomeFeature {
             case .path(.element(id: _, action: .detail(.delegate(.sessionCompleted)))):
                 // 세션 완료 시 delegate만 전달 (path 제거는 메인 reducer에서 처리)
                 return .send(.delegate(.sessionCompleted))
+            case let  .path(.element(id: _, action: .detail(.delegate(.breakSession(session))))):
+                return .send(.moveFocusRest(session))
             case .path:
                 return .none
             }

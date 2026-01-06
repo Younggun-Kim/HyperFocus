@@ -72,6 +72,7 @@ struct FocusDetailFeature {
         enum Delegate: Equatable {
             case sessionCompleted
             case sessionAbandoned(SessionFailReasonType)
+            case breakSession(SessionEntity)
         }
     }
     
@@ -288,8 +289,13 @@ struct FocusDetailFeature {
             }
         case .delegate(.breakAction):
             state.showCompletedBottomSheet = false
-            // TODO: 5분 휴식 처리 로직 추가
-            return .none
+            
+            let session = state.session
+            
+            return .run { send in
+                try await Task.sleep(for: .milliseconds(500))
+                await send(.delegate(.breakSession(session)))
+            }
         default:
             return .none
         }

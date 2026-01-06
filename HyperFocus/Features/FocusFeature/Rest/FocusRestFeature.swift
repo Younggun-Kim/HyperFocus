@@ -7,6 +7,7 @@
 
 import Foundation
 import ComposableArchitecture
+import SwiftUI
 
 
 @Reducer
@@ -17,6 +18,23 @@ struct FocusRestFeature: Reducer {
     struct State: Equatable {
         var timer: TimerFeature.State = TimerFeature.State()
         var toast: ToastFeature.State = ToastFeature.State()
+        
+        var session: SessionEntity
+        var playStatus: SessionStatusType?
+        
+        init(session: SessionEntity) {
+            self.session = session
+            self.timer = TimerFeature.State(
+                playbackRate: Environment.isDevelopment ? 10 : 1,
+                totalSeconds: 5 * 60,
+                remainingSeconds: 5 * 60,
+                isRunning: false,
+            )
+        }
+        
+        var tabBarVisibility: Visibility {
+            return playStatus?.isPlaying == true ? .hidden : .automatic
+        }
     }
     
     @CasePathable
@@ -28,6 +46,10 @@ struct FocusRestFeature: Reducer {
         
         enum InnerAction: Equatable {
             case onAppear
+            case checkTapped
+            case start
+            case stop
+            case skip
         }
         enum Delegate: Equatable {}
     }
@@ -77,6 +99,14 @@ struct FocusRestFeature: Reducer {
     func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
         switch action {
         case .onAppear:
+            return .none
+        case .checkTapped:
+            return .none
+        case .start:
+            return .send(.timer(.start))
+        case .stop:
+            return .send(.timer(.pause))
+        case .skip:
             return .none
         }
     }

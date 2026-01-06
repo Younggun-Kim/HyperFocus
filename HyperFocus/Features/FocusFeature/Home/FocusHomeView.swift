@@ -14,7 +14,9 @@ struct FocusHomeView: View {
     @FocusState private var isGoalFocused: Bool
     
     var body: some View {
-        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
+        NavigationStack(
+            path: $store.scope(state: \.path, action: \.path)
+        ) {
             AmbientZStack(style: .black) {
                 VStack {
                     Spacer()
@@ -29,6 +31,8 @@ struct FocusHomeView: View {
             switch store.case {
             case let .detail(detailStore):
                 FocusDetailView(store: detailStore)
+            case let .rest(restStore):
+                FocusRestView(store: restStore)
             }
         }
         .onAppear {
