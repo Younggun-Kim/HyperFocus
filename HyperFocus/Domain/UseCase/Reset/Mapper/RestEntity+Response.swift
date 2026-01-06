@@ -9,7 +9,7 @@ import Foundation
 
 extension RestResponse {
     func toEntity() -> RestEntity? {
-        guard let status: SessionStatusType = .init(rawValue: status) else {
+        guard let status: RestStatusType = .init(rawValue: status) else {
             return nil
         }
         

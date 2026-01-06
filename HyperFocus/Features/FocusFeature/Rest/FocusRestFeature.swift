@@ -21,7 +21,7 @@ struct FocusRestFeature: Reducer {
         var toast: ToastFeature.State = ToastFeature.State()
         
         var session: SessionEntity
-        var initialized: Bool = false
+        var restSession: RestEntity?
         var playStatus: SessionStatusType?
         
         init(session: SessionEntity) {
@@ -33,7 +33,9 @@ struct FocusRestFeature: Reducer {
                 isRunning: false,
             )
         }
-        
+        var initialized: Bool {
+            return restSession != nil
+        }
         var tabBarVisibility: Visibility {
             return playStatus?.isPlaying == true ? .hidden : .automatic
         }
@@ -56,8 +58,11 @@ struct FocusRestFeature: Reducer {
         }
         enum EffectAction {
             case startResponse(Result<RestEntity?, Error>)
+            case skipResponse(Result<RestSkipEntity?, Error>)
         }
-        enum Delegate: Equatable {}
+        enum Delegate: Equatable {
+            case skipRest
+        }
     }
     
     var body: some Reducer<State, Action> {
@@ -101,7 +106,7 @@ struct FocusRestFeature: Reducer {
     }
     
     func delegateAction(_ state: inout State, action: Action.Delegate) -> Effect<Action> {
-        
+        return .none
     }
     
     func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
@@ -121,7 +126,9 @@ struct FocusRestFeature: Reducer {
         case .checkTapped:
             return .none
         case .start:
-            if !state.initialized || state.playStatus == .inProgress{ return .none }
+            if !state.initialized || state.playStatus == .inProgress {
+                return .send(.inner(.onAppear))
+            }
             
             state.playStatus = .inProgress
             
@@ -133,24 +140,40 @@ struct FocusRestFeature: Reducer {
             
             return .send(.timer(.pause))
         case .skip:
-            return .none
+            
+            guard let restSessionId = state.restSession?.id else {
+                return .none
+            }
+            
+            return .run { send in
+                do {
+                    let rest = try await restUseCase.skip(restSessionId)
+                    await send(.effect(.skipResponse(.success(rest))))
+                } catch {
+                    await send(.effect(.skipResponse(.failure(error))))
+                }
+            }
         }
     }
     
     func effectAction(_ state: inout State, action: Action.EffectAction) -> Effect<Action> {
         switch action {
         case let .startResponse(.success(rest)):
-            state.initialized = true
             
             if let rest = rest {
                 var currentTimer = state.timer
                 currentTimer.totalSeconds = rest.targetDurationSeconds
                 currentTimer.remainingSeconds = rest.elapsedSeconds
                 state.timer = currentTimer
+                state.restSession = rest
             }
             
             return .send(.inner(.start))
         case let .startResponse(.failure(error)):
+            return .send(.toast(.show(error.localizedDescription)))
+        case  .skipResponse(.success(_)):
+            return .send(.delegate(.skipRest))
+        case let .skipResponse(.failure(error)):
             return .send(.toast(.show(error.localizedDescription)))
         }
     }

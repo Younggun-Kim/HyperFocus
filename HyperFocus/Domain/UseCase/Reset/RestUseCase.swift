@@ -11,6 +11,7 @@ import ComposableArchitecture
 
 public struct RestUseCase {
     public let start: @Sendable (_ sessionId: String) async throws -> RestEntity?
+    public let skip: @Sendable (_ sessionId: String) async throws -> RestSkipEntity?
 }
 
 extension RestUseCase: DependencyKey {
@@ -20,9 +21,21 @@ extension RestUseCase: DependencyKey {
             @Dependency(\.amplitudeService) var amplitudeService
             
             do {
-                let response = try await restRepository.startRest(
+                let response = try await restRepository.start(
                     .init(focusSessionId: sessionId)
                 )
+                
+                return response.data?.toEntity()
+            } catch {
+                throw error
+            }
+        },
+        skip: { sessionId in
+            @Dependency(\.restRepository) var restRepository
+            @Dependency(\.amplitudeService) var amplitudeService
+            
+            do {
+                let response = try await restRepository.skip(.init(sessionId))
                 
                 return response.data?.toEntity()
             } catch {
@@ -32,7 +45,8 @@ extension RestUseCase: DependencyKey {
     )
     
     public static var testValue = RestUseCase(
-        start: { _ in RestEntity.mock}
+        start: { _ in RestEntity.mock},
+        skip: { _ in RestSkipEntity.mock },
     )
     
 }

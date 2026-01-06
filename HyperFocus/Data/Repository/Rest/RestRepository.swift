@@ -10,18 +10,26 @@ import Foundation
 import ComposableArchitecture
 
 public struct RestRepository {
-    public let startRest: @Sendable (_ request: RestStartRequest) async throws -> APIResponse<RestResponse>
+    public let start: @Sendable (_ request: RestStartRequest) async throws -> APIResponse<RestResponse>
+    public let skip: @Sendable  (_ sessionId: String) async throws -> APIResponse<RestSkipResponse>
 }
 
 extension RestRepository: DependencyKey {
     public static var liveValue = RestRepository(
-        startRest: { request in
+        start: { request in
             @Dependency(\.apiService) var apiService
             return try await apiService.requestWrapped(
                 RestAPI.start(request),
                 responseType:RestResponse.self
             )
         },
+        skip: { sessionId in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                RestAPI.skip(sessionId: sessionId),
+                responseType:RestSkipResponse.self
+            )
+        }
     )
 }
 

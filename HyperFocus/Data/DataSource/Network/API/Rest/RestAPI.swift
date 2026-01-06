@@ -13,6 +13,7 @@ import Alamofire
 
 public enum RestAPI {
     case start(RestStartRequest)
+    case skip(sessionId: String)
 }
 
 extension RestAPI: BaseTarget {
@@ -20,12 +21,17 @@ extension RestAPI: BaseTarget {
         switch self {
         case .start:
             return "/api/v1/rest/start"
+        case .skip(let sessionId):
+            return "/api/v1/rest/{sessionId}/skip"
+            
         }
     }
     
     public var method: Moya.Method {
         switch self {
         case .start:
+            return .post
+        case .skip:
             return .post
         }
     }
@@ -34,6 +40,8 @@ extension RestAPI: BaseTarget {
         switch self {
         case .start:
             return NetworkHeader.authorization
+        case .skip:
+            return NetworkHeader.authorization
         }
     }
     
@@ -41,6 +49,8 @@ extension RestAPI: BaseTarget {
         switch self {
         case .start(let request):
             return .requestJSONEncodable(request)
+        case .skip:
+            return .requestPlain
         }
     }
 }

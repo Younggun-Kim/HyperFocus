@@ -44,6 +44,10 @@
 		134206372F0D651B00E426CA /* RestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206362F0D651900E426CA /* RestUseCase.swift */; };
 		134206392F0D659600E426CA /* RestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206382F0D659600E426CA /* RestEntity.swift */; };
 		1342063C2F0D65C600E426CA /* RestEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */; };
+		1342063E2F0D6A6000E426CA /* RestSkipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342063D2F0D6A6000E426CA /* RestSkipResponse.swift */; };
+		134206402F0D6B8300E426CA /* RestStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342063F2F0D6B8300E426CA /* RestStatusType.swift */; };
+		134206422F0D6BB600E426CA /* RestSkipEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206412F0D6BB600E426CA /* RestSkipEntity.swift */; };
+		134206442F0D6BDF00E426CA /* RestSkipEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -197,6 +201,10 @@
 		134206362F0D651900E426CA /* RestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestUseCase.swift; sourceTree = "<group>"; };
 		134206382F0D659600E426CA /* RestEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestEntity.swift; sourceTree = "<group>"; };
 		1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestEntity+Response.swift"; sourceTree = "<group>"; };
+		1342063D2F0D6A6000E426CA /* RestSkipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSkipResponse.swift; sourceTree = "<group>"; };
+		1342063F2F0D6B8300E426CA /* RestStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestStatusType.swift; sourceTree = "<group>"; };
+		134206412F0D6BB600E426CA /* RestSkipEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSkipEntity.swift; sourceTree = "<group>"; };
+		134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestSkipEntity+Response.swift"; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -560,6 +568,7 @@
 			children = (
 				1342062E2F0D63BA00E426CA /* RestStartRequest.swift */,
 				134206302F0D63FB00E426CA /* RestResponse.swift */,
+				1342063D2F0D6A6000E426CA /* RestSkipResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,6 +594,7 @@
 			isa = PBXGroup;
 			children = (
 				1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */,
+				134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -680,6 +690,7 @@
 				13AB6AD72F092C23001F7608 /* VersionUpdateType.swift */,
 				134BFFCD2F014FCA00F1F444 /* ReasonType.swift */,
 				13800CAD2F0A675F00056DD2 /* SessionStatusType.swift */,
+				1342063F2F0D6B8300E426CA /* RestStatusType.swift */,
 				13800CAF2F0A682700056DD2 /* SessionCompletionType.swift */,
 				13800CB12F0A685700056DD2 /* SessionFailReasonType.swift */,
 				13800CB32F0A68C500056DD2 /* SatisfactionType.swift */,
@@ -803,6 +814,7 @@
 				13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */,
 				13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */,
 				134206382F0D659600E426CA /* RestEntity.swift */,
+				134206412F0D6BB600E426CA /* RestSkipEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1288,6 +1300,7 @@
 				134206372F0D651B00E426CA /* RestUseCase.swift in Sources */,
 				13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */,
 				133BD3C42F02D1400081CDF8 /* SettingFeature.swift in Sources */,
+				1342063E2F0D6A6000E426CA /* RestSkipResponse.swift in Sources */,
 				134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */,
 				13AB6AD02F0929A2001F7608 /* AppVersionAPI.swift in Sources */,
 				133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */,
@@ -1351,6 +1364,7 @@
 				13B1E6882F0BFB28008419F2 /* SessionFeedbackRequest.swift in Sources */,
 				137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */,
 				13800CD12F0ADE3C00056DD2 /* ToastModifier.swift in Sources */,
+				134206422F0D6BB600E426CA /* RestSkipEntity.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
 				137AE0C22F097F1C00EE44AA /* NetworkHeader.swift in Sources */,
 				1342062F2F0D63BA00E426CA /* RestStartRequest.swift in Sources */,
@@ -1376,7 +1390,9 @@
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
+				134206442F0D6BDF00E426CA /* RestSkipEntity+Response.swift in Sources */,
 				134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */,
+				134206402F0D6B8300E426CA /* RestStatusType.swift in Sources */,
 				134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */,
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,
 				13AB6AD42F092B27001F7608 /* AppVersionCheckResponse.swift in Sources */,
