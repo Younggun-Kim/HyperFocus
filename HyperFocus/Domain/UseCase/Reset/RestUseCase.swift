@@ -11,8 +11,9 @@ import ComposableArchitecture
 
 public struct RestUseCase {
     public let start: @Sendable (_ sessionId: String) async throws -> RestEntity?
-    public let skip: @Sendable (_ sessionId: String) async throws -> RestSkipEntity?
+    public let skip: @Sendable (_ restId: String) async throws -> RestSkipEntity?
     public let current: @Sendable () async throws -> RestEntity?
+    public let complete: @Sendable (_ restId: String, _ actualSeconds: Int) async throws -> Bool
 }
 
 extension RestUseCase: DependencyKey {
@@ -43,12 +44,12 @@ extension RestUseCase: DependencyKey {
                 throw error
             }
         },
-        skip: { sessionId in
+        skip: { restId in
             @Dependency(\.restRepository) var restRepository
             @Dependency(\.amplitudeService) var amplitudeService
             
             do {
-                let response = try await restRepository.skip(.init(sessionId))
+                let response = try await restRepository.skip(.init(restId))
                 
                 return response.data?.toEntity()
             } catch {
@@ -67,12 +68,25 @@ extension RestUseCase: DependencyKey {
                 throw error
             }
         },
+        complete: { restId, seconds in
+            @Dependency(\.restRepository) var restRepository
+            @Dependency(\.amplitudeService) var amplitudeService
+            
+            do {
+                let response = try await restRepository.complete(restId, .init(acturalDurationSeconds: seconds))
+                
+                return response.data?.status == RestStatusType.completed.rawValue
+            } catch {
+                throw error
+            }
+        }
     )
     
     public static var testValue = RestUseCase(
         start: { _ in RestEntity.mock},
         skip: { _ in RestSkipEntity.mock },
         current: { RestEntity.mock },
+        complete: { _, _ in true }
     )
     
 }

@@ -20,6 +20,7 @@ struct AppFeature {
     @Dependency(\.appConfigUseCase) var appConfigUseCase
     @Dependency(\.loginUseCase) var loginUseCase
     @Dependency(\.focusUseCase) var focusUseCase
+    @Dependency(\.restUseCase) var restUseCase
     
     @ObservableState
     struct State {
@@ -44,6 +45,12 @@ struct AppFeature {
         case openAppStore
         case login
         case loginResponse(Result<Bool, Error>)
+        
+        case effect(EffectAction)
+        
+        enum EffectAction {
+            case currentRestResponse(Result<RestEntity?, Error>)
+        }
     }
     
     var body: some Reducer<State, Action> {
@@ -170,6 +177,8 @@ struct AppFeature {
                 return .none
             case .main:
                 return .none
+            case .effect(let effect):
+                return effectAction(&state, action: effect)
             }
         }
         .ifLet(\.splash, action: \.splash) {
@@ -182,5 +191,17 @@ struct AppFeature {
             MainFeature()
         }
         ._printChanges()
+    }
+    
+    
+    
+    func effectAction(_ state: inout State, action: Action.EffectAction) -> Effect<Action> {
+        switch action {
+            // TODO: - FocusRestFeature로 이동하기 위해서는 SessionEntity가 필요
+        case let .currentRestResponse(.success(reset)):
+            return .none
+        case let .currentRestResponse(.failure(error)):
+            return .none
+        }
     }
 }

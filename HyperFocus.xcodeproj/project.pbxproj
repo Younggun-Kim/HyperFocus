@@ -48,6 +48,8 @@
 		134206402F0D6B8300E426CA /* RestStatusType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342063F2F0D6B8300E426CA /* RestStatusType.swift */; };
 		134206422F0D6BB600E426CA /* RestSkipEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206412F0D6BB600E426CA /* RestSkipEntity.swift */; };
 		134206442F0D6BDF00E426CA /* RestSkipEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */; };
+		134206462F0D723F00E426CA /* RestCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206452F0D723F00E426CA /* RestCompletionRequest.swift */; };
+		134206482F0D725800E426CA /* RestCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206472F0D725800E426CA /* RestCompletionResponse.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -205,6 +207,8 @@
 		1342063F2F0D6B8300E426CA /* RestStatusType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestStatusType.swift; sourceTree = "<group>"; };
 		134206412F0D6BB600E426CA /* RestSkipEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestSkipEntity.swift; sourceTree = "<group>"; };
 		134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestSkipEntity+Response.swift"; sourceTree = "<group>"; };
+		134206452F0D723F00E426CA /* RestCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestCompletionRequest.swift; sourceTree = "<group>"; };
+		134206472F0D725800E426CA /* RestCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestCompletionResponse.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -569,6 +573,8 @@
 				1342062E2F0D63BA00E426CA /* RestStartRequest.swift */,
 				134206302F0D63FB00E426CA /* RestResponse.swift */,
 				1342063D2F0D6A6000E426CA /* RestSkipResponse.swift */,
+				134206452F0D723F00E426CA /* RestCompletionRequest.swift */,
+				134206472F0D725800E426CA /* RestCompletionResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1347,6 +1353,7 @@
 				133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */,
 				133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */,
 				134206392F0D659600E426CA /* RestEntity.swift in Sources */,
+				134206462F0D723F00E426CA /* RestCompletionRequest.swift in Sources */,
 				133BD3BD2F02CFBD0081CDF8 /* LogText.swift in Sources */,
 				137AE0BB2F097BD500EE44AA /* FocusRepository.swift in Sources */,
 				13800CC22F0A95FA00056DD2 /* CurrentSessionResponse.swift in Sources */,
@@ -1396,6 +1403,7 @@
 				134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */,
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,
 				13AB6AD42F092B27001F7608 /* AppVersionCheckResponse.swift in Sources */,
+				134206482F0D725800E426CA /* RestCompletionResponse.swift in Sources */,
 				137AE0B62F097A9F00EE44AA /* FocusAPI.swift in Sources */,
 				133BD3B92F02C5DE0081CDF8 /* LogHomeView.swift in Sources */,
 				13800CCA2F0AD32C00056DD2 /* SessionAbandonParams.swift in Sources */,

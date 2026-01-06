@@ -11,9 +11,12 @@ import ComposableArchitecture
 
 public struct RestRepository {
     public let start: @Sendable (_ request: RestStartRequest) async throws -> APIResponse<RestResponse>
-    public let skip: @Sendable  (_ restSessionId: String) async throws -> APIResponse<RestSkipResponse>
+    public let skip: @Sendable  (_ restId: String) async throws -> APIResponse<RestSkipResponse>
     public let current: @Sendable () async throws -> APIResponse<RestResponse>
-    
+    public let complete: @Sendable (
+        _ restId: String, _ request: RestCompletionRequest,
+    ) async throws -> APIResponse<RestCompletionResponse>
+                                    
 }
 
 extension RestRepository: DependencyKey {
@@ -25,10 +28,10 @@ extension RestRepository: DependencyKey {
                 responseType:RestResponse.self
             )
         },
-        skip: { restSessionId in
+        skip: { restId in
             @Dependency(\.apiService) var apiService
             return try await apiService.requestWrapped(
-                RestAPI.skip(restSessionId: restSessionId),
+                RestAPI.skip(restId: restId),
                 responseType:RestSkipResponse.self
             )
         },
@@ -38,7 +41,14 @@ extension RestRepository: DependencyKey {
                 RestAPI.current,
                 responseType:RestResponse.self
             )
-        }
+        },
+        complete: { restId, request in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                RestAPI.complete(restId: restId, request: request),
+                responseType:RestCompletionResponse.self
+            )
+        },
     )
 }
 
