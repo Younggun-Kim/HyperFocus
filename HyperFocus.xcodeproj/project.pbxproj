@@ -32,6 +32,11 @@
 		133BD3EC2F04196C0081CDF8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 133BD3E32F04196C0081CDF8 /* README.md */; };
 		134206132F0D4F1300E426CA /* FocusRestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206122F0D4F1300E426CA /* FocusRestView.swift */; };
 		134206152F0D4F1B00E426CA /* FocusRestFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206142F0D4F1B00E426CA /* FocusRestFeature.swift */; };
+		134206202F0D5A1F00E426CA /* DeviceDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206162F0D5A1F00E426CA /* DeviceDataSourceTests.swift */; };
+		134206212F0D5A1F00E426CA /* AppRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206192F0D5A1F00E426CA /* AppRepositoryTests.swift */; };
+		134206222F0D5A1F00E426CA /* AppConfigUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342061C2F0D5A1F00E426CA /* AppConfigUseCaseTests.swift */; };
+		134206232F0D5A1F00E426CA /* HyperFocusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342061E2F0D5A1F00E426CA /* HyperFocusTests.swift */; };
+		134206292F0D5A5600E426CA /* FocusRestFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206282F0D5A5600E426CA /* FocusRestFeatureTests.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -173,6 +178,11 @@
 		133BD3E32F04196C0081CDF8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		134206122F0D4F1300E426CA /* FocusRestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRestView.swift; sourceTree = "<group>"; };
 		134206142F0D4F1B00E426CA /* FocusRestFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRestFeature.swift; sourceTree = "<group>"; };
+		134206162F0D5A1F00E426CA /* DeviceDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceDataSourceTests.swift; sourceTree = "<group>"; };
+		134206192F0D5A1F00E426CA /* AppRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepositoryTests.swift; sourceTree = "<group>"; };
+		1342061C2F0D5A1F00E426CA /* AppConfigUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigUseCaseTests.swift; sourceTree = "<group>"; };
+		1342061E2F0D5A1F00E426CA /* HyperFocusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperFocusTests.swift; sourceTree = "<group>"; };
+		134206282F0D5A5600E426CA /* FocusRestFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRestFeatureTests.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -279,14 +289,6 @@
 		13E320432F0AE7D500B1F920 /* MileStoneFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MileStoneFeature.swift; sourceTree = "<group>"; };
 		13E320452F0AF04200B1F920 /* ViewMotivationToastProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMotivationToastProps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		13827A242F092028008FB39A /* HyperFocusTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = HyperFocusTests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		13827A202F092028008FB39A /* Frameworks */ = {
@@ -447,6 +449,82 @@
 			children = (
 				134206142F0D4F1B00E426CA /* FocusRestFeature.swift */,
 				134206122F0D4F1300E426CA /* FocusRestView.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		134206172F0D5A1F00E426CA /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				134206162F0D5A1F00E426CA /* DeviceDataSourceTests.swift */,
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
+		134206182F0D5A1F00E426CA /* DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				134206172F0D5A1F00E426CA /* Device */,
+			);
+			path = DataSource;
+			sourceTree = "<group>";
+		};
+		1342061A2F0D5A1F00E426CA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				134206192F0D5A1F00E426CA /* AppRepositoryTests.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		1342061B2F0D5A1F00E426CA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				134206182F0D5A1F00E426CA /* DataSource */,
+				1342061A2F0D5A1F00E426CA /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		1342061D2F0D5A1F00E426CA /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				1342061C2F0D5A1F00E426CA /* AppConfigUseCaseTests.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		1342061F2F0D5A1F00E426CA /* HyperFocusTests */ = {
+			isa = PBXGroup;
+			children = (
+				1342061E2F0D5A1F00E426CA /* HyperFocusTests.swift */,
+				1342061B2F0D5A1F00E426CA /* Data */,
+				134206242F0D5A2200E426CA /* Features */,
+				1342061D2F0D5A1F00E426CA /* UseCase */,
+			);
+			path = HyperFocusTests;
+			sourceTree = "<group>";
+		};
+		134206242F0D5A2200E426CA /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				134206252F0D5A3600E426CA /* Focus */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		134206252F0D5A3600E426CA /* Focus */ = {
+			isa = PBXGroup;
+			children = (
+				134206262F0D5A3A00E426CA /* Rest */,
+			);
+			path = Focus;
+			sourceTree = "<group>";
+		};
+		134206262F0D5A3A00E426CA /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				134206282F0D5A5600E426CA /* FocusRestFeatureTests.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -818,7 +896,7 @@
 			isa = PBXGroup;
 			children = (
 				13A74D282EE5CB8100C3BB48 /* HyperFocus */,
-				13827A242F092028008FB39A /* HyperFocusTests */,
+				1342061F2F0D5A1F00E426CA /* HyperFocusTests */,
 				13A74D172EE5C77E00C3BB48 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -1006,9 +1084,6 @@
 			dependencies = (
 				13827A282F092028008FB39A /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				13827A242F092028008FB39A /* HyperFocusTests */,
-			);
 			name = HyperFocusTests;
 			packageProductDependencies = (
 			);
@@ -1114,6 +1189,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134206292F0D5A5600E426CA /* FocusRestFeatureTests.swift in Sources */,
+				134206202F0D5A1F00E426CA /* DeviceDataSourceTests.swift in Sources */,
+				134206212F0D5A1F00E426CA /* AppRepositoryTests.swift in Sources */,
+				134206222F0D5A1F00E426CA /* AppConfigUseCaseTests.swift in Sources */,
+				134206232F0D5A1F00E426CA /* HyperFocusTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
