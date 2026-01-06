@@ -30,6 +30,8 @@
 		133BD3EA2F04196C0081CDF8 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3DF2F04196C0081CDF8 /* APIService.swift */; };
 		133BD3EB2F04196C0081CDF8 /* NetworkPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3E12F04196C0081CDF8 /* NetworkPlugin.swift */; };
 		133BD3EC2F04196C0081CDF8 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 133BD3E32F04196C0081CDF8 /* README.md */; };
+		134206132F0D4F1300E426CA /* FocusRestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206122F0D4F1300E426CA /* FocusRestView.swift */; };
+		134206152F0D4F1B00E426CA /* FocusRestFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206142F0D4F1B00E426CA /* FocusRestFeature.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -169,6 +171,8 @@
 		133BD3E02F04196C0081CDF8 /* BaseTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTarget.swift; sourceTree = "<group>"; };
 		133BD3E12F04196C0081CDF8 /* NetworkPlugin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkPlugin.swift; sourceTree = "<group>"; };
 		133BD3E32F04196C0081CDF8 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		134206122F0D4F1300E426CA /* FocusRestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRestView.swift; sourceTree = "<group>"; };
+		134206142F0D4F1B00E426CA /* FocusRestFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRestFeature.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -438,6 +442,15 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		134206112F0D4EF200E426CA /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				134206142F0D4F1B00E426CA /* FocusRestFeature.swift */,
+				134206122F0D4F1300E426CA /* FocusRestView.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -478,6 +491,7 @@
 		134BFFB62F00F59800F1F444 /* FocusFeature */ = {
 			isa = PBXGroup;
 			children = (
+				134206112F0D4EF200E426CA /* Rest */,
 				134BFFD82F01795900F1F444 /* Detail */,
 				134BFFD72F01795300F1F444 /* Home */,
 				13E320402F0AE75F00B1F920 /* MileStone */,
@@ -1110,6 +1124,7 @@
 				13AC3F6B2EF7030000CEDC69 /* Colors+Extensions.swift in Sources */,
 				134BFFCE2F014FD200F1F444 /* ReasonType.swift in Sources */,
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
+				134206132F0D4F1300E426CA /* FocusRestView.swift in Sources */,
 				137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */,
 				13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift in Sources */,
 				13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */,
@@ -1145,6 +1160,7 @@
 				137AE0872F09377400EE44AA /* CommonError.swift in Sources */,
 				13800CC02F0A935800056DD2 /* FocusUseCaseMapper.swift in Sources */,
 				133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */,
+				134206152F0D4F1B00E426CA /* FocusRestFeature.swift in Sources */,
 				13800CA42F0A5F6700056DD2 /* CharWrappingText.swift in Sources */,
 				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
 				134BFFD02F01502200F1F444 /* DurationType.swift in Sources */,

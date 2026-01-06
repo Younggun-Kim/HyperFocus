@@ -33,7 +33,7 @@ struct FocusDetailFeature {
         init(session: SessionEntity) {
             self.session = session
             self.timer = TimerFeature.State(
-                playbackRate: 50,
+                playbackRate: Environment.isDevelopment ? 50 : 1,
                 totalSeconds: session.targetDurationSeconds,
                 remainingSeconds: session.remainingDuration,
                 isRunning: false,

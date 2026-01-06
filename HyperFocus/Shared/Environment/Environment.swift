@@ -21,6 +21,14 @@ public struct Environment: Equatable {
     }()
 
     // MARK: - Plist values
+    static let isDevelopment: Bool = {
+        guard let bundleId = Bundle.main.bundleIdentifier else {
+            return false
+        }
+        return bundleId.contains(".dev")
+    }()
+
+
     static let apiBaseURL: URL = {
         guard let rootURLstring = Environment.infoDictionary[Keys.apiBaseURL.rawValue] as? String else {
             fatalError("Root URL not set in plist for this environment")
