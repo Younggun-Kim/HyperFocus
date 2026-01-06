@@ -199,6 +199,12 @@ struct FocusHomeFeature {
                 return .send(.pathRemoved)
             case .path(.element(id: _, action: .rest(.delegate(.startNextTask)))):
                 return .send(.pathRemoved)
+            case .path(.element(id: _, action: .rest(.delegate(.resumeFlow)))):
+                
+                return .run { send in
+                    await send(.pathRemoved)
+                    await send(.addBtnTapped)
+                }
             case .path:
                 return .none
             }

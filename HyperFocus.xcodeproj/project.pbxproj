@@ -50,6 +50,9 @@
 		134206442F0D6BDF00E426CA /* RestSkipEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */; };
 		134206462F0D723F00E426CA /* RestCompletionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206452F0D723F00E426CA /* RestCompletionRequest.swift */; };
 		134206482F0D725800E426CA /* RestCompletionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206472F0D725800E426CA /* RestCompletionResponse.swift */; };
+		1342064A2F0D788E00E426CA /* RestExtensionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206492F0D788E00E426CA /* RestExtensionResponse.swift */; };
+		1342064C2F0D792300E426CA /* RestExtensionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342064B2F0D792300E426CA /* RestExtensionEntity.swift */; };
+		1342064E2F0D798100E426CA /* RestExtensionEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -209,6 +212,9 @@
 		134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestSkipEntity+Response.swift"; sourceTree = "<group>"; };
 		134206452F0D723F00E426CA /* RestCompletionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestCompletionRequest.swift; sourceTree = "<group>"; };
 		134206472F0D725800E426CA /* RestCompletionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestCompletionResponse.swift; sourceTree = "<group>"; };
+		134206492F0D788E00E426CA /* RestExtensionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestExtensionResponse.swift; sourceTree = "<group>"; };
+		1342064B2F0D792300E426CA /* RestExtensionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestExtensionEntity.swift; sourceTree = "<group>"; };
+		1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestExtensionEntity+Response.swift"; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -575,6 +581,7 @@
 				1342063D2F0D6A6000E426CA /* RestSkipResponse.swift */,
 				134206452F0D723F00E426CA /* RestCompletionRequest.swift */,
 				134206472F0D725800E426CA /* RestCompletionResponse.swift */,
+				134206492F0D788E00E426CA /* RestExtensionResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -601,6 +608,7 @@
 			children = (
 				1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */,
 				134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */,
+				1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -821,6 +829,7 @@
 				13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */,
 				134206382F0D659600E426CA /* RestEntity.swift */,
 				134206412F0D6BB600E426CA /* RestSkipEntity.swift */,
+				1342064B2F0D792300E426CA /* RestExtensionEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1338,6 +1347,7 @@
 				1342063C2F0D65C600E426CA /* RestEntity+Response.swift in Sources */,
 				13800CAC2F0A672100056DD2 /* SessionStartResponse.swift in Sources */,
 				134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */,
+				1342064C2F0D792300E426CA /* RestExtensionEntity.swift in Sources */,
 				134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */,
 				134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */,
 				13B1E6962F0C1BA6008419F2 /* CompleteFocusSessionProps.swift in Sources */,
@@ -1395,6 +1405,7 @@
 				13800CA02F0A539100056DD2 /* ViewHomeProps.swift in Sources */,
 				13800CB42F0A68C500056DD2 /* SatisfactionType.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
+				1342064E2F0D798100E426CA /* RestExtensionEntity+Response.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
 				134206442F0D6BDF00E426CA /* RestSkipEntity+Response.swift in Sources */,
@@ -1410,6 +1421,7 @@
 				137AE0962F095DED00EE44AA /* LocalDataSource.swift in Sources */,
 				13E320392F0AE27700B1F920 /* ToastFeature.swift in Sources */,
 				13800CC62F0ACFDE00056DD2 /* ViewStopAlertProps.swift in Sources */,
+				1342064A2F0D788E00E426CA /* RestExtensionResponse.swift in Sources */,
 				13AC3F592EF6F68B00CEDC69 /* SplashView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,7 @@ public struct RestUseCase {
     public let skip: @Sendable (_ restId: String) async throws -> RestSkipEntity?
     public let current: @Sendable () async throws -> RestEntity?
     public let complete: @Sendable (_ restId: String, _ actualSeconds: Int) async throws -> Bool
+    public let extend: @Sendable (_ restId: String) async throws -> RestExtensionEntity?
 }
 
 extension RestUseCase: DependencyKey {
@@ -79,6 +80,19 @@ extension RestUseCase: DependencyKey {
             } catch {
                 throw error
             }
+        },
+        extend: { restId in
+            @Dependency(\.restRepository) var restRepository
+            @Dependency(\.amplitudeService) var amplitudeService
+            
+            do {
+                let response = try await restRepository.extend(restId)
+                
+                return response.data?.toEntity()
+            } catch {
+                throw error
+            }
+            
         }
     )
     
@@ -86,7 +100,8 @@ extension RestUseCase: DependencyKey {
         start: { _ in RestEntity.mock},
         skip: { _ in RestSkipEntity.mock },
         current: { RestEntity.mock },
-        complete: { _, _ in true }
+        complete: { _, _ in true },
+        extend: { _ in RestExtensionEntity.mock },
     )
     
 }

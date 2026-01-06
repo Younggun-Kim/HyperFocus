@@ -49,7 +49,7 @@ struct FocusRestView: View {
                 .padding(.bottom, 113)
             }
         }
-        .onAppear {
+        .onAppear() {
             store.send(.inner(.onAppear))
         }
         .navigationBarBackButtonHidden()
@@ -66,6 +66,7 @@ struct FocusRestView: View {
                         title: FocusText.RestCompletion.resumeFlow,
                         style: .blue,
                         action: {
+                            store.send(.inner(.resumeFlowTapped))
                         }),
                     CustomAlertBtnModel(
                         title: FocusText.RestCompletion.startNextTask,
@@ -77,6 +78,7 @@ struct FocusRestView: View {
                         title: FocusText.RestCompletion.fiveMinuteBreak,
                         style: .gray,
                         action: {
+                            store.send(.inner(.moreBreakTapped))
                         })
                 ]
             )

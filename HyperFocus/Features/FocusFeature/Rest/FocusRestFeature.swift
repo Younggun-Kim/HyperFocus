@@ -58,15 +58,20 @@ struct FocusRestFeature: Reducer {
             case skip
             case completionPopupDismissed
             case startNextTaskTapped
+            case moreBreakTapped
+            case resumeFlowTapped
         }
         enum EffectAction {
             case startResponse(Result<RestEntity?, Error>)
             case skipResponse(Result<RestSkipEntity?, Error>)
             case completeResponse(Result<Bool, Error>)
+            case extendResponse(Result<RestExtensionEntity?, Error>)
+            case resumeFlowCompleteRespons(Result<Bool, Error>)
         }
         enum Delegate: Equatable {
             case skipRest
             case startNextTask
+            case resumeFlow
         }
     }
     
@@ -117,6 +122,7 @@ struct FocusRestFeature: Reducer {
     func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
         switch action {
         case .onAppear:
+            if state.initialized { return .none }
             
             let focusSessionId = state.session.id
             
@@ -173,13 +179,43 @@ struct FocusRestFeature: Reducer {
                     let response = try await restUseCase.complete(restSessionId, actualSeconds)
                     
                     await send(.effect(.completeResponse(.success(response))))
-
+                    
                 } catch {
                     await send(.effect(.completeResponse(.failure(error))))
                 }
             }
+        case .moreBreakTapped:
+            guard let restSessionId = state.restSession?.id,
+                  state.restSession?.canExtend == true else {
+                return .send(.toast(.show("휴식을 연장하실 수 없습니다.")))
+            }
+            
+            return .run { send in
+                do {
+                    let response = try await restUseCase.extend(restSessionId)
+                    
+                    await send(.effect(.extendResponse(.success(response))))
+                } catch {
+                    await send(.effect(.extendResponse(.failure(error))))
+                }
+            }
+        case .resumeFlowTapped:
+            guard let restSessionId = state.restSession?.id else {
+                return .none
+            }
+            
+            let actualSeconds = state.timer.actualSeconds
+            return .run { send in
+                do {
+                    let response = try await restUseCase.complete(restSessionId, actualSeconds)
+                    
+                    await send(.effect(.resumeFlowCompleteRespons(.success(response))))
+                    
+                } catch {
+                    await send(.effect(.resumeFlowCompleteRespons(.failure(error))))
+                }
+            }
         }
-    
     }
     
     func effectAction(_ state: inout State, action: Action.EffectAction) -> Effect<Action> {
@@ -204,6 +240,25 @@ struct FocusRestFeature: Reducer {
         case .completeResponse(.success(_)):
             return .send(.delegate(.startNextTask))
         case let .completeResponse(.failure(error)):
+            return .send(.toast(.show(error.localizedDescription)))
+        case let .extendResponse(.success(extendedRest)):
+            if let extendedRest {
+                var currentRest = state.restSession
+                
+                currentRest?.canExtend = extendedRest.canExtend
+                currentRest?.targetDurationSeconds = extendedRest.targetDurationSeconds
+                currentRest?.extensionCount = extendedRest.extensionCount
+                currentRest?.remainingExtensions = extendedRest.remainingExtensions
+                
+                state.restSession = currentRest
+                state.showCompletionPopup = false
+            }
+            return .send(.inner(.start))
+        case let .extendResponse(.failure(error)):
+            return .send(.toast(.show(error.localizedDescription)))
+        case .resumeFlowCompleteRespons(.success(_)):
+            return .send(.delegate(.resumeFlow))
+        case let .resumeFlowCompleteRespons(.failure(error)):
             return .send(.toast(.show(error.localizedDescription)))
         }
     }

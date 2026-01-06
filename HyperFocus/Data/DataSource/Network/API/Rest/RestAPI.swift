@@ -16,6 +16,7 @@ public enum RestAPI {
     case skip(restId: String)
     case current
     case complete(restId: String, request: RestCompletionRequest)
+    case extend(restId: String)
 }
 
 extension RestAPI: BaseTarget {
@@ -29,6 +30,8 @@ extension RestAPI: BaseTarget {
             return "api/v1/rest/current"
         case .complete(let restId, _):
             return "/api/v1/rest/\(restId)/complete"
+        case .extend(let restId):
+            return "/api/v1/rest/\(restId)/extend"
         }
     }
     
@@ -41,6 +44,8 @@ extension RestAPI: BaseTarget {
         case .current:
             return .get
         case .complete:
+            return .post
+        case .extend:
             return .post
         }
     }
@@ -55,6 +60,8 @@ extension RestAPI: BaseTarget {
             return NetworkHeader.authorization
         case .complete:
             return NetworkHeader.authorization
+        case .extend:
+            return NetworkHeader.authorization
         }
     }
     
@@ -68,6 +75,8 @@ extension RestAPI: BaseTarget {
             return .requestPlain
         case .complete(_, let request):
             return .requestJSONEncodable(request)
+        case .extend:
+            return .requestPlain
         }
     }
 }

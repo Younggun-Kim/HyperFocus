@@ -16,7 +16,7 @@ public struct RestRepository {
     public let complete: @Sendable (
         _ restId: String, _ request: RestCompletionRequest,
     ) async throws -> APIResponse<RestCompletionResponse>
-                                    
+    public let extend: @Sendable  (_ restId: String) async throws -> APIResponse<RestExtensionResponse>
 }
 
 extension RestRepository: DependencyKey {
@@ -49,6 +49,13 @@ extension RestRepository: DependencyKey {
                 responseType:RestCompletionResponse.self
             )
         },
+        extend: { restId in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                RestAPI.extend(restId: restId),
+                responseType:RestExtensionResponse.self
+            )
+        }
     )
 }
 
