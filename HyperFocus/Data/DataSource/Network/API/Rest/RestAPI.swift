@@ -13,7 +13,8 @@ import Alamofire
 
 public enum RestAPI {
     case start(RestStartRequest)
-    case skip(sessionId: String)
+    case skip(restSessionId: String)
+    case current
 }
 
 extension RestAPI: BaseTarget {
@@ -21,9 +22,10 @@ extension RestAPI: BaseTarget {
         switch self {
         case .start:
             return "/api/v1/rest/start"
-        case .skip(let sessionId):
-            return "/api/v1/rest/{sessionId}/skip"
-            
+        case .skip(let restSessionId):
+            return "/api/v1/rest/\(restSessionId)/skip"
+        case .current:
+            return "api/v1/rest/current"
         }
     }
     
@@ -33,6 +35,8 @@ extension RestAPI: BaseTarget {
             return .post
         case .skip:
             return .post
+        case .current:
+            return .get
         }
     }
     
@@ -42,6 +46,8 @@ extension RestAPI: BaseTarget {
             return NetworkHeader.authorization
         case .skip:
             return NetworkHeader.authorization
+        case .current:
+            return NetworkHeader.authorization
         }
     }
     
@@ -50,6 +56,8 @@ extension RestAPI: BaseTarget {
         case .start(let request):
             return .requestJSONEncodable(request)
         case .skip:
+            return .requestPlain
+        case .current:
             return .requestPlain
         }
     }

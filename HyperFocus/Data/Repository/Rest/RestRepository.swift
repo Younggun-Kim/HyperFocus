@@ -11,7 +11,9 @@ import ComposableArchitecture
 
 public struct RestRepository {
     public let start: @Sendable (_ request: RestStartRequest) async throws -> APIResponse<RestResponse>
-    public let skip: @Sendable  (_ sessionId: String) async throws -> APIResponse<RestSkipResponse>
+    public let skip: @Sendable  (_ restSessionId: String) async throws -> APIResponse<RestSkipResponse>
+    public let current: @Sendable () async throws -> APIResponse<RestResponse>
+    
 }
 
 extension RestRepository: DependencyKey {
@@ -23,11 +25,18 @@ extension RestRepository: DependencyKey {
                 responseType:RestResponse.self
             )
         },
-        skip: { sessionId in
+        skip: { restSessionId in
             @Dependency(\.apiService) var apiService
             return try await apiService.requestWrapped(
-                RestAPI.skip(sessionId: sessionId),
+                RestAPI.skip(restSessionId: restSessionId),
                 responseType:RestSkipResponse.self
+            )
+        },
+        current: {
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                RestAPI.current,
+                responseType:RestResponse.self
             )
         }
     )

@@ -12,6 +12,7 @@ import ComposableArchitecture
 public struct RestUseCase {
     public let start: @Sendable (_ sessionId: String) async throws -> RestEntity?
     public let skip: @Sendable (_ sessionId: String) async throws -> RestSkipEntity?
+    public let current: @Sendable () async throws -> RestEntity?
 }
 
 extension RestUseCase: DependencyKey {
@@ -26,6 +27,18 @@ extension RestUseCase: DependencyKey {
                 )
                 
                 return response.data?.toEntity()
+            } catch let error as APIError {
+                // 409 에러인 경우 currentSession을 호출하여 반환
+                if case .httpError(let statusCode, _) = error, statusCode == 409 {
+                    do {
+                        let currentResponse = try await restRepository.current()
+                        return currentResponse.data?.toEntity()
+                    } catch {
+                        throw error
+                    }
+                }
+                
+                throw error
             } catch {
                 throw error
             }
@@ -42,11 +55,24 @@ extension RestUseCase: DependencyKey {
                 throw error
             }
         },
+        current: {
+            @Dependency(\.restRepository) var restRepository
+            @Dependency(\.amplitudeService) var amplitudeService
+            
+            do {
+                let response = try await restRepository.current()
+                
+                return response.data?.toEntity()
+            } catch {
+                throw error
+            }
+        },
     )
     
     public static var testValue = RestUseCase(
         start: { _ in RestEntity.mock},
         skip: { _ in RestSkipEntity.mock },
+        current: { RestEntity.mock },
     )
     
 }

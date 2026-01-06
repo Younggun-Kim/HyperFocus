@@ -101,6 +101,8 @@ extension FocusUseCase: DependencyKey {
                     }
                 }
                 throw error
+            } catch {
+                throw error
             }
         },
         getCurrentSession: {
