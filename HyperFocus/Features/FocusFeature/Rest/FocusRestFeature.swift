@@ -13,6 +13,7 @@ import SwiftUI
 @Reducer
 struct FocusRestFeature: Reducer {
     @Dependency(\.amplitudeService) var amplitudeService
+    @Dependency(\.restUseCase) var restUseCase
     
     @ObservableState
     struct State: Equatable {
@@ -20,6 +21,7 @@ struct FocusRestFeature: Reducer {
         var toast: ToastFeature.State = ToastFeature.State()
         
         var session: SessionEntity
+        var initialized: Bool = false
         var playStatus: SessionStatusType?
         
         init(session: SessionEntity) {
@@ -42,6 +44,7 @@ struct FocusRestFeature: Reducer {
         case timer(TimerFeature.Action)
         case toast(ToastFeature.Action)
         case inner(InnerAction)
+        case effect(EffectAction)
         case delegate(Delegate)
         
         enum InnerAction: Equatable {
@@ -50,6 +53,9 @@ struct FocusRestFeature: Reducer {
             case start
             case stop
             case skip
+        }
+        enum EffectAction {
+            case startResponse(Result<RestEntity?, Error>)
         }
         enum Delegate: Equatable {}
     }
@@ -70,6 +76,8 @@ struct FocusRestFeature: Reducer {
                 return timerAction(&state, action: action)
             case .inner(let inner):
                 return innerAction(&state, action: inner)
+            case .effect(let effect):
+                return effectAction(&state, action: effect)
             case .delegate(let delegate):
                 return delegateAction(&state, action: delegate)
             }
@@ -99,15 +107,51 @@ struct FocusRestFeature: Reducer {
     func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
         switch action {
         case .onAppear:
-            return .none
+            
+            let focusSessionId = state.session.id
+            
+            return .run { send in
+                do {
+                    let rest = try await restUseCase.start(focusSessionId)
+                    await send(.effect(.startResponse(.success(rest))))
+                } catch {
+                    await send(.effect(.startResponse(.failure(error))))
+                }
+            }
         case .checkTapped:
             return .none
         case .start:
+            if !state.initialized || state.playStatus == .inProgress{ return .none }
+            
+            state.playStatus = .inProgress
+            
             return .send(.timer(.start))
         case .stop:
+            if !state.initialized || state.playStatus == .paused { return .none }
+            
+            state.playStatus = .paused
+            
             return .send(.timer(.pause))
         case .skip:
             return .none
+        }
+    }
+    
+    func effectAction(_ state: inout State, action: Action.EffectAction) -> Effect<Action> {
+        switch action {
+        case let .startResponse(.success(rest)):
+            state.initialized = true
+            
+            if let rest = rest {
+                var currentTimer = state.timer
+                currentTimer.totalSeconds = rest.targetDurationSeconds
+                currentTimer.remainingSeconds = rest.elapsedSeconds
+                state.timer = currentTimer
+            }
+            
+            return .send(.inner(.start))
+        case let .startResponse(.failure(error)):
+            return .send(.toast(.show(error.localizedDescription)))
         }
     }
 }

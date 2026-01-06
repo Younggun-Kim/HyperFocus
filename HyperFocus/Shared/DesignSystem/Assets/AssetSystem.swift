@@ -14,4 +14,5 @@ enum AssetSystem: String {
     case icCheck = "ic_check"
     case arrowDown = "arrow_down"
     case icSetting = "ic_setting"
+    case icSkip = "ic_skip"
 }

@@ -41,7 +41,7 @@ struct FocusRestView: View {
                                 store.send(.inner(.start))
                             }
                     }
-                    Image(AssetSystem.icSoundMute.rawValue)
+                    Image(AssetSystem.icSkip.rawValue)
                     .onTapGesture {
                         store.send(.inner(.skip))
                     }

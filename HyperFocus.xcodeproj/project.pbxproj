@@ -37,6 +37,13 @@
 		134206222F0D5A1F00E426CA /* AppConfigUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342061C2F0D5A1F00E426CA /* AppConfigUseCaseTests.swift */; };
 		134206232F0D5A1F00E426CA /* HyperFocusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342061E2F0D5A1F00E426CA /* HyperFocusTests.swift */; };
 		134206292F0D5A5600E426CA /* FocusRestFeatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206282F0D5A5600E426CA /* FocusRestFeatureTests.swift */; };
+		1342062C2F0D635B00E426CA /* RestAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342062B2F0D635900E426CA /* RestAPI.swift */; };
+		1342062F2F0D63BA00E426CA /* RestStartRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342062E2F0D63BA00E426CA /* RestStartRequest.swift */; };
+		134206312F0D63FB00E426CA /* RestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206302F0D63FB00E426CA /* RestResponse.swift */; };
+		134206342F0D64B100E426CA /* RestRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206332F0D64AE00E426CA /* RestRepository.swift */; };
+		134206372F0D651B00E426CA /* RestUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206362F0D651900E426CA /* RestUseCase.swift */; };
+		134206392F0D659600E426CA /* RestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206382F0D659600E426CA /* RestEntity.swift */; };
+		1342063C2F0D65C600E426CA /* RestEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -183,6 +190,13 @@
 		1342061C2F0D5A1F00E426CA /* AppConfigUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfigUseCaseTests.swift; sourceTree = "<group>"; };
 		1342061E2F0D5A1F00E426CA /* HyperFocusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperFocusTests.swift; sourceTree = "<group>"; };
 		134206282F0D5A5600E426CA /* FocusRestFeatureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusRestFeatureTests.swift; sourceTree = "<group>"; };
+		1342062B2F0D635900E426CA /* RestAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAPI.swift; sourceTree = "<group>"; };
+		1342062E2F0D63BA00E426CA /* RestStartRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestStartRequest.swift; sourceTree = "<group>"; };
+		134206302F0D63FB00E426CA /* RestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestResponse.swift; sourceTree = "<group>"; };
+		134206332F0D64AE00E426CA /* RestRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestRepository.swift; sourceTree = "<group>"; };
+		134206362F0D651900E426CA /* RestUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestUseCase.swift; sourceTree = "<group>"; };
+		134206382F0D659600E426CA /* RestEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestEntity.swift; sourceTree = "<group>"; };
+		1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestEntity+Response.swift"; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -365,6 +379,7 @@
 		133BD3C52F03A2520081CDF8 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				134206352F0D651500E426CA /* Reset */,
 				13800CB72F0A90E100056DD2 /* App */,
 				13800CB62F0A90D600056DD2 /* Auth */,
 				13800CB52F0A90CF00056DD2 /* Focus */,
@@ -392,6 +407,7 @@
 		133BD3CE2F0410610081CDF8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				134206322F0D64A100E426CA /* Rest */,
 				137AE0B92F097BCF00EE44AA /* Focus */,
 				137AE08F2F09566200EE44AA /* Auth */,
 				13827A1B2F0919EE008FB39A /* App */,
@@ -436,10 +452,11 @@
 		133BD3E52F04196C0081CDF8 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				137AE0B32F097A9100EE44AA /* Focus */,
 				137AE0B52F097A9C00EE44AA /* FocusAPI.swift */,
-				137AE0882F09539500EE44AA /* Auth */,
 				13AB6AD12F0929AB001F7608 /* AppVersion */,
+				137AE0882F09539500EE44AA /* Auth */,
+				137AE0B32F097A9100EE44AA /* Focus */,
+				1342062A2F0D635500E426CA /* Rest */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -527,6 +544,49 @@
 				134206282F0D5A5600E426CA /* FocusRestFeatureTests.swift */,
 			);
 			path = Rest;
+			sourceTree = "<group>";
+		};
+		1342062A2F0D635500E426CA /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				1342062D2F0D63B000E426CA /* Model */,
+				1342062B2F0D635900E426CA /* RestAPI.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		1342062D2F0D63B000E426CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1342062E2F0D63BA00E426CA /* RestStartRequest.swift */,
+				134206302F0D63FB00E426CA /* RestResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		134206322F0D64A100E426CA /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				134206332F0D64AE00E426CA /* RestRepository.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		134206352F0D651500E426CA /* Reset */ = {
+			isa = PBXGroup;
+			children = (
+				1342063A2F0D65BB00E426CA /* Mapper */,
+				134206362F0D651900E426CA /* RestUseCase.swift */,
+			);
+			path = Reset;
+			sourceTree = "<group>";
+		};
+		1342063A2F0D65BB00E426CA /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
@@ -742,6 +802,7 @@
 				13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */,
 				13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */,
 				13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */,
+				134206382F0D659600E426CA /* RestEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1224,6 +1285,7 @@
 				133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */,
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
+				134206372F0D651B00E426CA /* RestUseCase.swift in Sources */,
 				13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */,
 				133BD3C42F02D1400081CDF8 /* SettingFeature.swift in Sources */,
 				134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */,
@@ -1252,7 +1314,9 @@
 				134BFFEA2F01974A00F1F444 /* AssetSystem.swift in Sources */,
 				13800CCC2F0AD6EF00056DD2 /* FocusFailReasonBottomSheet.swift in Sources */,
 				137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */,
+				134206312F0D63FB00E426CA /* RestResponse.swift in Sources */,
 				13A74D372EE5CCFC00C3BB48 /* AppDelegate.swift in Sources */,
+				1342063C2F0D65C600E426CA /* RestEntity+Response.swift in Sources */,
 				13800CAC2F0A672100056DD2 /* SessionStartResponse.swift in Sources */,
 				134BFFD42F01545300F1F444 /* CommonChip.swift in Sources */,
 				134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */,
@@ -1269,6 +1333,7 @@
 				13AB6AD62F092BB7001F7608 /* BaseResponse.swift in Sources */,
 				133BD3B62F02A5250081CDF8 /* FocusCompletedFeature.swift in Sources */,
 				133BD3B42F02A1460081CDF8 /* FocusCompletedBottomSheet.swift in Sources */,
+				134206392F0D659600E426CA /* RestEntity.swift in Sources */,
 				133BD3BD2F02CFBD0081CDF8 /* LogText.swift in Sources */,
 				137AE0BB2F097BD500EE44AA /* FocusRepository.swift in Sources */,
 				13800CC22F0A95FA00056DD2 /* CurrentSessionResponse.swift in Sources */,
@@ -1280,6 +1345,7 @@
 				13AC3F752EF7080C00CEDC69 /* SplashFeature.swift in Sources */,
 				137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */,
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
+				1342062C2F0D635B00E426CA /* RestAPI.swift in Sources */,
 				13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */,
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
 				13B1E6882F0BFB28008419F2 /* SessionFeedbackRequest.swift in Sources */,
@@ -1287,6 +1353,8 @@
 				13800CD12F0ADE3C00056DD2 /* ToastModifier.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
 				137AE0C22F097F1C00EE44AA /* NetworkHeader.swift in Sources */,
+				1342062F2F0D63BA00E426CA /* RestStartRequest.swift in Sources */,
+				134206342F0D64B100E426CA /* RestRepository.swift in Sources */,
 				13AC3F4F2EF6EB9200CEDC69 /* Typography.swift in Sources */,
 				13B1E6982F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift in Sources */,
 				13800CBC2F0A927300056DD2 /* SessionEntity.swift in Sources */,
