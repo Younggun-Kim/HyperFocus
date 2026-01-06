@@ -25,26 +25,31 @@ struct AmbientZStack<Content: View>: View {
                 Circle()
                     .fill(style.topLeftColor)
                     .frame(width: 600, height: 600)
-                    .blur(radius: 400)
-                    .position(x: 0, y: 0)
+                    .blur(radius: style.topLeftBlur)
+                    .position(
+                        x: 0, 
+                        y: 0,
+                    )
                 
                 // 3. Circle 2: 우측 상단 (Top-Right)
                 Circle()
                     .fill(style.topRightColor)
                     .frame(width: 600, height: 600)
-                    .blur(radius: 400)
-                    .position(x: geometry.size.width, y: 0)
+                    .blur(radius: style.topRightBlur)
+                    .position(
+                        x: geometry.size.width * style.topRightPosition.width, 
+                        y: 0
+                    )
                 
                 // 4. Circle 3: 우측 하단 (Bottom-Right)
                 Circle()
                     .fill(style.bottomRightColor)
                     .frame(width: 637, height: 637)
-                    .blur(radius: 400)
+                    .blur(radius: style.bottomRightBlur)
                     .position(
-                        x: geometry.size.width * 0.9,
-                        y: geometry.size.height * 0.55
+                        x: geometry.size.width * style.bottomRightPosition.width,
+                        y: geometry.size.height * style.bottomRightPosition.height
                     )
-                
                 // 자식 뷰들
                 content()
             }
@@ -55,7 +60,7 @@ struct AmbientZStack<Content: View>: View {
 
 
 #Preview {
-    AmbientZStack(style: .blueDark) {
+    AmbientZStack(style: .calmDark) {
         Text("HyperFocus")
             .font(Font.CommoingSoon.largeTitle)
             .foregroundStyle(.white)
