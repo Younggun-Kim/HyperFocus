@@ -54,6 +54,15 @@
 		1342064C2F0D792300E426CA /* RestExtensionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342064B2F0D792300E426CA /* RestExtensionEntity.swift */; };
 		1342064E2F0D798100E426CA /* RestExtensionEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */; };
 		1342065E2F0FFCFD00E426CA /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342065D2F0FFCF600E426CA /* DebugConfig.swift */; };
+		134206612F10013700E426CA /* LogAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206602F10013700E426CA /* LogAPI.swift */; };
+		134206642F1001D400E426CA /* DashboardResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206632F1001D100E426CA /* DashboardResponse.swift */; };
+		134206672F10045100E426CA /* LogRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206662F10045100E426CA /* LogRepository.swift */; };
+		1342066A2F10050500E426CA /* LogUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206692F10050300E426CA /* LogUseCase.swift */; };
+		1342066C2F10056700E426CA /* DiffType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342066B2F10056000E426CA /* DiffType.swift */; };
+		1342066E2F1005D100E426CA /* TimelineType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342066D2F1005D100E426CA /* TimelineType.swift */; };
+		134206702F10062800E426CA /* TimelineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342066F2F10062500E426CA /* TimelineEntity.swift */; };
+		134206722F1006C300E426CA /* DashboardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206712F1006C300E426CA /* DashboardEntity.swift */; };
+		134206752F10074500E426CA /* DashboardEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206742F10074500E426CA /* DashboardEntity+Response.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -215,6 +224,15 @@
 		1342064B2F0D792300E426CA /* RestExtensionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestExtensionEntity.swift; sourceTree = "<group>"; };
 		1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestExtensionEntity+Response.swift"; sourceTree = "<group>"; };
 		1342065D2F0FFCF600E426CA /* DebugConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugConfig.swift; sourceTree = "<group>"; };
+		134206602F10013700E426CA /* LogAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogAPI.swift; sourceTree = "<group>"; };
+		134206632F1001D100E426CA /* DashboardResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardResponse.swift; sourceTree = "<group>"; };
+		134206662F10045100E426CA /* LogRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogRepository.swift; sourceTree = "<group>"; };
+		134206692F10050300E426CA /* LogUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogUseCase.swift; sourceTree = "<group>"; };
+		1342066B2F10056000E426CA /* DiffType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffType.swift; sourceTree = "<group>"; };
+		1342066D2F1005D100E426CA /* TimelineType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineType.swift; sourceTree = "<group>"; };
+		1342066F2F10062500E426CA /* TimelineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEntity.swift; sourceTree = "<group>"; };
+		134206712F1006C300E426CA /* DashboardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEntity.swift; sourceTree = "<group>"; };
+		134206742F10074500E426CA /* DashboardEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardEntity+Response.swift"; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -397,10 +415,11 @@
 		133BD3C52F03A2520081CDF8 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				134206352F0D651500E426CA /* Reset */,
 				13800CB72F0A90E100056DD2 /* App */,
 				13800CB62F0A90D600056DD2 /* Auth */,
 				13800CB52F0A90CF00056DD2 /* Focus */,
+				134206682F1004FC00E426CA /* Log */,
+				134206352F0D651500E426CA /* Reset */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -425,10 +444,11 @@
 		133BD3CE2F0410610081CDF8 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				134206322F0D64A100E426CA /* Rest */,
-				137AE0B92F097BCF00EE44AA /* Focus */,
-				137AE08F2F09566200EE44AA /* Auth */,
 				13827A1B2F0919EE008FB39A /* App */,
+				137AE08F2F09566200EE44AA /* Auth */,
+				137AE0B92F097BCF00EE44AA /* Focus */,
+				134206652F10044600E426CA /* Log */,
+				134206322F0D64A100E426CA /* Rest */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -474,6 +494,7 @@
 				13AB6AD12F0929AB001F7608 /* AppVersion */,
 				137AE0882F09539500EE44AA /* Auth */,
 				137AE0B32F097A9100EE44AA /* Focus */,
+				1342065F2F10012800E426CA /* Log */,
 				1342062A2F0D635500E426CA /* Rest */,
 			);
 			path = API;
@@ -597,20 +618,9 @@
 		134206352F0D651500E426CA /* Reset */ = {
 			isa = PBXGroup;
 			children = (
-				1342063A2F0D65BB00E426CA /* Mapper */,
 				134206362F0D651900E426CA /* RestUseCase.swift */,
 			);
 			path = Reset;
-			sourceTree = "<group>";
-		};
-		1342063A2F0D65BB00E426CA /* Mapper */ = {
-			isa = PBXGroup;
-			children = (
-				1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */,
-				134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */,
-				1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */,
-			);
-			path = Mapper;
 			sourceTree = "<group>";
 		};
 		1342065C2F0FFCC800E426CA /* Assistant */ = {
@@ -619,6 +629,50 @@
 				1342065D2F0FFCF600E426CA /* DebugConfig.swift */,
 			);
 			path = Assistant;
+			sourceTree = "<group>";
+		};
+		1342065F2F10012800E426CA /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				134206622F1001C800E426CA /* Model */,
+				134206602F10013700E426CA /* LogAPI.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		134206622F1001C800E426CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				134206632F1001D100E426CA /* DashboardResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		134206652F10044600E426CA /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				134206662F10045100E426CA /* LogRepository.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		134206682F1004FC00E426CA /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				134206692F10050300E426CA /* LogUseCase.swift */,
+			);
+			path = Log;
+			sourceTree = "<group>";
+		};
+		134206732F10072D00E426CA /* Mapper */ = {
+			isa = PBXGroup;
+			children = (
+				1342063B2F0D65BE00E426CA /* RestEntity+Response.swift */,
+				134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */,
+				1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */,
+				134206742F10074500E426CA /* DashboardEntity+Response.swift */,
+			);
+			path = Mapper;
 			sourceTree = "<group>";
 		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
@@ -690,6 +744,7 @@
 		134BFFC32F01071E00F1F444 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				134206732F10072D00E426CA /* Mapper */,
 				137AE0972F095E4D00EE44AA /* Entity */,
 				137AE0852F09376200EE44AA /* Error */,
 				134BFFCC2F014FC400F1F444 /* Type */,
@@ -709,16 +764,18 @@
 		134BFFCC2F014FC400F1F444 /* Type */ = {
 			isa = PBXGroup;
 			children = (
-				13AB6AD72F092C23001F7608 /* VersionUpdateType.swift */,
+				1342066B2F10056000E426CA /* DiffType.swift */,
+				134BFFCF2F01501E00F1F444 /* DurationType.swift */,
+				13800CA52F0A630300056DD2 /* InputMethodType.swift */,
 				134BFFCD2F014FCA00F1F444 /* ReasonType.swift */,
-				13800CAD2F0A675F00056DD2 /* SessionStatusType.swift */,
 				1342063F2F0D6B8300E426CA /* RestStatusType.swift */,
+				13800CB32F0A68C500056DD2 /* SatisfactionType.swift */,
 				13800CAF2F0A682700056DD2 /* SessionCompletionType.swift */,
 				13800CB12F0A685700056DD2 /* SessionFailReasonType.swift */,
-				13800CB32F0A68C500056DD2 /* SatisfactionType.swift */,
-				134BFFCF2F01501E00F1F444 /* DurationType.swift */,
+				13800CAD2F0A675F00056DD2 /* SessionStatusType.swift */,
 				137AE0C72F0988EA00EE44AA /* SuggestionType.swift */,
-				13800CA52F0A630300056DD2 /* InputMethodType.swift */,
+				1342066D2F1005D100E426CA /* TimelineType.swift */,
+				13AB6AD72F092C23001F7608 /* VersionUpdateType.swift */,
 			);
 			path = Type;
 			sourceTree = "<group>";
@@ -829,15 +886,17 @@
 		137AE0972F095E4D00EE44AA /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				137AE0982F095E5300EE44AA /* TokenEntity.swift */,
-				137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */,
-				13800CBB2F0A927300056DD2 /* SessionEntity.swift */,
-				13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */,
-				13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */,
+				1342066F2F10062500E426CA /* TimelineEntity.swift */,
+				134206712F1006C300E426CA /* DashboardEntity.swift */,
 				13B1E6912F0BFCF7008419F2 /* FeedbackEntity.swift */,
+				13E3203E2F0AE61600B1F920 /* MileStoneEntity.swift */,
 				134206382F0D659600E426CA /* RestEntity.swift */,
-				134206412F0D6BB600E426CA /* RestSkipEntity.swift */,
 				1342064B2F0D792300E426CA /* RestExtensionEntity.swift */,
+				134206412F0D6BB600E426CA /* RestSkipEntity.swift */,
+				13B1E6932F0BFD3D008419F2 /* SessionCompletionEntity.swift */,
+				13800CBB2F0A927300056DD2 /* SessionEntity.swift */,
+				137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */,
+				137AE0982F095E5300EE44AA /* TokenEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1320,6 +1379,7 @@
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
 				134206372F0D651B00E426CA /* RestUseCase.swift in Sources */,
+				134206752F10074500E426CA /* DashboardEntity+Response.swift in Sources */,
 				13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */,
 				133BD3C42F02D1400081CDF8 /* SettingFeature.swift in Sources */,
 				1342063E2F0D6A6000E426CA /* RestSkipResponse.swift in Sources */,
@@ -1331,6 +1391,8 @@
 				13B1E6942F0BFD3D008419F2 /* SessionCompletionEntity.swift in Sources */,
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
 				13AC3F732EF7080500CEDC69 /* OnboardingFeature.swift in Sources */,
+				134206612F10013700E426CA /* LogAPI.swift in Sources */,
+				134206672F10045100E426CA /* LogRepository.swift in Sources */,
 				13800CBA2F0A90F700056DD2 /* SessionStartParams.swift in Sources */,
 				13E320422F0AE76600B1F920 /* MileStoneModifier.swift in Sources */,
 				134BFFCB2F01314500F1F444 /* FocusText.swift in Sources */,
@@ -1357,10 +1419,12 @@
 				1342064C2F0D792300E426CA /* RestExtensionEntity.swift in Sources */,
 				134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */,
 				134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */,
+				134206702F10062800E426CA /* TimelineEntity.swift in Sources */,
 				13B1E6962F0C1BA6008419F2 /* CompleteFocusSessionProps.swift in Sources */,
 				137AE08A2F09539D00EE44AA /* AuthAPI.swift in Sources */,
 				134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */,
 				13800CA82F0A640C00056DD2 /* StartFocusSessionProps.swift in Sources */,
+				1342066A2F10050500E426CA /* LogUseCase.swift in Sources */,
 				137AE0C42F097FFF00EE44AA /* TokenRefreshPlugin.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
@@ -1373,6 +1437,7 @@
 				134206392F0D659600E426CA /* RestEntity.swift in Sources */,
 				134206462F0D723F00E426CA /* RestCompletionRequest.swift in Sources */,
 				133BD3BD2F02CFBD0081CDF8 /* LogText.swift in Sources */,
+				134206722F1006C300E426CA /* DashboardEntity.swift in Sources */,
 				137AE0BB2F097BD500EE44AA /* FocusRepository.swift in Sources */,
 				13800CC22F0A95FA00056DD2 /* CurrentSessionResponse.swift in Sources */,
 				13AC3F662EF6FF4A00CEDC69 /* Font+Extensions.swift in Sources */,
@@ -1384,10 +1449,12 @@
 				137AE0932F09582F00EE44AA /* LoginUseCase.swift in Sources */,
 				134BFFB22F00EC6D00F1F444 /* OnboardingFinalView.swift in Sources */,
 				1342062C2F0D635B00E426CA /* RestAPI.swift in Sources */,
+				134206642F1001D400E426CA /* DashboardResponse.swift in Sources */,
 				13E3203D2F0AE54C00B1F920 /* MileStoneResponse.swift in Sources */,
 				134BFFAE2EFEBB0A00F1F444 /* TimerView.swift in Sources */,
 				13B1E6882F0BFB28008419F2 /* SessionFeedbackRequest.swift in Sources */,
 				137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */,
+				1342066C2F10056700E426CA /* DiffType.swift in Sources */,
 				13800CD12F0ADE3C00056DD2 /* ToastModifier.swift in Sources */,
 				134206422F0D6BB600E426CA /* RestSkipEntity.swift in Sources */,
 				13827A142F091688008FB39A /* DeviceDataSource.swift in Sources */,
@@ -1420,6 +1487,7 @@
 				134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */,
 				134206402F0D6B8300E426CA /* RestStatusType.swift in Sources */,
 				134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */,
+				1342066E2F1005D100E426CA /* TimelineType.swift in Sources */,
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,
 				13AB6AD42F092B27001F7608 /* AppVersionCheckResponse.swift in Sources */,
 				134206482F0D725800E426CA /* RestCompletionResponse.swift in Sources */,

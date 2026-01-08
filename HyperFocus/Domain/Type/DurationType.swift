@@ -5,7 +5,6 @@
 //  Created by 김영건 on 12/28/25.
 //
 
-
 public enum DurationType: CaseIterable, Equatable, Hashable, Sendable {
     case min15
     case min25
