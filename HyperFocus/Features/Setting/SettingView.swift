@@ -12,7 +12,10 @@ struct SettingView: View {
     @Bindable var store: StoreOf<SettingFeature>
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Setting")
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.black)
+        .foregroundStyle(Color.white)
     }
 }
 

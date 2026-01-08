@@ -29,6 +29,7 @@ public enum AmplitudeEvent{
     case completeFocusSession(CompleteFocusSessionProps)
     case clickSessionFeedback(ClickSessionFeedbackProps)
     case startRestTimer
+    case viewLogDashboard(ViewLogDashboardProps)
     
     // MARK: - Log Events
     case clickLogEmptyStart
@@ -50,6 +51,7 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .clickSessionFeedback: return "click_session_feedback"
         case .startRestTimer: return "start_rest_timer"
         case .clickLogEmptyStart: return "click_log_empty_start"
+        case .viewLogDashboard: return "view_log_dashboard"
         }
     }
     
@@ -62,6 +64,7 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .viewMotivationToast(let properties): return properties.toDictionary()
         case .completeFocusSession(let properties): return properties.toDictionary()
         case .clickSessionFeedback(let properties): return properties.toDictionary()
+        case .viewLogDashboard(let properties): return properties.toDictionary()
             
         default: return [:]
         }

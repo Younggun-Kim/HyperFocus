@@ -119,6 +119,14 @@ struct LogHomeFeature {
             state.todayFocus = dashboard?.todayFocusDisplay ?? ""
             state.diffMessage = dashboard?.diffMessage ?? ""
             state.weekTotal = dashboard?.weekTotalDisplay ?? ""
+            
+            amplitudeService.track(.viewLogDashboard(
+                .init(
+                    todayFocusSeconds: dashboard?.todayFocusSeconds,
+                    diffType: dashboard?.diffType,
+                    totalSessionCount: dashboard?.todaySessionCount
+                )
+            ))
             return .none
         case let .fetchResponse(.failure(error)):
             return .send(.scope(.toast(.show(error.localizedDescription))))
