@@ -18,8 +18,8 @@ public struct DebugConfig {
     public var isTestMode: Bool
     
     public init(
-        playbackRate: Double = 1.0,
-        restPlaybackRate: Double = 1.0,
+        playbackRate: Double = 50.0,
+        restPlaybackRate: Double = 10.0,
         isTestMode: Bool = false
     ) {
         self.playbackRate = playbackRate

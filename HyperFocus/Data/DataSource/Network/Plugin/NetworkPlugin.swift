@@ -43,7 +43,7 @@ public final class NetworkLoggingPlugin: PluginType {
             print("\(statusEmoji) [RESPONSE] \(statusCode) \(target.path)")
             
             if let dataString = String(data: response.data, encoding: .utf8) {
-                print("📥 [DATA] \(dataString.prefix(500))")
+                print("📥 [DATA] \(dataString)")
             }
         case .failure(let error):
             print("❌ [ERROR] \(target.path) - \(error.localizedDescription)")

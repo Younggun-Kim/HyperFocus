@@ -63,6 +63,8 @@
 		134206702F10062800E426CA /* TimelineEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342066F2F10062500E426CA /* TimelineEntity.swift */; };
 		134206722F1006C300E426CA /* DashboardEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206712F1006C300E426CA /* DashboardEntity.swift */; };
 		134206752F10074500E426CA /* DashboardEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206742F10074500E426CA /* DashboardEntity+Response.swift */; };
+		1342067A2F101BE200E426CA /* TimelineFocusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206792F101BE200E426CA /* TimelineFocusView.swift */; };
+		1342067C2F10215100E426CA /* TimelineRestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342067B2F10215100E426CA /* TimelineRestView.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -233,6 +235,8 @@
 		1342066F2F10062500E426CA /* TimelineEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineEntity.swift; sourceTree = "<group>"; };
 		134206712F1006C300E426CA /* DashboardEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardEntity.swift; sourceTree = "<group>"; };
 		134206742F10074500E426CA /* DashboardEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DashboardEntity+Response.swift"; sourceTree = "<group>"; };
+		134206792F101BE200E426CA /* TimelineFocusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineFocusView.swift; sourceTree = "<group>"; };
+		1342067B2F10215100E426CA /* TimelineRestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineRestView.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -397,6 +401,7 @@
 		133BD3B72F02C5D50081CDF8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				134206762F101BC400E426CA /* Components */,
 				134BFFB72F00F59800F1F444 /* LogHomeFeature.swift */,
 				133BD3B82F02C5DE0081CDF8 /* LogHomeView.swift */,
 			);
@@ -673,6 +678,15 @@
 				134206742F10074500E426CA /* DashboardEntity+Response.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		134206762F101BC400E426CA /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				134206792F101BE200E426CA /* TimelineFocusView.swift */,
+				1342067B2F10215100E426CA /* TimelineRestView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
@@ -1378,6 +1392,7 @@
 				133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */,
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
+				1342067A2F101BE200E426CA /* TimelineFocusView.swift in Sources */,
 				134206372F0D651B00E426CA /* RestUseCase.swift in Sources */,
 				134206752F10074500E426CA /* DashboardEntity+Response.swift in Sources */,
 				13AC3F7A2EF7090400CEDC69 /* AppFeature.swift in Sources */,
@@ -1486,6 +1501,7 @@
 				134206442F0D6BDF00E426CA /* RestSkipEntity+Response.swift in Sources */,
 				134BFFE02F01796F00F1F444 /* FocusDetailFeature.swift in Sources */,
 				134206402F0D6B8300E426CA /* RestStatusType.swift in Sources */,
+				1342067C2F10215100E426CA /* TimelineRestView.swift in Sources */,
 				134BFFC12F00F59800F1F444 /* FocusHomeView.swift in Sources */,
 				1342066E2F1005D100E426CA /* TimelineType.swift in Sources */,
 				134BFFC22F00F59800F1F444 /* MainFeature.swift in Sources */,

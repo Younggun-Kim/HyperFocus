@@ -14,13 +14,13 @@ public protocol AmplitudeEventProtocol {
 }
 
 public enum AmplitudeEvent{
-    // MARK: - Onboarding Event
+    // MARK: - Onboarding Events
     case viewOnboardingIntro
     case viewOnboardingTimer
     case viewOnboardingStart
     case clickOnboardingComplete
     
-    // MARK: - Focus Event
+    // MARK: - Focus Events
     case viewHome(ViewHomeProps)
     case startFocusSession(StartFocusSessionProps)
     case viewStopAlert(ViewStopAlertProps)
@@ -29,6 +29,9 @@ public enum AmplitudeEvent{
     case completeFocusSession(CompleteFocusSessionProps)
     case clickSessionFeedback(ClickSessionFeedbackProps)
     case startRestTimer
+    
+    // MARK: - Log Events
+    case clickLogEmptyStart
 }
 
 extension AmplitudeEvent: AmplitudeEventProtocol {
@@ -46,6 +49,7 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .completeFocusSession: return "complete_focus_session"
         case .clickSessionFeedback: return "click_session_feedback"
         case .startRestTimer: return "start_rest_timer"
+        case .clickLogEmptyStart: return "click_log_empty_start"
         }
     }
     
