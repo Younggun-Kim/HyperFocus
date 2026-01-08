@@ -15,5 +15,7 @@
 	<array>
 		<string>ComingSoon-Regular.ttf</string>
 	</array>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 </dict>
 </plist>
