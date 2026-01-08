@@ -53,6 +53,7 @@
 		1342064A2F0D788E00E426CA /* RestExtensionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134206492F0D788E00E426CA /* RestExtensionResponse.swift */; };
 		1342064C2F0D792300E426CA /* RestExtensionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342064B2F0D792300E426CA /* RestExtensionEntity.swift */; };
 		1342064E2F0D798100E426CA /* RestExtensionEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */; };
+		1342065E2F0FFCFD00E426CA /* DebugConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1342065D2F0FFCF600E426CA /* DebugConfig.swift */; };
 		134BFFA42EFD629700F1F444 /* BaseText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA32EFD629100F1F444 /* BaseText.swift */; };
 		134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */; };
 		134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */; };
@@ -82,8 +83,6 @@
 		137AE0992F095E5900EE44AA /* TokenEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0982F095E5300EE44AA /* TokenEntity.swift */; };
 		137AE09D2F09701400EE44AA /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 137AE09C2F09701400EE44AA /* AmplitudeSwift */; };
 		137AE09F2F09702A00EE44AA /* AmplitudeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE09E2F09702600EE44AA /* AmplitudeService.swift */; };
-		137AE0A32F09717F00EE44AA /* Production.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 137AE0A22F09717F00EE44AA /* Production.xcconfig */; };
-		137AE0A52F09718700EE44AA /* Development.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 137AE0A42F09718700EE44AA /* Development.xcconfig */; };
 		137AE0AE2F0973A900EE44AA /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AD2F0973A200EE44AA /* Environment.swift */; };
 		137AE0B02F09741200EE44AA /* Environment+Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0AF2F09741200EE44AA /* Environment+Dependency.swift */; };
 		137AE0B22F09781400EE44AA /* AmplitudeEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137AE0B12F09781400EE44AA /* AmplitudeEvent.swift */; };
@@ -215,6 +214,7 @@
 		134206492F0D788E00E426CA /* RestExtensionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestExtensionResponse.swift; sourceTree = "<group>"; };
 		1342064B2F0D792300E426CA /* RestExtensionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestExtensionEntity.swift; sourceTree = "<group>"; };
 		1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RestExtensionEntity+Response.swift"; sourceTree = "<group>"; };
+		1342065D2F0FFCF600E426CA /* DebugConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugConfig.swift; sourceTree = "<group>"; };
 		134BFFA32EFD629100F1F444 /* BaseText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseText.swift; sourceTree = "<group>"; };
 		134BFFA72EFE33FD00F1F444 /* OnboardingTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTodoView.swift; sourceTree = "<group>"; };
 		134BFFA92EFE857C00F1F444 /* OnboardingTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTimerView.swift; sourceTree = "<group>"; };
@@ -611,6 +611,14 @@
 				1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */,
 			);
 			path = Mapper;
+			sourceTree = "<group>";
+		};
+		1342065C2F0FFCC800E426CA /* Assistant */ = {
+			isa = PBXGroup;
+			children = (
+				1342065D2F0FFCF600E426CA /* DebugConfig.swift */,
+			);
+			path = Assistant;
 			sourceTree = "<group>";
 		};
 		134BFFA12EFD628100F1F444 /* BaseFeature */ = {
@@ -1060,6 +1068,7 @@
 		13AC3F4A2EF6EA5200CEDC69 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				1342065C2F0FFCC800E426CA /* Assistant */,
 				137AE09A2F096FDA00EE44AA /* Amplitude */,
 				133BD3C92F0403970081CDF8 /* Dependency */,
 				13AC3F4B2EF6EA7000CEDC69 /* DesignSystem */,
@@ -1211,7 +1220,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					13827A222F092028008FB39A = {
 						CreatedOnToolsVersion = 26.1.1;
@@ -1261,11 +1270,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				13AC3F632EF6FF1800CEDC69 /* ComingSoon-Regular.ttf in Resources */,
-				137AE0A32F09717F00EE44AA /* Production.xcconfig in Resources */,
 				13AC3F642EF6FF1800CEDC69 /* LICENSE.txt in Resources */,
 				133BD3EC2F04196C0081CDF8 /* README.md in Resources */,
 				13AC3F5E2EF6FDC100CEDC69 /* Launch Screen.storyboard in Resources */,
-				137AE0A52F09718700EE44AA /* Development.xcconfig in Resources */,
 				13A74D292EE5CB8100C3BB48 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1357,6 +1364,7 @@
 				137AE0C42F097FFF00EE44AA /* TokenRefreshPlugin.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
+				1342065E2F0FFCFD00E426CA /* DebugConfig.swift in Sources */,
 				137AE0912F09566F00EE44AA /* AuthRepository.swift in Sources */,
 				13B1E6922F0BFCF7008419F2 /* FeedbackEntity.swift in Sources */,
 				13AB6AD62F092BB7001F7608 /* BaseResponse.swift in Sources */,
@@ -1497,6 +1505,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1626,6 +1635,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};

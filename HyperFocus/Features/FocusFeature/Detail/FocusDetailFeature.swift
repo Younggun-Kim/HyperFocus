@@ -13,6 +13,7 @@ import SwiftUI
 struct FocusDetailFeature {
     @Dependency(\.amplitudeService) var amplitudeService
     @Dependency(\.focusUseCase) var focusUseCase
+    @Dependency(\.debugConfig) var debugConfig
     
     @ObservableState
     struct State: Equatable {
@@ -30,10 +31,10 @@ struct FocusDetailFeature {
         var mileStone: MileStoneFeature.State = MileStoneFeature.State()
         var shownMilestones: Set<Int> = [] // 이미 표시한 milestone (분 단위)
         
-        init(session: SessionEntity) {
+        init(session: SessionEntity, playbackRate: Double = 1.0) {
             self.session = session
             self.timer = TimerFeature.State(
-                playbackRate: Environment.isDevelopment ? 50 : 1,
+                playbackRate: playbackRate,
                 totalSeconds: session.targetDurationSeconds,
                 remainingSeconds: session.remainingDuration,
                 isRunning: false,

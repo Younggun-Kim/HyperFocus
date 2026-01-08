@@ -21,6 +21,7 @@ struct AppFeature {
     @Dependency(\.loginUseCase) var loginUseCase
     @Dependency(\.focusUseCase) var focusUseCase
     @Dependency(\.restUseCase) var restUseCase
+    @Dependency(\.debugConfig) var debugConfig
     
     @ObservableState
     struct State {
@@ -111,7 +112,10 @@ struct AppFeature {
                 state.currentScreen = .main
                 var mainState = MainFeature.State()
                 // FocusHome의 path에 FocusDetail 추가
-                mainState.focus.path.append(.detail(FocusDetailFeature.State(session: session)))
+                mainState.focus.path.append(.detail(FocusDetailFeature.State(
+                    session: session,
+                    playbackRate: debugConfig.playbackRate
+                )))
                 state.main = mainState
                 print("✅ [AppFeature] Main 화면으로 이동 완료, path count: \(mainState.focus.path.count)")
                 return .none
@@ -198,6 +202,7 @@ struct AppFeature {
     func effectAction(_ state: inout State, action: Action.EffectAction) -> Effect<Action> {
         switch action {
             // TODO: - FocusRestFeature로 이동하기 위해서는 SessionEntity가 필요
+            // - 앱 시잔 단계에서 휴식 타이머 조회가 필요한가?
         case let .currentRestResponse(.success(reset)):
             return .none
         case let .currentRestResponse(.failure(error)):

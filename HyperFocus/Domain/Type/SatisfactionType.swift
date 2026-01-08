@@ -8,7 +8,7 @@
 import Foundation
 
 
-public enum SatisfactionType: String, Codable  {
+public enum SatisfactionType: String, Codable, Sendable {
     case hyperFocus = "HYPERFOCUS"
     case good = "GOOD"
     case distracted = "DISTRACTED"

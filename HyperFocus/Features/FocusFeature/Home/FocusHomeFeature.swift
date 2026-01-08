@@ -12,6 +12,7 @@ import Foundation
 struct FocusHomeFeature {
     @Dependency(\.focusUseCase) var focusUseCase
     @Dependency(\.amplitudeService) var amplitudeService
+    @Dependency(\.debugConfig) var debugConfig
     
     @ObservableState
     struct State {
@@ -123,35 +124,16 @@ struct FocusHomeFeature {
                     await send(.setLoading(false))
                 }
             case let .startSessionResponse(.success(response)):
-                // TODO: - 상세 화면으로 이동
-                
                 if let session = response {
                     state.path.append(.detail(FocusDetailFeature.State(
-                        session: session
+                        session: session,
+                        playbackRate: debugConfig.playbackRate
                     )))
                 }
                 
                 return .none
             case let .startSessionResponse(.failure(error)):
-                // TODO: - Toast 메시지
-                
-                if let apiError = error as? APIError {
-                    print("startSessionResponse.failure: \(apiError)")
-                    switch apiError {
-                    case .httpError(let statusCode, let message):
-                        print("HTTP Error: \(statusCode), message: \(message ?? "nil")")
-                    case .decodingError(let message):
-                        print("Decoding Error: \(message)")
-                    case .networkError(let message):
-                        print("Network Error: \(message)")
-                    default:
-                        print("Other Error: \(apiError)")
-                    }
-                } else {
-                    print("startSessionResponse.failure: \(error.localizedDescription)")
-                }
-                
-                return .none
+                return .send(.toast(.show(error.localizedDescription)))
             case let .reasonChanged(index):
                 guard index >= 0 && index < state.suggestions.count else {
                     return .none
@@ -176,7 +158,12 @@ struct FocusHomeFeature {
                 return .none
             case .moveFocusRest(let session):
                 state.path.removeAll()
-                state.path.append(.rest(FocusRestFeature.State(session: session)))
+                state.path.append(.rest(
+                    FocusRestFeature.State(
+                        session: session,
+                        playbackRate: debugConfig.restPlaybackRate,
+                    )
+                ))
                 return .none
             case .delegate(.sessionCompleted):
                 state.inputText = ""

@@ -25,10 +25,10 @@ struct FocusRestFeature: Reducer {
         var playStatus: SessionStatusType?
         var showCompletionPopup: Bool = false
         
-        init(session: SessionEntity) {
+        init(session: SessionEntity, playbackRate: Double = 1) {
             self.session = session
             self.timer = TimerFeature.State(
-                playbackRate: Environment.isDevelopment ? 10 : 1,
+                playbackRate: playbackRate,
                 totalSeconds: 5 * 60,
                 remainingSeconds: 5 * 60,
                 isRunning: false,
