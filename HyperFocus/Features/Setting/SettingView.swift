@@ -38,16 +38,23 @@ struct SettingView: View {
                             title: setting.title
                         )
                         .onTapGesture {
-                            store.send(.aboutUsTapped(setting))
+                            store.send(.inner(.aboutUsTapped(setting)))
                         }
                     }
                 }
                 .padding(.top, 20)
             }
         }
+        .onAppear {
+            store.send(.inner(.onAppear))
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 24)
         .background(.black)
+        .toast(message: Binding(
+            get: { store.toast.message },
+            set: { _ in store.send(.scope(.toast(.dismiss))) }
+        ))
     }
 }
 
@@ -55,6 +62,8 @@ struct SettingView: View {
     SettingView(
         store: Store(initialState: SettingFeature.State()) {
             SettingFeature()
+        } withDependencies: {
+            $0.settingUseCase = .testValue
         }
     )
 }

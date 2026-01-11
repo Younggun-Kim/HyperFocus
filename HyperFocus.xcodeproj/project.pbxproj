@@ -12,6 +12,13 @@
 		1305CA362F13D8D8000462C6 /* SettingToggleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA352F13D8D8000462C6 /* SettingToggleItem.swift */; };
 		1305CA382F13E036000462C6 /* SettingButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA372F13E036000462C6 /* SettingButtonItem.swift */; };
 		1305CA3A2F13E0F1000462C6 /* SettingMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA392F13E0F1000462C6 /* SettingMetadata.swift */; };
+		1305CA3D2F13E681000462C6 /* SettingAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA3C2F13E67E000462C6 /* SettingAPI.swift */; };
+		1305CA402F13E6DE000462C6 /* SettingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA3F2F13E6DE000462C6 /* SettingResponse.swift */; };
+		1305CA432F13E70E000462C6 /* SettingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA422F13E70B000462C6 /* SettingRepository.swift */; };
+		1305CA462F13E77A000462C6 /* SettingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA452F13E77A000462C6 /* SettingUseCase.swift */; };
+		1305CA482F13E7B6000462C6 /* SettingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA472F13E7B6000462C6 /* SettingEntity.swift */; };
+		1305CA4A2F13E7CC000462C6 /* SettingEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA492F13E7CC000462C6 /* SettingEntity+Response.swift */; };
+		1305CA4C2F13ECA7000462C6 /* SettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA4B2F13ECA7000462C6 /* SettingRequest.swift */; };
 		133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */; };
 		133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */; };
 		133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */; };
@@ -193,6 +200,13 @@
 		1305CA352F13D8D8000462C6 /* SettingToggleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingToggleItem.swift; sourceTree = "<group>"; };
 		1305CA372F13E036000462C6 /* SettingButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButtonItem.swift; sourceTree = "<group>"; };
 		1305CA392F13E0F1000462C6 /* SettingMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMetadata.swift; sourceTree = "<group>"; };
+		1305CA3C2F13E67E000462C6 /* SettingAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingAPI.swift; sourceTree = "<group>"; };
+		1305CA3F2F13E6DE000462C6 /* SettingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingResponse.swift; sourceTree = "<group>"; };
+		1305CA422F13E70B000462C6 /* SettingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRepository.swift; sourceTree = "<group>"; };
+		1305CA452F13E77A000462C6 /* SettingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingUseCase.swift; sourceTree = "<group>"; };
+		1305CA472F13E7B6000462C6 /* SettingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEntity.swift; sourceTree = "<group>"; };
+		1305CA492F13E7CC000462C6 /* SettingEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingEntity+Response.swift"; sourceTree = "<group>"; };
+		1305CA4B2F13ECA7000462C6 /* SettingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRequest.swift; sourceTree = "<group>"; };
 		133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtn.swift; sourceTree = "<group>"; };
 		133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnStyle.swift; sourceTree = "<group>"; };
 		133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnModel.swift; sourceTree = "<group>"; };
@@ -390,6 +404,40 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		1305CA3B2F13E674000462C6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1305CA3E2F13E684000462C6 /* Model */,
+				1305CA3C2F13E67E000462C6 /* SettingAPI.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1305CA3E2F13E684000462C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1305CA3F2F13E6DE000462C6 /* SettingResponse.swift */,
+				1305CA4B2F13ECA7000462C6 /* SettingRequest.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1305CA412F13E703000462C6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1305CA422F13E70B000462C6 /* SettingRepository.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		1305CA442F13E76F000462C6 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				1305CA452F13E77A000462C6 /* SettingUseCase.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		133BD3A02F023A430081CDF8 /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,6 +498,7 @@
 				13800CB52F0A90CF00056DD2 /* Focus */,
 				134206682F1004FC00E426CA /* Log */,
 				134206352F0D651500E426CA /* Reset */,
+				1305CA442F13E76F000462C6 /* Setting */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -479,6 +528,7 @@
 				137AE0B92F097BCF00EE44AA /* Focus */,
 				134206652F10044600E426CA /* Log */,
 				134206322F0D64A100E426CA /* Rest */,
+				1305CA412F13E703000462C6 /* Setting */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -526,6 +576,7 @@
 				137AE0B32F097A9100EE44AA /* Focus */,
 				1342065F2F10012800E426CA /* Log */,
 				1342062A2F0D635500E426CA /* Rest */,
+				1305CA3B2F13E674000462C6 /* Setting */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -701,6 +752,7 @@
 				134206432F0D6BDF00E426CA /* RestSkipEntity+Response.swift */,
 				1342064D2F0D798100E426CA /* RestExtensionEntity+Response.swift */,
 				134206742F10074500E426CA /* DashboardEntity+Response.swift */,
+				1305CA492F13E7CC000462C6 /* SettingEntity+Response.swift */,
 			);
 			path = Mapper;
 			sourceTree = "<group>";
@@ -937,6 +989,7 @@
 				13800CBB2F0A927300056DD2 /* SessionEntity.swift */,
 				137AE0C92F0989DD00EE44AA /* SuggestionEntity.swift */,
 				137AE0982F095E5300EE44AA /* TokenEntity.swift */,
+				1305CA472F13E7B6000462C6 /* SettingEntity.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1422,6 +1475,7 @@
 				133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */,
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
+				1305CA402F13E6DE000462C6 /* SettingResponse.swift in Sources */,
 				1342067A2F101BE200E426CA /* TimelineFocusView.swift in Sources */,
 				134206372F0D651B00E426CA /* RestUseCase.swift in Sources */,
 				134206752F10074500E426CA /* DashboardEntity+Response.swift in Sources */,
@@ -1433,6 +1487,7 @@
 				13AB6AD02F0929A2001F7608 /* AppVersionAPI.swift in Sources */,
 				133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */,
 				13E320462F0AF04200B1F920 /* ViewMotivationToastProps.swift in Sources */,
+				1305CA4C2F13ECA7000462C6 /* SettingRequest.swift in Sources */,
 				13B1E6842F0BF75A008419F2 /* SessionCompletionRequest.swift in Sources */,
 				13B1E6942F0BFD3D008419F2 /* SessionCompletionEntity.swift in Sources */,
 				133BD3AA2F025D350081CDF8 /* CustomAlertModifier.swift in Sources */,
@@ -1466,7 +1521,9 @@
 				134BFFDC2F01796800F1F444 /* FocusDetailView.swift in Sources */,
 				134BFFD62F01593800F1F444 /* CommonChipStyle.swift in Sources */,
 				134206702F10062800E426CA /* TimelineEntity.swift in Sources */,
+				1305CA462F13E77A000462C6 /* SettingUseCase.swift in Sources */,
 				13B1E6962F0C1BA6008419F2 /* CompleteFocusSessionProps.swift in Sources */,
+				1305CA482F13E7B6000462C6 /* SettingEntity.swift in Sources */,
 				137AE08A2F09539D00EE44AA /* AuthAPI.swift in Sources */,
 				134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */,
 				13800CA82F0A640C00056DD2 /* StartFocusSessionProps.swift in Sources */,
@@ -1474,6 +1531,7 @@
 				137AE0C42F097FFF00EE44AA /* TokenRefreshPlugin.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
 				1305CA362F13D8D8000462C6 /* SettingToggleItem.swift in Sources */,
+				1305CA432F13E70E000462C6 /* SettingRepository.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
 				1342065E2F0FFCFD00E426CA /* DebugConfig.swift in Sources */,
 				1305CA3A2F13E0F1000462C6 /* SettingMetadata.swift in Sources */,
@@ -1519,6 +1577,7 @@
 				137AE09F2F09702A00EE44AA /* AmplitudeService.swift in Sources */,
 				13827A162F09172E008FB39A /* AppRepository.swift in Sources */,
 				133BD3AF2F025E760081CDF8 /* CustomAlertParams.swift in Sources */,
+				1305CA3D2F13E681000462C6 /* SettingAPI.swift in Sources */,
 				137AE0B82F097B0400EE44AA /* FocusSuggestionsResponse.swift in Sources */,
 				13800CB02F0A682700056DD2 /* SessionCompletionType.swift in Sources */,
 				133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */,
@@ -1530,6 +1589,7 @@
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
 				1305CA382F13E036000462C6 /* SettingButtonItem.swift in Sources */,
 				1342064E2F0D798100E426CA /* RestExtensionEntity+Response.swift in Sources */,
+				1305CA4A2F13E7CC000462C6 /* SettingEntity+Response.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
 				134206442F0D6BDF00E426CA /* RestSkipEntity+Response.swift in Sources */,

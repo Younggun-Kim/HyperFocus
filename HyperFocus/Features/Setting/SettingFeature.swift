@@ -12,36 +12,138 @@ import SwiftUI
 
 @Reducer
 struct SettingFeature {
+    @Dependency(\.settingUseCase) var settingUseCase
+    
     @ObservableState
     struct State: Equatable {
         var soundOn: Bool = false
         var hapticOn: Bool = false
         var alarmOn: Bool = false
+        var toast = ToastFeature.State()
     }
     
+    @CasePathable
     enum Action {
-        case soundToggled(Bool)
-        case hapticToggled(Bool)
-        case alarmToggled(Bool)
-        case aboutUsTapped(SettingMetadata.AboutUs)
+        case inner(InnerAction)
+        case effect(EffectAction)
+        case delegate(DelegateAction)
+        case scope(ScopeAction)
+        
+        enum InnerAction {
+            case onAppear
+            case soundToggled(Bool)
+            case hapticToggled(Bool)
+            case alarmToggled(Bool)
+            case aboutUsTapped(SettingMetadata.AboutUs)
+        }
+        
+        enum EffectAction {
+            case getSettingResponse(Result<SettingEntity?, Error>)
+            case patchSettingResponse(Result<SettingEntity?, Error>)
+        }
+        
+        enum DelegateAction {}
+        
+        @CasePathable
+        enum ScopeAction {
+            case toast(ToastFeature.Action)
+        }
     }
     
     var body: some Reducer<State, Action> {
+        Scope(state: \.toast, action: \.scope.toast) {
+            ToastFeature()
+        }
+        
         Reduce { state, action in
             switch action {
-            case let .soundToggled(isOn):
-                state.soundOn = isOn
-                return .none
-            case let .hapticToggled(isOn):
-                state.hapticOn = isOn
-                return .none
-            case let .alarmToggled(isOn):
-                state.alarmOn = isOn
-                return .none
-            case .aboutUsTapped:
-                // TODO: Handle navigation or action
-                return .none
+            case .inner(let inner):
+                return innerAction(&state, action: inner)
+            case .effect(let effect):
+                return effectAction(&state, action: effect)
+            case .delegate(let delegate):
+                return delegateAction(&state, action: delegate)
+            case .scope(let scope):
+                return scopeAction(&state, action: scope)
             }
+        }
+    }
+    
+    func delegateAction(_ state: inout State, action: Action.DelegateAction) -> Effect<Action> {
+        
+    }
+    
+    func scopeAction(_ state: inout State, action: Action.ScopeAction) -> Effect<Action> {
+        switch action {
+        case .toast:
+            return .none
+        }
+    }
+    
+    func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
+        switch action {
+        case .onAppear:
+            return .run { send in
+                do {
+                    let response = try await settingUseCase.getSetting()
+                    await send(.effect(.getSettingResponse(.success(response))))
+                } catch {
+                    await send(.effect(.getSettingResponse(.failure(error))))
+                }
+            }
+
+        case let .soundToggled(isOn):
+            state.soundOn = isOn
+            return .run { [soundOn = state.soundOn, hapticOn = state.hapticOn, alarmOn = state.alarmOn] send in
+                do {
+                    let response = try await settingUseCase.patchSetting(soundOn, hapticOn, alarmOn)
+                    await send(.effect(.patchSettingResponse(.success(response))))
+                } catch {
+                    await send(.effect(.patchSettingResponse(.failure(error))))
+                }
+            }
+        case let .hapticToggled(isOn):
+            state.hapticOn = isOn
+            return .run { [soundOn = state.soundOn, hapticOn = state.hapticOn, alarmOn = state.alarmOn] send in
+                do {
+                    let response = try await settingUseCase.patchSetting(soundOn, hapticOn, alarmOn)
+                    await send(.effect(.patchSettingResponse(.success(response))))
+                } catch {
+                    await send(.effect(.patchSettingResponse(.failure(error))))
+                }
+            }
+        case let .alarmToggled(isOn):
+            state.alarmOn = isOn
+            return .run { [soundOn = state.soundOn, hapticOn = state.hapticOn, alarmOn = state.alarmOn] send in
+                do {
+                    let response = try await settingUseCase.patchSetting(soundOn, hapticOn, alarmOn)
+                    await send(.effect(.patchSettingResponse(.success(response))))
+                } catch {
+                    await send(.effect(.patchSettingResponse(.failure(error))))
+                }
+            }
+        case .aboutUsTapped:
+            // TODO: Handle navigation or action
+            return .none
+        }
+    }
+    
+    func effectAction(_ state: inout State, action: Action.EffectAction) -> Effect<Action> {
+        switch action {
+        case let .getSettingResponse(.success(setting)):
+            if let setting = setting {
+                state.soundOn = setting.soundEnabled
+                state.hapticOn = setting.hapticEnabled
+                state.alarmOn = setting.alarmEnabled
+            }
+            return .none
+        case let .getSettingResponse(.failure(error)):
+            return .send(.scope(.toast(.show(error.localizedDescription))))
+        case .patchSettingResponse(.success):
+            // 성공 시 별도 처리 없음 (이미 state가 업데이트됨)
+            return .none
+        case let .patchSettingResponse(.failure(error)):
+            return .send(.scope(.toast(.show(error.localizedDescription))))
         }
     }
 }
@@ -52,17 +154,17 @@ extension StoreOf<SettingFeature> {
         case .sound:
             return Binding(
                 get: { self.soundOn },
-                set: { self.send(.soundToggled($0)) }
+                set: { self.send(.inner(.soundToggled($0))) }
             )
         case .haptic:
             return Binding(
                 get: { self.hapticOn },
-                set: { self.send(.hapticToggled($0)) }
+                set: { self.send(.inner(.hapticToggled($0))) }
             )
         case .alarm:
             return Binding(
                 get: { self.alarmOn },
-                set: { self.send(.alarmToggled($0)) }
+                set: { self.send(.inner(.alarmToggled($0))) }
             )
         }
     }
