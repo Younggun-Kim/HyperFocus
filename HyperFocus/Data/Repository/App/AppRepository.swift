@@ -13,6 +13,8 @@ public struct AppRepository {
     public let getBuildNumber: @Sendable () -> String
     public let checkAppVersion: @Sendable (_ currentVersion: String) async throws -> AppVersionCheckResponse
     public let getDeviceUUID: @Sendable () async throws -> String?
+    public let getDeviceModel: @Sendable () async throws -> String
+    public let getOSVersion: @Sendable () async throws -> String
 }
 
 extension AppRepository: DependencyKey {
@@ -35,6 +37,14 @@ extension AppRepository: DependencyKey {
         getDeviceUUID: {
             @Dependency(\.deviceDataSource) var deviceDataSource
             return try await deviceDataSource.getDeviceUUID()
+        },
+        getDeviceModel: {
+            @Dependency(\.deviceDataSource) var deviceDataSource
+            return try await deviceDataSource.getDeviceModel()
+        },
+        getOSVersion: {
+            @Dependency(\.deviceDataSource) var deviceDataSource
+            return try await deviceDataSource.getOSVersion()
         }
     )
     
@@ -42,7 +52,9 @@ extension AppRepository: DependencyKey {
         getAppVersion: { "1.0.0" },
         getBuildNumber: { "1" },
         checkAppVersion: { _ in AppVersionCheckResponse.mock },
-        getDeviceUUID: { nil as String?}
+        getDeviceUUID: { nil as String? },
+        getDeviceModel: { "iPhone" },
+        getOSVersion: { "17.0" }
     )
 }
 

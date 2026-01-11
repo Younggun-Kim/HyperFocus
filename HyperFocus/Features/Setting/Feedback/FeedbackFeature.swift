@@ -9,13 +9,11 @@
 import ComposableArchitecture
 import Foundation
 import SwiftUI
-import UIKit
 
 @Reducer
 struct FeedbackFeature {
     @Dependency(\.settingUseCase) var settingUseCase
     @Dependency(\.amplitudeService) var amplitudeService
-    @Dependency(\.deviceDataSource) var deviceDataSource
     
     @ObservableState
     struct State: Equatable {
@@ -107,26 +105,12 @@ struct FeedbackFeature {
                 return .send(.scope(.toast(.show(SettingText.Feedback.pleaseEnterFeedback))))
             }
             
-            let category = state.category
+            let category = state.category.rawValue
             let content = state.inputText
             
             return .run { send in
-                // 디바이스 정보 수집
-                let appVersion = deviceDataSource.getAppVersion()
-                let deviceModel = await UIDevice.current.model
-                let osVersion = await UIDevice.current.systemVersion
-                
-                // FeedbackRequest 생성
-                let request = FeedbackRequest(
-                    category: category.rawValue,
-                    content: content,
-                    appVersion: appVersion,
-                    deviceModel: deviceModel,
-                    osVersion: osVersion
-                )
-                
                 do {
-                    _ = try await settingUseCase.sendFeedback(request)
+                    _ = try await settingUseCase.sendFeedback(category, content)
                     // 성공 시 피드백 닫기
                     await send(.delegate(.sendFeedbackSucceeded))
                 } catch let error as APIError {

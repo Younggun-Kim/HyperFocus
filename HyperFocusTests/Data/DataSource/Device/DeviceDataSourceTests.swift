@@ -9,6 +9,7 @@ import Testing
 import ComposableArchitecture
 @testable import HyperFocus
 import Foundation
+import UIKit
 
 @Suite("DeviceDataSource 테스트")
 struct DeviceDataSourceTests {
@@ -89,7 +90,78 @@ struct DeviceDataSourceTests {
         #expect(buildNumber == "1")
     }
     
+    @Test("Test Value로 디바이스 모델 조회 - Mock 값 반환 확인")
+    func testGetDeviceModel_WithTestValue_ReturnsMockModel() async throws {
+        let dataSource = DeviceDataSource.testValue
+        
+        let deviceModel = try await dataSource.getDeviceModel()
+        
+        #expect(deviceModel == "iPhone")
+    }
+    
+    @Test("Test Value로 OS 버전 조회 - Mock 값 반환 확인")
+    func testGetOSVersion_WithTestValue_ReturnsMockOSVersion() async throws {
+        let dataSource = DeviceDataSource.testValue
+        
+        let osVersion = try await dataSource.getOSVersion()
+        
+        #expect(osVersion == "17.0")
+    }
+    
     // MARK: - Custom DataSource Tests
+    
+    @Test("Live Value로 디바이스 모델 조회 - 실제 모델 반환 확인")
+    func testGetDeviceModel_WithLiveValue_ReturnsDeviceModel() async throws {
+        let dataSource = DeviceDataSource.liveValue
+        
+        let deviceModel = try await dataSource.getDeviceModel()
+        
+        // UIDevice.current.model은 빈 문자열이 아니어야 함
+        #expect(!deviceModel.isEmpty)
+        // 일반적인 iOS 디바이스 모델 형식 검증
+        #expect(deviceModel.contains("iPhone") || deviceModel.contains("iPad") || deviceModel.contains("iPod") || deviceModel.contains("Apple"))
+    }
+    
+    @Test("Live Value로 OS 버전 조회 - 실제 OS 버전 반환 확인")
+    func testGetOSVersion_WithLiveValue_ReturnsOSVersion() async throws {
+        let dataSource = DeviceDataSource.liveValue
+        
+        let osVersion = try await dataSource.getOSVersion()
+        
+        // OS 버전은 빈 문자열이 아니어야 함
+        #expect(!osVersion.isEmpty)
+        // OS 버전 형식 검증 (예: "17.0" 형식)
+        let versionComponents = osVersion.split(separator: ".")
+        #expect(!versionComponents.isEmpty, "OS 버전은 최소한 하나의 컴포넌트를 가져야 합니다")
+    }
+    
+    @Test("Live Value 디바이스 모델이 UIDevice와 일치하는지 확인")
+    func testGetDeviceModel_WithLiveValue_MatchesUIDevice() async throws {
+        let dataSource = DeviceDataSource.liveValue
+        let deviceModel = try await dataSource.getDeviceModel()
+        
+        // UIDevice에서 직접 읽은 값과 비교
+        let uiDeviceModel = await MainActor.run {
+            UIDevice.current.model
+        }
+        
+        #expect(deviceModel == uiDeviceModel,
+                "DeviceDataSource가 반환한 디바이스 모델은 UIDevice.current.model과 일치해야 합니다")
+    }
+    
+    @Test("Live Value OS 버전이 UIDevice와 일치하는지 확인")
+    func testGetOSVersion_WithLiveValue_MatchesUIDevice() async throws {
+        let dataSource = DeviceDataSource.liveValue
+        let osVersion = try await dataSource.getOSVersion()
+        
+        // UIDevice에서 직접 읽은 값과 비교
+        let uiDeviceOSVersion = await MainActor.run {
+            UIDevice.current.systemVersion
+        }
+        
+        #expect(osVersion == uiDeviceOSVersion,
+                "DeviceDataSource가 반환한 OS 버전은 UIDevice.current.systemVersion과 일치해야 합니다")
+    }
     
     @Test("커스텀 DataSource 생성 및 값 반환 확인")
     func testCustomDataSource_ReturnsCustomValues() {
@@ -99,7 +171,9 @@ struct DeviceDataSourceTests {
         let dataSource = DeviceDataSource(
             getAppVersion: { customVersion },
             getBuildNumber: { customBuildNumber },
-            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" },
+            getDeviceModel: { "iPhone" },
+            getOSVersion: { "17.0" }
         )
         
         #expect(dataSource.getAppVersion() == customVersion)
@@ -107,30 +181,42 @@ struct DeviceDataSourceTests {
     }
     
     @Test("여러 커스텀 DataSource의 독립성 확인")
-    func testCustomDataSource_WithDifferentValues() {
+    func testCustomDataSource_WithDifferentValues() async throws {
         let version1 = "3.0.0"
         let buildNumber1 = "100"
+        let deviceModel1 = "iPhone 14"
+        let osVersion1 = "16.0"
         
         let dataSource1 = DeviceDataSource(
             getAppVersion: { version1 },
             getBuildNumber: { buildNumber1 },
-            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" },
+            getDeviceModel: { deviceModel1 },
+            getOSVersion: { osVersion1 }
         )
         
         let version2 = "4.0.0"
         let buildNumber2 = "200"
+        let deviceModel2 = "iPad Pro"
+        let osVersion2 = "17.0"
         
         let dataSource2 = DeviceDataSource(
             getAppVersion: { version2 },
             getBuildNumber: { buildNumber2 },
-            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" },
+            getDeviceModel: { deviceModel2 },
+            getOSVersion: { osVersion2 }
         )
         
         // 각 DataSource가 독립적으로 동작하는지 확인
         #expect(dataSource1.getAppVersion() == version1)
         #expect(dataSource1.getBuildNumber() == buildNumber1)
+        #expect(try await dataSource1.getDeviceModel() == deviceModel1)
+        #expect(try await dataSource1.getOSVersion() == osVersion1)
         #expect(dataSource2.getAppVersion() == version2)
         #expect(dataSource2.getBuildNumber() == buildNumber2)
+        #expect(try await dataSource2.getDeviceModel() == deviceModel2)
+        #expect(try await dataSource2.getOSVersion() == osVersion2)
     }
     
     // MARK: - Preview Value Tests
@@ -177,7 +263,9 @@ struct DeviceDataSourceTests {
         let dataSource = DeviceDataSource(
             getAppVersion: { "1.0.0" },
             getBuildNumber: { "1" },
-            getDeviceUUID: { customUUID }
+            getDeviceUUID: { customUUID },
+            getDeviceModel: { "iPhone" },
+            getOSVersion: { "17.0" }
         )
         
         let uuid = try await dataSource.getDeviceUUID()
@@ -185,12 +273,48 @@ struct DeviceDataSourceTests {
         #expect(uuid == customUUID)
     }
     
+    @Test("커스텀 DataSource로 디바이스 모델 조회 - 커스텀 값 반환 확인")
+    func testGetDeviceModel_WithCustomDataSource_ReturnsCustomModel() async throws {
+        let customModel = "iPhone 15 Pro"
+        
+        let dataSource = DeviceDataSource(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" },
+            getDeviceModel: { customModel },
+            getOSVersion: { "17.0" }
+        )
+        
+        let deviceModel = try await dataSource.getDeviceModel()
+        
+        #expect(deviceModel == customModel)
+    }
+    
+    @Test("커스텀 DataSource로 OS 버전 조회 - 커스텀 값 반환 확인")
+    func testGetOSVersion_WithCustomDataSource_ReturnsCustomOSVersion() async throws {
+        let customOSVersion = "18.0"
+        
+        let dataSource = DeviceDataSource(
+            getAppVersion: { "1.0.0" },
+            getBuildNumber: { "1" },
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" },
+            getDeviceModel: { "iPhone" },
+            getOSVersion: { customOSVersion }
+        )
+        
+        let osVersion = try await dataSource.getOSVersion()
+        
+        #expect(osVersion == customOSVersion)
+    }
+    
     @Test("Device UUID가 nil을 반환할 수 있는지 확인")
     func testGetDeviceUUID_CanReturnNil() async throws {
         let dataSource = DeviceDataSource(
             getAppVersion: { "1.0.0" },
             getBuildNumber: { "1" },
-            getDeviceUUID: { nil }
+            getDeviceUUID: { nil },
+            getDeviceModel: { "iPhone" },
+            getOSVersion: { "17.0" }
         )
         
         let uuid = try await dataSource.getDeviceUUID()
@@ -232,7 +356,9 @@ struct DeviceDataSourceTests {
         let dataSource = DeviceDataSource(
             getAppVersion: { version },
             getBuildNumber: { buildNumber },
-            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
+            getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" },
+            getDeviceModel: { "iPhone" },
+            getOSVersion: { "17.0" }
         )
         
         #expect(dataSource.getAppVersion() == version)

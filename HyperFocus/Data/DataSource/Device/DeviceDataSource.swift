@@ -13,6 +13,8 @@ public struct DeviceDataSource {
     public let getAppVersion: @Sendable () -> String
     public let getBuildNumber: @Sendable () -> String
     public let getDeviceUUID: @Sendable () async throws -> String?
+    public let getDeviceModel: @Sendable () async throws -> String
+    public let getOSVersion: @Sendable () async throws -> String
 }
 
 extension DeviceDataSource: DependencyKey {
@@ -33,13 +35,25 @@ extension DeviceDataSource: DependencyKey {
             await MainActor.run {
                 UIDevice.current.identifierForVendor?.uuidString
             }
+        },
+        getDeviceModel: {
+            await MainActor.run {
+                UIDevice.current.model
+            }
+        },
+        getOSVersion: {
+            await MainActor.run {
+                UIDevice.current.systemVersion
+            }
         }
     )
     
     public static var testValue: DeviceDataSource = DeviceDataSource(
         getAppVersion: { "1.0.0" },
         getBuildNumber: { "1" },
-        getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" }
+        getDeviceUUID: { "E621E1F8-C36C-495A-93FC-0C247A3E6E5F" },
+        getDeviceModel: { "iPhone" },
+        getOSVersion: { "17.0" }
     )
 }
 

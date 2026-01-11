@@ -86,14 +86,20 @@ struct SettingFeature {
         case .toast:
             return .none
         case .feedback(.delegate(.dismiss)):
+            // feedback이 nil이 아닐 때만 처리
+            guard state.feedback != nil else { return .none }
             state.showFeedbackBottomSheet = false
             state.feedback = nil
             return .none
         case .feedback(.delegate(.sendFeedbackSucceeded)):
+            // feedback이 nil이 아닐 때만 처리
+            guard state.feedback != nil else { return .none }
             state.showFeedbackBottomSheet = false
             state.feedback = nil
             return .send(.scope(.toast(.show("Message received! Thanks. 💌"))))
         case .feedback:
+            // delegate 액션이 아닌 경우, ifLet이 처리하도록 함
+            // feedback이 nil이면 무시 (ifLet이 자동으로 처리)
             return .none
         }
     }
