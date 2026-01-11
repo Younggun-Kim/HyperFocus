@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1305CA312F13D284000462C6 /* AppleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA302F13D284000462C6 /* AppleLoginView.swift */; };
+		1305CA332F13D377000462C6 /* SettingText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA322F13D377000462C6 /* SettingText.swift */; };
+		1305CA362F13D8D8000462C6 /* SettingToggleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA352F13D8D8000462C6 /* SettingToggleItem.swift */; };
+		1305CA382F13E036000462C6 /* SettingButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA372F13E036000462C6 /* SettingButtonItem.swift */; };
+		1305CA3A2F13E0F1000462C6 /* SettingMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA392F13E0F1000462C6 /* SettingMetadata.swift */; };
 		133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */; };
 		133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */; };
 		133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */; };
@@ -182,6 +187,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1305CA302F13D284000462C6 /* AppleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLoginView.swift; sourceTree = "<group>"; };
+		1305CA322F13D377000462C6 /* SettingText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingText.swift; sourceTree = "<group>"; };
+		1305CA342F13D4A0000462C6 /* HyperFocus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HyperFocus.entitlements; sourceTree = "<group>"; };
+		1305CA352F13D8D8000462C6 /* SettingToggleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingToggleItem.swift; sourceTree = "<group>"; };
+		1305CA372F13E036000462C6 /* SettingButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingButtonItem.swift; sourceTree = "<group>"; };
+		1305CA392F13E0F1000462C6 /* SettingMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingMetadata.swift; sourceTree = "<group>"; };
 		133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtn.swift; sourceTree = "<group>"; };
 		133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnStyle.swift; sourceTree = "<group>"; };
 		133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnModel.swift; sourceTree = "<group>"; };
@@ -369,6 +380,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1305CA2D2F13D251000462C6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1305CA302F13D284000462C6 /* AppleLoginView.swift */,
+				1305CA352F13D8D8000462C6 /* SettingToggleItem.swift */,
+				1305CA372F13E036000462C6 /* SettingButtonItem.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		133BD3A02F023A430081CDF8 /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -413,8 +434,10 @@
 		133BD3BF2F02D1190081CDF8 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				1305CA2D2F13D251000462C6 /* Components */,
 				133BD3C12F02D12D0081CDF8 /* SettingView.swift */,
 				133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */,
+				1305CA392F13E0F1000462C6 /* SettingMetadata.swift */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -706,6 +729,7 @@
 				133BD3BC2F02CFBA0081CDF8 /* LogText.swift */,
 				134BFFA32EFD629100F1F444 /* BaseText.swift */,
 				134BFFCA2F01314200F1F444 /* FocusText.swift */,
+				1305CA322F13D377000462C6 /* SettingText.swift */,
 			);
 			path = Text;
 			sourceTree = "<group>";
@@ -1085,6 +1109,7 @@
 		13A74D282EE5CB8100C3BB48 /* HyperFocus */ = {
 			isa = PBXGroup;
 			children = (
+				1305CA342F13D4A0000462C6 /* HyperFocus.entitlements */,
 				13A74D352EE5CCAE00C3BB48 /* Application */,
 				133BD3C62F03A2580081CDF8 /* Data */,
 				134BFFC32F01071E00F1F444 /* Domain */,
@@ -1381,10 +1406,12 @@
 				13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
 				133BD3AD2F025D9F0081CDF8 /* Alert+Extensions.swift in Sources */,
+				1305CA332F13D377000462C6 /* SettingText.swift in Sources */,
 				13800CA62F0A630300056DD2 /* InputMethodType.swift in Sources */,
 				13800CAE2F0A675F00056DD2 /* SessionStatusType.swift in Sources */,
 				13B1E68E2F0BFC40008419F2 /* SessionCompletionParams.swift in Sources */,
 				13AB6AD82F092C27001F7608 /* VersionUpdateType.swift in Sources */,
+				1305CA312F13D284000462C6 /* AppleLoginView.swift in Sources */,
 				133BD3E62F04196C0081CDF8 /* APIError.swift in Sources */,
 				133BD3E82F04196C0081CDF8 /* BaseTarget.swift in Sources */,
 				137AE0C82F0988EA00EE44AA /* SuggestionType.swift in Sources */,
@@ -1446,8 +1473,10 @@
 				1342066A2F10050500E426CA /* LogUseCase.swift in Sources */,
 				137AE0C42F097FFF00EE44AA /* TokenRefreshPlugin.swift in Sources */,
 				13AC3F712EF707F800CEDC69 /* OnboardingView.swift in Sources */,
+				1305CA362F13D8D8000462C6 /* SettingToggleItem.swift in Sources */,
 				13AC3F692EF702E200CEDC69 /* AmbientZStack.swift in Sources */,
 				1342065E2F0FFCFD00E426CA /* DebugConfig.swift in Sources */,
+				1305CA3A2F13E0F1000462C6 /* SettingMetadata.swift in Sources */,
 				137AE0912F09566F00EE44AA /* AuthRepository.swift in Sources */,
 				13B1E6922F0BFCF7008419F2 /* FeedbackEntity.swift in Sources */,
 				13AB6AD62F092BB7001F7608 /* BaseResponse.swift in Sources */,
@@ -1499,6 +1528,7 @@
 				13800CA02F0A539100056DD2 /* ViewHomeProps.swift in Sources */,
 				13800CB42F0A68C500056DD2 /* SatisfactionType.swift in Sources */,
 				134BFFBF2F00F59800F1F444 /* LogHomeFeature.swift in Sources */,
+				1305CA382F13E036000462C6 /* SettingButtonItem.swift in Sources */,
 				1342064E2F0D798100E426CA /* RestExtensionEntity+Response.swift in Sources */,
 				134BFFC02F00F59800F1F444 /* FocusHomeFeature.swift in Sources */,
 				133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */,
@@ -1605,12 +1635,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HyperFocus/HyperFocus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B2V8LG7269;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HyperFocus/Application/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
@@ -1735,12 +1768,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = HyperFocus/HyperFocus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = B2V8LG7269;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HyperFocus/Application/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_NAME)";
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";

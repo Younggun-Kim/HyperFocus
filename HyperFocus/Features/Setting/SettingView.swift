@@ -12,10 +12,42 @@ struct SettingView: View {
     @Bindable var store: StoreOf<SettingFeature>
     
     var body: some View {
-        Text("Setting")
+        ScrollView {
+            VStack(spacing: 20) {
+                AppleLoginView(isLoggedIn: false)
+                    .padding(.bottom, 40)
+                
+                // Device Settings
+                VStack(spacing: 16) {
+                    ForEach([SettingMetadata.DeviceSetting.sound, .haptic, .alarm], id: \.self) { setting in
+                        SettingToggleItem(
+                            icon: setting.icon,
+                            iconSize: setting.iconSize,
+                            title: setting.title,
+                            isOn: store.binding(for: setting)
+                        )
+                    }
+                }
+                
+                // About Us
+                VStack(spacing: 16) {
+                    ForEach([SettingMetadata.AboutUs.privacyPolicy, .termsOfService, .talkToDeveloper], id: \.self) { setting in
+                        SettingButtonItem(
+                            icon: setting.icon,
+                            iconSize: setting.iconSize,
+                            title: setting.title
+                        )
+                        .onTapGesture {
+                            store.send(.aboutUsTapped(setting))
+                        }
+                    }
+                }
+                .padding(.top, 20)
+            }
+        }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(Color.black)
-        .foregroundStyle(Color.white)
+        .padding(.horizontal, 24)
+        .background(.black)
     }
 }
 

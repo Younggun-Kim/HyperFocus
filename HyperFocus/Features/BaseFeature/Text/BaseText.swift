@@ -5,8 +5,6 @@
 //  Created by 김영건 on 12/25/25.
 //
 
-
-
 struct BaseText {
     static let skip = "Skip"
     static let start = "Start"

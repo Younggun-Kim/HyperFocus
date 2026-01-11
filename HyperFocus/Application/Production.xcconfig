@@ -8,7 +8,7 @@
 // Configuration settings file format documentation can be found at:
 // https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
 
-APP_BUNDLE_ID=com.hyperfocus.timer.HyperFocus
+APP_BUNDLE_ID=com.hyperfocus.timer
 API_BASE_URL=https:/$()/api-hyperfocus.meetory.io
 APP_NAME=HyperFocus
 
