@@ -22,11 +22,18 @@ public struct ViewLogDashboardProps: Codable {
         self.totalSessionCount = totalSessionCount
     }
     
-    func toDictionary() -> [String: Any?] {
-        [
-            "today_focus_seconds": self.todayFocusSeconds,
-            "diff_type": self.diffType?.rawValue,
-            "total_session_count": self.totalSessionCount
-        ]
+    func toDictionary() -> [String: Any] {
+        var dict: [String: Any] = [:]
+        
+        if let todayFocusSeconds = self.todayFocusSeconds {
+            dict["today_focus_seconds"] = todayFocusSeconds
+        }
+        if let diffType = self.diffType {
+            dict["diff_type"] = diffType.rawValue
+        }
+        if let totalSessionCount = self.totalSessionCount {
+            dict["total_session_count"] = totalSessionCount
+        }
+        return dict
     }
 }

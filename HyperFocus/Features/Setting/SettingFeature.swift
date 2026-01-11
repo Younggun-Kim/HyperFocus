@@ -13,6 +13,7 @@ import SwiftUI
 @Reducer
 struct SettingFeature {
     @Dependency(\.settingUseCase) var settingUseCase
+    @Dependency(\.amplitudeService) var amplitudeService
     
     @ObservableState
     struct State: Equatable {
@@ -94,6 +95,7 @@ struct SettingFeature {
 
         case let .soundToggled(isOn):
             state.soundOn = isOn
+            amplitudeService.track(.changeAppSetting(.init(settingName: "sound")))
             return .run { [soundOn = state.soundOn, hapticOn = state.hapticOn, alarmOn = state.alarmOn] send in
                 do {
                     let response = try await settingUseCase.patchSetting(soundOn, hapticOn, alarmOn)
@@ -104,6 +106,7 @@ struct SettingFeature {
             }
         case let .hapticToggled(isOn):
             state.hapticOn = isOn
+            amplitudeService.track(.changeAppSetting(.init(settingName: "haptic")))
             return .run { [soundOn = state.soundOn, hapticOn = state.hapticOn, alarmOn = state.alarmOn] send in
                 do {
                     let response = try await settingUseCase.patchSetting(soundOn, hapticOn, alarmOn)
@@ -114,6 +117,7 @@ struct SettingFeature {
             }
         case let .alarmToggled(isOn):
             state.alarmOn = isOn
+            amplitudeService.track(.changeAppSetting(.init(settingName: "alarm")))
             return .run { [soundOn = state.soundOn, hapticOn = state.hapticOn, alarmOn = state.alarmOn] send in
                 do {
                     let response = try await settingUseCase.patchSetting(soundOn, hapticOn, alarmOn)

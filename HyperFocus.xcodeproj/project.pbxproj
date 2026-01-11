@@ -19,6 +19,7 @@
 		1305CA482F13E7B6000462C6 /* SettingEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA472F13E7B6000462C6 /* SettingEntity.swift */; };
 		1305CA4A2F13E7CC000462C6 /* SettingEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA492F13E7CC000462C6 /* SettingEntity+Response.swift */; };
 		1305CA4C2F13ECA7000462C6 /* SettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA4B2F13ECA7000462C6 /* SettingRequest.swift */; };
+		1305CA4E2F13EEA1000462C6 /* ChangeAppSettingProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA4D2F13EEA1000462C6 /* ChangeAppSettingProps.swift */; };
 		133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */; };
 		133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */; };
 		133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */; };
@@ -207,6 +208,7 @@
 		1305CA472F13E7B6000462C6 /* SettingEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingEntity.swift; sourceTree = "<group>"; };
 		1305CA492F13E7CC000462C6 /* SettingEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingEntity+Response.swift"; sourceTree = "<group>"; };
 		1305CA4B2F13ECA7000462C6 /* SettingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRequest.swift; sourceTree = "<group>"; };
+		1305CA4D2F13EEA1000462C6 /* ChangeAppSettingProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppSettingProps.swift; sourceTree = "<group>"; };
 		133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtn.swift; sourceTree = "<group>"; };
 		133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnStyle.swift; sourceTree = "<group>"; };
 		133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnModel.swift; sourceTree = "<group>"; };
@@ -1060,14 +1062,15 @@
 		13800CA12F0A570900056DD2 /* Props */ = {
 			isa = PBXGroup;
 			children = (
+				1305CA4D2F13EEA1000462C6 /* ChangeAppSettingProps.swift */,
 				13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift */,
 				13B1E6972F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift */,
 				13B1E6952F0C1BA6008419F2 /* CompleteFocusSessionProps.swift */,
 				13800CA72F0A640C00056DD2 /* StartFocusSessionProps.swift */,
 				13800C9F2F0A539100056DD2 /* ViewHomeProps.swift */,
+				1342067D2F10289D00E426CA /* ViewLogDashboardProps.swift */,
 				13E320452F0AF04200B1F920 /* ViewMotivationToastProps.swift */,
 				13800CC52F0ACFDE00056DD2 /* ViewStopAlertProps.swift */,
-				1342067D2F10289D00E426CA /* ViewLogDashboardProps.swift */,
 			);
 			path = Props;
 			sourceTree = "<group>";
@@ -1524,6 +1527,7 @@
 				1305CA462F13E77A000462C6 /* SettingUseCase.swift in Sources */,
 				13B1E6962F0C1BA6008419F2 /* CompleteFocusSessionProps.swift in Sources */,
 				1305CA482F13E7B6000462C6 /* SettingEntity.swift in Sources */,
+				1305CA4E2F13EEA1000462C6 /* ChangeAppSettingProps.swift in Sources */,
 				137AE08A2F09539D00EE44AA /* AuthAPI.swift in Sources */,
 				134BFFA82EFE33FD00F1F444 /* OnboardingTodoView.swift in Sources */,
 				13800CA82F0A640C00056DD2 /* StartFocusSessionProps.swift in Sources */,

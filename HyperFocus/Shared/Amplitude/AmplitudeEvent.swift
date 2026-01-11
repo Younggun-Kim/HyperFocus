@@ -33,6 +33,9 @@ public enum AmplitudeEvent{
     
     // MARK: - Log Events
     case clickLogEmptyStart
+    
+    // MARK: - Setting Events
+    case changeAppSetting(ChangeAppSettingProps)
 }
 
 extension AmplitudeEvent: AmplitudeEventProtocol {
@@ -52,6 +55,7 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .startRestTimer: return "start_rest_timer"
         case .clickLogEmptyStart: return "click_log_empty_start"
         case .viewLogDashboard: return "view_log_dashboard"
+        case .changeAppSetting: return "change_app_setting"
         }
     }
     
@@ -65,7 +69,9 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .completeFocusSession(let properties): return properties.toDictionary()
         case .clickSessionFeedback(let properties): return properties.toDictionary()
         case .viewLogDashboard(let properties): return properties.toDictionary()
-            
+
+        case .changeAppSetting(let properties): return properties.toDictionary()
+
         default: return [:]
         }
     }
