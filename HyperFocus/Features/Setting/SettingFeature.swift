@@ -21,6 +21,8 @@ struct SettingFeature {
         var hapticOn: Bool = false
         var alarmOn: Bool = false
         var toast = ToastFeature.State()
+        var feedback: FeedbackFeature.State?
+        var showFeedbackBottomSheet: Bool = false
     }
     
     @CasePathable
@@ -36,6 +38,7 @@ struct SettingFeature {
             case hapticToggled(Bool)
             case alarmToggled(Bool)
             case aboutUsTapped(SettingMetadata.AboutUs)
+            case feedbackBottomSheetDismissed
         }
         
         enum EffectAction {
@@ -48,6 +51,7 @@ struct SettingFeature {
         @CasePathable
         enum ScopeAction {
             case toast(ToastFeature.Action)
+            case feedback(FeedbackFeature.Action)
         }
     }
     
@@ -68,6 +72,9 @@ struct SettingFeature {
                 return scopeAction(&state, action: scope)
             }
         }
+        .ifLet(\.feedback, action: \.scope.feedback) {
+            FeedbackFeature()
+        }
     }
     
     func delegateAction(_ state: inout State, action: Action.DelegateAction) -> Effect<Action> {
@@ -77,6 +84,12 @@ struct SettingFeature {
     func scopeAction(_ state: inout State, action: Action.ScopeAction) -> Effect<Action> {
         switch action {
         case .toast:
+            return .none
+        case .feedback(.delegate(.dismiss)):
+            state.showFeedbackBottomSheet = false
+            state.feedback = nil
+            return .none
+        case .feedback:
             return .none
         }
     }
@@ -126,8 +139,19 @@ struct SettingFeature {
                     await send(.effect(.patchSettingResponse(.failure(error))))
                 }
             }
-        case .aboutUsTapped:
-            // TODO: Handle navigation or action
+        case let .aboutUsTapped(aboutUs):
+            switch aboutUs {
+            case .talkToDeveloper:
+                state.showFeedbackBottomSheet = true
+                state.feedback = FeedbackFeature.State()
+                return .none
+            case .privacyPolicy, .termsOfService:
+                // TODO: Handle other cases
+                return .none
+            }
+        case .feedbackBottomSheetDismissed:
+            state.showFeedbackBottomSheet = false
+            state.feedback = nil
             return .none
         }
     }

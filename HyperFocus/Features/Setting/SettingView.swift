@@ -55,6 +55,20 @@ struct SettingView: View {
             get: { store.toast.message },
             set: { _ in store.send(.scope(.toast(.dismiss))) }
         ))
+        .sheet(isPresented: Binding(
+            get: { store.showFeedbackBottomSheet },
+            set: { newValue in
+                if !newValue && store.showFeedbackBottomSheet {
+                    store.send(.inner(.feedbackBottomSheetDismissed))
+                }
+            }
+        )) {
+            if let feedbackStore = store.scope(state: \.feedback, action: \.scope.feedback) {
+                FeedbackBottomSheet(store: feedbackStore)
+                    .presentationDragIndicator(.visible)
+                    .presentationDetents([.large])
+            }
+        }
     }
 }
 

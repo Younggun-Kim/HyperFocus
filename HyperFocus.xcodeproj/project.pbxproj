@@ -20,6 +20,9 @@
 		1305CA4A2F13E7CC000462C6 /* SettingEntity+Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA492F13E7CC000462C6 /* SettingEntity+Response.swift */; };
 		1305CA4C2F13ECA7000462C6 /* SettingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA4B2F13ECA7000462C6 /* SettingRequest.swift */; };
 		1305CA4E2F13EEA1000462C6 /* ChangeAppSettingProps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA4D2F13EEA1000462C6 /* ChangeAppSettingProps.swift */; };
+		1305CA512F13EFF3000462C6 /* FeedbackBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA502F13EFF3000462C6 /* FeedbackBottomSheet.swift */; };
+		1305CA532F13EFFC000462C6 /* FeedbackFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA522F13EFF9000462C6 /* FeedbackFeature.swift */; };
+		1305CA552F13F069000462C6 /* FeedbackMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA542F13F069000462C6 /* FeedbackMetadata.swift */; };
 		133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */; };
 		133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */; };
 		133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */; };
@@ -209,6 +212,9 @@
 		1305CA492F13E7CC000462C6 /* SettingEntity+Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingEntity+Response.swift"; sourceTree = "<group>"; };
 		1305CA4B2F13ECA7000462C6 /* SettingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingRequest.swift; sourceTree = "<group>"; };
 		1305CA4D2F13EEA1000462C6 /* ChangeAppSettingProps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAppSettingProps.swift; sourceTree = "<group>"; };
+		1305CA502F13EFF3000462C6 /* FeedbackBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackBottomSheet.swift; sourceTree = "<group>"; };
+		1305CA522F13EFF9000462C6 /* FeedbackFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackFeature.swift; sourceTree = "<group>"; };
+		1305CA542F13F069000462C6 /* FeedbackMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackMetadata.swift; sourceTree = "<group>"; };
 		133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtn.swift; sourceTree = "<group>"; };
 		133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnStyle.swift; sourceTree = "<group>"; };
 		133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnModel.swift; sourceTree = "<group>"; };
@@ -440,6 +446,16 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		1305CA4F2F13EFE5000462C6 /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				1305CA502F13EFF3000462C6 /* FeedbackBottomSheet.swift */,
+				1305CA522F13EFF9000462C6 /* FeedbackFeature.swift */,
+				1305CA542F13F069000462C6 /* FeedbackMetadata.swift */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
 		133BD3A02F023A430081CDF8 /* CustomAlert */ = {
 			isa = PBXGroup;
 			children = (
@@ -484,6 +500,7 @@
 		133BD3BF2F02D1190081CDF8 /* Setting */ = {
 			isa = PBXGroup;
 			children = (
+				1305CA4F2F13EFE5000462C6 /* Feedback */,
 				1305CA2D2F13D251000462C6 /* Components */,
 				133BD3C12F02D12D0081CDF8 /* SettingView.swift */,
 				133BD3C32F02D13D0081CDF8 /* SettingFeature.swift */,
@@ -1458,6 +1475,7 @@
 				13A74D392EE5CD0E00C3BB48 /* SceneDelegate.swift in Sources */,
 				134206132F0D4F1300E426CA /* FocusRestView.swift in Sources */,
 				137AE0C62F09888600EE44AA /* FocusUseCase.swift in Sources */,
+				1305CA512F13EFF3000462C6 /* FeedbackBottomSheet.swift in Sources */,
 				13E3203B2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift in Sources */,
 				13E3203F2F0AE61600B1F920 /* MileStoneEntity.swift in Sources */,
 				13AC3F792EF7090400CEDC69 /* AppView.swift in Sources */,
@@ -1476,6 +1494,7 @@
 				13B1E68C2F0BFB55008419F2 /* SessionFeedbackResponse.swift in Sources */,
 				133BD3EB2F04196C0081CDF8 /* NetworkPlugin.swift in Sources */,
 				133BD3B12F025E9B0081CDF8 /* CustomAlert.swift in Sources */,
+				1305CA552F13F069000462C6 /* FeedbackMetadata.swift in Sources */,
 				134BFFE72F017E2D00F1F444 /* HapticUtils.swift in Sources */,
 				134BFFAA2EFE857C00F1F444 /* OnboardingTimerView.swift in Sources */,
 				1305CA402F13E6DE000462C6 /* SettingResponse.swift in Sources */,
@@ -1505,6 +1524,7 @@
 				133BD3CB2F0403A50081CDF8 /* UserDefaults+Dependency.swift in Sources */,
 				134206152F0D4F1B00E426CA /* FocusRestFeature.swift in Sources */,
 				13800CA42F0A5F6700056DD2 /* CharWrappingText.swift in Sources */,
+				1305CA532F13EFFC000462C6 /* FeedbackFeature.swift in Sources */,
 				133BD3C22F02D12D0081CDF8 /* SettingView.swift in Sources */,
 				134BFFD02F01502200F1F444 /* DurationType.swift in Sources */,
 				137AE0992F095E5900EE44AA /* TokenEntity.swift in Sources */,
