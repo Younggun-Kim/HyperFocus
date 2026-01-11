@@ -27,7 +27,9 @@ struct FeedbackBottomSheet: View {
                 .padding(.bottom, 40)
             
             
-            Button(action: {}) {
+            Button(action: {
+                store.send(.inner(.sendTapped))
+            }) {
                 Text(SettingText.send)
                     .font(.body.bold())
                     .foregroundStyle(Color.white)
@@ -41,6 +43,10 @@ struct FeedbackBottomSheet: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(.horizontal, 24)
         .background(Color(hex: "#1C1C1E"))
+        .toast(message: Binding(
+            get: { store.toast.message },
+            set: { _ in store.send(.scope(.toast(.dismiss))) }
+        ))
     }
     
     var HeaderView: some View {
@@ -94,13 +100,15 @@ struct FeedbackBottomSheet: View {
             .foregroundStyle(Color.systemBlue)
             .multilineTextAlignment(.leading)
             .overlay(alignment: .topLeading) {
-                CharWrappingText(
-                    text: store.category.hint,
-                    font: .preferredFont(forTextStyle: .title1),
-                    color: .systemGray,
-                    alignment: .left
-                )
-                .padding(26)
+                if store.inputText.isEmpty {
+                    CharWrappingText(
+                        text: store.category.hint,
+                        font: .preferredFont(forTextStyle: .title1),
+                        color: .systemGray,
+                        alignment: .left
+                    )
+                    .padding(26)
+                }
             }
             HStack {
                 Spacer()

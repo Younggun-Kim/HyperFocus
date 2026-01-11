@@ -89,6 +89,10 @@ struct SettingFeature {
             state.showFeedbackBottomSheet = false
             state.feedback = nil
             return .none
+        case .feedback(.delegate(.sendFeedbackSucceeded)):
+            state.showFeedbackBottomSheet = false
+            state.feedback = nil
+            return .send(.scope(.toast(.show("Message received! Thanks. 💌"))))
         case .feedback:
             return .none
         }

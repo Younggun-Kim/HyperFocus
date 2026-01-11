@@ -11,6 +11,7 @@ import ComposableArchitecture
 public struct SettingUseCase {
     public let getSetting: @Sendable () async throws -> SettingEntity?
     public let patchSetting: @Sendable (_ soundEnabled: Bool, _ hapticEnabled: Bool, _ alarmEnabled: Bool) async throws -> SettingEntity?
+    public let sendFeedback: @Sendable (_ request: FeedbackRequest) async throws -> SettingFeedbackEntity?
 }
 
 extension SettingUseCase: DependencyKey {
@@ -32,12 +33,19 @@ extension SettingUseCase: DependencyKey {
             
             let response = try await settingRepository.patchSetting(request)
             return response.data?.toEntity()
+        },
+        sendFeedback: { request in
+            @Dependency(\.settingRepository) var settingRepository
+            
+            let response = try await settingRepository.sendFeedback(request)
+            return response.data?.toEntity()
         }
     )
     
     public static var testValue = SettingUseCase(
         getSetting: { SettingEntity.mock },
-        patchSetting: { _, _, _ in SettingEntity.mock }
+        patchSetting: { _, _, _ in SettingEntity.mock },
+        sendFeedback: { _ in SettingFeedbackEntity.mock }
     )
 }
 

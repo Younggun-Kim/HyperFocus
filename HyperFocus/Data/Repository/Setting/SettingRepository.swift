@@ -11,6 +11,7 @@ import ComposableArchitecture
 public struct SettingRepository {
     public let getSetting: @Sendable () async throws -> APIResponse<SettingResponse>
     public let patchSetting: @Sendable (_ request: SettingRequest) async throws -> APIResponse<SettingResponse>
+    public let sendFeedback: @Sendable (_ request: FeedbackRequest) async throws -> APIResponse<FeedbackResponse>
 }
 
 extension SettingRepository: DependencyKey {
@@ -27,6 +28,13 @@ extension SettingRepository: DependencyKey {
             return try await apiService.requestWrapped(
                 SettingAPI.patchSetting(request),
                 responseType: SettingResponse.self
+            )
+        },
+        sendFeedback: { request in
+            @Dependency(\.apiService) var apiService
+            return try await apiService.requestWrapped(
+                SettingAPI.sendFeedback(request),
+                responseType: FeedbackResponse.self
             )
         }
     )

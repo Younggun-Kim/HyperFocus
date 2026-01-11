@@ -12,6 +12,7 @@ import Alamofire
 public enum SettingAPI {
     case getSetting
     case patchSetting(SettingRequest)
+    case sendFeedback(FeedbackRequest)
 }
 
 extension SettingAPI: BaseTarget {
@@ -21,6 +22,8 @@ extension SettingAPI: BaseTarget {
             return "/api/v1/settings"
         case .patchSetting:
             return "/api/v1/settings"
+        case .sendFeedback:
+            return "/api/v1/feedback"
         }
     }
     
@@ -30,6 +33,8 @@ extension SettingAPI: BaseTarget {
             return .get
         case .patchSetting:
             return .patch
+        case .sendFeedback:
+            return .post
         }
     }
     
@@ -39,6 +44,8 @@ extension SettingAPI: BaseTarget {
             return NetworkHeader.authorization
         case .patchSetting:
             return NetworkHeader.authorization
+        case .sendFeedback:
+            return NetworkHeader.authorization
         }
     }
     
@@ -47,6 +54,8 @@ extension SettingAPI: BaseTarget {
         case .getSetting:
             return .requestPlain
         case .patchSetting(let request):
+            return .requestJSONEncodable(request)
+        case .sendFeedback(let request):
             return .requestJSONEncodable(request)
         }
     }

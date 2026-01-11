@@ -17,3 +17,14 @@ extension SettingResponse {
         )
     }
 }
+
+extension FeedbackResponse {
+    func toEntity() -> SettingFeedbackEntity {
+        SettingFeedbackEntity(
+            id: id,
+            category: category,
+            textLength: textLength,
+            createdAt: createdAt
+        )
+    }
+}
