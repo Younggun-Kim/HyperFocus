@@ -26,6 +26,7 @@
 		1305CA572F13FAE6000462C6 /* FeedbackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA562F13FAE6000462C6 /* FeedbackRequest.swift */; };
 		1305CA592F13FB2A000462C6 /* FeedbackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA582F13FB2A000462C6 /* FeedbackResponse.swift */; };
 		1305CA5B2F13FCC6000462C6 /* SettingFeedbackEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA5A2F13FCC6000462C6 /* SettingFeedbackEntity.swift */; };
+		1305CA5D2F1403F4000462C6 /* ClickFeedbackSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1305CA5C2F1403F4000462C6 /* ClickFeedbackSend.swift */; };
 		133BD3A42F0250FD0081CDF8 /* CustomAlertBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */; };
 		133BD3A62F0252E40081CDF8 /* CustomAlertBtnStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */; };
 		133BD3A82F0252F10081CDF8 /* CustomAlertBtnModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */; };
@@ -221,6 +222,7 @@
 		1305CA562F13FAE6000462C6 /* FeedbackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRequest.swift; sourceTree = "<group>"; };
 		1305CA582F13FB2A000462C6 /* FeedbackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponse.swift; sourceTree = "<group>"; };
 		1305CA5A2F13FCC6000462C6 /* SettingFeedbackEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingFeedbackEntity.swift; sourceTree = "<group>"; };
+		1305CA5C2F1403F4000462C6 /* ClickFeedbackSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClickFeedbackSend.swift; sourceTree = "<group>"; };
 		133BD3A32F0250F90081CDF8 /* CustomAlertBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtn.swift; sourceTree = "<group>"; };
 		133BD3A52F0252DF0081CDF8 /* CustomAlertBtnStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnStyle.swift; sourceTree = "<group>"; };
 		133BD3A72F0252EC0081CDF8 /* CustomAlertBtnModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertBtnModel.swift; sourceTree = "<group>"; };
@@ -1091,6 +1093,7 @@
 				1305CA4D2F13EEA1000462C6 /* ChangeAppSettingProps.swift */,
 				13E3203A2F0AE2D500B1F920 /* ClickSessionDiscardProps.swift */,
 				13B1E6972F0C1C5A008419F2 /* ClickSessionFeedbackProps.swift */,
+				1305CA5C2F1403F4000462C6 /* ClickFeedbackSend.swift */,
 				13B1E6952F0C1BA6008419F2 /* CompleteFocusSessionProps.swift */,
 				13800CA72F0A640C00056DD2 /* StartFocusSessionProps.swift */,
 				13800C9F2F0A539100056DD2 /* ViewHomeProps.swift */,
@@ -1492,6 +1495,7 @@
 				1305CA332F13D377000462C6 /* SettingText.swift in Sources */,
 				13800CA62F0A630300056DD2 /* InputMethodType.swift in Sources */,
 				13800CAE2F0A675F00056DD2 /* SessionStatusType.swift in Sources */,
+				1305CA5D2F1403F4000462C6 /* ClickFeedbackSend.swift in Sources */,
 				13B1E68E2F0BFC40008419F2 /* SessionCompletionParams.swift in Sources */,
 				13AB6AD82F092C27001F7608 /* VersionUpdateType.swift in Sources */,
 				1305CA312F13D284000462C6 /* AppleLoginView.swift in Sources */,

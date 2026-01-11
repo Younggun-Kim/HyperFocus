@@ -89,6 +89,7 @@ struct FeedbackFeature {
     func innerAction(_ state: inout State, action: Action.InnerAction) -> Effect<Action> {
         switch action {
         case .onAppear:
+            amplitudeService.track(.viewFeedbackSheet)
             return .none
         case .categoryTapped(let cateogry):
             state.category = cateogry
@@ -108,6 +109,8 @@ struct FeedbackFeature {
             let category = state.category.rawValue
             let content = state.inputText
             
+            
+            amplitudeService.track(.clickFeedbackSend(.init(category: category, textLength: content.count)))
             return .run { send in
                 do {
                     _ = try await settingUseCase.sendFeedback(category, content)

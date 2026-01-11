@@ -37,6 +37,7 @@ public enum AmplitudeEvent{
     // MARK: - Setting Events
     case changeAppSetting(ChangeAppSettingProps)
     case viewFeedbackSheet
+    case clickFeedbackSend(ClickFeedbackSend)
 }
 
 extension AmplitudeEvent: AmplitudeEventProtocol {
@@ -58,6 +59,7 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .viewLogDashboard: return "view_log_dashboard"
         case .changeAppSetting: return "change_app_setting"
         case .viewFeedbackSheet: return "view_feedback_sheet"
+        case .clickFeedbackSend: return "click_feedback_send"
         }
     }
     
@@ -71,9 +73,9 @@ extension AmplitudeEvent: AmplitudeEventProtocol {
         case .completeFocusSession(let properties): return properties.toDictionary()
         case .clickSessionFeedback(let properties): return properties.toDictionary()
         case .viewLogDashboard(let properties): return properties.toDictionary()
-            
         case .changeAppSetting(let properties): return properties.toDictionary()
-            
+        case .clickFeedbackSend(let properties): return properties.toDictionary()
+
         default: return [:]
         }
     }
