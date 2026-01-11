@@ -1186,6 +1186,7 @@
 		13A74D0D2EE5C77E00C3BB48 = {
 			isa = PBXGroup;
 			children = (
+				13136C3A2F14141900F9888D /* ci_scripts */,
 				13A74D282EE5CB8100C3BB48 /* HyperFocus */,
 				1342061F2F0D5A1F00E426CA /* HyperFocusTests */,
 				13A74D172EE5C77E00C3BB48 /* Products */,
@@ -1204,7 +1205,6 @@
 		13A74D282EE5CB8100C3BB48 /* HyperFocus */ = {
 			isa = PBXGroup;
 			children = (
-				13136C3A2F14141900F9888D /* ci_scripts */,
 				1305CA342F13D4A0000462C6 /* HyperFocus.entitlements */,
 				13A74D352EE5CCAE00C3BB48 /* Application */,
 				133BD3C62F03A2580081CDF8 /* Data */,
